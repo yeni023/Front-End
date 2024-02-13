@@ -1,3 +1,6 @@
+// genre.tsx
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Container,
   Header,
@@ -18,8 +21,11 @@ import left from "../assets/left.svg";
 import right from "../assets/right.svg";
 
 const Genre = () => {
+  const navigate = useNavigate();
+
   const nextPage = () => {
     console.log("다음 장");
+    navigate("/StoryWay");
   };
 
   const previousPage = () => {
@@ -46,7 +52,7 @@ const Genre = () => {
           <ImageTextWrapper>
             <Image src={ghost} alt="ghost" />
             <OvalText>공포 동화 만들기</OvalText>
-          </ImageTextWrapper>{" "}
+          </ImageTextWrapper>
           <ImageTextWrapper>
             <Image src={full_story} alt="full-story" />
             <OvalText>전래 동화 만들기</OvalText>
