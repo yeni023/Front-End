@@ -4,9 +4,11 @@ import * as C from "./container";
 const StoryFlowView = () => {
   return (
     <S.Container>
-      <S.Header>
-        <C.Header />
-      </S.Header>
+      <C.Header />
+      <S.Contents>
+        <C.Content1 />
+        <C.Content2 />
+      </S.Contents>
     </S.Container>
   );
 };
