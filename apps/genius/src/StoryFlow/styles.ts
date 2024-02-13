@@ -23,7 +23,7 @@ export const Header = styled.div`
 export const HeaderElement = styled.div`
   display: block;
   width: 150px;
-  padding-left: 20px;
+  /* padding-left: 20px; */
   justify-content: center;
   text-align: center;
   flex-direction: column;

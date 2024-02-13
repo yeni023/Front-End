@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import * as S from "./styles";
 import RightAngleBracket from "../assets/StoryFlow/RightAngleBracket.svg";
 
@@ -16,6 +17,7 @@ const HeaderElementsData: HeaderElementsType[] = [
     size: 24,
     color: "#9D9D9D",
     action: () => {
+      setSelectedStepIndex(0);
       console.log("장르 선택");
     }
   },
@@ -25,6 +27,7 @@ const HeaderElementsData: HeaderElementsType[] = [
     size: 24,
     color: "#9D9D9D",
     action: () => {
+      setSelectedStepIndex(1);
       console.log("주제 선택");
     }
   },
@@ -34,6 +37,7 @@ const HeaderElementsData: HeaderElementsType[] = [
     size: 24,
     color: "#9D9D9D",
     action: () => {
+      setSelectedStepIndex(2);
       console.log("기본 정보");
     }
   },
@@ -43,6 +47,7 @@ const HeaderElementsData: HeaderElementsType[] = [
     size: 24,
     color: "#9D9D9D",
     action: () => {
+      setSelectedStepIndex(3);
       console.log("도입부 컨펌");
     }
   }
@@ -52,15 +57,17 @@ const HeaderElementText = ({
   text1,
   text2,
   size,
-  color
+  color,
+  highlight
 }: {
   text1: string;
   text2: string;
   size: number;
   color: string;
+  highlight: boolean;
 }) => {
   return (
-    <S.HeaderElement>
+    <S.HeaderElement style={{backgroundColor: highlight ? '#ffd700' : 'transparent', width: '170px', padding: '20px',borderRadius: '50px'}}>
       <p style={{ fontSize: size, color: color }}>{text1}</p>
       <p style={{ fontSize: size, color: color }}>{text2}</p>
     </S.HeaderElement>
@@ -68,16 +75,18 @@ const HeaderElementText = ({
 };
 
 export const Header = () => {
+  const [selectedStepIndex, setSelectedStepIndex] = useState(0);
   return (
     <S.Header>
       <h1>Logo</h1>
       {HeaderElementsData.map((data, index) => (
         <div key={index}>
-          <HeaderElementText
+          <HeaderElementText 
             text1={data.text1}
             text2={data.text2}
             size={data.size}
             color={data.color}
+            highlight={selectedStepIndex === index}
           />
         </div>
       ))}
