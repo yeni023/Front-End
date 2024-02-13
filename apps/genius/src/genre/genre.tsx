@@ -1,11 +1,63 @@
-import { Container } from "./genre";
+import {
+  Container,
+  Header,
+  GenreTitle,
+  ImageWrapper,
+  Image,
+  OvalText,
+  ImageTextWrapper,
+  Wrapper,
+  Arrow_Image,
+  ArrowButton
+} from "./genre";
+import book from "../assets/book.svg";
+import castle from "../assets/castle.svg";
+import full_story from "../assets/full_story.svg";
+import ghost from "../assets/ghost.svg";
+import left from "../assets/left.svg";
+import right from "../assets/right.svg";
 
-function Genre() {
+const Genre = () => {
+  const nextPage = () => {
+    console.log("다음 장");
+  };
+
+  const previousPage = () => {
+    console.log("이전 장");
+  };
+
   return (
     <Container>
-      <header>Genre</header>
+      <Header>상단바</Header>
+      <Wrapper>
+        <GenreTitle>어떤 동화를 만들고 싶어?</GenreTitle>
+        <ImageWrapper>
+          <ArrowButton onClick={previousPage}>
+            <Arrow_Image src={left} alt="left" />
+          </ArrowButton>
+          <ImageTextWrapper>
+            <Image src={castle} alt="castle" />
+            <OvalText>판타지 동화 만들기</OvalText>
+          </ImageTextWrapper>
+          <ImageTextWrapper>
+            <Image src={book} alt="book" />
+            <OvalText>학습 동화 만들기</OvalText>
+          </ImageTextWrapper>
+          <ImageTextWrapper>
+            <Image src={ghost} alt="ghost" />
+            <OvalText>공포 동화 만들기</OvalText>
+          </ImageTextWrapper>{" "}
+          <ImageTextWrapper>
+            <Image src={full_story} alt="full-story" />
+            <OvalText>전래 동화 만들기</OvalText>
+          </ImageTextWrapper>
+          <ArrowButton onClick={nextPage}>
+            <Arrow_Image src={right} alt="right" />
+          </ArrowButton>
+        </ImageWrapper>
+      </Wrapper>
     </Container>
   );
-}
+};
 
 export default Genre;
