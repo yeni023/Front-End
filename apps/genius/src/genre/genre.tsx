@@ -1,9 +1,8 @@
 // genre.tsx
-import React from "react";
+import * as C from "../StoryFlow/container";
 import { useNavigate } from "react-router-dom";
 import {
   Container,
-  Header,
   GenreTitle,
   ImageWrapper,
   Image,
@@ -32,28 +31,31 @@ const Genre = () => {
     console.log("이전 장");
   };
 
+  const handleImageClick = (type: string) => {
+    console.log(` ${type}`);
+  };
   return (
     <Container>
-      <Header>상단바</Header>
+      <C.Header />
       <Wrapper>
         <GenreTitle>어떤 동화를 만들고 싶어?</GenreTitle>
         <ImageWrapper>
           <ArrowButton onClick={previousPage}>
             <Arrow_Image src={left} alt="left" />
           </ArrowButton>
-          <ImageTextWrapper>
+          <ImageTextWrapper onClick={() => handleImageClick("castle")}>
             <Image src={castle} alt="castle" />
             <OvalText>판타지 동화 만들기</OvalText>
           </ImageTextWrapper>
-          <ImageTextWrapper>
+          <ImageTextWrapper onClick={() => handleImageClick("book")}>
             <Image src={book} alt="book" />
             <OvalText>학습 동화 만들기</OvalText>
           </ImageTextWrapper>
-          <ImageTextWrapper>
+          <ImageTextWrapper onClick={() => handleImageClick("ghost")}>
             <Image src={ghost} alt="ghost" />
             <OvalText>공포 동화 만들기</OvalText>
           </ImageTextWrapper>
-          <ImageTextWrapper>
+          <ImageTextWrapper onClick={() => handleImageClick("full-story")}>
             <Image src={full_story} alt="full-story" />
             <OvalText>전래 동화 만들기</OvalText>
           </ImageTextWrapper>

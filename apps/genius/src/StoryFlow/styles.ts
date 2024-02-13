@@ -36,9 +36,11 @@ export const Contents = styled.div`
   margin-top: 130px;
   align-items: center;
   background-color: black;
+
   // background-image: url(${BackgroundImage});
   // background-size: cover;
   overflow: hidden;
+  // height: 100vh;
 `;
 
 export const Content1 = styled.div`
@@ -97,7 +99,7 @@ export const Content1InputSubject = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 60%;
+  height: 50%;
   align-items: center;
   justify-content: center;
   background-color: white;

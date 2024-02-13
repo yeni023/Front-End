@@ -5,14 +5,6 @@ export const Container = styled.div`
   width: 100%;
   min-height: 100vh;
 `;
-export const Header = styled.header`
-  height: 130px;
-  background-color: grey;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
 
 export const Wrapper = styled.div`
   flex-direction: column;

@@ -15,28 +15,36 @@ const HeaderElementsData: HeaderElementsType[] = [
     text2: "장르 선택",
     size: 24,
     color: "#9D9D9D",
-    action: () => {}
+    action: () => {
+      console.log("장르 선택");
+    }
   },
   {
     text1: "STEP 2",
     text2: "주제 선택",
     size: 24,
     color: "#9D9D9D",
-    action: () => {}
+    action: () => {
+      console.log("주제 선택");
+    }
   },
   {
     text1: "STEP 3",
     text2: "기본 정보",
     size: 24,
     color: "#9D9D9D",
-    action: () => {}
+    action: () => {
+      console.log("기본 정보");
+    }
   },
   {
     text1: "STEP 4",
     text2: "도입부 컨펌",
     size: 24,
     color: "#9D9D9D",
-    action: () => {}
+    action: () => {
+      console.log("도입부 컨펌");
+    }
   }
 ];
 
@@ -62,12 +70,9 @@ const HeaderElementText = ({
 export const Header = () => {
   return (
     <S.Header>
-      <h1 style={{ paddingLeft: "50px" }}>Logo</h1>
+      <h1>Logo</h1>
       {HeaderElementsData.map((data, index) => (
         <div key={index}>
-          {index ? (
-            <img src={RightAngleBracket} alt="RightAngleBracket" />
-          ) : null}
           <HeaderElementText
             text1={data.text1}
             text2={data.text2}
@@ -80,6 +85,7 @@ export const Header = () => {
   );
 };
 
+//이게 헤더
 export const Content1 = () => {
   return (
     <S.Content1>
