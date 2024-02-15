@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import * as Styles from "./SelectQuestionStyle";
+import * as Styles from "./SelectQuestionStyle.ts";
 
 const SelectQuestion: React.FC = () => {
   const [selectedOption, setSelectedOption] = useState<string | null>(null);

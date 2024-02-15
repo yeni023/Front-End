@@ -1,8 +1,8 @@
 // Shape.tsx
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import sprout from "../../images/sprout.png";
-import flower from "../../images/flower.png";
+import sprout from "../../assets/images/sprout.png";
+import flower from "../../assets/images/flower.png";
 
 const Container = styled.div`
   position: relative;

@@ -2,10 +2,10 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import Shape from "../components/Theme/Shape";
-import subject_image01 from "../images/subject_image01.png";
-import subject_image02 from "../images/subject_image02.png";
-import subject_image03 from "../images/subject_image03.png";
-import dalcong_bg from "../images/dalcong_bg.png";
+import subject_image01 from "../assets/images/subject_image01.png";
+import subject_image02 from "../assets/images/subject_image02.png";
+import subject_image03 from "../assets/images/subject_image03.png";
+import dalcong_bg from "../assets/images/dalcong_bg.png";
 
 const BackgroundContainer = styled.div`
   background: url(${dalcong_bg});

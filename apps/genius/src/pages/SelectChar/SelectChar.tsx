@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import * as Styles from "./SelectCharStyle"; 
-import SelectQuestion from './SelectQuestion'; // SelectQuestion 컴포넌트 import
+import SelectQuestion from '../SelectQue/SelectQuestion'; // SelectQuestion 컴포넌트 import
 
 interface CharacterButtonProps {
   character: string;
