@@ -24,7 +24,10 @@ export const Header = styled.div`
 export const HeaderElement = styled.div`
   display: inline-block;
   width: 150px;
+<<<<<<< HEAD:apps/genius/src/pages/StoryFlow/styles.ts
   margin-left: 20px;
+=======
+>>>>>>> main:apps/genius/src/StoryFlow/styles.ts
   /* padding-left: 20px; */
   justify-content: center;
   text-align: center;
