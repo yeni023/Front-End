@@ -1,18 +1,19 @@
 import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Genre from "./pages/genre/genre.tsx";
+import StoryFlow from "./pages/StoryFlow/index";
 import ThemePage from "./pages/ThemePage";
 
-
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-
-function App() {
+const App = () => {
   return (
-    <BrowserRouter>
+    <Router>
       <Routes>
-      <Route path="/ThemePage" element={<ThemePage/>}/>
+        <Route path="/" element={<Genre />} />
+        <Route path="/StoryWay" element={<StoryFlow />} />
+        <Route path="/ThemePage" element={<ThemePage />} />
       </Routes>
-   
-    </BrowserRouter>
+    </Router>
   );
-}
+};
 
 export default App;
