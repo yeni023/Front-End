@@ -25,6 +25,7 @@ export const HeaderElement = styled.div`
   display: inline-block;
   width: 150px;
   margin-left: 20px;
+
   /* padding-left: 20px; */
   justify-content: center;
   text-align: center;

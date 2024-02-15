@@ -75,7 +75,9 @@ const HeaderElementText = ({
 };
 
 export const Header = () => {
+
   const [selectedStepIndex, setSelectedStepIndex] = useState(3);
+
   return (
     <S.Header>
       <h1>Logo</h1>
