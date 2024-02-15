@@ -67,11 +67,7 @@ const HeaderElementText = ({
   highlight: boolean;
 }) => {
   return (
-<<<<<<< HEAD:apps/genius/src/pages/StoryFlow/container.tsx
     <S.HeaderElement style={{backgroundColor: highlight ? '#f5deb3' : 'transparent', width: '170px', padding: '20px',borderRadius: '50px'}}>
-=======
-    <S.HeaderElement style={{backgroundColor: highlight ? '#ffd700' : 'transparent', width: '170px', padding: '20px',borderRadius: '50px'}}>
->>>>>>> main:apps/genius/src/StoryFlow/container.tsx
       <p style={{ fontSize: size, color: color }}>{text1}</p>
       <p style={{ fontSize: size, color: color }}>{text2}</p>
     </S.HeaderElement>
@@ -79,11 +75,9 @@ const HeaderElementText = ({
 };
 
 export const Header = () => {
-<<<<<<< HEAD:apps/genius/src/pages/StoryFlow/container.tsx
+
   const [selectedStepIndex, setSelectedStepIndex] = useState(3);
-=======
-  const [selectedStepIndex, setSelectedStepIndex] = useState(0);
->>>>>>> main:apps/genius/src/StoryFlow/container.tsx
+
   return (
     <S.Header>
       <h1>Logo</h1>
