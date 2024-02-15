@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Genre from "./genre/genre.tsx";
-import StoryFlow from "./StoryFlow/index";
+import Genre from "./pages/genre/genre.tsx";
+import StoryFlow from "./pages/StoryFlow/index";
 
 const App = () => {
   return (
