@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Genre from "./pages/genre/genre.tsx";
 import StoryFlow from "./pages/StoryFlow/index";
-import ThemePage from "./pages/ThemePage";
+import ThemePage from "./pages/Theme/ThemePage.tsx";
 import MainHome from "./pages/MainHome/MainHome.tsx";
 import CreateStory from "./pages/CreateStory/CreateStory.tsx";
 import SelectChar from "./pages/SelectChar/SelectChar.tsx";
