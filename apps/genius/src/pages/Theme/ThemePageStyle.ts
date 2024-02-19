@@ -39,3 +39,48 @@ export const Regenarate = styled.button`
   border-radius: 100px;
   background: #e3d3d3;
 `;
+export const OkBtn = styled.button`
+  display: flex;
+  justify-content: center;
+
+  width: 328px;
+  height: 54px;
+
+  background: rgba(217, 217, 217, 0.3);
+  border-radius: 20px;
+
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 0px;
+  text-align: center;
+
+  color: rgba(255, 255, 255, 0.76);
+`;
+export const NoBtn = styled.button`
+  display: flex;
+  justify-content: center;
+
+  width: 328px;
+  height: 54px;
+  background: rgba(217, 217, 217, 0.3);
+  border-radius: 20px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 0px;
+  text-align: center;
+
+  color: rgba(255, 255, 255, 0.76);
+  margin-left: 130px;
+`;
+export const BtnContainer = styled.div`
+  display: flex;
+  flex-flow: row nowrap;
+  margin-bottom: 40px;
+`;
+export const JustPadding = styled.div`
+  height: 94px;
+`;

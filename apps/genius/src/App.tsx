@@ -6,6 +6,7 @@ import ThemePage from "./pages/Theme/ThemePage.tsx";
 import MainHome from "./pages/MainHome/MainHome.tsx";
 import CreateStory from "./pages/CreateStory/CreateStory.tsx";
 import SelectChar from "./pages/SelectChar/SelectChar.tsx";
+import ThemePageNext from "./pages/Theme/ThemePageNext.tsx";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
         <Route path="/MainHome" element={<MainHome />} />
         <Route path="/CreateStory" element={<CreateStory />} />
         <Route path="/SelectChar" element={<SelectChar />} />
+        <Route path="/ThemePageNext" element={<ThemePageNext />} />
       </Routes>
     </Router>
   );
