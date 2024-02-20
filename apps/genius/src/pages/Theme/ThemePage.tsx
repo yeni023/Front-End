@@ -1,62 +1,70 @@
-// ThemePage.tsx
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Shape from "../../components/Theme/Shape";
 import * as Styles from "./ThemePageStyle";
 
 interface Theme {
+  id: string;
   title: string;
   subjectImage: string;
 }
 
-const themes: Theme[] = [
-  { title: "Title 1", subjectImage: "/subject_image01.png" },
-  { title: "Title 2", subjectImage: "/subject_image02.png" },
-  { title: "Title 3", subjectImage: "/subject_image03.png" },
-  { title: "Title 4", subjectImage: "/subject_image04.png" },
-  { title: "Title 5", subjectImage: "/subject_image05.png" },
-  { title: "Title 6", subjectImage: "/subject_image06.png" }
+const themes1: Theme[] = [
+  {
+    id: "1",
+    title: "동물 친구들의 모험",
+    subjectImage: "/subject_image01.png"
+  },
+  { id: "1", title: "우주 여행 이야기", subjectImage: "/subject_image02.png" }
+];
+const themes2: Theme[] = [
+  { id: "2", title: "요정과 마법 세계", subjectImage: "/subject_image03.png" },
+  { id: "2", title: "달의 소녀 이야기", subjectImage: "/subject_image04.png" }
+];
+
+const themes3: Theme[] = [
+  { id: "3", title: "길 잃은 토마스", subjectImage: "/subject_image05.png" },
+  { id: "3", title: "생쥐 가족의 나들이", subjectImage: "/subject_image06.png" }
 ];
 
 const ThemePage: React.FC = () => {
-  const [selectedShapeIndex, setSelectedShapeIndex] = useState<number | null>(
-    null
-  );
-  const [randomThemes, setRandomThemes] = useState<Theme[]>([]);
+  const [oneselectedTheme] = useState<Theme>(themes1[0]); // 첫 번째 요소 선택
+  const [twoselectedTheme] = useState<Theme>(themes2[0]); // 첫 번째 요소 선택
+  const [threeselectedTheme] = useState<Theme>(themes3[0]); // 첫 번째 요소 선택
 
-  useEffect(() => {
-    generateRandomThemes();
-  }, []);
+  const navigate = useNavigate();
 
-  const generateRandomThemes = () => {
-    const selected: Theme[] = [];
-    for (let i = 0; i < 3; i++) {
-      const randomIndex = Math.floor(Math.random() * themes.length);
-      selected.push(themes[randomIndex]);
-    }
-    setRandomThemes(selected);
+  const handleImageContainerClick = (themeId: string) => {
+    navigate(`/ThemePageNext?id=${themeId}`);
   };
 
-  const handleShapeClick = (index: number) => {
-    setSelectedShapeIndex(index);
-  };
-  const handleRefresh = () => {
-    generateRandomThemes();
-  };
   return (
     <Styles.BackgroundContainer>
       <Styles.Title>주제가 될 새싹을 골라볼까?</Styles.Title>
+      <Styles.JustPadding />
       <Styles.ShapeContainer>
-        {randomThemes.map((theme, index) => (
-          <Shape
-            key={index}
-            title={theme.title}
-            subjectImage={theme.subjectImage}
-            isSelected={selectedShapeIndex === index} // 해당 Shape이 선택되었는지 여부를 전달
-            onClick={() => handleShapeClick(index)} // 클릭 이벤트 핸들러
-          />
-        ))}
+        <Shape
+          title={oneselectedTheme.title}
+          subjectImage={oneselectedTheme.subjectImage}
+          onImageContainerClick={() =>
+            handleImageContainerClick(oneselectedTheme.id)
+          }
+        />
+        <Shape
+          title={twoselectedTheme.title}
+          subjectImage={twoselectedTheme.subjectImage}
+          onImageContainerClick={() =>
+            handleImageContainerClick(twoselectedTheme.id)
+          }
+        />
+        <Shape
+          title={threeselectedTheme.title}
+          subjectImage={threeselectedTheme.subjectImage}
+          onImageContainerClick={() =>
+            handleImageContainerClick(threeselectedTheme.id)
+          }
+        />
       </Styles.ShapeContainer>
-      <Styles.Regenarate onClick={handleRefresh}>새로 고침</Styles.Regenarate>
     </Styles.BackgroundContainer>
   );
 };

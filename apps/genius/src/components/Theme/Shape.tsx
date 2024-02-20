@@ -1,40 +1,40 @@
 // Shape.tsx
-import React from "react";
+import React, { useState, useEffect } from "react";
 import * as Styles from "./ShapeStyle";
 
 interface ShapeProps {
   title: string;
   subjectImage: string;
-  isSelected: boolean;
-  onClick: () => void;
+  onImageContainerClick: () => void; // 클릭 이벤트 핸들러 prop 추가
 }
 
 const Shape: React.FC<ShapeProps> = ({
   title,
   subjectImage,
-  isSelected,
-  onClick
+  onImageContainerClick
 }) => {
+  const [showButton, setShowButton] = useState<boolean>(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowButton(true);
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <Styles.Container>
       <Styles.Glass>
-        <div onClick={onClick}>
-          {isSelected ? (
-            <Styles.FlowerContainer>
-              <Styles.Title>{title}</Styles.Title>
-              <Styles.ImageContainer
-                style={{ backgroundImage: `url(${subjectImage})` }}
-              />
-            </Styles.FlowerContainer>
-          ) : (
-            <Styles.SproutContainer>
-              <Styles.Title>{title}</Styles.Title>
-              <Styles.ImageContainer
-                style={{ backgroundImage: `url(${subjectImage})` }}
-              />
-            </Styles.SproutContainer>
-          )}
-        </div>
+        <Styles.Title>{title}</Styles.Title>
+        {showButton ? (
+          <Styles.ImageContainer
+            style={{ backgroundImage: `url(${subjectImage})` }}
+            onClick={onImageContainerClick} // 클릭 이벤트 핸들러 추가
+          />
+        ) : (
+          <Styles.SproutContainer />
+        )}
       </Styles.Glass>
       <Styles.Shadow />
     </Styles.Container>
