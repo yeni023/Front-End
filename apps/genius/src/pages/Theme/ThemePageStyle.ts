@@ -1,5 +1,4 @@
 import styled from "styled-components";
-
 import dalcong_bg from "../../assets/images/dalcong_bg.png";
 
 export const BackgroundContainer = styled.div`
@@ -34,11 +33,16 @@ export const Regenarate = styled.button`
   position: absolute;
   width: 138px;
   height: 140px;
-  left: 1709px;
-  top: 862px;
+  left: 1700px;
+  top: 780px;
   border-radius: 100px;
   background: #e3d3d3;
 `;
+export const RegenarateImg = styled.img`
+  width: 70px;
+  height: 70px;
+`;
+
 export const OkBtn = styled.button`
   display: flex;
   justify-content: center;

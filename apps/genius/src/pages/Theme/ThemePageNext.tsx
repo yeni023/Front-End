@@ -1,3 +1,4 @@
+//ThemePageNext.tsx
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import ShapeNext from "../../components/Theme/ShapeNext";
@@ -5,11 +6,15 @@ import * as Styles from "./ThemePageStyle";
 
 const ThemePageNext: React.FC = () => {
   const location = useLocation();
-  const id = new URLSearchParams(location.search).get("id");
+  const id = parseInt(new URLSearchParams(location.search).get("id") || "1");
 
   const navigate = useNavigate();
   const handleNoBtnClick = () => {
     navigate(`/ThemePage`);
+  };
+
+  const getComponentIndex = (id: number) => {
+    return (id - 1) % 3;
   };
 
   return (
@@ -20,9 +25,12 @@ const ThemePageNext: React.FC = () => {
         <Styles.NoBtn onClick={handleNoBtnClick}>다시 고를래</Styles.NoBtn>
       </Styles.BtnContainer>
       <Styles.ShapeContainer>
-        <ShapeNext isFlower={id === "1"} />
-        <ShapeNext isFlower={id === "2"} />
-        <ShapeNext isFlower={id === "3"} />
+        {[1, 2, 3].map((index) => (
+          <ShapeNext
+            key={index}
+            isFlower={getComponentIndex(id) === index - 1}
+          />
+        ))}
       </Styles.ShapeContainer>
     </Styles.BackgroundContainer>
   );
