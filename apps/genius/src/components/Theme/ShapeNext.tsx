@@ -3,14 +3,15 @@ import * as Styles from "./ShapeStyle";
 
 interface ShapeNextProps {
   isFlower: boolean;
+  title: string;
 }
 
-const ShapeNext: React.FC<ShapeNextProps> = ({ isFlower }) => {
+const ShapeNext: React.FC<ShapeNextProps> = ({ isFlower, title }) => {
   return (
     <div>
       <Styles.Container>
         <Styles.Glass>
-          <Styles.Title></Styles.Title>
+          <Styles.Title>{title}</Styles.Title>
           {isFlower ? <Styles.FlowerContainer /> : <Styles.SproutContainer />}
         </Styles.Glass>
         <Styles.Shadow />
