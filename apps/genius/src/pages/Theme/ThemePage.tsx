@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import Shape from "../../components/Theme/Shape";
 import * as Styles from "./ThemePageStyle";
 import Regenerate from "../../assets/images/regenerate.png";
@@ -8,6 +8,10 @@ interface Theme {
   id: string;
   title: string;
   subjectImage: string;
+}
+
+interface ThemePageProps {
+  id: string;
 }
 
 export const themes: Theme[] = [
@@ -34,17 +38,47 @@ export const themes: Theme[] = [
   { id: "9", title: "튤립 위의 공주", subjectImage: "/subject_image09.png" }
 ];
 
-const ThemePage: React.FC = () => {
+const ThemePage: React.FC<ThemePageProps> = ({ id }) => {
   const [startIndex, setStartIndex] = useState(0);
+  const [selectedTheme, setSelectedTheme] = useState<Theme[]>([]);
+  const location = useLocation();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const themeId = location.search.split("=")[1];
+    if (themeId) {
+      const currentTheme = themes.find((theme) => theme.id === themeId);
+      if (currentTheme) {
+        const remainder = parseInt(themeId) % 3;
+        let relatedIds: number[] = [];
+        if (remainder === 1) {
+          relatedIds = [+themeId, +themeId + 1, +themeId + 2];
+        } else if (remainder === 2) {
+          relatedIds = [+themeId - 1, +themeId, +themeId + 1];
+        } else {
+          relatedIds = [+themeId - 2, +themeId - 1, +themeId];
+        }
+        const relatedThemes = themes.filter((theme) =>
+          relatedIds.includes(parseInt(theme.id))
+        );
+        setSelectedTheme(relatedThemes);
+      }
+    } else {
+      setSelectedTheme(themes.slice(startIndex, startIndex + 3));
+    }
+  }, [location, startIndex]);
 
   const handleImageContainerClick = (themeId: string) => {
     navigate(`/ThemePageNext?id=${themeId}`);
   };
 
   const handleRefreshClick = () => {
-    const nextIndex = startIndex + 3 < themes.length ? startIndex + 3 : 0;
-    setStartIndex(nextIndex);
+    const firstThemeIndex = themes.findIndex(
+      (theme) => theme.id === selectedTheme[0].id
+    );
+    const nextIndex =
+      firstThemeIndex + 3 < themes.length ? firstThemeIndex + 3 : 0;
+    setSelectedTheme(themes.slice(nextIndex, nextIndex + 3));
   };
 
   return (
@@ -52,7 +86,7 @@ const ThemePage: React.FC = () => {
       <Styles.Title>주제가 될 새싹을 골라볼까?</Styles.Title>
       <Styles.JustPadding />
       <Styles.ShapeContainer>
-        {themes.slice(startIndex, startIndex + 3).map((theme) => (
+        {selectedTheme.map((theme) => (
           <Shape
             key={theme.id}
             title={theme.title}

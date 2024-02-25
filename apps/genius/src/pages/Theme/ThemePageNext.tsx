@@ -11,7 +11,7 @@ const ThemePageNext: React.FC = () => {
   const navigate = useNavigate();
 
   const handleNoBtnClick = () => {
-    navigate(`/ThemePage`);
+    navigate(`/ThemePage?id=${id}`);
   };
 
   const getThemeIndex = (id: number) => {
