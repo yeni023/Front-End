@@ -1,76 +1,82 @@
-import React, { useState } from 'react';
-import './Tutorial.ts';
+// Tutorial.tsx
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import * as TutorialStyle from './TutorialStyle';
 
 const Tutorial: React.FC = () => {
   const [currentStep, setCurrentStep] = useState<number>(1);
+  const [tutorialComplete, setTutorialComplete] = useState<boolean>(false);
+
+  useEffect(() => {
+    const characterBubble = document.querySelector('.characterBubble');
+
+    if (characterBubble) {
+      characterBubble.classList.add('visible');
+    }
+  }, []);
 
   const nextStep = () => {
-    // 다음 스텝으로 넘어가는 로직 추가
     setCurrentStep(currentStep + 1);
-    
-    // 예를 들어, 다음 스텝에 따라 다른 내용을 표시하도록 설정
-    const stepContent = document.getElementById('stepContent');
-    if (currentStep === 2) {
-      if (stepContent) {
-        stepContent.innerHTML = '다음 스텝입니다. 어떤 내용이 나오면 좋을까요?';
-      }
-    } else if (currentStep === 3) {
-      if (stepContent) {
-        stepContent.innerHTML = '또 다른 스텝입니다. 계속 진행해보세요!';
-      }
-    } else if (currentStep === 4) {
-      if (stepContent) {
-        stepContent.innerHTML = '계속 진행해보세요!';
-      }
-    } else if (currentStep === 5) {
-      if (stepContent) {
-        stepContent.innerHTML = '';
-      }
+
+    if (currentStep === 4) {
       hideStepAndButton();
-      showEndButton();
     }
   };
 
   const hideStepAndButton = () => {
     const characterBubble = document.querySelector('.characterBubble');
     const nextButton = document.querySelector('.nextButton');
+    const endButton = document.getElementById('endButton');
+
     if (characterBubble) {
-      characterBubble.classList.add('hidden');
+      characterBubble.classList.remove('visible');
     }
+
     if (nextButton) {
       nextButton.classList.add('hidden');
     }
-  };
 
-  const showEndButton = () => {
-    const endButton = document.getElementById('endButton');
-    if (endButton) {
+    if (endButton && currentStep === 4) {
       endButton.classList.remove('hidden');
     }
   };
 
-  const endTutorial = () => {
-    // 동화책 만들기 튜토리얼을 마치는 로직 추가
-    alert('튜토리얼을 마칩니다.');
+  const getStepContent = () => {
+    switch (currentStep) {
+      case 2:
+        return '안녕, 우리는 너의 동화책 제작을 도울 알콩이, 달콩이라고 해. 우리의 이야기를 들어볼래?';
+      case 3:
+        return '우리는 숲 속에 살고 있어. 어떤 이야기를 만들어볼래?';
+      case 4:
+        return '이제 너의 이야기를 만들 준비가 되었어! 함께 시작해볼까?';
+      default:
+        return '안녕하세요! 동화책 만들기 튜토리얼에 오신 것을 환영합니다.';
+    }
   };
 
   return (
-    <div id="tutorialContainer">
-      <div className="tutorialStep" id="step1">
-        <div className="characterBubble">
-          <div id="stepContent">안녕하세요! <br />동화책 만들기 튜토리얼에 오신 것을 환영합니다.</div>
-        </div>
-      </div>
-
-      <div className="buttonContainer" id="buttonContainer">
-        <button className="nextButton" onClick={nextStep}>
-          다음으로
-        </button>
-        <button id="endButton" onClick={endTutorial} className="hidden">
-          달콩이 이야기 마침
-        </button>
-      </div>
-    </div>
+    <TutorialStyle.TutorialContainer>
+      <TutorialStyle.BackgroundImage />
+      <TutorialStyle.CharacterBubble className={`characterBubble ${currentStep === 4 ? 'hidden' : ''}`}>
+        <TutorialStyle.CharacterImage />
+        <TutorialStyle.StepContent id="stepContent">
+          {getStepContent()}
+        </TutorialStyle.StepContent>
+        {currentStep < 4 && (
+          <TutorialStyle.NextButton className={`nextButton ${currentStep === 4 ? 'hidden' : ''}`} onClick={nextStep}>
+            다음으로
+          </TutorialStyle.NextButton>
+        )}
+      </TutorialStyle.CharacterBubble>
+      <Link to="/selectchar">
+        <TutorialStyle.EndButton
+          id="endButton"
+          className={`endButton ${!tutorialComplete ? 'hidden' : ''}`}
+        >
+          튜토리얼 마침
+        </TutorialStyle.EndButton>
+      </Link>
+    </TutorialStyle.TutorialContainer>
   );
 };
 

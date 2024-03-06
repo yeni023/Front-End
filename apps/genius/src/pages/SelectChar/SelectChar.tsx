@@ -1,22 +1,7 @@
+// SelectChar.tsx
+
 import React, { useState } from 'react';
-import * as Styles from "./SelectCharStyle"; 
-import SelectQuestion from '../SelectQue/SelectQuestion'; // SelectQuestion 컴포넌트 import
-
-interface CharacterButtonProps {
-  character: string;
-  onClick: () => void;
-}
-
-const CharacterButton: React.FC<CharacterButtonProps> = ({ character, onClick }) => {
-  return (
-    <button
-      className={`characterButton ${character === 'alKong' ? 'alKong' : 'dalKong'}`}
-      onClick={onClick}
-    >
-      {character === 'alKong' ? '알콩이와 동화만들기' : '달콩이와 동화만들기'}
-    </button>
-  );
-};
+import * as Styles from './SelectCharStyle';
 
 const SelectChar: React.FC = () => {
   const [selectedCharacter, setSelectedCharacter] = useState<string | null>(null);
@@ -27,15 +12,30 @@ const SelectChar: React.FC = () => {
 
   return (
     <Styles.AppContainer>
-      <Styles.CharacterContainer id="character1" onClick={() => goToCharacterPage('alKong')}>
-        <CharacterButton character="alKong" onClick={() => goToCharacterPage('alKong')} />
+      <Styles.CharacterContainer
+        id="character1"
+        className={selectedCharacter === 'alKong' ? 'selected' : ''}
+        onClick={() => goToCharacterPage('alKong')}
+      >
+        <Styles.AlKongButton
+          onClick={() => goToCharacterPage('alKong')}
+          isAlKong={selectedCharacter === 'alKong'}
+        >
+          알콩이와 동화만들기
+        </Styles.AlKongButton>
       </Styles.CharacterContainer>
-      <Styles.CharacterContainer id="character2" onClick={() => goToCharacterPage('dalKong')}>
-        <CharacterButton character="dalKong" onClick={() => goToCharacterPage('dalKong')} />
+      <Styles.CharacterContainer
+        id="character2"
+        className={selectedCharacter === 'dalKong' ? 'selected' : ''}
+        onClick={() => goToCharacterPage('dalKong')}
+      >
+        <Styles.DalKongButton
+          onClick={() => goToCharacterPage('dalKong')}
+          isAlKong={selectedCharacter === 'dalKong'}
+        >
+          달콩이와 동화만들기
+        </Styles.DalKongButton>
       </Styles.CharacterContainer>
-
-      {/* 조건부 렌더링 */}
-      {selectedCharacter === 'dalKong' && <SelectQuestion />}
     </Styles.AppContainer>
   );
 };
