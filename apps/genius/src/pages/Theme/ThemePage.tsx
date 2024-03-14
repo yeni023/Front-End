@@ -38,7 +38,7 @@ export const themes: Theme[] = [
   { id: "9", title: "튤립 위의 공주", subjectImage: "/subject_image09.png" }
 ];
 
-const ThemePage: React.FC<ThemePageProps> = ({ id }) => {
+const ThemePage: React.FC<ThemePageProps> = () => {
   const [startIndex, setStartIndex] = useState(0);
   const [selectedTheme, setSelectedTheme] = useState<Theme[]>([]);
   const location = useLocation();
