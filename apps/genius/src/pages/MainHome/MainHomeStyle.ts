@@ -1,5 +1,6 @@
+// MainHomeStyle.ts
 import styled from 'styled-components';
-
+import { Link } from 'react-router-dom';
 
 export const BodyStyle = styled.div`
   margin: 0;
@@ -10,7 +11,7 @@ export const BodyStyle = styled.div`
 `;
 
 export const AppContainer = styled.div`
-  width: 100%;
+  width: 100vw;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -23,7 +24,6 @@ export const AppContainer = styled.div`
 
 export const Navbar = styled.div`
   background-color: #fff;
-  color: #9D9D9D;
   padding: 13px;
   width: 100%;
   position: fixed;
@@ -38,40 +38,76 @@ export const Navbar = styled.div`
 
 export const MainMenu = styled.div`
   display: flex;
-  gap: 40px;
-`;
-
-export const MainMenuItem = styled.a`
-  margin: 0 30px;
-  color: #9D9D9D;
-  font-weight: medium;
+  gap: 80px;
+  margin-left: 10px;
   position: relative;
-
-  &:hover + .sub-menu {
-    display: flex;
-    flex-direction: column;
-  }
 `;
 
 export const SubMenu = styled.div`
   display: none;
   position: absolute;
-  top: 100%;
+  top: 175%;
   left: 0;
-  background-color: #ccc;
-  border: 1px solid #999;
-  padding: 10px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+`;
 
-  ${MainMenuItem}:hover + & {
+export const MenuItem = styled.div`
+  position: relative;
+
+  &:hover ${SubMenu} {
     display: flex;
+    flex-direction: column;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* 클릭해도 서브메뉴가 유지되도록 설정 */
+  &:active ${SubMenu} {
+    opacity: 1;
+    visibility: visible;
   }
 `;
 
-export const SubMenuItem = styled.a`
-  display: block;
-  color: #333;
+export const MainMenuItem = styled(Link)`
+  margin: 0 30px;
+  font-weight: medium;
+  position: relative;
   text-decoration: none;
-  padding: 5px 0;
+  color: #000;
+
+  &:hover {
+    color: #fff;
+  }
+
+  &:hover + ${SubMenu} {
+    display: flex;
+    flex-direction: column;
+    opacity: 1;
+    visibility: visible;
+  }
+`;
+
+export const SubMenuItem = styled.div`
+  padding: 15px;
+  color: #000;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border-bottom: 1px solid #ccc;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:hover {
+    background-color: #f0f0f0;
+  }
 `;
 
 export const LoginSignupButton = styled.button`
@@ -102,6 +138,7 @@ export const MainSection = styled.div`
   width: 100%;
   max-width: 1920px;
   margin: 0 auto;
+  position: relative;
 `;
 
 export const MainTitle = styled.h1`
@@ -131,7 +168,7 @@ export const AnimationContainer = styled.div`
 export const CreateStoryButton = styled.button`
   background-color: #fff;
   color: #8DD1BD;
-  padding: 18px 25px;
+  padding: 18px 28px;
   font-size: 1.5em;
   font-weight: bold;
   border: none;
