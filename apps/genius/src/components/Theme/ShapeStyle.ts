@@ -30,7 +30,7 @@ export const SproutContainer = styled.div`
   width: 199px;
   height: 235px;
   position: relative;
-  top: 29px;
+  top: 65px;
   left: 80px;
 `;
 
@@ -38,11 +38,11 @@ export const FlowerContainer = styled.div`
   background: url(${flower});
   background-repeat: no-repeat;
   background-size: cover;
-  width: 199px;
-  height: 235px;
+  width: 290px;
+  height: 305px;
   position: relative;
-  top: 29px;
-  left: 80px;
+  top: 3px;
+  left: 40px;
 `;
 
 export const ImageContainer = styled.button`
@@ -53,7 +53,7 @@ export const ImageContainer = styled.button`
   background-position: center;
   box-sizing: border-box;
   position: relative;
-  top: -10px;
+  top: 27px;
   left: 4.4px;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   border-radius: 10px;
@@ -62,13 +62,11 @@ export const ImageContainer = styled.button`
 
 export const Title = styled.p`
   width: 380px;
-  height: 130px;
+  height: 146px;
   font-family: "Inter";
   font-style: normal;
   font-weight: 600;
   font-size: 36px;
-  margin-bottom: 17px;
-  text-align: center;
   color: #ffffff;
   display: flex;
   justify-content: center;
