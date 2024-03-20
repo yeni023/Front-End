@@ -1,88 +1,90 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-
-const Container = styled.div`
-  width: 400px;
-  margin: 0 auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-`;
-
-const MessageList = styled.ul`
-  list-style-type: none;
-  padding: 0;
-`;
-
-const MessageItem = styled.li<{ isOwnMessage: boolean }>`
-  background-color: ${(props) => (props.isOwnMessage ? "#DCF8C6" : "#F0F0F0")};
-  border-radius: 5px;
-  padding: 5px 10px;
-  margin-bottom: 5px;
-`;
-
-const InputContainer = styled.div`
-  margin-top: 20px;
-`;
-
-const Input = styled.input`
-  width: calc(100% - 70px);
-  padding: 8px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-`;
-
-const Button = styled.button`
-  width: 60px;
-  padding: 8px;
-  border-radius: 5px;
-  border: none;
-  background-color: #007bff;
-  color: #fff;
-  cursor: pointer;
-`;
+import alcong_bg from "../../assets/images/alcong_bg.png";
 
 interface Message {
-  id: number;
   text: string;
-  isOwnMessage: boolean;
+  isUser: boolean;
 }
 
-const BasicInfoPage: React.FC = () => {
-  const [messages, setMessages] = useState<Message[]>([]);
-  const [newMessage, setNewMessage] = useState("");
+interface MessageListProps {
+  messages: Message[];
+}
 
-  const handleMessageSend = () => {
-    if (newMessage.trim() === "") return;
-    const newMessageObject: Message = {
-      id: messages.length,
-      text: newMessage,
-      isOwnMessage: true
-    };
-    setMessages([...messages, newMessageObject]);
-    setNewMessage("");
+const AppContainer = styled.div`
+  background-image: url(${alcong_bg});
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const ChatBox = styled.div`
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+`;
+
+const MessagesList = styled.div`
+  max-height: 300px;
+  overflow-y: auto;
+`;
+
+interface MessageContainerProps {
+  isUser: boolean;
+}
+
+const MessageContainer = styled.div<MessageContainerProps>`
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: ${({ isUser }) => (isUser ? "#cce5ff" : "#f0f0f0")};
+  border-radius: 5px;
+`;
+
+const ChatApp: React.FC = () => {
+  const [messages, setMessages] = useState<Message[]>([]);
+  const [message, setMessage] = useState<string>("");
+
+  const handleSendMessage = (message: string) => {
+    setMessages((prevMessages) => [
+      ...prevMessages,
+      { text: message, isUser: true },
+      { text: `Your message is: "${message}"`, isUser: false }
+    ]);
+    setMessage("");
+  };
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    handleSendMessage(message);
   };
 
   return (
-    <Container>
-      <MessageList>
-        {messages.map((message) => (
-          <MessageItem key={message.id} isOwnMessage={message.isOwnMessage}>
-            {message.text}
-          </MessageItem>
-        ))}
-      </MessageList>
-      <InputContainer>
-        <Input
-          type="text"
-          placeholder="메시지를 입력하세요"
-          value={newMessage}
-          onChange={(e) => setNewMessage(e.target.value)}
-        />
-        <Button onClick={handleMessageSend}>전송</Button>
-      </InputContainer>
-    </Container>
+    <AppContainer>
+      <ChatBox>
+        <h1>Chat App</h1>
+        <MessagesList>
+          {messages.map((message, index) => (
+            <MessageContainer key={index} isUser={message.isUser}>
+              <p>
+                <b>{message.isUser ? "User" : "AI"}</b>: {message.text}
+              </p>
+            </MessageContainer>
+          ))}
+        </MessagesList>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            value={message}
+            onChange={(event) => setMessage(event.target.value)}
+          />
+          <button type="submit">Send</button>
+        </form>
+      </ChatBox>
+    </AppContainer>
   );
 };
 
-export default BasicInfoPage;
+export default ChatApp;

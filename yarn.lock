@@ -348,6 +348,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@babel/runtime@npm:^7.24.1":
+  version: 7.24.1
+  resolution: "@babel/runtime@npm:7.24.1"
+  dependencies:
+    regenerator-runtime: ^0.14.0
+  checksum: 5c8f3b912ba949865f03b3cf8395c60e1f4ebd1033fbd835bdfe81b6cac8a87d85bc3c7aded5fcdf07be044c9ab8c818f467abe0deca50020c72496782639572
+  languageName: node
+  linkType: hard
+
 "@babel/template@npm:^7.22.15, @babel/template@npm:^7.22.5":
   version: 7.22.15
   resolution: "@babel/template@npm:7.22.15"
@@ -1468,7 +1477,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/prop-types@npm:*":
+"@types/prop-types@npm:*, @types/prop-types@npm:^15":
   version: 15.7.11
   resolution: "@types/prop-types@npm:15.7.11"
   checksum: 7519ff11d06fbf6b275029fe03fff9ec377b4cb6e864cac34d87d7146c7f5a7560fd164bdc1d2dbe00b60c43713631251af1fd3d34d46c69cd354602bc0c7c54
@@ -3778,13 +3787,16 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "genius@workspace:apps/genius"
   dependencies:
+    "@babel/runtime": ^7.24.1
     "@types/jest": ^29.5.12
     "@types/node": ^20.11.17
+    "@types/prop-types": ^15
     "@types/react": ^18.2.55
     "@types/react-dom": ^18.2.19
     "@types/styled-components": ^5.1.34
     eslint-config-react: "workspace:^"
     prettier-config-custom: "workspace:^"
+    prop-types: ^15.8.1
     react: ^18.2.0
     react-dom: ^18.2.0
     react-router-dom: ^6.22.0
