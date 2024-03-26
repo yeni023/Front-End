@@ -7,24 +7,15 @@ interface Message {
   isUser: boolean;
 }
 
-interface MessageListProps {
-  messages: Message[];
-}
-
-const MessageList = styled.ul`
-  list-style-type: none;
-  padding: 0;
-`;
-
 const InputContainer = styled.div`
   width: 920px;
   height: 91px;
-  top: 800px;
   display: flex;
   flex-direction: row;
-  position: fixed;
-
-  justify-content: center;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 50px; /* Adjust as needed */
 `;
 
 const Input = styled.input`
@@ -60,36 +51,55 @@ const BackgroundContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 `;
 
 const MessagesList = styled.div`
+  width: 1500px;
   max-height: 500px;
-  overflow-y: hidden; //스크롤 안보이도록
+  overflow-y: auto; /* Changed overflow-y to auto */
+  scrollbar-width: thin; /* For Firefox */
+  scrollbar-color: rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.1); /* For Firefox */
+  &::-webkit-scrollbar {
+    width: 8px; /* Width of vertical scrollbar */
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2); /* Color of thumb */
+    border-radius: 4px; /* Roundness of thumb */
+  }
+  &::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1); /* Color of track */
+  }
 `;
 
 interface MessageContainerProps {
   isUser: boolean;
+  alignRight?: boolean; // Added alignRight prop
 }
 
 const MessageContainer = styled.div<MessageContainerProps>`
   padding: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
   width: fit-content;
-  max-width: 55%;
+  max-width: 60%;
   background-color: ${({ isUser }) => (isUser ? "#B5E4F8" : "#F8A31B")};
   border-radius: ${(props) =>
-    props.isUser ? "20px 20px 5px 20px" : "20px 20px 20px 5px"};
+    props.isUser ? "50px 50px 5px 50px" : "50px 50px 50px 5px"};
 
   padding: ${(props) => (props.isUser ? "0.7rem 1.1rem" : "0.8rem 1.2rem")};
-  margin-left: 0.4rem;
+  margin-left: ${(props) =>
+    props.alignRight
+      ? "0.4rem"
+      : "auto"}; // Conditional margin-left for alignment
+  margin-right: ${(props) =>
+    props.alignRight
+      ? "auto"
+      : "0.4rem"}; // Conditional margin-right for alignment
   color: black;
-  font-weight:;
-  font-size: 0.97rem;
-  line-height: 1.3rem;
-  word-break: keep-all;
-
-  margin-left: 0.4rem;
-
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 2rem;
+  word-break: break-all;
   display: flex;
   justify-content: center;
 `;
@@ -97,7 +107,6 @@ const MessageContainer = styled.div<MessageContainerProps>`
 const ChatApp: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [message, setMessage] = useState<string>("");
-  //useRef를 사용하여 스크롤 조작을 위한 요소를 설정
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const handleSendMessage = (message: string) => {
@@ -114,7 +123,6 @@ const ChatApp: React.FC = () => {
     handleSendMessage(message);
   };
 
-  // useEffect를 사용하여 스크롤 위치 자동 조정:
   useEffect(() => {
     if (messagesEndRef.current) {
       messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
@@ -125,13 +133,16 @@ const ChatApp: React.FC = () => {
     <BackgroundContainer>
       <MessagesList>
         {messages.map((message, index) => (
-          <MessageContainer key={index} isUser={message.isUser}>
+          <MessageContainer
+            key={index}
+            isUser={message.isUser}
+            alignRight={!message.isUser} // Pass alignRight prop based on message type
+          >
             <p>
               <b>{message.isUser ? "User" : "AI"}</b>: {message.text}
             </p>
           </MessageContainer>
         ))}
-        {/* 마지막 메시지가 보여지도록 빈 div 추가: */}
         <div ref={messagesEndRef} />
       </MessagesList>
       <form onSubmit={handleSubmit}>
