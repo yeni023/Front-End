@@ -1,13 +1,7 @@
-import React, { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 import alcong_bg from "../../assets/images/alcong_bg.png";
 
-interface Message {
-  text: string;
-  isUser: boolean;
-}
-
-const InputContainer = styled.div`
+export const InputContainer = styled.div`
   width: 920px;
   height: 91px;
   display: flex;
@@ -18,7 +12,7 @@ const InputContainer = styled.div`
   bottom: 50px; /* Adjust as needed */
 `;
 
-const Input = styled.input`
+export const Input = styled.input`
   padding: 30px;
   color: #8e8e8e;
   width: 860px;
@@ -35,7 +29,7 @@ const Input = styled.input`
   box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
 `;
 
-const Button = styled.button`
+export const Button = styled.button`
   width: 60px;
   padding: 8px;
   border-radius: 0px 50px 50px 0px;
@@ -43,7 +37,7 @@ const Button = styled.button`
   color: #fff;
 `;
 
-const BackgroundContainer = styled.div`
+export const BackgroundContainer = styled.div`
   background-image: url(${alcong_bg});
   background-size: cover;
   background-position: center;
@@ -54,7 +48,7 @@ const BackgroundContainer = styled.div`
   position: relative;
 `;
 
-const MessagesList = styled.div`
+export const MessagesList = styled.div`
   width: 1500px;
   max-height: 500px;
   overflow-y: auto; /* Changed overflow-y to auto */
@@ -77,7 +71,7 @@ interface MessageContainerProps {
   alignRight?: boolean; // Added alignRight prop
 }
 
-const MessageContainer = styled.div<MessageContainerProps>`
+export const MessageContainer = styled.div<MessageContainerProps>`
   padding: 10px;
   margin-bottom: 30px;
   width: fit-content;
@@ -103,61 +97,3 @@ const MessageContainer = styled.div<MessageContainerProps>`
   display: flex;
   justify-content: center;
 `;
-
-const ChatApp: React.FC = () => {
-  const [messages, setMessages] = useState<Message[]>([]);
-  const [message, setMessage] = useState<string>("");
-  const messagesEndRef = useRef<HTMLDivElement>(null);
-
-  const handleSendMessage = (message: string) => {
-    setMessages((prevMessages) => [
-      ...prevMessages,
-      { text: message, isUser: true },
-      { text: `Your message is: "${message}"`, isUser: false }
-    ]);
-    setMessage("");
-  };
-
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    handleSendMessage(message);
-  };
-
-  useEffect(() => {
-    if (messagesEndRef.current) {
-      messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
-    }
-  }, [messages]);
-
-  return (
-    <BackgroundContainer>
-      <MessagesList>
-        {messages.map((message, index) => (
-          <MessageContainer
-            key={index}
-            isUser={message.isUser}
-            alignRight={!message.isUser} // Pass alignRight prop based on message type
-          >
-            <p>
-              <b>{message.isUser ? "User" : "AI"}</b>: {message.text}
-            </p>
-          </MessageContainer>
-        ))}
-        <div ref={messagesEndRef} />
-      </MessagesList>
-      <form onSubmit={handleSubmit}>
-        <InputContainer>
-          <Input
-            type="text"
-            placeholder="알콩이에게 보낼 메시지를 입력해주세요"
-            value={message}
-            onChange={(event) => setMessage(event.target.value)}
-          />
-          <Button type="submit">Send</Button>
-        </InputContainer>
-      </form>
-    </BackgroundContainer>
-  );
-};
-
-export default ChatApp;
