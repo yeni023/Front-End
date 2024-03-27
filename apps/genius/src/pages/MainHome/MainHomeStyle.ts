@@ -38,27 +38,32 @@ export const Navbar = styled.div`
 
 export const MainMenu = styled.div`
   display: flex;
-  gap: 80px;
-  margin-left: 10px;
+  gap: 150px;
+  margin-left: 20px;
   position: relative;
 `;
 
 export const SubMenu = styled.div`
-  display: none;
   position: absolute;
-  top: 175%;
-  left: 0;
+  display: inline-block;
+  width: 100%;
+  position: absolute;
+  top: 57px;
+  padding: 5px 8px;
+  left: -8px;
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   z-index: 100;
   white-space: nowrap;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  display: none;
+
 `;
 
 export const MenuItem = styled.div`
   position: relative;
+  text-decoration: none;
+  color: #333;
+  padding: 10px 20px;
 
   &:hover ${SubMenu} {
     display: flex;
@@ -107,6 +112,7 @@ export const SubMenuItem = styled.div`
 
   &:hover {
     background-color: #f0f0f0;
+    font-weight: bold;
   }
 `;
 
@@ -178,5 +184,6 @@ export const CreateStoryButton = styled.button`
 
   &:hover {
     background-color: #45a049;
+    color: #fff;
   }
 `;

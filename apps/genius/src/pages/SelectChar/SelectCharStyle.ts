@@ -7,11 +7,12 @@ interface CharacterButtonProps {
 }
 
 export const AppContainer = styled.div`
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
   display: flex;
   height: 100vh;
-  width: 100vw; 
+  width: 100%; 
+  overflow: hidden;
 `;
 
 export const CharacterContainer = styled.div`
@@ -24,10 +25,16 @@ export const CharacterContainer = styled.div`
 
   &:nth-child(1) {
     background-image: url('./src/assets/images/alkong.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
   }
 
   &:nth-child(2) {
     background-image: url('./src/assets/images/dalkong.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
   }
 
   &.selected {

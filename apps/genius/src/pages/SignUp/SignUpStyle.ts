@@ -6,18 +6,18 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 50px;
-  width: 100vw;
-  max-width: 100%;
-  margin-left: 30px;
+  padding: 0 50px;
   justify-content: center;
   overflow-x: hidden;
+  background-color: #f0f0f0;
+  height: 100vh;
+  position: relative;
 `;
 
 export const Form = styled.form`
   width: 100%;
   max-width: 600px;
-  margin-top: 50px auto;
+  margin-top: 10px;
 `;
 
 export const Input = styled.input`
@@ -35,18 +35,21 @@ export const TextArea = styled.textarea`
 `;
 
 export const Button = styled.button`
-  width: 100%;
+  width: 30%;
   padding: 10px;
   font-size: 18px;
   color: #fff;
-  margin-top: 30px;
+  margin-top: 10px;
   margin-bottom: 50px;
+  position: absolute;
   background-color: #8DD1BD;
   cursor: pointer;
+  left: 50%;
+  transform: translate(-50%, -50%);
 `;
 
 export const Divider = styled.div`
-  width: 80%;
+  width: 90%;
   border-bottom: 2px solid #9D9D9D;
   margin-bottom: 20px;
   margin-top: 20px;
@@ -73,7 +76,10 @@ export const PhoneInputBox = styled.div`
 `;
 
 export const Hyphen = styled.span`
-  margin: 0 5px;
+  margin-left: 0;
+  margin-bottom: 20px;
+  margin-right: 10px;
+  font-size: 20px;
 `;
 
 export const Row = styled.div`
