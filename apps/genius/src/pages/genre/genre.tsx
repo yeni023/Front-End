@@ -1,4 +1,3 @@
-// genre.tsx
 import * as C from "../../pages/StoryFlow/container";
 import { useNavigate } from "react-router-dom";
 import {
@@ -12,12 +11,12 @@ import {
   Arrow_Image,
   ArrowButton
 } from "./genre";
-import book from "../../assets/book.svg";
-import castle from "../../assets/castle.svg";
-import full_story from "../../assets/full_story.svg";
-import ghost from "../../assets/ghost.svg";
-import left from "../../assets/left.svg";
-import right from "../../assets/right.svg";
+import book from "../../assets/images/book.svg";
+import castle from "../../assets/images/castle.svg";
+import full_story from "../../assets/images/full_story.svg";
+import ghost from "../../assets/images/ghost.svg";
+import left from "../../assets/images/left.svg";
+import right from "../../assets/images/right.svg";
 
 const Genre = () => {
   const navigate = useNavigate();

@@ -26,6 +26,7 @@ export const ImageWrapper = styled.div`
   justify-content: center;
   margin-top: 50px;
 `;
+
 export const ImageTextWrapper = styled.div`
   display: flex;
   flex-direction: column;

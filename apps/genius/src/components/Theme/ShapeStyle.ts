@@ -1,7 +1,7 @@
 //// ShapeStyle.ts
 import styled from "styled-components";
 import sprout from "../../assets/images/sprout.png";
-import flower from "../../assets/images/flower.png";
+import flower from "../../assets/images/Flower.png";
 
 export const Container = styled.div`
   position: relative;
