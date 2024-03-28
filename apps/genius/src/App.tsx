@@ -8,6 +8,7 @@ import CreateStory from "./pages/CreateStory/CreateStory.tsx";
 import SelectChar from "./pages/SelectChar/SelectChar.tsx";
 import ThemePageNext from "./pages/Theme/ThemePageNext.tsx";
 import BasicInfoPage from "./pages/BasicInfo/BasicInfoPage.tsx";
+import SelectLevel from "./pages/SelectLevel/SelectLevel.tsx";
 import Login from "./pages/Login/Login.tsx";
 
 const App = () => {
@@ -22,6 +23,7 @@ const App = () => {
         <Route path="/SelectChar" element={<SelectChar />} />
         <Route path="/ThemePageNext" element={<ThemePageNext />} />
         <Route path="/BasicInfoPage" element={<BasicInfoPage />} />
+        <Route path="/SelectLevel" element={<SelectLevel />} />
         <Route path="/Login" element={<Login />} />
       </Routes>
     </Router>

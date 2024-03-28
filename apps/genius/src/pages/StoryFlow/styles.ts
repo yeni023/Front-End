@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import BackgroundImage from "../../assets/StoryFlow/Background.png";
+// import BackgroundImage from "../../assets/StoryFlow/Background.png";
 
 export const Container = styled.div`
   display: flex;
@@ -38,10 +38,12 @@ export const Contents = styled.div`
   width: 100%;
   margin-top: 130px;
   align-items: center;
-  background-color: black;
+  /* background-color: black; */
 
-  // background-image: url(${BackgroundImage});
-  // background-size: cover;
+  background-image: url('../../assets/images/dalkong_background.svg');
+  background-position : center;
+  background-size : cover;
+  background-repeat : no-repeat;
   overflow: hidden;
   // height: 100vh;
 `;
