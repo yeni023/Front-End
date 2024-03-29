@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 
 export const Container = styled.div`
-  background-color: #E28A8D;
+  background-color: #eba5a5;
   width: 100%;
   min-height: 100vh;
 `;
@@ -60,15 +60,15 @@ export const LevelButton = styled.button<{ bgImage: string }>`
   background-color: rgba(255, 255, 255, 0.34);
   border: 8px solid white;
   color: black;
-  font-size: 130px; 
-  margin: 25px; 
+  font-size: 130px;
+  margin: 25px;
   cursor: pointer;
   transition: background-color 0.3s;
   width: 450px;
-  height: 550px;
+  height: 480px;
   text-align: center;
-  background-image: url(${props => props.bgImage});
-  background-size: 50%;
+  background-image: url(${(props) => props.bgImage});
+  background-size: 80%;
   background-repeat: no-repeat;
   background-position: center;
   border-radius: 35px;
@@ -77,8 +77,8 @@ export const LevelButton = styled.button<{ bgImage: string }>`
   margin-bottom: 25px;
   margin-left: 25px;
 
-
   &:hover {
-    background-color: #e0e0e0; /* 마우스 오버시 배경색 변경 */
+    background-color: rgba(242, 202, 94, 0.8); /* 마우스 오버시 배경색 변경 */
+    border-color: #1ee74a;
   }
 `;
