@@ -17,10 +17,10 @@ export const Wrapper = styled.div`
 export const SelectLevelTitle = styled.div`
   font-size: 50px;
   padding-top: 10%;
-  padding-bottom: 50px;
+  padding-bottom: 40px;
   font-weight: bold;
   text-align: center;
-  color: white;
+  color: black;
 `;
 
 export const ImageWrapper = styled.div`
