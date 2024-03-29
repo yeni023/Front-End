@@ -6,7 +6,7 @@ interface Message {
   isUser: boolean;
 }
 
-const ChatApp: React.FC = () => {
+const BasicInfoAC: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [message, setMessage] = useState<string>("");
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -32,7 +32,7 @@ const ChatApp: React.FC = () => {
   }, [messages]);
 
   return (
-    <Styles.BackgroundContainer>
+    <Styles.ACBackgroundContainer>
       <Styles.MessagesList>
         {messages.map((message, index) => (
           <Styles.MessageContainer
@@ -58,8 +58,8 @@ const ChatApp: React.FC = () => {
           <Styles.Button type="submit">Send</Styles.Button>
         </Styles.InputContainer>
       </form>
-    </Styles.BackgroundContainer>
+    </Styles.ACBackgroundContainer>
   );
 };
 
-export default ChatApp;
+export default BasicInfoAC;
