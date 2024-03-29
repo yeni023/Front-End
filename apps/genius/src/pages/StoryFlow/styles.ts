@@ -2,6 +2,7 @@ import styled from "styled-components";
 // import BackgroundImage from "../../assets/StoryFlow/Background.png";
 
 export const Container = styled.div`
+  background-color: #eba5a5;
   display: flex;
   min-height: 100vh;
   flex-direction: column;
@@ -38,12 +39,10 @@ export const Contents = styled.div`
   width: 100%;
   margin-top: 130px;
   align-items: center;
-  /* background-color: black; */
-
-  background-image: url('../../assets/images/dalkong_background.svg');
+  /* background-image: url('../../assets/images/dalkong_background.svg');
   background-position : center;
   background-size : cover;
-  background-repeat : no-repeat;
+  background-repeat : no-repeat; */
   overflow: hidden;
   // height: 100vh;
 `;
