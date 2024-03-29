@@ -1,7 +1,10 @@
 import { styled } from "styled-components";
+import DalkongBG from "../../assets/images/DalkongBG.svg";
 
 export const Container = styled.div`
-  background-color: #eba5a5;
+  background-image: url(${DalkongBG});
+  background-size: cover;
+  background-position: center;
   width: 100%;
   min-height: 100vh;
 `;

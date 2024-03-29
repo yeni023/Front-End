@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import dalcong_bg from "../../assets/images/dalcong_bg.png";
+import DalkongBG from "../../assets/images/DalkongBG.svg";
 
 export const BackgroundContainer = styled.div`
-  background: url(${dalcong_bg});
+  background: url(${DalkongBG});
   background-size: cover;
   background-position: center;
   width: 100vw;
