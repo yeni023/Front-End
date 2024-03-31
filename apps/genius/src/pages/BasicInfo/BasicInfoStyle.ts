@@ -62,7 +62,7 @@ export const DCBackgroundContainer = styled.div`
 
 export const MessagesList = styled.div`
   width: 1500px;
-  max-height: 500px;
+  max-height: 700px;
   overflow-y: auto; /* Changed overflow-y to auto */
   scrollbar-width: thin; /* For Firefox */
   scrollbar-color: rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.1); /* For Firefox */
