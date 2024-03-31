@@ -14,17 +14,20 @@ export const Container = styled.div`
 `;
 
 export const Wrapper = styled.div`
+  display: flex;
   flex-direction: column;
   text-align: center;
   justify-content: center;
+  align-items: center;
 `;
 
-export const GenreTitle = styled.div`
+export const SelectLevelTitle = styled.div`
   font-size: 50px;
-  padding-top: 20%;
-  padding-bottom: 50px;
+  padding-top: 10%;
+  padding-bottom: 40px;
   font-weight: bold;
   text-align: center;
+  color: black;
 `;
 
 export const ImageWrapper = styled.div`
@@ -36,20 +39,10 @@ export const ImageWrapper = styled.div`
 
 export const ImageTextWrapper = styled.div`
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-right: 30px;
   margin-left: 30px;
-`;
-
-export const Image = styled.img`
-  width: 150px;
-  height: 150px;
-  margin-right: 50px;
-  margin-left: 50px;
-  object-fit: cover; /* 이미지 비율 유지 */
-  flex-direction: column;
 `;
 
 export const Arrow_Image = styled.img`
@@ -64,13 +57,35 @@ export const ArrowButton = styled.button`
   cursor: pointer;
 `;
 
-export const OvalText = styled.div`
-  font-size: 25px;
-  width: 250px; /* 타원형의 너비 */
-  height: 80px; /* 타원형의 높이 */
-  background-color: #333; /* 배경색 */
-  color: white; /* 텍스트 색상 */
-  text-align: center; /* 텍스트 가운데 정렬 */
-  line-height: 87px;
-  border-radius: 50px;
+export const Image = styled.img`
+  width: 100px;
+  height: 100px;
+  object-fit: cover; /* 이미지 비율 유지 */
+`;
+
+export const LevelButton = styled.button<{ bgImage: string }>`
+  background-color: rgba(255, 255, 255, 0.34);
+  border: 8px solid white;
+  color: black;
+  font-size: 130px;
+  margin: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 450px;
+  height: 480px;
+  text-align: center;
+  background-image: url(${(props) => props.bgImage});
+  background-size: 80%;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 35px;
+  margin-top: -5px;
+  margin-right: 25px;
+  margin-bottom: 25px;
+  margin-left: 25px;
+
+  &:hover {
+    background-color: rgba(242, 202, 94, 0.8); /* 마우스 오버시 배경색 변경 */
+    border-color: #1ee74a;
+  }
 `;
