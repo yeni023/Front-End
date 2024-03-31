@@ -10,6 +10,7 @@ import ThemePageNext from "./pages/Theme/ThemePageNext.tsx";
 import BasicInfoPage from "./pages/BasicInfo/BasicInfoPage.tsx";
 import SelectLevel from "./pages/SelectLevel/SelectLevel.tsx";
 import ConfirmLevel from "./pages/ConfirmLevel/ConfirmLevel.tsx";
+import MakeBook from "./pages/Makebook/MakeBook.tsx";
 import Login from "./pages/Login/Login.tsx";
 
 const App = () => {
@@ -26,6 +27,7 @@ const App = () => {
         <Route path="/BasicInfoPage" element={<BasicInfoPage />} />
         <Route path="/SelectLevel" element={<SelectLevel />} />
         <Route path="/ConfirmLevel" element={<ConfirmLevel />} />
+        <Route path="/Makebook" element={<MakeBook />} />
         <Route path="/Login" element={<Login />} />
       </Routes>
     </Router>
