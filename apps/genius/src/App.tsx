@@ -11,6 +11,7 @@ import BasicInfoAC from "./pages/BasicInfo/BasicInfoAC.tsx";
 import BasicInfoDC from "./pages/BasicInfo/BasicInfoDC.tsx";
 import SelectLevel from "./pages/SelectLevel/SelectLevel.tsx";
 import ConfirmLevel from "./pages/ConfirmLevel/ConfirmLevel.tsx";
+import MakeBook from "./pages/Makebook/MakeBook.tsx";
 import Login from "./pages/Login/Login.tsx";
 
 const App = () => {
@@ -28,6 +29,7 @@ const App = () => {
         <Route path="/BasicInfoDC" element={<BasicInfoDC />} />
         <Route path="/SelectLevel" element={<SelectLevel />} />
         <Route path="/ConfirmLevel" element={<ConfirmLevel />} />
+        <Route path="/Makebook" element={<MakeBook />} />
         <Route path="/Login" element={<Login />} />
       </Routes>
     </Router>
