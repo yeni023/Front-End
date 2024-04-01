@@ -1,18 +1,17 @@
 import { styled } from "styled-components";
-import DalkongBG from "../../assets/images/DalkongBG.svg";
+import AlkongBG from "../../assets/images/AlkongBG.svg";
 import DalkongBook from "../../assets/images/DalkongBook.svg";
 import photo from "../../assets/images/MakeBookPhoto.svg";
 import TextPhoto from "../../assets/images/TextImage.svg";
 
 export const Container = styled.div`
   position: relative;
-  background-image: url(${DalkongBG});
+  background-image: url(${AlkongBG});
   background-size: cover;
   background-position: center;
   width: 100%;
   min-height: 100vh;
 `;
-
 export const BookImageContainer = styled.div`
   display: flex;
   justify-content: center;
