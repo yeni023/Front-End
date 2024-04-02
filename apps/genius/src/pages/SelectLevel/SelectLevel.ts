@@ -85,7 +85,7 @@ export const LevelButton = styled.button<{ bgImage: string }>`
   margin-left: 25px;
 
   &:hover {
-    background-color: rgba(242, 202, 94, 0.8); /* 마우스 오버시 배경색 변경 */
+    background-color: rgba(242, 202, 94, 0.8);
     border-color: #1ee74a;
   }
 `;
