@@ -78,8 +78,9 @@ export const PhoneInputBox = styled.div`
 export const Hyphen = styled.span`
   margin-left: 0;
   margin-bottom: 20px;
-  margin-right: 10px;
+  margin-right: 25px;
   font-size: 20px;
+  font-weight: lighter;
 `;
 
 export const Row = styled.div`

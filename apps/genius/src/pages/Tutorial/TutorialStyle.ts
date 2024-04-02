@@ -49,7 +49,7 @@ export const StepContent = styled.div`
   top: 0;
   transform: translate(-50%, -90%);
   width: 100%;
-  border: 1.5px solid gray;
+  border: 1.5px solid lightseagreen;
   text-align: center;
   
 `;
@@ -66,7 +66,6 @@ export const NextButton = styled.button`
   padding: 15px 30px;
   font-size: 1.2em;
   font-weight: bold;
-  border: none;
   border-radius: 10px;
   cursor: pointer;
   margin-top: 10px;
@@ -81,12 +80,13 @@ export const NextButton = styled.button`
 export const EndButton = styled.button`
   background-color: #fff;
   color: #D057A9;
-  padding: 15px 20px;
+  padding: 15px 30px;
   font-size: 1.2em;
   font-weight: bold;
-  border: none;
   border-radius: 10px;
   cursor: pointer;
+  margin-top: 10px;
+  border: 3px solid lightpink;
 
   &:hover {
     background-color: #FFD3E0;

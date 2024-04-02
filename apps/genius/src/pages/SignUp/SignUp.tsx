@@ -4,9 +4,9 @@ import React, { useState } from 'react';
 import * as SignUpStyle from './SignUpStyle';
 
 interface PhoneNumber {
-  areaCode: number;
-  exchangeCode: number;
-  subscriberNumber: number;
+  areaCode: string;
+  exchangeCode: string;
+  subscriberNumber: string;
 }
 
 interface SignUpProps {}
@@ -18,9 +18,9 @@ const SignUp: React.FC<SignUpProps> = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [phoneNumber, setPhoneNumber] = useState<PhoneNumber>({
-    areaCode: 0,
-    exchangeCode: 0,
-    subscriberNumber: 0,
+    areaCode: '',
+    exchangeCode: '',
+    subscriberNumber: '',
   });
   const [agreeAll, setAgreeAll] = useState(false);
   const [agreeTermsRequired, setAgreeTermsRequired] = useState(false);
@@ -29,32 +29,55 @@ const SignUp: React.FC<SignUpProps> = () => {
   const [isSignUpComplete, setIsSignUpComplete] = useState(false);
 
   const handleSignUp = () => {
-    if (agreeAll) {
-      console.log('회원가입 성공:', {
-        id,
-        username,
-        email,
-        password,
-        confirmPassword,
-        phoneNumber,
-        agreeTermsRequired,
-        agreePrivacy,
-        agreeEvent,
-      });
-      setIsSignUpComplete(true); // 회원가입 완료 상태 업데이트
-    } else {
-      console.log('모든 약관에 동의해야 합니다.');
+    // 필수 항목 검사
+    if (!id || !password || !confirmPassword || !username || !email) {
+      alert('기본 가입 정보를 모두 입력해주세요.');
+      return;
     }
+  
+    // 비밀번호 일치 검사
+    if (password !== confirmPassword) {
+      alert('비밀번호가 일치하지 않습니다.');
+      return;
+    }
+  
+    // 전화번호 검사
+    if (!phoneNumber.areaCode || !phoneNumber.exchangeCode || !phoneNumber.subscriberNumber) {
+      alert('전화번호를 입력해주세요.');
+      return;
+    }
+  
+    // 모든 약관 동의 검사
+    if (!agreeTermsRequired || !agreePrivacy) {
+      alert('모든 약관에 동의해야 합니다.');
+      return;
+    }
+  
+    console.log('회원가입 성공:', {
+      id,
+      username,
+      email,
+      password,
+      confirmPassword,
+      phoneNumber,
+      agreeTermsRequired,
+      agreePrivacy,
+      agreeEvent,
+    });
+    setIsSignUpComplete(true); // 회원가입 완료 상태 업데이트
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>, key: keyof PhoneNumber) => {
-    const value = e.target.value;
+    let value = e.target.value;
 
-    // 숫자로만 이루어져 있는지 확인
-    if (/^\d+$/.test(value)) {
-      setPhoneNumber((prev) => ({ ...prev, [key]: Number(value) }));
-    }
-    // 숫자가 아닌 경우 무시 (다른 문자열은 입력되지 않음)
+    // 숫자만 허용하도록 수정
+    value = value.replace(/\D/g, '');
+
+    // 길이 제한 설정
+    const maxLength = key === 'areaCode' ? 3 : 4;
+    value = value.slice(0, maxLength);
+
+    setPhoneNumber((prev) => ({ ...prev, [key]: value }));
   };
 
   const handleAgreeAllChange = () => {
@@ -114,7 +137,7 @@ const SignUp: React.FC<SignUpProps> = () => {
               <SignUpStyle.Label>이메일　　　　</SignUpStyle.Label>
               <SignUpStyle.Input
                 type="email"
-                placeholder="이메일"
+                placeholder="이메일 (예 : abc1234@naver.com)"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
@@ -125,8 +148,9 @@ const SignUp: React.FC<SignUpProps> = () => {
                 <SignUpStyle.PhoneInputBox>
                   <SignUpStyle.Input
                     type="tel"
-                    placeholder=""
-                    value={phoneNumber.areaCode.toString()}
+                    placeholder="010"
+                    maxLength={3}
+                    value={phoneNumber.areaCode}
                     onChange={(e) => handleInputChange(e, 'areaCode')}
                   />
                 </SignUpStyle.PhoneInputBox>
@@ -135,7 +159,8 @@ const SignUp: React.FC<SignUpProps> = () => {
                   <SignUpStyle.Input
                     type="tel"
                     placeholder=""
-                    value={phoneNumber.exchangeCode.toString()}
+                    maxLength={4}
+                    value={phoneNumber.exchangeCode}
                     onChange={(e) => handleInputChange(e, 'exchangeCode')}
                   />
                 </SignUpStyle.PhoneInputBox>
@@ -144,7 +169,8 @@ const SignUp: React.FC<SignUpProps> = () => {
                   <SignUpStyle.Input
                     type="tel"
                     placeholder=""
-                    value={phoneNumber.subscriberNumber.toString()}
+                    maxLength={4}
+                    value={phoneNumber.subscriberNumber}
                     onChange={(e) => handleInputChange(e, 'subscriberNumber')}
                   />
                 </SignUpStyle.PhoneInputBox>

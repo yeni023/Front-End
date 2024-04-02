@@ -7,12 +7,14 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 50px;
-  height: 850px;
+  height: 100vh;
   justify-content: center;
   margin: 0 auto;
   overflow-x: hidden;
+  overflow-y: hidden;
   background-color: #f0f0f0;
 `;
+
 
 export const Form = styled.form`
   width: 100%;
