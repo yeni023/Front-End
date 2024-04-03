@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import alcong_bg from "../../assets/images/alcong_bg.png";
-import dalcong_bg from "../../assets/images/dalcong_bg.png";
+import dalcong_bg from "../../assets/images/DalkongBG.png";
 
 export const InputContainer = styled.div`
   width: 920px;
