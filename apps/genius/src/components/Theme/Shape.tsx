@@ -6,22 +6,24 @@ interface ShapeProps {
   title: string;
   subjectImage: string;
   onImageContainerClick: () => void; // 클릭 이벤트 핸들러 prop 추가
+  delay: number; // Shape 변환 딜레이 추가
 }
 
 const Shape: React.FC<ShapeProps> = ({
   title,
   subjectImage,
-  onImageContainerClick
+  onImageContainerClick,
+  delay
 }) => {
   const [showButton, setShowButton] = useState<boolean>(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowButton(true);
-    }, 3000);
+    }, delay);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [delay]);
 
   return (
     <Styles.Container>
