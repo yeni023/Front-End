@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import * as Styles from "./BasicInfoStyle";
+import * as Styles from "./BasicInfoAC2Style";
 
 interface Message {
   text: string;
@@ -40,9 +40,7 @@ const BasicInfoAC2: React.FC = () => {
             isUser={message.isUser}
             alignRight={!message.isUser} // Pass alignRight prop based on message type
           >
-            <p>
-              <b>{message.isUser ? "User" : "AI"}</b>: {message.text}
-            </p>
+            {message.text}
           </Styles.MessageContainer>
         ))}
         <div ref={messagesEndRef} />

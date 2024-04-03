@@ -39,7 +39,6 @@ export const themes: Theme[] = [
 ];
 
 const ThemePage: React.FC<ThemePageProps> = () => {
-  const [startIndex, setStartIndex] = useState(0);
   const [selectedTheme, setSelectedTheme] = useState<Theme[]>([]);
   const location = useLocation();
   const navigate = useNavigate();
@@ -64,9 +63,9 @@ const ThemePage: React.FC<ThemePageProps> = () => {
         setSelectedTheme(relatedThemes);
       }
     } else {
-      setSelectedTheme(themes.slice(startIndex, startIndex + 3));
+      setSelectedTheme(themes.slice(0, 3));
     }
-  }, [location, startIndex]);
+  }, [location]);
 
   const handleImageContainerClick = (themeId: string) => {
     navigate(`/ThemePageNext?id=${themeId}`);
@@ -86,12 +85,13 @@ const ThemePage: React.FC<ThemePageProps> = () => {
       <Styles.Title>주제가 될 새싹을 골라볼까?</Styles.Title>
       <Styles.JustPadding />
       <Styles.ShapeContainer>
-        {selectedTheme.map((theme) => (
+        {selectedTheme.map((theme, index) => (
           <Shape
             key={theme.id}
             title={theme.title}
             subjectImage={theme.subjectImage}
             onImageContainerClick={() => handleImageContainerClick(theme.id)}
+            delay={(index + 1) * 1000} // 각 Shape에 다른 delay 적용
           />
         ))}
       </Styles.ShapeContainer>

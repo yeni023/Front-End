@@ -89,18 +89,10 @@ export const MessageContainer = styled.div<MessageContainerProps>`
   width: fit-content;
   max-width: 60%;
   background-color: ${({ isUser }) => (isUser ? "#B5E4F8" : "#F8A31B")};
-  border-radius: ${(props) =>
-    props.isUser ? "50px 50px 5px 50px" : "50px 50px 50px 5px"};
+  border-radius: ${({ isUser }) =>
+    isUser ? "50px 50px 5px 50px" : "50px 50px 50px 5px"};
+  margin-left: ${({ isUser }) => (isUser ? "auto" : "0.4rem")};
 
-  padding: ${(props) => (props.isUser ? "0.7rem 1.1rem" : "0.8rem 1.2rem")};
-  margin-left: ${(props) =>
-    props.alignRight
-      ? "0.4rem"
-      : "auto"}; // Conditional margin-left for alignment
-  margin-right: ${(props) =>
-    props.alignRight
-      ? "auto"
-      : "0.4rem"}; // Conditional margin-right for alignment
   color: black;
   font-weight: 400;
   font-size: 1.6rem;
