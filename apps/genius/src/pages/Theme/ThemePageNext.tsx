@@ -3,7 +3,7 @@ import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import ShapeNext from "../../components/Theme/ShapeNext";
 import * as Styles from "./ThemePageStyle";
-import { themes } from "./ThemePage";
+import { themes } from "./themes";
 
 const ThemePageNext: React.FC = () => {
   const location = useLocation();
