@@ -36,7 +36,7 @@ const ThemePageNext: React.FC = () => {
         {[1, 2, 3].map((index) => (
           <ShapeNext
             key={startIndex + index}
-            title={themes[startIndex + index].title} // 해당 테마의 title 사용
+            title={themes[startIndex + index].title}
             isFlower={getComponentIndex(id) === index - 1}
           />
         ))}
