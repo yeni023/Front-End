@@ -12,12 +12,19 @@ const BasicInfoAC2: React.FC = () => {
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const handleSendMessage = (message: string) => {
-    setMessages((prevMessages) => [
-      ...prevMessages,
-      { text: message, isUser: true },
-      { text: `Your message is: "${message}"`, isUser: false }
-    ]);
-    setMessage("");
+    try {
+      // 전송이 잘 되었음을 콘솔에 기록
+      console.log("Message sent successfully:", message);
+      setMessages((prevMessages) => [
+        ...prevMessages,
+        { text: message, isUser: true },
+        { text: `Your message is: "${message}"`, isUser: false }
+      ]);
+      setMessage("");
+    } catch (error) {
+      // 전송 중 오류 발생 시 콘솔에 에러 메시지 기록
+      console.error("Error sending message:", error);
+    }
   };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
