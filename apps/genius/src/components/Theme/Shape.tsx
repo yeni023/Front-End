@@ -5,8 +5,8 @@ import * as Styles from "./ShapeStyle";
 interface ShapeProps {
   title: string;
   subjectImage: string;
-  onImageContainerClick: () => void; // 클릭 이벤트 핸들러 prop 추가
-  delay: number; // Shape 변환 딜레이 추가
+  onImageContainerClick: () => void;
+  delay: number;
 }
 
 const Shape: React.FC<ShapeProps> = ({
@@ -29,14 +29,12 @@ const Shape: React.FC<ShapeProps> = ({
     <Styles.Container>
       <Styles.Glass>
         <Styles.Title>{title}</Styles.Title>
-        {showButton ? (
-          <Styles.ImageContainer
-            style={{ backgroundImage: `url(${subjectImage})` }}
-            onClick={onImageContainerClick} // 클릭 이벤트 핸들러 추가
-          />
-        ) : (
-          <Styles.SproutContainer />
-        )}
+        <Styles.SproutContainer show={!showButton} />
+        <Styles.ImageContainer
+          style={{ backgroundImage: `url(${subjectImage})` }}
+          onClick={onImageContainerClick}
+          show={showButton}
+        />
       </Styles.Glass>
       <Styles.Shadow />
     </Styles.Container>
