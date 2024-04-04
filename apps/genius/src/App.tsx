@@ -9,7 +9,7 @@ import SelectChar from "./pages/SelectChar/SelectChar.tsx";
 import ThemePageNext from "./pages/Theme/ThemePageNext.tsx";
 import BasicInfo from "./pages/BasicInfo/BasicInfo.tsx";
 import BasicInfoAC2 from "./pages/BasicInfo/BasicInfoAC2.tsx";
-import BasicInfoDC from "./pages/BasicInfo/BasicInfoDC.tsx";
+import BasicInfoDC from "./pages/ChatAC/BasicInfoDC.tsx";
 import SelectLevel from "./pages/SelectLevel/SelectLevel.tsx";
 import ConfirmLevel from "./pages/ConfirmLevel/ConfirmLevel.tsx";
 import Login from "./pages/Login/Login.tsx";
