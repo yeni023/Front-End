@@ -1,12 +1,12 @@
 import React, { useState, useRef, useEffect } from "react";
-import * as Styles from "./BasicInfoAC2Style";
+import * as Styles from "./ChatDCStyle";
 
 interface Message {
   text: string;
   isUser: boolean;
 }
 
-const BasicInfoAC2: React.FC = () => {
+const ChatDC: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [message, setMessage] = useState<string>("");
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -67,4 +67,4 @@ const BasicInfoAC2: React.FC = () => {
   );
 };
 
-export default BasicInfoAC2;
+export default ChatDC;
