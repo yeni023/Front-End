@@ -6,7 +6,7 @@ import * as Styles from "./ChatACStyle";
 const ChatAC: React.FC = () => {
   const [selectedChoice, setSelectedChoice] = useState("");
   const [messages, setMessages] = useState([
-    { text: "안녕! 나는 너를 도와줄 달콩이야.", isUser: false },
+    { text: "안녕! 나는 예은이를 도와줄 알콩이야.", isUser: false },
     { text: "내 질문에 선택지를 잘 골라주면 돼.", isUser: false }
   ]);
 
