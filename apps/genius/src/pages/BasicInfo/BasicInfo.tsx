@@ -1,6 +1,6 @@
 // UserForm.tsx
 import React, { useState } from "react";
-import * as Styles from "./BasicInfoAC1Style";
+import * as Styles from "./BasicInfoStyle";
 
 interface FormData {
   name: string;
@@ -14,7 +14,7 @@ interface UserFormProps {
   onSubmit: (data: FormData) => void;
 }
 
-const BasicInfoAC1: React.FC<UserFormProps> = ({ onSubmit }) => {
+const BasicInfo: React.FC<UserFormProps> = ({ onSubmit }) => {
   const [formData, setFormData] = useState<FormData>({
     name: "",
     gender: "",
@@ -137,4 +137,4 @@ const BasicInfoAC1: React.FC<UserFormProps> = ({ onSubmit }) => {
   );
 };
 
-export default BasicInfoAC1;
+export default BasicInfo;
