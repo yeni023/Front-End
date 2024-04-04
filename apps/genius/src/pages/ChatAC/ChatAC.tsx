@@ -1,9 +1,9 @@
 import React, { useState, useRef } from "react";
 import Choices from "../../components/BasicInfoDC/Choices";
-import * as Styles from "./BasicInfoDCStyle";
+import * as Styles from "./ChatACStyle";
 
 // 메인 채팅 컴포넌트
-const ChatComponent: React.FC = () => {
+const ChatAC: React.FC = () => {
   const [selectedChoice, setSelectedChoice] = useState("");
   const [messages, setMessages] = useState([
     { text: "안녕! 나는 너를 도와줄 달콩이야.", isUser: false },
@@ -48,4 +48,4 @@ const ChatComponent: React.FC = () => {
   );
 };
 
-export default ChatComponent;
+export default ChatAC;

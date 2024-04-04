@@ -9,7 +9,7 @@ import SelectChar from "./pages/SelectChar/SelectChar.tsx";
 import ThemePageNext from "./pages/Theme/ThemePageNext.tsx";
 import BasicInfo from "./pages/BasicInfo/BasicInfo.tsx";
 import BasicInfoAC2 from "./pages/BasicInfo/BasicInfoAC2.tsx";
-import BasicInfoDC from "./pages/ChatAC/BasicInfoDC.tsx";
+import ChatAC from "./pages/ChatAC/ChatAC.tsx";
 import SelectLevel from "./pages/SelectLevel/SelectLevel.tsx";
 import ConfirmLevel from "./pages/ConfirmLevel/ConfirmLevel.tsx";
 import Login from "./pages/Login/Login.tsx";
@@ -27,7 +27,7 @@ const App = () => {
         <Route path="/ThemePageNext" element={<ThemePageNext />} />
         <Route path="/BasicInfo" element={<BasicInfo />} />
         <Route path="/BasicInfoAC2" element={<BasicInfoAC2 />} />
-        <Route path="/BasicInfoDC" element={<BasicInfoDC />} />
+        <Route path="/ChatAC" element={<ChatAC />} />
         <Route path="/SelectLevel" element={<SelectLevel />} />
         <Route path="/ConfirmLevel" element={<ConfirmLevel />} />
         <Route path="/Login" element={<Login />} />
