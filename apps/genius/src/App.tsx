@@ -7,7 +7,7 @@ import MainHome from "./pages/MainHome/MainHome.tsx";
 import CreateStory from "./pages/CreateStory/CreateStory.tsx";
 import SelectChar from "./pages/SelectChar/SelectChar.tsx";
 import ThemePageNext from "./pages/Theme/ThemePageNext.tsx";
-import BasicInfoAC1 from "./pages/BasicInfo/BasicInfoAC1.tsx";
+import BasicInfo from "./pages/BasicInfo/BasicInfo.tsx";
 import BasicInfoAC2 from "./pages/BasicInfo/BasicInfoAC2.tsx";
 import BasicInfoDC from "./pages/BasicInfo/BasicInfoDC.tsx";
 import SelectLevel from "./pages/SelectLevel/SelectLevel.tsx";
@@ -25,7 +25,7 @@ const App = () => {
         <Route path="/CreateStory" element={<CreateStory />} />
         <Route path="/SelectChar" element={<SelectChar />} />
         <Route path="/ThemePageNext" element={<ThemePageNext />} />
-        <Route path="/BasicInfoAC1" element={<BasicInfoAC1 />} />
+        <Route path="/BasicInfo" element={<BasicInfo />} />
         <Route path="/BasicInfoAC2" element={<BasicInfoAC2 />} />
         <Route path="/BasicInfoDC" element={<BasicInfoDC />} />
         <Route path="/SelectLevel" element={<SelectLevel />} />
