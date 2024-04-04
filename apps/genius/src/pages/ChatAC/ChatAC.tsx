@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import Choices from "../../components/BasicInfoDC/Choices";
+import Choices from "../../components/ChatAC/Choices";
 import * as Styles from "./ChatACStyle";
 
 // 메인 채팅 컴포넌트
