@@ -26,6 +26,12 @@ const ChatAC: React.FC = () => {
     ]);
   }, []);
 
+  useEffect(() => {
+    if (messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [messages]);
+
   const handleChoiceSelect = (choice: string) => {
     setIsAIAsking(true);
     const nextQuestionIndex = questionIndex + 1;
@@ -33,8 +39,8 @@ const ChatAC: React.FC = () => {
       setQuestionIndex(nextQuestionIndex);
       setMessages([
         ...messages,
-        { text: `선택한 것: ${choice}`, isUser: true },
-        { text: `AI: ${questions[nextQuestionIndex].text}`, isUser: false }
+        { text: ` ${choice}`, isUser: true },
+        { text: ` ${questions[nextQuestionIndex].text}`, isUser: false }
       ]);
     } else {
       // 모든 질문이 완료된 후에 추가적인 로직을 수행할 수 있음
