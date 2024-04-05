@@ -17,7 +17,7 @@ const ChatAC: React.FC = () => {
     setMessages([
       ...messages,
       { text: `선택한 것: ${choice}`, isUser: true },
-      { text: "상대방의 CHOICE 컴포넌트", isUser: false } // 새로운 상대방의 메시지와 CHOICE 컴포넌트 추가
+      { text: `${choice}를 골랐구나!`, isUser: false }
     ]);
   };
 
