@@ -55,9 +55,14 @@ export const DCBackgroundContainer = styled.div`
 `;
 
 export const MessagesList = styled.div`
-  width: 1500px;
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 100px); /* Subtract the height of the input area */
+  overflow-y: auto;
+
+  width: 1800px;
   max-height: 700px;
-  overflow-y: auto; /* Changed overflow-y to auto */
+
   scrollbar-width: thin; /* For Firefox */
   scrollbar-color: rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.1); /* For Firefox */
   &::-webkit-scrollbar {
@@ -71,7 +76,6 @@ export const MessagesList = styled.div`
     background: rgba(0, 0, 0, 0.1); /* Color of track */
   }
 `;
-
 // export const MessageContainer = styled.div<MessageProps>`
 //   padding: 10px;
 //   margin-bottom: 30px;
@@ -123,7 +127,7 @@ export const Message = styled.div<{ isUser: boolean }>`
   border-radius: 10px;
   margin-left: ${({ isUser }) => (isUser ? "auto" : "10px")};
   margin-right: ${({ isUser }) => (isUser ? "10px" : "auto")};
-  max-width: 90%;
+  max-width: 60%;
   word-break: break-all;
   width: fit-content;
 

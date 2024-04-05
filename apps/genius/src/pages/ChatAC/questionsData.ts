@@ -1,7 +1,7 @@
 export const questions: { text: string; choices: string[] }[] = [
   {
     text: "주인공의 이름이 뭐야?",
-    choices: ["김알콩", "김두콩", "김세콩"]
+    choices: ["김두콩", "김세콩"]
   },
   {
     text: "주인공의 성격이 어때?",

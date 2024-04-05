@@ -1,53 +1,78 @@
-import React, { useState, useRef, useEffect } from "react";
+// ChatDC.tsx
+import React, { useState, useRef } from "react";
+import Choices from "../../components/ChatAC/Choices";
 import * as Styles from "./ChatDCStyle";
-
-interface Message {
-  text: string;
-  isUser: boolean;
-}
+import { useNavigate } from "react-router-dom";
+import {
+  initialMessages,
+  notReadyMessage,
+  startStoryMessage
+} from "./chatMessages";
 
 const ChatDC: React.FC = () => {
-  const [messages, setMessages] = useState<Message[]>([]);
-  const [message, setMessage] = useState<string>("");
+  const [selectedChoice, setSelectedChoice] = useState("");
+  const [messages, setMessages] = useState(initialMessages);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
 
-  const handleSendMessage = (message: string) => {
-    try {
-      // 전송이 잘 되었음을 콘솔에 기록
-      console.log("Message sent successfully:", message);
-      setMessages((prevMessages) => [
-        ...prevMessages,
-        { text: message, isUser: true },
-        { text: `Your message is: "${message}"`, isUser: false }
+  const handleChoiceSelect = (choice: string) => {
+    setSelectedChoice(choice);
+    if (choice === "아니") {
+      setMessages([
+        ...messages,
+        { text: "아니", isUser: true },
+        { ...notReadyMessage }
       ]);
-      setMessage("");
-    } catch (error) {
-      // 전송 중 오류 발생 시 콘솔에 에러 메시지 기록
-      console.error("Error sending message:", error);
+    } else if (choice === "동화 이어서 만들기") {
+      setMessages([
+        ...messages,
+        { text: "동화 이어서 만들기", isUser: true },
+        { ...startStoryMessage }
+      ]);
+    } else if (choice === "응, 준비됐어") {
+      setMessages([
+        ...messages,
+        { text: "응, 준비됐어", isUser: true }, // 사용자 측에 메시지 추가
+        { ...startStoryMessage }
+      ]);
+    } else if (choice === "메인 홈으로 돌아가기") {
+      navigate("/MainHome");
     }
   };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    handleSendMessage(message);
   };
-
-  useEffect(() => {
-    if (messagesEndRef.current) {
-      messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
-    }
-  }, [messages]);
 
   return (
     <Styles.DCBackgroundContainer>
       <Styles.MessagesList>
         {messages.map((message, index) => (
-          <Styles.MessageContainer key={index} isUser={message.isUser}>
-            <Styles.UserImage isUser={message.isUser} />
-            <Styles.Message isUser={message.isUser}>
-              {message.text}
-            </Styles.Message>
-          </Styles.MessageContainer>
+          <React.Fragment key={index}>
+            <Styles.MessageContainer isUser={message.isUser}>
+              <Styles.UserImage isUser={message.isUser} />
+              <Styles.Message isUser={message.isUser}>
+                {message.text}
+              </Styles.Message>
+            </Styles.MessageContainer>
+
+            {!message.isUser &&
+              index === messages.length - 1 &&
+              selectedChoice === "" && (
+                <Choices
+                  choices={["응, 준비됐어", "아니"]}
+                  onSelect={handleChoiceSelect}
+                />
+              )}
+            {!message.isUser &&
+              index === messages.length - 1 &&
+              selectedChoice === "아니" && (
+                <Choices
+                  choices={["메인 홈으로 돌아가기", "동화 이어서 만들기"]}
+                  onSelect={handleChoiceSelect}
+                />
+              )}
+          </React.Fragment>
         ))}
         <div ref={messagesEndRef} />
       </Styles.MessagesList>
@@ -56,8 +81,6 @@ const ChatDC: React.FC = () => {
           <Styles.Input
             type="text"
             placeholder="알콩이에게 보낼 메시지를 입력해주세요"
-            value={message}
-            onChange={(event) => setMessage(event.target.value)}
           />
           <Styles.Button type="submit">Send</Styles.Button>
         </Styles.InputContainer>

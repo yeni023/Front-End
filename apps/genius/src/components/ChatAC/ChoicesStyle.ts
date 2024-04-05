@@ -23,8 +23,9 @@ export const ChoiceButton = styled.button`
 
 export const ChoiceContainer = styled.div`
   /* Rectangle 65 */
-  width: 550px;
-  height: 270px;
+  padding: 10px;
+  width: fit-content; /* 변경된 부분 */
+  height: fit-content; /* 변경된 부분 */
   background: rgba(255, 255, 255, 0.9);
   border-radius: 10px;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
