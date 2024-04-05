@@ -42,12 +42,11 @@ const ChatDC: React.FC = () => {
     <Styles.DCBackgroundContainer>
       <Styles.MessagesList>
         {messages.map((message, index) => (
-          <Styles.MessageContainer
-            key={index}
-            isUser={message.isUser}
-            alignRight={!message.isUser} // Pass alignRight prop based on message type
-          >
-            {message.text}
+          <Styles.MessageContainer key={index} isUser={message.isUser}>
+            <Styles.UserImage isUser={message.isUser} />
+            <Styles.Message isUser={message.isUser}>
+              {message.text}
+            </Styles.Message>
           </Styles.MessageContainer>
         ))}
         <div ref={messagesEndRef} />

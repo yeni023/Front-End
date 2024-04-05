@@ -1,24 +1,44 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Choices from "../../components/ChatAC/Choices";
 import * as Styles from "./ChatACStyle";
+import { questions } from "./questionsData";
 
-// 메인 채팅 컴포넌트
+interface Message {
+  text: string;
+  isUser: boolean;
+}
+
 const ChatAC: React.FC = () => {
-  const [selectedChoice, setSelectedChoice] = useState("");
-  const [messages, setMessages] = useState([
-    { text: "안녕! 나는 예은이를 도와줄 알콩이야.", isUser: false },
-    { text: "내 질문에 선택지를 잘 골라주면 돼.", isUser: false }
-  ]);
+  const [messages, setMessages] = useState<Message[]>([]);
+  const [isAIAsking, setIsAIAsking] = useState<boolean>(true);
+  const [questionIndex, setQuestionIndex] = useState<number>(0);
 
-  const messagesEndRef = useRef<HTMLDivElement>(null); // useRef로 messagesEndRef 정의
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setMessages([
+      {
+        text: "안녕! 나는 예은이의 동화 생성을 도와줄 알콩이야.",
+        isUser: false
+      },
+      { text: "내 질문에 대한 선택지 1개를 골라주면 돼.", isUser: false },
+      { text: questions[questionIndex].text, isUser: false }
+    ]);
+  }, []);
 
   const handleChoiceSelect = (choice: string) => {
-    setSelectedChoice(choice);
-    setMessages([
-      ...messages,
-      { text: `선택한 것: ${choice}`, isUser: true },
-      { text: `${choice}를 골랐구나!`, isUser: false }
-    ]);
+    setIsAIAsking(true);
+    const nextQuestionIndex = questionIndex + 1;
+    if (nextQuestionIndex < questions.length) {
+      setQuestionIndex(nextQuestionIndex);
+      setMessages([
+        ...messages,
+        { text: `선택한 것: ${choice}`, isUser: true },
+        { text: `AI: ${questions[nextQuestionIndex].text}`, isUser: false }
+      ]);
+    } else {
+      // 모든 질문이 완료된 후에 추가적인 로직을 수행할 수 있음
+    }
   };
 
   return (
@@ -27,21 +47,17 @@ const ChatAC: React.FC = () => {
         {messages.map((message, index) => (
           <React.Fragment key={index}>
             <Styles.MessageContainer isUser={message.isUser}>
-              {" "}
               <Styles.UserImage isUser={message.isUser} />
               <Styles.Message isUser={message.isUser}>
                 {message.text}
               </Styles.Message>
             </Styles.MessageContainer>
-
-            {!message.isUser &&
-              index === messages.length - 1 && // Show choices for the last non-user message
-              selectedChoice === "" && (
-                <Choices
-                  choices={["선택지 1", "선택지 2", "선택지 3"]}
-                  onSelect={handleChoiceSelect}
-                />
-              )}
+            {!message.isUser && isAIAsking && index === messages.length - 1 && (
+              <Choices
+                choices={questions[questionIndex].choices}
+                onSelect={handleChoiceSelect}
+              />
+            )}
           </React.Fragment>
         ))}
         <div ref={messagesEndRef} />

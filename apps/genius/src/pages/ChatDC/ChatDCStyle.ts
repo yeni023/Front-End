@@ -1,6 +1,11 @@
 import styled from "styled-components";
-
 import dalcong_bg from "../../assets/images/DalkongBG.png";
+import user1 from "../../assets/images/user1.png";
+import user2 from "../../assets/images/user2.png";
+
+interface MessageProps {
+  isUser: boolean;
+}
 
 export const InputContainer = styled.div`
   width: 920px;
@@ -67,26 +72,60 @@ export const MessagesList = styled.div`
   }
 `;
 
-interface MessageContainerProps {
-  isUser: boolean;
-  alignRight?: boolean; // Added alignRight prop
-}
+// export const MessageContainer = styled.div<MessageProps>`
+//   padding: 10px;
+//   margin-bottom: 30px;
+//   width: fit-content;
+//   max-width: 60%;
+//   background-color: ${({ isUser }) => (isUser ? "#B5E4F8" : "#F8A31B")};
+//   border-radius: ${({ isUser }) =>
+//     isUser ? "50px 50px 5px 50px" : "50px 50px 50px 5px"};
+//   margin-left: ${({ isUser }) => (isUser ? "auto" : "0.4rem")};
 
-export const MessageContainer = styled.div<MessageContainerProps>`
-  padding: 10px;
-  margin-bottom: 30px;
-  width: fit-content;
-  max-width: 60%;
-  background-color: ${({ isUser }) => (isUser ? "#B5E4F8" : "#F8A31B")};
-  border-radius: ${({ isUser }) =>
-    isUser ? "50px 50px 5px 50px" : "50px 50px 50px 5px"};
-  margin-left: ${({ isUser }) => (isUser ? "auto" : "0.4rem")};
+//   color: black;
+//   font-weight: 400;
+//   font-size: 1.6rem;
+//   line-height: 2rem;
+//   word-break: break-all;
+//   display: flex;
+//   justify-content: center;
+// `;
 
-  color: black;
-  font-weight: 400;
-  font-size: 1.6rem;
-  line-height: 2rem;
-  word-break: break-all;
+export const MessageContainer = styled.div<MessageProps>`
   display: flex;
+  ${({ isUser }) =>
+    isUser ? "flex-direction: row-reverse;" : "flex-direction: row;"}
+
+  margin-bottom: 20px;
+`;
+
+export const UserImage = styled.div<MessageProps>`
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-image: ${({ isUser }) =>
+    isUser ? `url(${user2})` : `url(${user1})`};
+  background-size: cover;
+`;
+
+export const Message = styled.div<{ isUser: boolean }>`
+  background-color: ${({ isUser }) => (isUser ? "#F9EB54" : "#B5E4F8")};
+  color: #333;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  padding-left: 20px;
+  padding-right: 20px;
+  /* 세로 중앙 정렬을 위한 스타일 */
+  display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+
+  border-radius: 10px;
+  margin-left: ${({ isUser }) => (isUser ? "auto" : "10px")};
+  margin-right: ${({ isUser }) => (isUser ? "10px" : "auto")};
+  max-width: 90%;
+  word-break: break-all;
+  width: fit-content;
+
+  font-size: 30px;
 `;
