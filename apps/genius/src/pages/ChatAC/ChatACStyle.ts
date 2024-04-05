@@ -21,12 +21,12 @@ export const ACBackgroundContainer = styled.div`
 export const MessagesList = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 20px;
   height: calc(100% - 100px); /* Subtract the height of the input area */
   overflow-y: auto;
 
-  width: 1500px;
+  width: 1800px;
   max-height: 700px;
+
   scrollbar-width: thin; /* For Firefox */
   scrollbar-color: rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.1); /* For Firefox */
   &::-webkit-scrollbar {
@@ -46,12 +46,12 @@ export const MessageContainer = styled.div<MessageProps>`
   ${({ isUser }) =>
     isUser ? "flex-direction: row-reverse;" : "flex-direction: row;"}
 
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 `;
 
 export const UserImage = styled.div<MessageProps>`
-  width: 40px;
-  height: 40px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   background-image: ${({ isUser }) =>
     isUser ? `url(${user2})` : `url(${user1})`};
@@ -62,11 +62,20 @@ export const Message = styled.div<{ isUser: boolean }>`
   background-color: ${({ isUser }) => (isUser ? "#F9EB54" : "#B5E4F8")};
   color: #333;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-  padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  /* 세로 중앙 정렬을 위한 스타일 */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
   border-radius: 10px;
   margin-left: ${({ isUser }) => (isUser ? "auto" : "10px")};
   margin-right: ${({ isUser }) => (isUser ? "10px" : "auto")};
   max-width: 90%;
   word-break: break-all;
   width: fit-content;
+
+  font-size: 30px;
 `;
