@@ -1,7 +1,13 @@
 import styled from "styled-components";
 import alcong_bg from "../../assets/images/AlkongBG.png";
+import user1 from "../../assets/images/user1.png";
+import user2 from "../../assets/images/user2.png";
 
-export const DCBackgroundContainer = styled.div`
+interface MessageProps {
+  isUser: boolean;
+}
+
+export const ACBackgroundContainer = styled.div`
   background-image: url(${alcong_bg});
   background-size: cover;
   background-position: center;
@@ -13,9 +19,14 @@ export const DCBackgroundContainer = styled.div`
 `;
 
 export const MessagesList = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  height: calc(100% - 100px); /* Subtract the height of the input area */
+  overflow-y: auto;
+
   width: 1500px;
   max-height: 700px;
-  overflow-y: auto; /* Changed overflow-y to auto */
   scrollbar-width: thin; /* For Firefox */
   scrollbar-color: rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.1); /* For Firefox */
   &::-webkit-scrollbar {
@@ -30,34 +41,32 @@ export const MessagesList = styled.div`
   }
 `;
 
-interface MessageContainerProps {
-  isUser: boolean;
-  alignRight?: boolean; // Added alignRight prop
-}
-
-export const MessageContainer = styled.div<MessageContainerProps>`
-  padding: 10px;
-  margin-bottom: 30px;
-  width: fit-content;
-  max-width: 60%;
-  background-color: ${({ isUser }) => (isUser ? "#B5E4F8" : "#F8A31B")};
-  border-radius: ${(props) =>
-    props.isUser ? "50px 50px 5px 50px" : "50px 50px 50px 5px"};
-
-  padding: ${(props) => (props.isUser ? "0.7rem 1.1rem" : "0.8rem 1.2rem")};
-  margin-left: ${(props) =>
-    props.alignRight
-      ? "0.4rem"
-      : "auto"}; // Conditional margin-left for alignment
-  margin-right: ${(props) =>
-    props.alignRight
-      ? "auto"
-      : "0.4rem"}; // Conditional margin-right for alignment
-  color: black;
-  font-weight: 400;
-  font-size: 1.6rem;
-  line-height: 2rem;
-  word-break: break-all;
+export const MessageContainer = styled.div<MessageProps>`
   display: flex;
-  justify-content: center;
+  ${({ isUser }) =>
+    isUser ? "flex-direction: row-reverse;" : "flex-direction: row;"}
+
+  margin-bottom: 15px;
+`;
+
+export const UserImage = styled.div<MessageProps>`
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-image: ${({ isUser }) =>
+    isUser ? `url(${user2})` : `url(${user1})`};
+  background-size: cover;
+`;
+
+export const Message = styled.div<{ isUser: boolean }>`
+  background-color: ${({ isUser }) => (isUser ? "#F9EB54" : "#B5E4F8")};
+  color: #333;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  padding: 10px;
+  border-radius: 10px;
+  margin-left: ${({ isUser }) => (isUser ? "auto" : "10px")};
+  margin-right: ${({ isUser }) => (isUser ? "10px" : "auto")};
+  max-width: 90%;
+  word-break: break-all;
+  width: fit-content;
 `;

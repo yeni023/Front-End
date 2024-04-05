@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import alcong_bg from "../../assets/images/alcong_bg.png";
+
 import dalcong_bg from "../../assets/images/DalkongBG.png";
 
 export const InputContainer = styled.div`
@@ -36,17 +36,6 @@ export const Button = styled.button`
   border-radius: 0px 50px 50px 0px;
   background-color: #007bff;
   color: #fff;
-`;
-
-export const ACBackgroundContainer = styled.div`
-  background-image: url(${alcong_bg});
-  background-size: cover;
-  background-position: center;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
 `;
 
 export const DCBackgroundContainer = styled.div`

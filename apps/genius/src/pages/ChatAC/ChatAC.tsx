@@ -22,16 +22,18 @@ const ChatAC: React.FC = () => {
   };
 
   return (
-    <Styles.DCBackgroundContainer>
+    <Styles.ACBackgroundContainer>
       <Styles.MessagesList>
         {messages.map((message, index) => (
           <React.Fragment key={index}>
-            <Styles.MessageContainer
-              isUser={message.isUser}
-              alignRight={!message.isUser} // Pass alignRight prop based on message type
-            >
-              {message.text}
+            <Styles.MessageContainer isUser={message.isUser}>
+              {" "}
+              <Styles.UserImage isUser={message.isUser} />
+              <Styles.Message isUser={message.isUser}>
+                {message.text}
+              </Styles.Message>
             </Styles.MessageContainer>
+
             {!message.isUser &&
               index === messages.length - 1 && // Show choices for the last non-user message
               selectedChoice === "" && (
@@ -44,7 +46,7 @@ const ChatAC: React.FC = () => {
         ))}
         <div ref={messagesEndRef} />
       </Styles.MessagesList>
-    </Styles.DCBackgroundContainer>
+    </Styles.ACBackgroundContainer>
   );
 };
 
