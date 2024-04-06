@@ -62,19 +62,31 @@ const ChatDC: React.FC = () => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // 사용자가 입력한 메시지를 메시지 리스트에 추가
-    setMessages([
-      ...messages,
-      { text: userMessage, isUser: true },
-      { ...story1Message },
-      { ...story2Message }
-    ]);
-    // 사용자가 입력한 메시지 초기화
-    setUserMessage("");
+    sendMessage();
   };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setUserMessage(event.target.value); // 사용자가 입력한 메시지 업데이트
+  };
+
+  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") {
+      sendMessage();
+    }
+  };
+
+  const sendMessage = () => {
+    if (userMessage.trim() !== "") {
+      // 사용자가 입력한 메시지를 메시지 리스트에 추가
+      setMessages([
+        ...messages,
+        { text: userMessage.trim(), isUser: true },
+        { ...story1Message },
+        { ...story2Message }
+      ]);
+      // 사용자가 입력한 메시지 초기화
+      setUserMessage("");
+    }
   };
 
   return (
@@ -117,8 +129,9 @@ const ChatDC: React.FC = () => {
               placeholder="알콩이에게 보낼 메시지를 입력해주세요"
               value={userMessage} // 사용자가 입력한 메시지 표시
               onChange={handleChange} // 입력 시 호출되는 핸들러
+              onKeyPress={handleKeyPress} // 엔터 키를 눌렀을 때 호출되는 핸들러
             />
-            <Styles.Button type="submit">Send</Styles.Button>
+            <Styles.Button type="submit">전송</Styles.Button>
           </Styles.InputContainer>
         </form>
       )}
