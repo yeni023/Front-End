@@ -1,214 +1,264 @@
+// BasicInfoStyle.tsx
 import styled from "styled-components";
 import DalkongBG from "../../assets/images/DalkongBG.png";
-import DalkongChar from "../../assets/images/DalkongChar.png";
+import Stone from "../../assets/images/stone.png";
 
 export const Container = styled.div`
   background-image: linear-gradient(
-      rgba(255, 255, 255, 0.1),
-      rgba(255, 255, 255, 0.5)
+      rgba(255, 255, 255, 0.2),
+      rgba(255, 255, 255, 0.2)
     ),
     url(${DalkongBG});
   background-size: cover;
   background-position: center;
-  width: 100%;
-  min-height: 100vh;
+  width: 100vw;
+  height: 100vh;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+export const Title = styled.div`
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 64px;
+  text-align: center;
+  color: #ffffff;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  margin-bottom: 50px;
+`;
+export const OkBtn = styled.button`
+  justify-content: center;
+
+  width: 328px;
+  height: 54px;
+
+  background: rgba(217, 217, 217, 0.3);
+  border-radius: 20px;
+
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 0px;
+  text-align: center;
+
+  color: rgba(255, 255, 255, 0.76);
+`;
+export const NoBtn = styled.button`
+  justify-content: center;
+
+  width: 328px;
+  height: 54px;
+  background: rgba(217, 217, 217, 0.3);
+  border-radius: 20px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 0px;
+  text-align: center;
+
+  color: rgba(255, 255, 255, 0.76);
+  margin-left: 130px;
+`;
+export const BtnContainer = styled.div`
+  display: flex;
+  flex-flow: row nowrap;
+  margin-bottom: 40px;
 `;
 
 export const FormContainer = styled.form`
-  flex-direction: column;
-  margin-top: 20px;
   display: flex;
-  justify-content: flex-start;
-  margin-left: 80px;
+  justify-content: center;
+  gap: 50px;
 `;
 
 export const Label = styled.label`
-  margin-bottom: 5px;
+  margin-bottom: 55px;
+  box-sizing: border-box;
+  width: 323px;
+  height: 469px;
+  background: linear-gradient(
+    89.6deg,
+    rgba(255, 255, 255, 0.5) 0.64%,
+    rgba(255, 255, 255, 0) 138.48%
+  );
+  border: 7px solid #ffffff;
+  border-radius: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const Input = styled.input`
-  width: 318px;
-  height: 100px;
+  /* Rectangle 21 */
 
-  background: #de839a;
-  border-radius: 50px;
+  width: 250px;
+  height: 60.9px;
+  background: #d97d96;
+  border-radius: 20px;
+
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   outline: none;
   border-width: 0;
   &:focus {
     outline: none;
-    padding: 5px;
   }
-  font-size: 48px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 550;
+  font-size: 20px;
   text-align: center;
+  color: #ffffff;
+
+  &::placeholder {
+    color: #ffffff;
+    font-weight: 500;
+  }
 `;
 
-export const GenderButtonGroup = styled.div`
-  margin-bottom: 10px;
-  display: flex;
+export const Option = styled.option`
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 550;
+  font-size: 20px;
+  text-align: center;
+  color: #ffffff;
 `;
 
-export const GenderButton = styled.button<{ selected: boolean }>`
-  width: 318px;
-  height: 100px;
-  background: #de839a;
-  border-radius: 50px;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+export const Select = styled.select`
+  width: 250px;
+  height: 60.9px;
+  background: #d97d96;
+  border-radius: 20px;
+  border: none;
+  padding: 5px;
+  color: white;
   outline: none;
-  border-width: 0;
-  background-color: ${(props) =>
-    props.selected ? "#de839a" : "rgba(0,0,0,0)"};
-  color: ${(props) => (props.selected ? "#fff" : "#de839a")};
-  border: 5px solid #de839a;
+  appearance: none;
   cursor: pointer;
-  font-size: 48px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
   text-align: center;
-
-  &:focus {
-    border: none;
-    outline: none;
-  }
-  &:hover {
-    border: 5px solid #de839a;
-    outline: none;
-  }
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 550;
+  font-size: 20px;
+  text-align: center;
+  color: #ffffff;
 `;
 
 export const Button = styled.button`
-  margin: 0 5px;
-  padding: 5px 10px;
   background: transparent;
   border: none;
-  transition: transform 0.2s; /* 변형에 대한 전환 효과 추가 */
-
-  &:active {
-    transform: scale(1.1); /* 클릭시 크기를 약간 늘리는 효과 */
-  }
-
   &:focus {
     border: none;
     outline: none;
   }
+
+  font-size: 24px;
 `;
 export const AgeInput = styled.input`
-  width: 150px;
-  height: 100px;
-  background: transparent; /* 배경을 투명하게 설정 */
-  border: none; /* 테두리 제거 */
-  border-radius: 50px;
-  outline: none;
+  width: 80px;
+  background: transparent;
+  border: none;
   border-width: 0;
   &:focus {
     outline: none;
   }
-  font-size: 48px;
+  font-size: 24px;
   text-align: center;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  text-align: center;
+  color: #ffffff;
+  &::placeholder {
+    color: #dbdbdb;
+    font-weight: 300;
+  }
+  /* 숫자 오르내리는 꺽새 숨기기 */
+  -moz-appearance: textfield;
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 `;
 
 export const AgeContainer = styled.div`
-  width: 318px;
-  height: 100px;
-
-  background: #de839a;
-  border-radius: 50px;
+  width: 250px;
+  height: 60.9px;
+  background: #d97d96;
+  border-radius: 20px;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   outline: none;
   border-width: 0;
-  &:focus {
-    outline: none;
-    padding: 5px;
-  }
-  font-size: 48px;
+
   text-align: center;
+  justify-content: center;
+
+  display: flex;
 `;
 
 export const TextArea = styled.textarea`
-  margin-bottom: 10px;
-  padding: 5px;
-  width: 900px;
-  height: 100px;
-
-  background: #de839a;
-  border-radius: 50px;
+  width: 230px;
+  height: 60.9px;
+  background: #d97d96;
+  border-radius: 20px;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  padding: 20px;
+  margin-bottom: -45px;
+  font-size: 24px;
+  text-align: center;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 550;
+  font-size: 20px;
+  text-align: center;
+  color: #ffffff;
   outline: none;
   border-width: 0;
   &:focus {
     outline: none;
-    padding: 5px;
   }
-  font-size: 48px;
+
+  &::placeholder {
+    color: #ffffff;
+    font-weight: 500;
+  }
+  scrollbar-width: thin; /* For Firefox */
+  scrollbar-color: rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.1); /* For Firefox */
+  &::-webkit-scrollbar {
+    width: 8px; /* Width of vertical scrollbar */
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2); /* Color of thumb */
+    border-radius: 4px; /* Roundness of thumb */
+  }
+  &::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1); /* Color of track */
+  }
 `;
 
 export const Number = styled.div`
   font-family: "Inter";
   font-style: normal;
   font-weight: 700;
-  font-size: 48px;
-  line-height: 58px;
-  color: #000000;
+  font-size: 36px;
+  line-height: 44px;
+  color: #fff;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  margin-bottom: 25px;
 `;
 
-export const LeftContainer = styled.div`
-  border: 5px solid #de839a;
-  flex: 2.5;
-`;
-
-export const Char = styled.div`
-  background-image: url(${DalkongChar});
-  width: 50%;
-  height: 50%;
-  left: 0px;
-  top: 500px;
-  background-size: contain;
+export const Img = styled.div`
+  background: url(${Stone});
   background-repeat: no-repeat;
-  position: absolute;
-`;
-
-export const RightContainer = styled.div`
-  width: 1384px;
-  height: 954px;
-  background: rgba(255, 255, 255, 0.5);
-  border: 5px solid #de839a;
-  flex: 7.5;
-`;
-
-export const EllipseButton = styled.button`
-  position: absolute;
-  left: 1520px;
-  top: 650px;
-  width: 138px;
-  height: 140px;
-  background: #ffffff;
-  border-radius: 100px;
-  outline: none;
-`;
-
-export const malpungseon = styled.div`
-  box-sizing: border-box;
-
-  position: absolute;
-  width: 397px;
-  height: 244px;
-  left: 136px;
-  top: 457px;
-
-  background: rgba(255, 255, 255, 0.45);
-  border: 4px solid #000000;
-  border-radius: 50%;
-  color: #000000;
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 32px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  background-size: cover;
+  margin-right: 30px;
+  width: 170px;
+  height: 200px;
 `;
