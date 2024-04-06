@@ -1,7 +1,6 @@
 import React from "react";
 import * as Styles from "./ChoicesStyle";
 
-// 선택지 버튼을 보여주는 컴포넌트
 const Choices: React.FC<{
   choices: string[];
   onSelect: (choice: string) => void;
