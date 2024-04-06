@@ -44,7 +44,6 @@ export const RegenarateImg = styled.img`
 `;
 
 export const OkBtn = styled.button`
-  display: flex;
   justify-content: center;
 
   width: 328px;
@@ -63,7 +62,6 @@ export const OkBtn = styled.button`
   color: rgba(255, 255, 255, 0.76);
 `;
 export const NoBtn = styled.button`
-  display: flex;
   justify-content: center;
 
   width: 328px;
