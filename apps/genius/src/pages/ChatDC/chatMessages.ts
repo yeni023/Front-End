@@ -23,3 +23,12 @@ export const startStoryMessage = {
   text: "그럼 내가 먼저 동화를 만들어볼게",
   isUser: false
 };
+export const story1Message = {
+  text: "스토리1",
+  isUser: false
+};
+
+export const story2Message = {
+  text: "스토리2",
+  isUser: false
+};

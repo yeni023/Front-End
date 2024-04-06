@@ -6,7 +6,9 @@ import { useNavigate } from "react-router-dom";
 import {
   initialMessages,
   notReadyMessage,
-  startStoryMessage
+  startStoryMessage,
+  story1Message,
+  story2Message
 } from "./chatMessages";
 
 const ChatDC: React.FC = () => {
@@ -27,13 +29,17 @@ const ChatDC: React.FC = () => {
       setMessages([
         ...messages,
         { text: "동화 이어서 만들기", isUser: true },
-        { ...startStoryMessage }
+        { ...startStoryMessage },
+        { ...story1Message },
+        { ...story2Message }
       ]);
     } else if (choice === "응, 준비됐어") {
       setMessages([
         ...messages,
-        { text: "응, 준비됐어", isUser: true }, // 사용자 측에 메시지 추가
-        { ...startStoryMessage }
+        { text: "응, 준비됐어", isUser: true },
+        { ...startStoryMessage },
+        { ...story1Message },
+        { ...story2Message }
       ]);
     } else if (choice === "메인 홈으로 돌아가기") {
       navigate("/MainHome");
