@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import dalcong_bg from "../../assets/images/DalkongBG.png";
+import DalkongBG from "../../assets/images/DalkongBG.png";
 import user1 from "../../assets/images/user1.png";
 import user2 from "../../assets/images/user2.png";
 
@@ -44,7 +44,11 @@ export const Button = styled.button`
 `;
 
 export const DCBackgroundContainer = styled.div`
-  background-image: url(${dalcong_bg});
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 0.5)
+    ),
+    url(${DalkongBG});
   background-size: cover;
   background-position: center;
   height: 100vh;
