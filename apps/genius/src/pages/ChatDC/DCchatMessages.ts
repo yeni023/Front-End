@@ -27,11 +27,11 @@ export const startStoryMessage = {
 };
 
 export const story1Message = {
-  text: "~~~~~~~~~~~~",
+  text: "이야기 생성",
   isUser: false
 };
 
 export const story2Message = {
-  text: "~~~~~, 뒤에 이어질 이야기를 작성해줘!",
+  text: "이야기 생성, 뒤에 이어질 이야기를 작성해줘!",
   isUser: false
 };
