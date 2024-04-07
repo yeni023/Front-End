@@ -6,11 +6,13 @@ import {
   initialMessages,
   notReadyMessage,
   startStoryMessage,
-  questions
+  questions,
+  initialChoices,
+  finalChoices
 } from "./ACchatMessages";
 
 const ChatAC: React.FC = () => {
-  const [messages, setMessages] = useState(initialMessages);
+  const [messages, setMessages] = useState(initialMessages("예은"));
   const [selectedChoice, setSelectedChoice] = useState("");
   const [questionIndex, setQuestionIndex] = useState<number>(-1);
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -32,20 +34,23 @@ const ChatAC: React.FC = () => {
   }, [messages]);
 
   const handleChoiceSelect = (choice: string) => {
-    if (choice === "아니") {
+    if (choice === initialChoices[1]) {
+      // 초기 선택지 배열로 참조
       setMessages([
         ...messages,
-        { text: "아니", isUser: true },
+        { text: initialChoices[1], isUser: true },
         { ...notReadyMessage }
       ]);
-    } else if (choice === "동화 이어서 만들기" || choice === "응, 준비됐어") {
+    } else if (choice === initialChoices[0] || choice === finalChoices[1]) {
+      // 초기 선택지 및 마지막 선택지 배열로 참조
       setMessages([
         ...messages,
         { text: choice, isUser: true },
         { ...startStoryMessage }
       ]);
       setQuestionIndex(0);
-    } else if (choice === "메인 홈으로 돌아가기") {
+    } else if (choice === finalChoices[0]) {
+      // 마지막 선택지 배열로 참조
       navigate("/MainHome");
     } else if (questionIndex !== -1) {
       const nextQuestionIndex = questionIndex + 1;
@@ -74,12 +79,12 @@ const ChatAC: React.FC = () => {
               index === messages.length - 1 &&
               (selectedChoice === "" ? (
                 <Choices
-                  choices={["응, 준비됐어", "아니"]}
+                  choices={initialChoices} // 초기 선택지 사용
                   onSelect={handleChoiceSelect}
                 />
-              ) : selectedChoice === "아니" ? (
+              ) : selectedChoice === initialChoices[1] ? (
                 <Choices
-                  choices={["메인 홈으로 돌아가기", "동화 이어서 만들기"]}
+                  choices={finalChoices} // 마지막 선택지 사용
                   onSelect={handleChoiceSelect}
                 />
               ) : (
