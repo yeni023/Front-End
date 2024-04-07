@@ -9,28 +9,21 @@ import {
   questions
 } from "./ACchatMessages";
 
-interface Message {
-  text: string;
-  isUser: boolean;
-}
-
 const ChatAC: React.FC = () => {
   const [messages, setMessages] = useState(initialMessages);
   const [selectedChoice, setSelectedChoice] = useState("");
-  const [isAIAsking, setIsAIAsking] = useState<boolean>(true);
-  const [questionIndex, setQuestionIndex] = useState<number>(-1); // 시작 시점에서는 질문 인덱스를 -1로 설정
+  const [questionIndex, setQuestionIndex] = useState<number>(-1);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
     if (questionIndex !== -1) {
-      // 질문 인덱스가 -1이 아닌 경우에만 질문을 추가
-      setMessages([
-        ...messages,
+      setMessages((prevMessages) => [
+        ...prevMessages,
         { text: questions[questionIndex].text, isUser: false }
       ]);
     }
-  }, [questionIndex]); // questionIndex가 변경될 때마다 useEffect 실행
+  }, [questionIndex]);
 
   useEffect(() => {
     if (messagesEndRef.current) {
@@ -39,7 +32,6 @@ const ChatAC: React.FC = () => {
   }, [messages]);
 
   const handleChoiceSelect = (choice: string) => {
-    setIsAIAsking(true);
     if (choice === "아니") {
       setMessages([
         ...messages,
@@ -52,11 +44,10 @@ const ChatAC: React.FC = () => {
         { text: choice, isUser: true },
         { ...startStoryMessage }
       ]);
-      setQuestionIndex(0); // 질문 인덱스를 0으로 설정하여 첫 번째 질문부터 시작
+      setQuestionIndex(0);
     } else if (choice === "메인 홈으로 돌아가기") {
       navigate("/MainHome");
     } else if (questionIndex !== -1) {
-      // 질문에 대한 선택을 한 경우에만 다음 질문을 표시
       const nextQuestionIndex = questionIndex + 1;
       if (nextQuestionIndex < questions.length) {
         setQuestionIndex(nextQuestionIndex);
@@ -81,7 +72,6 @@ const ChatAC: React.FC = () => {
             </Styles.MessageContainer>
             {!message.isUser &&
               index === messages.length - 1 &&
-              // 선택지 표시하는 부분 수정
               (selectedChoice === "" ? (
                 <Choices
                   choices={["응, 준비됐어", "아니"]}
