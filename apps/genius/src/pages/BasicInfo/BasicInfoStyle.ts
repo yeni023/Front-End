@@ -258,7 +258,7 @@ export const Img = styled.div`
   background: url(${Stone});
   background-repeat: no-repeat;
   background-size: cover;
-  margin-right: 30px;
+  margin-right: 40px;
   width: 170px;
   height: 200px;
 `;

@@ -80,24 +80,6 @@ export const MessagesList = styled.div`
     background: rgba(0, 0, 0, 0.1); /* Color of track */
   }
 `;
-// export const MessageContainer = styled.div<MessageProps>`
-//   padding: 10px;
-//   margin-bottom: 30px;
-//   width: fit-content;
-//   max-width: 60%;
-//   background-color: ${({ isUser }) => (isUser ? "#B5E4F8" : "#F8A31B")};
-//   border-radius: ${({ isUser }) =>
-//     isUser ? "50px 50px 5px 50px" : "50px 50px 50px 5px"};
-//   margin-left: ${({ isUser }) => (isUser ? "auto" : "0.4rem")};
-
-//   color: black;
-//   font-weight: 400;
-//   font-size: 1.6rem;
-//   line-height: 2rem;
-//   word-break: break-all;
-//   display: flex;
-//   justify-content: center;
-// `;
 
 export const MessageContainer = styled.div<MessageProps>`
   display: flex;
