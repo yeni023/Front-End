@@ -15,14 +15,8 @@ interface UserFormProps {
   onSubmit: (data: FormData) => void;
 }
 
-const BasicInfo: React.FC<UserFormProps> = ({ onSubmit }) => {
+const BasicInfo: React.FC<UserFormProps> = () => {
   const navigate = useNavigate();
-  const handleBackBtnClick = () => {
-    navigate(`/`);
-  };
-  const handleNextBtnClick = () => {
-    navigate(`/ChatDC`);
-  };
 
   const [formData, setFormData] = useState<FormData>({
     name: "",
@@ -63,19 +57,32 @@ const BasicInfo: React.FC<UserFormProps> = ({ onSubmit }) => {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    onSubmit(formData);
+  const handleNextBtnClick = () => {
+    if (validateFormData()) {
+      navigate(`/ChatDC`);
+      console.log(formData);
+    } else {
+      alert("주인공에 대한 정보를 모두 입력해주세요!");
+    }
+  };
+
+  const validateFormData = () => {
+    return (
+      formData.name !== "" &&
+      formData.gender !== "" &&
+      formData.personality !== "" &&
+      formData.story !== ""
+    );
   };
 
   return (
     <Styles.Container>
       <Styles.Title>주인공에 대해 알려줘!</Styles.Title>
       <Styles.BtnContainer>
-        <Styles.OkBtn onClick={handleBackBtnClick}>이전 단계로</Styles.OkBtn>
+        <Styles.OkBtn onClick={() => navigate(`/`)}>이전 단계로</Styles.OkBtn>
         <Styles.NoBtn onClick={handleNextBtnClick}>다음 단계로</Styles.NoBtn>
       </Styles.BtnContainer>
-      <Styles.FormContainer onSubmit={handleSubmit}>
+      <Styles.FormContainer>
         <Styles.Label>
           <Styles.Number>주인공의 이름</Styles.Number>
           <Styles.Img />
