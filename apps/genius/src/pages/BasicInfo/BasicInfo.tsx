@@ -1,7 +1,8 @@
-// UserForm.tsx
+// BasicInfo.tsx
 import React, { useState } from "react";
 import * as Styles from "./BasicInfoStyle";
 import { useNavigate } from "react-router-dom";
+import Label from "./Label";
 
 interface FormData {
   name: string;
@@ -33,7 +34,6 @@ const BasicInfo: React.FC<UserFormProps> = () => {
   ) => {
     const { name, value } = e.target;
     if (name === "age") {
-      // Ensure age is a valid number
       const parsedValue = parseInt(value, 10);
       if (!isNaN(parsedValue)) {
         setFormData({ ...formData, [name]: parsedValue });
@@ -45,16 +45,6 @@ const BasicInfo: React.FC<UserFormProps> = () => {
 
   const handleGenderChange = (gender: string) => {
     setFormData({ ...formData, gender });
-  };
-
-  const handleAgeIncrement = () => {
-    setFormData((prevData) => ({ ...prevData, age: prevData.age + 1 }));
-  };
-
-  const handleAgeDecrement = () => {
-    if (formData.age > 1) {
-      setFormData((prevData) => ({ ...prevData, age: prevData.age - 1 }));
-    }
   };
 
   const handleNextBtnClick = () => {
@@ -83,76 +73,50 @@ const BasicInfo: React.FC<UserFormProps> = () => {
         <Styles.NoBtn onClick={handleNextBtnClick}>다음 단계로</Styles.NoBtn>
       </Styles.BtnContainer>
       <Styles.FormContainer>
-        <Styles.Label>
-          <Styles.Number>주인공의 이름</Styles.Number>
-          <Styles.Img />
-          <Styles.Input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            placeholder="예시) 김미미"
-          />
-        </Styles.Label>
-        <Styles.Label>
-          <Styles.Number>주인공의 성별</Styles.Number>
-          <Styles.Img />
-          <Styles.Select
-            value={formData.gender || ""}
-            onChange={(e) => handleGenderChange(e.target.value)}
-          >
-            <Styles.Option value="" disabled hidden>
-              성별을 선택하세요
-            </Styles.Option>
-            <option value="Male">남자</option>
-            <option value="Female">여자</option>
-            <option value="Other">설정안함</option>
-          </Styles.Select>
-        </Styles.Label>
-
-        <Styles.Label>
-          <Styles.Number>주인공의 나이</Styles.Number>
-          <Styles.Img />
-          <Styles.AgeContainer>
-            <Styles.Button
-              type="button"
-              onClick={handleAgeDecrement}
-              disabled={formData.age <= 1}
-            >
-              -
-            </Styles.Button>
-            <Styles.AgeInput
-              type="number" // Change input type to number
-              name="age"
-              value={formData.age}
-              onChange={handleChange}
-            />
-            <Styles.Button type="button" onClick={handleAgeIncrement}>
-              +
-            </Styles.Button>
-          </Styles.AgeContainer>
-        </Styles.Label>
-        <Styles.Label>
-          <Styles.Number>주인공의 성격</Styles.Number>
-          <Styles.Img />
-          <Styles.Input
-            type="text"
-            name="personality"
-            value={formData.personality}
-            onChange={handleChange}
-            placeholder="예시) 용감하고 당돌한"
-          />
-        </Styles.Label>
-        <Styles.Label>
-          <Styles.Number>넣고 싶은 이야기</Styles.Number>
-          <Styles.Img />
-          <Styles.TextArea
-            name="story"
-            value={formData.story}
-            onChange={handleChange}
-            placeholder="예시) 김미미가 용을 물리치는 이야기"
-          />
-        </Styles.Label>
+        <Label
+          labelText="주인공의 이름"
+          inputType="text"
+          name="name"
+          value={formData.name}
+          onChange={handleChange}
+          placeholder="예시) 김미미"
+        />
+        <Label
+          labelText="주인공의 성별"
+          inputType="select"
+          name="gender"
+          value={formData.gender}
+          onChange={(e) => handleGenderChange(e.target.value)}
+          options={[
+            { value: "", label: "성별을 선택하세요" },
+            { value: "Male", label: "남자" },
+            { value: "Female", label: "여자" },
+            { value: "Other", label: "설정안함" }
+          ]}
+        />
+        <Label
+          labelText="주인공의 나이"
+          inputType="number"
+          name="age"
+          value={formData.age}
+          onChange={handleChange}
+        />
+        <Label
+          labelText="주인공의 성격"
+          inputType="text"
+          name="personality"
+          value={formData.personality}
+          onChange={handleChange}
+          placeholder="예시) 용감하고 당돌한"
+        />
+        <Label
+          labelText="넣고 싶은 이야기"
+          inputType="textarea"
+          name="story"
+          value={formData.story}
+          onChange={handleChange}
+          placeholder="예시) 김미미가 용을 물리치는 이야기"
+        />
       </Styles.FormContainer>
     </Styles.Container>
   );
