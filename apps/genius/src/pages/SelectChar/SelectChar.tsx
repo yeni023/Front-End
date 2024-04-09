@@ -17,6 +17,7 @@ const SelectChar: React.FC = () => {
         className={selectedCharacter === 'alKong' ? 'selected' : ''}
         onClick={() => goToCharacterPage('alKong')}
       >
+        <Styles.CharacterImage src='./src/assets/alkongcharacter.svg' alt="알콩이 이미지" />
         <Styles.AlKongButton
           onClick={() => goToCharacterPage('alKong')}
           isAlKong={selectedCharacter === 'alKong'}
@@ -29,6 +30,7 @@ const SelectChar: React.FC = () => {
         className={selectedCharacter === 'dalKong' ? 'selected' : ''}
         onClick={() => goToCharacterPage('dalKong')}
       >
+        <Styles.CharacterImage src='./src/assets/dalkongcharacter.svg' alt="달콩이 이미지" />
         <Styles.DalKongButton
           onClick={() => goToCharacterPage('dalKong')}
           isAlKong={selectedCharacter === 'dalKong'}

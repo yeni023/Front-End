@@ -18,40 +18,30 @@ const MainHome: React.FC = () => {
       <Styles.Navbar className="navbar">
         <Styles.MainMenu className="main-menu">
           <Styles.MenuItem>
-            <Link to="/">LOGO</Link>
+            <Link to="/" style={{textDecoration: 'none', color: '#8DD1BD'}}>LOGO</Link>
           </Styles.MenuItem>
 
           <Styles.MenuItem>
-            <Link to="/">주요기능</Link>
+            주요기능
             <Styles.SubMenu className="sub-menu">
-              <Styles.SubMenuItem>
-                <Link to="/CreateStory">동화제작</Link>
-              </Styles.SubMenuItem>
-              <Styles.SubMenuItem>
-                <Link to="/Store">상점</Link>
-              </Styles.SubMenuItem>
+              <Styles.SubMenuItem to="/CreateStory">동화제작</Styles.SubMenuItem>
+              <Styles.SubMenuItem to="/Store">상점</Styles.SubMenuItem>
             </Styles.SubMenu>
           </Styles.MenuItem>
 
           <Styles.MenuItem>
-            <Link to="/">동화찾기</Link>
+            동화찾기
             <Styles.SubMenu className="sub-menu">
-              <Styles.SubMenuItem>
-                <Link to="/PopularStories">인기동화</Link>
-              </Styles.SubMenuItem>
-              <Styles.SubMenuItem>
-                <Link to="/MyStories">나의동화</Link>
-              </Styles.SubMenuItem>
-              <Styles.SubMenuItem>
-                <Link to="/Search">검색</Link>
-              </Styles.SubMenuItem>
+              <Styles.SubMenuItem to="/PopularStories">인기동화</Styles.SubMenuItem>
+              <Styles.SubMenuItem to="/MyStories">나의동화</Styles.SubMenuItem>
+              <Styles.SubMenuItem to="/Search">검색</Styles.SubMenuItem>
             </Styles.SubMenu>
           </Styles.MenuItem>
 
           <Styles.MenuItem>
-            <Link to="/">고객센터</Link>
+            <Link to="/" style={{ textDecoration: 'none', color: '#8DD1BD' }}>고객센터</Link>
           </Styles.MenuItem>
-          </Styles.MainMenu>
+        </Styles.MainMenu>
 
         <div className="login-signup">
           <Link to="/Login">
