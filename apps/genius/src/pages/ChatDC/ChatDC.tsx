@@ -121,7 +121,7 @@ const ChatDC: React.FC = () => {
           <Styles.InputContainer>
             <Styles.Input
               type="text"
-              placeholder="알콩이에게 보낼 메시지를 입력해주세요"
+              placeholder="달콩이에게 보낼 메시지를 입력해주세요"
               value={userMessage}
               onChange={handleChange}
               onKeyPress={handleKeyPress}

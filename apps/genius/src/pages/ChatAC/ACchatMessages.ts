@@ -25,7 +25,7 @@ export const startStoryMessage = {
 export const questions: { text: string; choices: string[] }[] = [
   {
     text: "주인공의 이름이 뭐야?",
-    choices: ["루나", "아일리스", "피오나"]
+    choices: ["루나", "아일리스"]
   },
   {
     text: "주인공의 성격이 어때?",

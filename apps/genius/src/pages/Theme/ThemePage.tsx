@@ -63,7 +63,7 @@ const ThemePage: React.FC<ThemePageProps> = () => {
             title={theme.title}
             subjectImage={theme.subjectImage}
             onImageContainerClick={() => handleImageContainerClick(theme.id)}
-            delay={(index + 1) * 1000} // 각 Shape에 다른 delay 적용
+            delay={(index + 1) * 1000}
           />
         ))}
       </Styles.ShapeContainer>

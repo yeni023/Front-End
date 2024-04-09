@@ -15,11 +15,11 @@ const ThemePageNext: React.FC = () => {
   };
 
   const getThemeIndex = (id: number) => {
-    return Math.ceil(id / 3) - 1; // 테마의 인덱스 계산
+    return Math.ceil(id / 3) - 1;
   };
 
   const themeIndex = getThemeIndex(id);
-  const startIndex = themeIndex * 3 - 1; // 시작 인덱스 계산
+  const startIndex = themeIndex * 3 - 1;
 
   const getComponentIndex = (id: number) => {
     return (id - 1) % 3;

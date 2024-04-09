@@ -35,14 +35,12 @@ const ChatAC: React.FC = () => {
 
   const handleChoiceSelect = (choice: string) => {
     if (choice === initialChoices[1]) {
-      // 초기 선택지 배열로 참조
       setMessages([
         ...messages,
         { text: initialChoices[1], isUser: true },
         { ...notReadyMessage }
       ]);
     } else if (choice === initialChoices[0] || choice === finalChoices[1]) {
-      // 초기 선택지 및 마지막 선택지 배열로 참조
       setMessages([
         ...messages,
         { text: choice, isUser: true },
@@ -50,15 +48,12 @@ const ChatAC: React.FC = () => {
       ]);
       setQuestionIndex(0);
     } else if (choice === finalChoices[0]) {
-      // 마지막 선택지 배열로 참조
       navigate("/MainHome");
     } else if (questionIndex !== -1) {
       const nextQuestionIndex = questionIndex + 1;
       if (nextQuestionIndex < questions.length) {
         setQuestionIndex(nextQuestionIndex);
         setMessages([...messages, { text: ` ${choice}`, isUser: true }]);
-      } else {
-        // 모든 질문이 완료된 후에 추가적인 로직을 수행할 수 있음
       }
     }
     setSelectedChoice(choice);
@@ -79,14 +74,11 @@ const ChatAC: React.FC = () => {
               index === messages.length - 1 &&
               (selectedChoice === "" ? (
                 <Choices
-                  choices={initialChoices} // 초기 선택지 사용
+                  choices={initialChoices}
                   onSelect={handleChoiceSelect}
                 />
               ) : selectedChoice === initialChoices[1] ? (
-                <Choices
-                  choices={finalChoices} // 마지막 선택지 사용
-                  onSelect={handleChoiceSelect}
-                />
+                <Choices choices={finalChoices} onSelect={handleChoiceSelect} />
               ) : (
                 <Choices
                   choices={questions[questionIndex].choices}
