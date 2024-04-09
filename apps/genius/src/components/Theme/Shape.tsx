@@ -5,36 +5,36 @@ import * as Styles from "./ShapeStyle";
 interface ShapeProps {
   title: string;
   subjectImage: string;
-  onImageContainerClick: () => void; // 클릭 이벤트 핸들러 prop 추가
+  onImageContainerClick: () => void;
+  delay: number;
 }
 
 const Shape: React.FC<ShapeProps> = ({
   title,
   subjectImage,
-  onImageContainerClick
+  onImageContainerClick,
+  delay
 }) => {
   const [showButton, setShowButton] = useState<boolean>(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowButton(true);
-    }, 3000);
+    }, delay);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [delay]);
 
   return (
     <Styles.Container>
       <Styles.Glass>
         <Styles.Title>{title}</Styles.Title>
-        {showButton ? (
-          <Styles.ImageContainer
-            style={{ backgroundImage: `url(${subjectImage})` }}
-            onClick={onImageContainerClick} // 클릭 이벤트 핸들러 추가
-          />
-        ) : (
-          <Styles.SproutContainer />
-        )}
+        <Styles.SproutContainer show={!showButton} />
+        <Styles.ImageContainer
+          style={{ backgroundImage: `url(${subjectImage})` }}
+          onClick={onImageContainerClick}
+          show={showButton}
+        />
       </Styles.Glass>
       <Styles.Shadow />
     </Styles.Container>

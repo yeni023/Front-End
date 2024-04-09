@@ -3,7 +3,7 @@ import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import ShapeNext from "../../components/Theme/ShapeNext";
 import * as Styles from "./ThemePageStyle";
-import { themes } from "./ThemePage";
+import { themes } from "./themes";
 
 const ThemePageNext: React.FC = () => {
   const location = useLocation();
@@ -15,11 +15,11 @@ const ThemePageNext: React.FC = () => {
   };
 
   const getThemeIndex = (id: number) => {
-    return Math.ceil(id / 3) - 1; // 테마의 인덱스 계산
+    return Math.ceil(id / 3) - 1;
   };
 
   const themeIndex = getThemeIndex(id);
-  const startIndex = themeIndex * 3 - 1; // 시작 인덱스 계산
+  const startIndex = themeIndex * 3 - 1;
 
   const getComponentIndex = (id: number) => {
     return (id - 1) % 3;
@@ -36,7 +36,7 @@ const ThemePageNext: React.FC = () => {
         {[1, 2, 3].map((index) => (
           <ShapeNext
             key={startIndex + index}
-            title={themes[startIndex + index].title} // 해당 테마의 title 사용
+            title={themes[startIndex + index].title}
             isFlower={getComponentIndex(id) === index - 1}
           />
         ))}
