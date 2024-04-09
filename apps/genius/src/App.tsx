@@ -14,6 +14,7 @@ import ConfirmLevel from "./pages/ConfirmLevel/ConfirmLevel.tsx";
 import MakeBook from "./pages/Makebook/MakeBook.tsx";
 import MakeBook2 from "./pages/Makebook2/MakeBook2.tsx";
 import Login from "./pages/Login/Login.tsx";
+import Tutorial from "./pages/Tutorial/Tutorial.tsx";
 
 const App = () => {
   return (
@@ -33,6 +34,7 @@ const App = () => {
         <Route path="/Makebook" element={<MakeBook />} />
         <Route path="/Makebook2" element={<MakeBook2 />} />
         <Route path="/Login" element={<Login />} />
+        <Route path="/Tutorial" element={<Tutorial />} />
       </Routes>
     </Router>
   );
