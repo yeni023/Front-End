@@ -7,12 +7,14 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 50px;
-  width: 100vw;
-  max-width: 100%;
+  height: 100vh;
   justify-content: center;
   margin: 0 auto;
   overflow-x: hidden;
+  overflow-y: hidden;
+  background-color: #f0f0f0;
 `;
+
 
 export const Form = styled.form`
   width: 100%;
@@ -76,6 +78,7 @@ export const ForgotPasswordLink = styled.a`
   color: #9D9D9D;
   text-decoration: none;
   cursor: pointer;
+  border-bottom : 1px solid;
 `;
 
 export const Row = styled.div`

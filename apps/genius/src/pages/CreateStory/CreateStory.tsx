@@ -20,7 +20,7 @@ const CreateStory: React.FC = () => {
       alert('이름을 입력하세요!');
     } else {
       alert(`안녕하세요 ${trimmedNickname} 작가님! 환영합니다.`);
-      navigate('/SelectChar'); // "/SelectChar"로 이동
+      navigate('/Tutorial'); 
     }
   };
 
