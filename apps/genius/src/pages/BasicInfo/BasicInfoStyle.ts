@@ -1,6 +1,6 @@
 // BasicInfoStyle.tsx
 import styled from "styled-components";
-import DalkongBG from "../../assets/images/DalkongBG.png";
+import DalkongBG from "../../assets/images/DalkongBG.svg";
 import Stone from "../../assets/images/stone.png";
 
 export const Container = styled.div`
