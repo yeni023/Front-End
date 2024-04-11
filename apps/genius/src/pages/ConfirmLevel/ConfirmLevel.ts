@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import DalkongBG from "../../assets/images/DalkongBG.svg";
+import DalkongBG from "../../assets/images/AlkongBG.svg";
 
 export const Container = styled.div`
   background-image: url(${DalkongBG});
