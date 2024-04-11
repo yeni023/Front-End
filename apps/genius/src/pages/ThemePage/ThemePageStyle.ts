@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import AlkongBG from "../../assets/images/AlkongBG.png";
+import AlkongBG from "../../assets/images/AlkongBG.svg";
 
 export const BackgroundContainer = styled.div`
   background: url(${AlkongBG});

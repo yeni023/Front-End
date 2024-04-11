@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import alcong_bg from "../../assets/images/AlkongBG.png";
+import alcong_bg from "../../assets/images/AlkongBG.svg";
 import user1 from "../../assets/images/user1.png";
 import user2 from "../../assets/images/user2.png";
 
