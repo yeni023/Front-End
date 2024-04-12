@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import * as LoginStyle from './LoginStyle';
+import Navbar from '../Navbar/Navbar';
 
 interface LoginProps {}
 
@@ -15,6 +16,7 @@ const Login: React.FC<LoginProps> = () => {
 
   return (
     <LoginStyle.Container>
+      <Navbar />
       <h1>로그인</h1>
       <LoginStyle.Form>
         <LoginStyle.Row>

@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import * as SignUpStyle from './SignUpStyle';
+import Navbar from '../Navbar/Navbar';
 
 interface PhoneNumber {
   areaCode: string;
@@ -90,6 +91,7 @@ const SignUp: React.FC<SignUpProps> = () => {
 
   return (
     <SignUpStyle.Container>
+      <Navbar />
       <h1>{isSignUpComplete ? '회원가입 완료' : '회원가입'}</h1>
       {isSignUpComplete ? (
         <p>회원가입이 완료되었습니다. 환영합니다!</p>
