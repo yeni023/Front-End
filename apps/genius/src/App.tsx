@@ -22,6 +22,7 @@ import DalkongTutorial from "./pages/CharacterTutorial/DalkongTutorial.tsx";
 import AlkongTutorial from "./pages/CharacterTutorial/AlkongTutorial.tsx";
 import Navbar from "./pages/Navbar/Navbar.tsx";
 import SignUp from "./pages/SignUp/SignUp.tsx";
+import MyPage from "./pages/MyPage/MyPage.tsx";
 
 const App = () => {
   return (
@@ -50,6 +51,8 @@ const App = () => {
         <Route path="/SignUp" element={<SignUp />} />
         <Route path="/Navbar" element={<Navbar />} />
         <Route path="/SignUp" element={<SignUp />} />
+
+        <Route path="/MyPage" element={<MyPage />} />
       </Routes>
     </Router>
   );
