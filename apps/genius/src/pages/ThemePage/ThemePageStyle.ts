@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import DalkongBG from "../../assets/images/DalkongBG.svg";
+import AlkongBG from "../../assets/images/AlkongBG.svg";
 
 export const BackgroundContainer = styled.div`
-  background: url(${DalkongBG});
+  background: url(${AlkongBG});
   background-size: cover;
   background-position: center;
   width: 100vw;
@@ -44,7 +44,6 @@ export const RegenarateImg = styled.img`
 `;
 
 export const OkBtn = styled.button`
-  display: flex;
   justify-content: center;
 
   width: 328px;
@@ -63,7 +62,6 @@ export const OkBtn = styled.button`
   color: rgba(255, 255, 255, 0.76);
 `;
 export const NoBtn = styled.button`
-  display: flex;
   justify-content: center;
 
   width: 328px;
