@@ -16,7 +16,11 @@ import ConfirmLevel from "./pages/ConfirmLevel/ConfirmLevel.tsx";
 import MakeBook from "./pages/Makebook/MakeBook.tsx";
 import MakeBook2 from "./pages/Makebook2/MakeBook2.tsx";
 import Login from "./pages/Login/Login.tsx";
+import SignUp from "./pages/SignUp/SignUp.tsx";
 import Tutorial from "./pages/Tutorial/Tutorial.tsx";
+import DalkongTutorial from "./pages/CharacterTutorial/DalkongTutorial.tsx";
+import AlkongTutorial from "./pages/CharacterTutorial/AlkongTutorial.tsx";
+import Navbar from "./pages/Navbar/Navbar.tsx";
 import SignUp from "./pages/SignUp/SignUp.tsx";
 
 const App = () => {
@@ -41,6 +45,10 @@ const App = () => {
         <Route path="/Makebook2" element={<MakeBook2 />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/Tutorial" element={<Tutorial />} />
+        <Route path="/AlkongTutorial" element={<AlkongTutorial />} />
+        <Route path="/DalkongTutorial" element={<DalkongTutorial />} />
+        <Route path="/SignUp" element={<SignUp />} />
+        <Route path="/Navbar" element={<Navbar />} />
         <Route path="/SignUp" element={<SignUp />} />
       </Routes>
     </Router>

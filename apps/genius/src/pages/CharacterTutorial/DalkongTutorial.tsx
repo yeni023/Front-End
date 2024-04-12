@@ -1,10 +1,9 @@
 // Tutorial.tsx
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import * as TutorialStyle from './TutorialStyle';
-import Navbar from '../Navbar/Navbar';
+import * as TutorialStyle from './DalkongTutorialStyle';
 
-const Tutorial: React.FC = () => {
+const DalkongTutorial: React.FC = () => {
   const [currentStep, setCurrentStep] = useState<number>(1);
 
   const nextStep = () => {
@@ -14,7 +13,7 @@ const Tutorial: React.FC = () => {
   const getStepContent = () => {
     switch (currentStep) {
       case 2:
-        return '안녕, 우리는 너의 동화책 제작을 도울 알콩이, 달콩이라고 해. 우리의 이야기를 들어볼래?';
+        return '안녕, 나는 너의 동화책 제작을 도울 달콩이라고 해. 우리의 이야기를 들어볼래?';
       case 3:
         return '우리는 숲 속에 살고 있어. 어떤 이야기를 만들어볼래?';
       case 4:
@@ -26,14 +25,12 @@ const Tutorial: React.FC = () => {
       case 7:
         return '이제 너의 이야기를 만들 준비가 되었어! 함께 시작해볼까?';
       default:
-        return '안녕하세요! 동화책 만들기 튜토리얼에 오신 것을 환영합니다.';
+        return '안녕하세요! 달콩이와 동화 만들기 튜토리얼에 오신 것을 환영합니다.';
     }
   };
 
   return (
-    
     <TutorialStyle.TutorialContainer>
-      <Navbar /> 
       <TutorialStyle.BackgroundImage />
       <TutorialStyle.CharacterBubble>
         <TutorialStyle.CharacterImage />
@@ -45,9 +42,9 @@ const Tutorial: React.FC = () => {
         )}
       
       {currentStep === 7 && (
-        <Link to="/selectchar">
+        <Link to="/genre2">
           <TutorialStyle.ButtonContainer>
-          <TutorialStyle.EndButton>튜토리얼 마침</TutorialStyle.EndButton>
+          <TutorialStyle.EndButton>달콩이 이야기 마침</TutorialStyle.EndButton>
           </TutorialStyle.ButtonContainer>
         </Link>
       )}
@@ -56,4 +53,4 @@ const Tutorial: React.FC = () => {
   );
 };
 
-export default Tutorial;
+export default DalkongTutorial;

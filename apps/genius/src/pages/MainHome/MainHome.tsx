@@ -18,14 +18,14 @@ const MainHome: React.FC = () => {
       <Styles.Navbar className="navbar">
         <Styles.MainMenu className="main-menu">
           <Styles.MenuItem>
-            <Link to="/" style={{textDecoration: 'none', color: '#8DD1BD'}}>LOGO</Link>
+            <Link to="/MainHome" style={{textDecoration: 'none', color: '#8DD1BD'}}>LOGO</Link>
           </Styles.MenuItem>
 
           <Styles.MenuItem>
             주요기능
             <Styles.SubMenu className="sub-menu">
               <Styles.SubMenuItem to="/CreateStory">동화제작</Styles.SubMenuItem>
-              <Styles.SubMenuItem to="/Store">상점</Styles.SubMenuItem>
+              <Styles.SubMenuItem to="/Store">씨앗상점</Styles.SubMenuItem>
             </Styles.SubMenu>
           </Styles.MenuItem>
 

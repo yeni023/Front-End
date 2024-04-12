@@ -1,8 +1,7 @@
-// CreateStory.tsx
-
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as Styles from './CreateStoryStyle';
+import Navbar from '../Navbar/Navbar';
 
 const CreateStory: React.FC = () => {
   const [loaded, setLoaded] = useState(false);
@@ -33,30 +32,33 @@ const CreateStory: React.FC = () => {
   }, []);
 
   return (
-    <Styles.Container className={`content-container ${loaded ? 'loaded' : ''}`}>
-      <Styles.InputContainer
-        className={`input-container ${loaded ? 'loaded' : ''}`}
-        onTransitionEnd={handleInputContainerTransitionEnd}
-      >
-        <p>
-          안녕하세요 <Styles.GreetingText>{nickname || '__________'}</Styles.GreetingText> 작가님!
-        </p>
-        <p style={{ marginBottom: 0 }}>
-          동화를 만들 작가님의 이름을 입력해주세요.
-        </p>
-        <Styles.NicknameInput
-          type="text"
-          id="nicknameInput"
-          placeholder="이름을 입력하세요"
-          onInput={updateGreeting}
-        />
-        <div>
-          <Styles.SubmitBtn id="submitBtn" onClick={showGreeting}>
-            제출하기
-          </Styles.SubmitBtn>
-        </div>
-      </Styles.InputContainer>
-    </Styles.Container>
+    <div>
+      <Navbar /> 
+      <Styles.Container className={`content-container ${loaded ? 'loaded' : ''}`}>
+        <Styles.InputContainer
+          className={`input-container ${loaded ? 'loaded' : ''}`}
+          onTransitionEnd={handleInputContainerTransitionEnd}
+        >
+          <p>
+            안녕하세요 <Styles.GreetingText>{nickname || '__________'}</Styles.GreetingText> 작가님!
+          </p>
+          <p style={{ marginBottom: 0 }}>
+            동화를 만들 작가님의 이름을 입력해주세요.
+          </p>
+          <Styles.NicknameInput
+            type="text"
+            id="nicknameInput"
+            placeholder="이름을 입력하세요"
+            onInput={updateGreeting}
+          />
+          <div>
+            <Styles.SubmitBtn id="submitBtn" onClick={showGreeting}>
+              제출하기
+            </Styles.SubmitBtn>
+          </div>
+        </Styles.InputContainer>
+      </Styles.Container>
+    </div>
   );
 };
 

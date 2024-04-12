@@ -1,4 +1,3 @@
-// TutorialStyle.ts
 import styled from 'styled-components';
 
 export const TutorialContainer = styled.div`
@@ -10,8 +9,9 @@ export const TutorialContainer = styled.div`
 `;
 
 export const BackgroundImage = styled.div`
-  background: url('src/assets/images/forest.jpg') no-repeat center center fixed;
+  background: url('src/assets/images/DalkongBG.svg') no-repeat center center fixed;
   background-size: cover;
+  background-position: center;
   width: 100%;
   height: 100%;
 `;
@@ -30,11 +30,11 @@ export const CharacterBubble = styled.div`
 `;
 
 export const CharacterImage = styled.div`
-  background: url('src/assets/images/character.png') no-repeat center center;
+  background: url('src/assets/images/dalkongcharacter.png') no-repeat center center;
   background-size: contain;
-  width: 500px;
-  height: 370px;
-  margin-top: 160px;
+  width: 400px;
+  height: 400px;
+  margin-top: 75px;
   margin-bottom: 10px;
   align-items: center;
 `;
@@ -43,15 +43,15 @@ export const StepContent = styled.div`
   font-size: 1.2em;
   white-space: pre-line;
   background-color: #fff;
-  padding: 100px 60px;
+  padding: 110px 65px;
   border-radius: 100%;
   position: absolute;
   left: 50%;
-  top: 30%;
+  top: 80px;
   font-size: 23px;
   transform: translate(-50%, -90%);
   width: 100%;
-  border: 1.5px solid lightseagreen;
+  border: 4px solid lightseagreen;
   text-align: center;
   
 `;
@@ -65,13 +65,13 @@ export const ButtonContainer = styled.div` /* 새로운 컨테이너 스타일 �
 export const NextButton = styled.button`
   background-color: #fff;
   color: #8DD1BD;
-  padding: 15px 30px;
+  padding: 15px 35px;
   font-size: 1.2em;
   font-weight: bold;
   border-radius: 10px;
   cursor: pointer;
   margin-top: 10px;
-  border: 3px solid lightblue;
+  border: 2px solid lightblue;
 
   &:hover {
     background-color: #4da351;
@@ -81,18 +81,16 @@ export const NextButton = styled.button`
 
 export const EndButton = styled.button`
   background-color: #fff;
-  color: #000;
+  color: #7EC7B1;
   padding: 15px 30px;
   font-size: 1.2em;
   font-weight: bold;
   border-radius: 10px;
   cursor: pointer;
   margin-top: 10px;
-  border: 3px solid lightblue;
-
+  border: 2px solid #7EC7B1;
 
   &:hover {
-    background-color: #4da351;
-    color: #fff;
+    background-color: #7EC7B1;
   }
 `;

@@ -39,7 +39,7 @@ export const AppContainer = styled.div`
 export const Navbar = styled.div`
   background-color: #fff;
   width: 100%;
-  height: 95px;
+  height: 90px;
   position: fixed;
   top: 0;
   left: 0;
@@ -53,9 +53,9 @@ export const Navbar = styled.div`
 export const MainMenu = styled.div`
   display: flex;
   margin-left: 8px;
-  top: 6px;
+  top: 4px;
   align-items: center;
-  padding: 10px 15px;
+  padding: 18px 18px;
   white-space: nowrap;
   gap: 145px;
   position: relative; /* 메인 메뉴에 상대적으로 위치 지정 */
@@ -65,8 +65,9 @@ export const MenuItem = styled.div`
   position: relative;
   text-decoration: none;
   color: #9d9d9d;
-  font-size: 22px;
-  padding: 15px 20px;
+  display: block;
+  font-size: 23px;
+  padding: 20px 25px;
   cursor: pointer;
 
   &:hover {
@@ -76,19 +77,19 @@ export const MenuItem = styled.div`
 
 export const SubMenu = styled.div`
   position: absolute;
-  top: 62px;
-  left: -10px;
+  top: 76px;
+  left: -6px;
   width: 150px;
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   white-space: nowrap;
   overflow: hidden;
-  animation: ${slideDown} 0.3s ease forwards;
+  animation: ${slideDown} 0.4s ease forwards;
   opacity: 0;
   display: none; /* 초기에는 서브메뉴를 보이지 않도록 설정 */
 
   ${MenuItem}:hover & {
-    display: block; /* 메인 메뉴를 호버했을 때만 서브메뉴를 보이도록 설정 */
+    display: inline-block; /* 메인 메뉴를 호버했을 때만 서브메뉴를 보이도록 설정 */
     opacity: 1;
   }
 `;

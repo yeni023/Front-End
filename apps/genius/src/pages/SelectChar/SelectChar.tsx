@@ -1,7 +1,7 @@
-// SelectChar.tsx
-
 import React, { useState } from 'react';
 import * as Styles from './SelectCharStyle';
+import { Link } from 'react-router-dom';
+import Navbar from '../Navbar/Navbar';
 
 const SelectChar: React.FC = () => {
   const [selectedCharacter, setSelectedCharacter] = useState<string | null>(null);
@@ -12,31 +12,37 @@ const SelectChar: React.FC = () => {
 
   return (
     <Styles.AppContainer>
+      
       <Styles.CharacterContainer
         id="character1"
         className={selectedCharacter === 'alKong' ? 'selected' : ''}
         onClick={() => goToCharacterPage('alKong')}
       >
-        <Styles.CharacterImage src='./src/assets/alkongcharacter.svg' alt="알콩이 이미지" />
-        <Styles.AlKongButton
-          onClick={() => goToCharacterPage('alKong')}
-          isAlKong={selectedCharacter === 'alKong'}
-        >
-          알콩이와 동화만들기
-        </Styles.AlKongButton>
+        <Link to="/AlkongTutorial">
+          <Styles.CharacterImage src='./src/assets/images/alkongcharacter.png' alt="알콩이 이미지" />
+          <Styles.AlKongButton
+            onClick={() => goToCharacterPage('alKong')}
+            isAlKong={selectedCharacter === 'alKong'}
+          >
+            알콩이와 동화만들기
+          </Styles.AlKongButton>
+        </Link>
       </Styles.CharacterContainer>
       <Styles.CharacterContainer
         id="character2"
         className={selectedCharacter === 'dalKong' ? 'selected' : ''}
         onClick={() => goToCharacterPage('dalKong')}
       >
-        <Styles.CharacterImage src='./src/assets/dalkongcharacter.svg' alt="달콩이 이미지" />
-        <Styles.DalKongButton
-          onClick={() => goToCharacterPage('dalKong')}
-          isAlKong={selectedCharacter === 'dalKong'}
-        >
-          달콩이와 동화만들기
-        </Styles.DalKongButton>
+        <Link to="/DalkongTutorial">
+          <Styles.CharacterImage src='./src/assets/images/dalkongcharacter.png' alt="달콩이 이미지" />
+          <Styles.DalKongButton
+            onClick={() => goToCharacterPage('dalKong')}
+            isAlKong={selectedCharacter === 'dalKong'}
+          >
+            달콩이와 동화만들기
+          </Styles.DalKongButton>
+        </Link>
+        <Navbar />
       </Styles.CharacterContainer>
     </Styles.AppContainer>
   );
