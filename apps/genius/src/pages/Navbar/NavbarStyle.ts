@@ -32,7 +32,7 @@ export const MainMenu = styled.div`
   margin-left: 8px;
   top: 4px;
   align-items: center;
-  padding: 18px 18px;
+  padding: 19px 18px;
   white-space: nowrap;
   gap: 145px;
   position: relative; /* 메인 메뉴에 상대적으로 위치 지정 */
@@ -54,7 +54,7 @@ export const MenuItem = styled.div`
 
 export const SubMenu = styled.div`
   position: absolute;
-  top: 76px;
+  top: 75px;
   left: -6px;
   width: 150px;
   background-color: #fff;

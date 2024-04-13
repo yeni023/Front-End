@@ -22,6 +22,8 @@ import DalkongTutorial from "./pages/CharacterTutorial/DalkongTutorial.tsx";
 import AlkongTutorial from "./pages/CharacterTutorial/AlkongTutorial.tsx";
 import Navbar from "./pages/Navbar/Navbar.tsx";
 import MyPage from "./pages/MyPage/MyPage.tsx";
+import MyBook from "./pages/MyBook/MyBook.tsx";
+import Store from "./pages/Store/Store.tsx";
 
 const App = () => {
   return (
@@ -35,7 +37,6 @@ const App = () => {
         <Route path="/CreateStory" element={<CreateStory />} />
         <Route path="/SelectChar" element={<SelectChar />} />
         <Route path="/ThemePageNext" element={<ThemePageNext />} />
-
         <Route path="/BasicInfo" element={<BasicInfo />} />
         <Route path="/ChatDC" element={<ChatDC />} />
         <Route path="/ChatAC" element={<ChatAC />} />
@@ -50,6 +51,8 @@ const App = () => {
         <Route path="/Navbar" element={<Navbar />} />
         <Route path="/SignUp" element={<SignUp />} />
         <Route path="/MyPage" element={<MyPage />} />
+        <Route path="/MyBook" element={<MyBook />} />
+        <Route path="/Store" element={<Store />} />
       </Routes>
     </Router>
   );

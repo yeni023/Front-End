@@ -1,5 +1,15 @@
 // TutorialStyle.ts
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
+
 
 export const TutorialContainer = styled.div`
   position: relative;
@@ -53,7 +63,7 @@ export const StepContent = styled.div`
   width: 100%;
   border: 1.5px solid lightseagreen;
   text-align: center;
-  
+  animation: ${fadeIn} 0.8s ease-in-out; /* fadeIn 애니메이션 적용 */
 `;
 
 export const ButtonContainer = styled.div` /* 새로운 컨테이너 스타일 추가 */
