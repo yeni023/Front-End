@@ -1,8 +1,113 @@
 // Tutorial.tsx
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import * as TutorialStyle from './TutorialStyle';
+import styled, { keyframes } from 'styled-components';
 import Navbar from '../Navbar/Navbar';
+
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
+
+const TutorialContainer = styled.div`
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+`;
+
+const BackgroundImage = styled.div`
+  background: url('src/assets/images/forest.jpg') no-repeat center center fixed;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+`;
+
+const CharacterBubble = styled.div`
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: ${fadeIn} 0.9s ease-in-out;
+`;
+
+const CharacterImage = styled.div`
+  background: url('src/assets/images/character.png') no-repeat center center;
+  background-size: contain;
+  width: 500px;
+  height: 370px;
+  margin-top: 160px;
+  margin-bottom: 10px;
+  align-items: center;
+`;
+
+const StepContent = styled.div`
+  font-size: 1.2em;
+  white-space: pre-line;
+  background-color: #fff;
+  padding: 100px 60px;
+  border-radius: 100%;
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  font-size: 23px;
+  transform: translate(-50%, -90%);
+  width: 100%;
+  border: 1.5px solid lightseagreen;
+  text-align: center;
+  animation: ${fadeIn} 0.5s ease-in-out; /* fadeIn 애니메이션 적용 */
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const NextButton = styled.button`
+  background-color: #fff;
+  color: #8DD1BD;
+  padding: 15px 30px;
+  font-size: 1.2em;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 10px;
+  border: 3px solid lightblue;
+
+  &:hover {
+    background-color: #4da351;
+    color: #fff;
+  }
+`;
+
+const EndButton = styled.button`
+  background-color: #fff;
+  color: #000;
+  padding: 15px 30px;
+  font-size: 1.2em;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 10px;
+  border: 3px solid lightblue;
+
+  &:hover {
+    background-color: #4da351;
+    color: #fff;
+  }
+`;
 
 const Tutorial: React.FC = () => {
   const [currentStep, setCurrentStep] = useState<number>(1);
@@ -31,28 +136,27 @@ const Tutorial: React.FC = () => {
   };
 
   return (
-    
-    <TutorialStyle.TutorialContainer>
-      <Navbar /> 
-      <TutorialStyle.BackgroundImage />
-      <TutorialStyle.CharacterBubble>
-        <TutorialStyle.CharacterImage />
-        <TutorialStyle.StepContent>{getStepContent()}</TutorialStyle.StepContent>
+    <TutorialContainer>
+      <Navbar />
+      <BackgroundImage />
+      <CharacterBubble>
+        <CharacterImage />
+        <StepContent key={currentStep}>{getStepContent()}</StepContent> {/* 키 추가 */}
         {currentStep < 7 && (
-          <TutorialStyle.ButtonContainer>
-            <TutorialStyle.NextButton onClick={nextStep}>다음으로</TutorialStyle.NextButton>
-          </TutorialStyle.ButtonContainer>
+          <ButtonContainer>
+            <NextButton onClick={nextStep}>다음으로</NextButton>
+          </ButtonContainer>
         )}
-      
-      {currentStep === 7 && (
-        <Link to="/selectchar">
-          <TutorialStyle.ButtonContainer>
-          <TutorialStyle.EndButton>튜토리얼 마침</TutorialStyle.EndButton>
-          </TutorialStyle.ButtonContainer>
-        </Link>
-      )}
-      </TutorialStyle.CharacterBubble>
-    </TutorialStyle.TutorialContainer>
+
+        {currentStep === 7 && (
+          <Link to="/selectchar">
+            <ButtonContainer>
+              <EndButton>튜토리얼 마침</EndButton>
+            </ButtonContainer>
+          </Link>
+        )}
+      </CharacterBubble>
+    </TutorialContainer>
   );
 };
 

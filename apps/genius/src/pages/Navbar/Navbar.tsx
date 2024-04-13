@@ -23,7 +23,7 @@ const Navbar: React.FC = () => {
           동화찾기
           <Styles.SubMenu>
             <Styles.SubMenuItem to="/PopularStories">인기동화</Styles.SubMenuItem>
-            <Styles.SubMenuItem to="/MyStories">나의동화</Styles.SubMenuItem>
+            <Styles.SubMenuItem to="/MyBook">나의동화</Styles.SubMenuItem>
             <Styles.SubMenuItem to="/Search">검색</Styles.SubMenuItem>
           </Styles.SubMenu>
         </Styles.MenuItem>

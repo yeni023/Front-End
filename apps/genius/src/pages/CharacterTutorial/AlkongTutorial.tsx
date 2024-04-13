@@ -1,4 +1,4 @@
-// Tutorial.tsx
+// AlkongTutorial.tsx
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import * as TutorialStyle from './AlkongTutorialStyle';
@@ -34,7 +34,7 @@ const AlkongTutorial: React.FC = () => {
       <TutorialStyle.BackgroundImage />
       <TutorialStyle.CharacterBubble>
         <TutorialStyle.CharacterImage />
-        <TutorialStyle.StepContent>{getStepContent()}</TutorialStyle.StepContent>
+        <TutorialStyle.StepContent key={currentStep}>{getStepContent()}</TutorialStyle.StepContent> {/* 키 추가 */}
         {currentStep < 7 && (
           <TutorialStyle.ButtonContainer>
             <TutorialStyle.NextButton onClick={nextStep}>다음으로</TutorialStyle.NextButton>
