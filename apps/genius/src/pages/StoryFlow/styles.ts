@@ -1,5 +1,4 @@
 import styled from "styled-components";
-// import BackgroundImage from "../../assets/StoryFlow/Background.png";
 
 export const Container = styled.div`
   background-color: #eba5a5;
