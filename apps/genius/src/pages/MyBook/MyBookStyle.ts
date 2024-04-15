@@ -1,4 +1,3 @@
-// MyBookStyle.ts
 import styled from 'styled-components';
 
 export const Container = styled.div`
@@ -7,28 +6,28 @@ export const Container = styled.div`
   background-color: #e7e7e7;
   display: flex;
   flex-direction: column;
-  align-items: center; 
+  align-items: center;
 `;
 
 export const Header = styled.div`
   width: 100%;
   padding: 20px 0; 
-  text-align: left; 
-  font-size: 40px; 
+  text-align: left;
+  font-size: 40px;
   font-weight: 600;
   color: #000;
-  position: absolute; 
-  top: 15%; 
-  left: 60%; 
-  transform: translateX(-50%); 
+  position: absolute;
+  top: 15%;
+  left: 60%;
+  transform: translateX(-50%);
 `;
 
 export const MenuContainer = styled.div`
-position: relative;
+  position: relative;
   display: flex;
-  justify-content: center; 
+  justify-content: center;
   width: 80%;
-  margin-top: 260px; /* 상단 여백을 조정 */
+  margin-top: 260px;
   margin-bottom: 20px;
 `;
 

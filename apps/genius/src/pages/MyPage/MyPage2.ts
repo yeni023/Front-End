@@ -3,10 +3,6 @@ import SeedNum from "../../assets/images/SeedNum.svg";
 import MyPageBook from "../../assets/images/MyPageBook.svg";
 import MyPageFlower from "../../assets/images/MyPageFlower.svg";
 import MyPageForest from "../../assets/images/MyPageForest.svg";
-import MyPageBookText from "../../assets/images/BookText.svg";
-import MyPageFlowerText from "../../assets/images/FlowerText.svg";
-import MyPageForestText from "../../assets/images/ForestText.svg";
-import QuestionImage from "../../assets/images/Question.svg";
 
 export const PageContainer = styled.div`
   display: flex;
@@ -173,48 +169,15 @@ export const SocialButtonsContainer = styled.div`
   margin-top: 40px;
 `;
 
-export const SeedNumButtonContainer = styled.div`
-  position: relative;
-  width: 500px;
-  height: 250px;
-  transform: translateX(-11%);
-  margin-top: 30px;
-`;
-
 export const SeedNumButton = styled(SocialButton)`
   background-image: url(${SeedNum});
-  background-size: cover;
+  background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  width: 100%;
-  height: 100%;
-`;
-
-export const QuestionButton = styled.button`
-  background-image: url(${QuestionImage});
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-color: #ffffff;
-  width: 45px;
-  height: 45px;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  position: absolute;
-  top: 52%;
-  right: 22px;
-  transform: translateY(-50%);
-`;
-
-export const AnswerImg = styled.img`
-  position: absolute;
-  top: 30%;
-  right: -60px;
-  transform: translateY(-90%);
-  width: 360px;
-  height: auto;
-  display: block;
+  width: 400px;
+  height: 200px;
+  transform: translateX(-11%);
+  margin-top: 30px;
 `;
 
 export const BookButton = styled.button`
@@ -222,7 +185,6 @@ export const BookButton = styled.button`
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-color: #ffffff;
   width: 600px;
   height: 400px;
   border: none;
@@ -233,18 +195,12 @@ export const BookButton = styled.button`
   padding: 0;
   transition:
     transform 0.3s ease,
-    box-shadow 0.3s ease,
-    background-image 0.3s ease,
-    background-size 0.3s ease,
-    background-color 0.3s ease;
+    box-shadow 0.3s ease;
   outline: none;
 
   &:hover {
     transform: scale(1.05);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
-    background-image: url(${MyPageBookText});
-    background-size: 80%;
-    background-color: #ffffff;
   }
 `;
 
@@ -253,7 +209,6 @@ export const FlowerButton = styled.button`
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-color: #ffffff;
   width: 600px;
   height: 400px;
   border: none;
@@ -264,18 +219,11 @@ export const FlowerButton = styled.button`
   padding: 0;
   transition:
     transform 0.3s ease,
-    box-shadow 0.3s ease,
-    background-image 0.3s ease,
-    background-size 0.3s ease,
-    background-color 0.3s ease;
-  outline: none;
+    box-shadow 0.3s ease;
 
   &:hover {
     transform: scale(1.05);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
-    background-image: url(${MyPageFlowerText});
-    background-size: 80%;
-    background-color: #ffffff;
   }
 `;
 
@@ -284,7 +232,6 @@ export const ForestButton = styled.button`
   background-size: 113% 113%;
   background-position: center;
   background-repeat: no-repeat;
-  background-color: #ffffff;
   width: 1250px;
   height: 400px;
   border: none;
@@ -295,17 +242,10 @@ export const ForestButton = styled.button`
   padding: 0;
   transition:
     transform 0.3s ease,
-    box-shadow 0.3s ease,
-    background-image 0.3s ease,
-    background-size 0.3s ease,
-    background-color 0.3s ease;
-  outline: none;
+    box-shadow 0.3s ease;
 
   &:hover {
     transform: scale(1.05);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
-    background-image: url(${MyPageForestText});
-    background-size: 60% 60%;
-    background-color: #ffffff;
   }
 `;
