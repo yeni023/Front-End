@@ -1,8 +1,8 @@
+// 나의 책장 버튼 누른 후 첫 화면
 import styled from "styled-components";
 import SeedNum from "../../assets/images/SeedNum.svg";
-import MyPageBook from "../../assets/images/MyPageBook.svg";
-import MyPageFlower from "../../assets/images/MyPageFlower.svg";
-import MyPageForest from "../../assets/images/MyPageForest.svg";
+import QuestionImage from "../../assets/images/Question.svg";
+import ButtonImage from "../../assets/images/BookSample.svg";
 
 export const PageContainer = styled.div`
   display: flex;
@@ -90,6 +90,7 @@ export const ColorSection = styled.div`
   justify-content: flex-start;
   padding-top: 155px;
   position: relative;
+  z-index: 1;
 `;
 
 type ProfileButtonProps = {
@@ -169,83 +170,118 @@ export const SocialButtonsContainer = styled.div`
   margin-top: 40px;
 `;
 
-export const SeedNumButton = styled(SocialButton)`
-  background-image: url(${SeedNum});
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  width: 400px;
-  height: 200px;
+export const SeedNumButtonContainer = styled.div`
+  position: relative;
+  width: 500px;
+  height: 250px;
   transform: translateX(-11%);
   margin-top: 30px;
 `;
 
-export const BookButton = styled.button`
-  background-image: url(${MyPageBook});
+export const SeedNumButton = styled(SocialButton)`
+  background-image: url(${SeedNum});
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  width: 600px;
-  height: 400px;
-  border: none;
-  border-radius: 40px;
-  cursor: pointer;
-  display: block;
-  margin: 0 20px;
-  padding: 0;
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
-  outline: none;
-
-  &:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
-  }
+  width: 100%;
+  height: 100%;
 `;
 
-export const FlowerButton = styled.button`
-  background-image: url(${MyPageFlower});
+export const QuestionButton = styled.button`
+  background-image: url(${QuestionImage});
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  width: 600px;
+  background-color: #ffffff;
+  width: 45px;
+  height: 45px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  position: absolute;
+  top: 52%;
+  right: 22px;
+  transform: translateY(-50%);
+`;
+
+export const AnswerImg = styled.img`
+  position: absolute;
+  top: 30%;
+  right: -60px;
+  transform: translateY(-90%);
+  width: 360px;
+  height: auto;
+  display: block;
+`;
+
+export const SampleButton = styled.button`
+  position: relative;
+  width: 300px;
   height: 400px;
   border: none;
-  border-radius: 40px;
   cursor: pointer;
-  display: block;
-  margin: 0 20px;
-  padding: 0;
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
+  justify-content: center;
+  flex-direction: column;
+  margin: 10px;
+  overflow: hidden;
 
-  &:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url(${ButtonImage});
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: opacity 0.3s ease-in-out;
+    opacity: 1;
+  }
+
+  &:hover:before {
+    opacity: 0.7;
   }
 `;
 
-export const ForestButton = styled.button`
-  background-image: url(${MyPageForest});
-  background-size: 113% 113%;
-  background-position: center;
-  background-repeat: no-repeat;
-  width: 1250px;
-  height: 400px;
-  border: none;
-  border-radius: 40px;
-  cursor: pointer;
-  display: block;
-  margin: 20px auto;
-  padding: 0;
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
+export const ButtonRow = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  gap: 90px;
+  align-items: center;
+  position: absolute;
+  top: 250px;
+  left: 31%;
+  right: 0%;
+  background-color: transparent;
+  width: 80%;
+  padding-left: 50px;
+  z-index: 3;
+`;
 
+interface HoverButtonProps {
+  bgImage: string;
+}
+
+export const HoverButton = styled.button<HoverButtonProps>`
+  position: absolute;
+  top: 60%;
+  left: 33%;
+  transform: translate(-50%, -50%);
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background-image: url(${(props) => props.bgImage});
+  background-size: cover;
+  border: none;
+  cursor: pointer;
+  opacity: 1;
+  transition:
+    opacity 0.3s ease-in-out,
+    box-shadow 0.3s ease-in-out;
   &:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 0 8px 4px rgba(0, 0, 0, 0.6);
   }
+  margin: 5px;
 `;
