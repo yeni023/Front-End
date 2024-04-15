@@ -22,14 +22,14 @@ const Navbar: React.FC = () => {
         <Styles.MenuItem>
           동화찾기
           <Styles.SubMenu>
-            <Styles.SubMenuItem to="/PopularStories">인기동화</Styles.SubMenuItem>
+            <Styles.SubMenuItem to="/PopularBook">인기동화</Styles.SubMenuItem>
             <Styles.SubMenuItem to="/MyBook">나의동화</Styles.SubMenuItem>
             <Styles.SubMenuItem to="/Search">검색</Styles.SubMenuItem>
           </Styles.SubMenu>
         </Styles.MenuItem>
 
         <Styles.MenuItem>
-          <Link to="/" style={{ textDecoration: 'none', color: '#8DD1BD' }}>고객센터</Link>
+          <Link to="/Service" style={{ textDecoration: 'none', color: '#8DD1BD' }}>고객센터</Link>
         </Styles.MenuItem>
       </Styles.MainMenu>
 
