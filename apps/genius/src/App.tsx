@@ -21,6 +21,7 @@ import Tutorial from "./pages/Tutorial/Tutorial.tsx";
 import DalkongTutorial from "./pages/CharacterTutorial/DalkongTutorial.tsx";
 import AlkongTutorial from "./pages/CharacterTutorial/AlkongTutorial.tsx";
 import Navbar from "./pages/Navbar/Navbar.tsx";
+import MyBasic from "./pages/MyPage/MyBasic.tsx";
 import MyPage from "./pages/MyPage/MyPage.tsx";
 import MyPage2 from "./pages/MyPage/MyPage2.tsx";
 import MyBook from "./pages/Search/MyBook.tsx";
@@ -53,6 +54,7 @@ const App = () => {
         <Route path="/DalkongTutorial" element={<DalkongTutorial />} />
         <Route path="/Navbar" element={<Navbar />} />
         <Route path="/SignUp" element={<SignUp />} />
+        <Route path="/MyBasic" element={<MyBasic />} />
         <Route path="/MyPage" element={<MyPage />} />
         <Route path="/MyPage2" element={<MyPage2 />} />
         <Route path="/MyBook" element={<MyBook />} />
