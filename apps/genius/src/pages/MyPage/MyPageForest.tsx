@@ -1,11 +1,7 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import {
   PageContainer,
   TopBar,
-  Logo,
-  NavButton,
-  ButtonGroup,
   ImageSection,
   ColorSection,
   ProfileButton,
@@ -18,43 +14,28 @@ import {
   SeedNumButton,
   QuestionButton,
   AnswerImg,
-  BookButton,
-  FlowerButton,
-  ForestButton,
-  TopButtonContainer,
-  BottomButtonContainer
-} from "./MyPage";
+  ForestButtonContainer,
+  ForestButton
+} from "./MyPageForest";
+
 import bgImage from "../../assets/images/MyPageBG.svg";
 import profileImage from "../../assets/images/MyProfile.svg";
 import followingImage from "../../assets/images/Following.svg";
 import followerImage from "../../assets/images/Follower.svg";
 import AnswerImage from "../../assets/images/Answer.svg";
+import ForestTextImage from "../../assets/images/ForestTitle.svg";
 
-const MyPage: React.FC = () => {
-  const navigate = useNavigate();
+const MyPageForest: React.FC = () => {
   const [showAnswer, setShowAnswer] = useState(false);
-
   const handleQuestionClick = () => {
     setShowAnswer(true);
     setTimeout(() => {
       setShowAnswer(false);
     }, 3000);
   };
-
-  const handleBookButtonClick = () => {
-    navigate("/MyPageBook");
-  };
-
   return (
     <PageContainer>
-      <TopBar>
-        <Logo src="path_to_logo.png" alt="Logo" />
-        <ButtonGroup>
-          <NavButton>Find a Fairy Tale</NavButton>
-          <NavButton>Customer Support</NavButton>
-          <NavButton>My Page</NavButton>
-        </ButtonGroup>
-      </TopBar>
+      <TopBar></TopBar>
       <ImageSection bgImage={bgImage}>
         <ProfileButton
           image={profileImage}
@@ -85,16 +66,35 @@ const MyPage: React.FC = () => {
         </SeedNumButtonContainer>
       </ImageSection>
       <ColorSection>
-        <TopButtonContainer>
-          <BookButton onClick={handleBookButtonClick} />
-          <FlowerButton onClick={() => console.log("Flower button clicked!")} />
-        </TopButtonContainer>
-        <BottomButtonContainer>
-          <ForestButton onClick={() => console.log("Forest button clicked!")} />
-        </BottomButtonContainer>
+        <ForestButtonContainer>
+          <ForestButton></ForestButton>
+        </ForestButtonContainer>
+        <div
+          style={{
+            width: "100%",
+            display: "flex",
+            justifyContent: "flex-start",
+            alignItems: "flex-start",
+            height: "100%",
+            padding: "20px"
+          }}
+        >
+          <img
+            src={ForestTextImage}
+            alt="Forest Text"
+            style={{
+              maxWidth: "100%",
+              maxHeight: "100%",
+              height: "auto",
+              position: "relative",
+              left: "40px",
+              top: "-60px"
+            }}
+          />
+        </div>
       </ColorSection>
     </PageContainer>
   );
 };
 
-export default MyPage;
+export default MyPageForest;
