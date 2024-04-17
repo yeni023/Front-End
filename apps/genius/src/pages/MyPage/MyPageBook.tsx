@@ -20,7 +20,7 @@ import {
   SampleButton,
   ButtonRow,
   HoverButton
-} from "./MyPage2";
+} from "./MyPageBook";
 import bgImage from "../../assets/images/MyPageBG.svg";
 import profileImage from "../../assets/images/MyProfile.svg";
 import followingImage from "../../assets/images/Following.svg";
@@ -30,7 +30,7 @@ import BookTextImage from "../../assets/images/BookTitle.svg";
 import AddButtonImg1 from "../../assets/images/BookChoose1.svg";
 import AddButtonImg2 from "../../assets/images/BookChoose2.svg";
 
-const MyPage2: React.FC = () => {
+const MyPageBook: React.FC = () => {
   const [showAnswer, setShowAnswer] = useState(false);
   const [hoverIndex, setHoverIndex] = useState<number | null>(null);
   const handleQuestionClick = () => {
@@ -134,4 +134,4 @@ const MyPage2: React.FC = () => {
   );
 };
 
-export default MyPage2;
+export default MyPageBook;
