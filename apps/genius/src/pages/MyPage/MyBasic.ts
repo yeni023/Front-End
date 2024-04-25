@@ -76,6 +76,11 @@ export const BottomButtonContainer = styled.div`
   justify-content: center;
   width: 100%;
   margin-top: 60px;
+
+  &:focus {
+    outline: none;
+    border: none;
+  }
 `;
 
 export const ColorSection = styled.div`
@@ -152,6 +157,11 @@ export const SocialButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  &:focus {
+    outline: none;
+    border: none;
+  }
 `;
 
 export const SocialImage = styled.img`
@@ -199,6 +209,11 @@ export const QuestionButton = styled.button`
   top: 52%;
   right: 22px;
   transform: translateY(-50%);
+
+  &:focus {
+    outline: none;
+    border: none;
+  }
 `;
 
 export const AnswerImg = styled.img`
