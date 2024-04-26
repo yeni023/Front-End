@@ -1342,6 +1342,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tweenjs/tween.js@npm:~23.1.1":
+  version: 23.1.1
+  resolution: "@tweenjs/tween.js@npm:23.1.1"
+  checksum: a93b331f0c2dc2dd2fce2c08ab9e505cd71ce1b31a3e2218f31da4f2d2af84ac4c4eaab05f9929a7b7884c5e00c5d32e8fd1872e0a3e10e9cca20febc8d263b5
+  languageName: node
+  linkType: hard
+
 "@types/argparse@npm:1.0.38":
   version: 1.0.38
   resolution: "@types/argparse@npm:1.0.38"
@@ -1527,6 +1534,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/stats.js@npm:*":
+  version: 0.17.3
+  resolution: "@types/stats.js@npm:0.17.3"
+  checksum: 4f84a012f630532877f62959b6335d3fa081ccaac15ce3f1f916741db265bda22b9c927d7efc9cc3389ffd60919a370673cb0b4e7221d580c571031e94b689fd
+  languageName: node
+  linkType: hard
+
 "@types/styled-components@npm:^5.1.34":
   version: 5.1.34
   resolution: "@types/styled-components@npm:5.1.34"
@@ -1545,10 +1559,30 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/three@npm:^0":
+  version: 0.164.0
+  resolution: "@types/three@npm:0.164.0"
+  dependencies:
+    "@tweenjs/tween.js": ~23.1.1
+    "@types/stats.js": "*"
+    "@types/webxr": "*"
+    fflate: ~0.8.2
+    meshoptimizer: ~0.18.1
+  checksum: 7845360f2725d6dc16b8988758ef84a150ceae2f9c93649dcfac9f98b1e1135af5794cf009e0078b831cf041d4b969dcfa3d5c9ba0c609d651186e0d7e6c5b90
+  languageName: node
+  linkType: hard
+
 "@types/web-bluetooth@npm:^0.0.18":
   version: 0.0.18
   resolution: "@types/web-bluetooth@npm:0.0.18"
   checksum: 5ab99b3f5bf1a7c86e35a463ad57fdd7bb570a49195d94dbdcd8dedc59067f11caddcda5dfee7b144c8f2e18d85b4b2922c0d5c78f7798686d8a8795fb1393f0
+  languageName: node
+  linkType: hard
+
+"@types/webxr@npm:*":
+  version: 0.5.15
+  resolution: "@types/webxr@npm:0.5.15"
+  checksum: a549cf87e93a4d7a6196ba60489f9e9bf2e80b4ae9ebed324294eb66f5c6d35bd662a1ecea62f02931ae8a7b8d9c11648bd3c3e13f1163da47ec6b0ad4df71be
   languageName: node
   linkType: hard
 
@@ -3599,6 +3633,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"fflate@npm:~0.8.2":
+  version: 0.8.2
+  resolution: "fflate@npm:0.8.2"
+  checksum: 29470337b85d3831826758e78f370e15cda3169c5cd4477c9b5eea2402261a74b2975bae816afabe1c15d21d98591e0d30a574f7103aa117bff60756fa3035d4
+  languageName: node
+  linkType: hard
+
 "file-entry-cache@npm:^6.0.1":
   version: 6.0.1
   resolution: "file-entry-cache@npm:6.0.1"
@@ -3783,6 +3824,7 @@ __metadata:
     "@types/react": ^18.2.55
     "@types/react-dom": ^18.2.19
     "@types/styled-components": ^5.1.34
+    "@types/three": ^0
     eslint-config-react: "workspace:^"
     prettier-config-custom: "workspace:^"
     react: ^18.2.0
@@ -3790,6 +3832,7 @@ __metadata:
     react-router-dom: ^6.22.0
     recoil: ^0.7.7
     styled-components: ^6.1.6
+    three: ^0.164.1
     tsconfig-custom: "workspace:^"
     typescript: ^5.3.3
     vite-config-custom: "workspace:^"
@@ -4902,6 +4945,13 @@ __metadata:
   version: 1.4.1
   resolution: "merge2@npm:1.4.1"
   checksum: 7268db63ed5169466540b6fb947aec313200bcf6d40c5ab722c22e242f651994619bcd85601602972d3c85bd2cc45a358a4c61937e9f11a061919a1da569b0c2
+  languageName: node
+  linkType: hard
+
+"meshoptimizer@npm:~0.18.1":
+  version: 0.18.1
+  resolution: "meshoptimizer@npm:0.18.1"
+  checksum: 101dbed8abd4cf167cdb7a0bc13db90dd0743332c689e43b18cc5254d238f0766750752432401fa63dc7e9e32399ef68daacf48f0d89db1484042c1761c7362d
   languageName: node
   linkType: hard
 
@@ -6422,6 +6472,13 @@ __metadata:
   version: 0.2.0
   resolution: "text-table@npm:0.2.0"
   checksum: b6937a38c80c7f84d9c11dd75e49d5c44f71d95e810a3250bd1f1797fc7117c57698204adf676b71497acc205d769d65c16ae8fa10afad832ae1322630aef10a
+  languageName: node
+  linkType: hard
+
+"three@npm:^0.164.1":
+  version: 0.164.1
+  resolution: "three@npm:0.164.1"
+  checksum: 64a1b713cd14b53af12858ad1b89a9daaa493ee2a42384480e408ec3add6cd474811b34a5faa4a3611398db39ed86afb3a96b4d0a54a2feaacc9c5dc54cf5c8a
   languageName: node
   linkType: hard
 
