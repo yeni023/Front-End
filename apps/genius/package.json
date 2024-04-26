@@ -30,6 +30,7 @@
     "dist/"
   ],
   "dependencies": {
+    "@react-three/fiber": "^8.16.2",
     "@types/jest": "^29.5.12",
     "@types/node": "^20.11.17",
     "@types/styled-components": "^5.1.34",
