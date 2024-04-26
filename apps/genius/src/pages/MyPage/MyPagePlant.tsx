@@ -21,7 +21,7 @@ import profileImage from "../../assets/images/MyProfile.svg";
 import followingImage from "../../assets/images/Following.svg";
 import followerImage from "../../assets/images/Follower.svg";
 import AnswerImage from "../../assets/images/Answer.svg";
-import PlantMain from "./PlantMain";
+import PlantMain from "../../components/MyPage/PlantMain";
 const MyPagePlant: React.FC = () => {
   const [showAnswer, setShowAnswer] = useState(false);
   const handleQuestionClick = () => {

@@ -9,19 +9,20 @@ interface BadgeGridProps {
     name: string;
     image: string;
     locked: boolean;
+    content: string; // 추가된 content 속성
   }[];
-  onBadgeClick: (name: string) => void;
+  onBadgeClick: (name: string, content: string, image: string) => void; // content와 image도 함께 전달
 }
 
 const GridContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+  gap: 100px;
 `;
 
 const BadgeGrid: React.FC<BadgeGridProps> = ({ badges, onBadgeClick }) => {
-  const handleBadgeClick = (name: string) => {
-    onBadgeClick(name); // 뱃지를 클릭했을 때의 이벤트 핸들러 호출
+  const handleBadgeClick = (name: string, content: string, image: string) => {
+    onBadgeClick(name, content, image); // content와 image도 함께 전달
   };
 
   return (
@@ -32,7 +33,9 @@ const BadgeGrid: React.FC<BadgeGridProps> = ({ badges, onBadgeClick }) => {
           name={badge.name}
           image={badge.image}
           locked={badge.locked}
-          onClick={() => handleBadgeClick(badge.name)} // 뱃지 클릭 핸들러
+          onClick={() =>
+            handleBadgeClick(badge.name, badge.content, badge.image)
+          } // content와 image도 함께 전달
         />
       ))}
     </GridContainer>

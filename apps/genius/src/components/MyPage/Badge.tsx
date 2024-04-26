@@ -19,17 +19,28 @@ const BadgeContainer = styled.div`
 `;
 
 const BadgeImage = styled.img`
-  width: 100px;
-  height: 100px;
+  width: 200px;
+  height: 200px;
+  border-radius: 100px;
 `;
 
 const BadgeName = styled.span`
   margin-top: 5px;
+
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 39px;
+  text-align: center;
+
+  color: #3f5650;
 `;
 
 const LockIcon = styled.span`
-  font-size: 24px;
+  font-size: 70px;
   position: absolute;
+  top: 50px;
 `;
 
 const Badge: React.FC<BadgeProps> = ({ name, image, locked, onClick }) => {

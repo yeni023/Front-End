@@ -23,8 +23,11 @@ export const AnswerImg = S.AnswerImg;
 
 export const Separator = styled.hr`
   border: 0;
-  border-top: 5px solid #ccc;
   margin: 20px 0;
+
+  /* Line 27 */
+
+  border: 1px solid #605151;
 `;
 
 export const MyPagePlantContainer = styled.div`
