@@ -41,7 +41,6 @@ export const Title = styled.div`
   font-weight: 600;
   font-size: 48px;
   line-height: 58px;
-  text-align: center;
 
   color: #42655b;
 `;

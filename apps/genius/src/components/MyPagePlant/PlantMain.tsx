@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import * as Styles from "../../pages/MyPage/MyPagePlant";
 import BadgeGrid from "./BadgeGrid";
 import BadgeModal from "./BadgeModal";
+import { BadgeImage, BadgeName } from "./Badge";
 
 export interface Badge {
   name: string;
@@ -112,7 +113,7 @@ const PlantMain: React.FC = () => {
               src={representativePlant.image}
               alt={representativePlant.name}
             />
-            <p>{representativePlant.name}</p>
+            <BadgeName>{representativePlant.name}</BadgeName>
           </>
         )}
       </div>

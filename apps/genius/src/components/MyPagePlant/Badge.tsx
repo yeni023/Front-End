@@ -24,7 +24,7 @@ const BadgeImage = styled.img`
   border-radius: 100px;
 `;
 
-const BadgeName = styled.span`
+export const BadgeName = styled.span`
   margin-top: 5px;
 
   font-family: "Inter";
