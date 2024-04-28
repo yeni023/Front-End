@@ -22,6 +22,7 @@ import DalkongTutorial from "./pages/CharacterTutorial/DalkongTutorial.tsx";
 import AlkongTutorial from "./pages/CharacterTutorial/AlkongTutorial.tsx";
 import Navbar from "./pages/Navbar/Navbar.tsx";
 import MyBasic from "./pages/MyPage/MyBasic.tsx";
+import OtherBasic from "./pages/MyPage/OtherBasic.tsx";
 import MyPage from "./pages/MyPage/MyPage.tsx";
 import MyPageBook from "./pages/MyPage/MyPageBook.tsx";
 import MyPageForest from "./pages/MyPage/MyPageForest.tsx";
@@ -56,6 +57,7 @@ const App = () => {
         <Route path="/Navbar" element={<Navbar />} />
         <Route path="/SignUp" element={<SignUp />} />
         <Route path="/MyBasic" element={<MyBasic />} />
+        <Route path="/OTherBasic" element={<OtherBasic />} />
         <Route path="/MyPage" element={<MyPage />} />
         <Route path="/MyPageBook" element={<MyPageBook />} />
         <Route path="/MyPageForest" element={<MyPageForest />} />

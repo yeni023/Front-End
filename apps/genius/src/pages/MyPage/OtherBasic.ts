@@ -1,6 +1,6 @@
+// 다른 사람 프로필 페이지에서 사용되는 왼쪽 고정 화면과 오른쪽 단색 화면
+
 import styled from "styled-components";
-import SeedNum from "../../assets/images/SeedNum.svg";
-import QuestionImage from "../../assets/images/Question.svg";
 
 export const PageContainer = styled.div`
   display: flex;
@@ -116,6 +116,8 @@ export const ProfileButton = styled.button<ProfileButtonProps>`
 
   &:focus {
     box-shadow: 0 0 0 2px #acd0cb;
+    outline: none;
+    border: none;
   }
 `;
 
@@ -131,6 +133,11 @@ export const NameButton = styled.button`
   width: 300px;
   text-align: center;
   margin-bottom: 30px;
+
+  &:focus {
+    outline: none;
+    border: none;
+  }
 `;
 
 export const IDButton = styled.button`
@@ -145,6 +152,16 @@ export const IDButton = styled.button`
   width: 300px;
   text-align: center;
   margin-bottom: 20px;
+
+  &:focus {
+    outline: none;
+    border: none;
+  }
+
+  &:hover {
+    background-color: #fff;
+    color: #333;
+  }
 `;
 
 export const SocialButton = styled.button`
@@ -177,51 +194,22 @@ export const SocialButtonsContainer = styled.div`
   margin-top: 40px;
 `;
 
-export const SeedNumButtonContainer = styled.div`
-  position: relative;
-  width: 500px;
-  height: 250px;
-  transform: translateX(-11%);
-  margin-top: 30px;
-`;
-
-export const SeedNumButton = styled(SocialButton)`
-  background-image: url(${SeedNum});
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  width: 100%;
-  height: 100%;
-`;
-
-export const QuestionButton = styled.button`
-  background-image: url(${QuestionImage});
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-color: #ffffff;
-  width: 45px;
-  height: 45px;
-  border: none;
-  border-radius: 50%;
+export const OvalButton = styled.button`
+  width: 180px;
+  height: 60px;
+  border-radius: 25px;
+  background-color: #fff;
+  color: #333;
+  font-size: 23px;
+  font-weight: bold;
+  font-family: Helvetica;
   cursor: pointer;
-  position: absolute;
-  top: 52%;
-  right: 22px;
-  transform: translateY(-50%);
+  border: none;
+  outline: none;
+  margin-top: 70px;
 
   &:focus {
     outline: none;
     border: none;
   }
-`;
-
-export const AnswerImg = styled.img`
-  position: absolute;
-  top: 30%;
-  right: -60px;
-  transform: translateY(-90%);
-  width: 360px;
-  height: auto;
-  display: block;
 `;
