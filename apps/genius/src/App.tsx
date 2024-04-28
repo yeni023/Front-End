@@ -26,10 +26,10 @@ import OtherBasic from "./pages/MyPage/OtherBasic.tsx";
 import MyPage from "./pages/MyPage/MyPage.tsx";
 import MyPageBook from "./pages/MyPage/MyPageBook.tsx";
 import MyPageForest from "./pages/MyPage/MyPageForest.tsx";
-import MyBook from "./pages/Search/MyBook.tsx";
 import PopularBook from "./pages/Search/PopularBook.tsx";
 import Store from "./pages/Store/Store.tsx";
 import Service from "./pages/Servicepages/Service.tsx";
+import Search from "./pages/Search/Search.tsx";
 
 const App = () => {
   return (
@@ -61,10 +61,10 @@ const App = () => {
         <Route path="/MyPage" element={<MyPage />} />
         <Route path="/MyPageBook" element={<MyPageBook />} />
         <Route path="/MyPageForest" element={<MyPageForest />} />
-        <Route path="/MyBook" element={<MyBook />} />
         <Route path="/PopularBook" element={<PopularBook />} />
         <Route path="/Store" element={<Store />} />
         <Route path="/Service" element={<Service />} />
+        <Route path="/Search" element={<Search />} />
       </Routes>
     </Router>
   );

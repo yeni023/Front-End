@@ -31,6 +31,10 @@ export const NicknameInput = styled.input`
   border-radius: 40px;
   padding-left: 20px; 
   padding-right: 20px; 
+
+  &:focus {
+    outline: 0;
+  }
 `;
 
 export const GreetingText = styled.p`

@@ -27,6 +27,10 @@ export const Input = styled.input`
   padding: 10px;
   font-size: 19px;
   margin-bottom: 15px;
+
+  &:focus {
+    outline: 0;
+  }
 `;
 
 export const Button = styled.button`
@@ -39,6 +43,10 @@ export const Button = styled.button`
   background-color: #8DD1BD;
   align-items: center;
   cursor: pointer;
+
+  &:focus {
+    outline: 0;
+  }
 `;
 
 export const Divider = styled.div`
