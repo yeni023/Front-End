@@ -131,7 +131,7 @@ export const LeftButton = styled.button`
   &:hover {
     border-color: #aa528e; /* Remove this line to keep the border color consistent */
   }
-`; 
+`;
 
 export const NextPageButton = styled.button`
   background-image: url(${NextPageButtonImg});
