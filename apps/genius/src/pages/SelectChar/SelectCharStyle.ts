@@ -24,6 +24,7 @@ export const CharacterContainer = styled.div`
   align-items: center;
   justify-content: center;
   height: 100%; 
+  border: none;
   overflow: hidden; /* 이미지가 넘치지 않도록 오버플로우를 숨깁니다. */
 
   &:nth-child(1) {
@@ -41,7 +42,11 @@ export const CharacterContainer = styled.div`
   }
 
   &.selected {
-    border: 2px solid #7EC7B1;
+    border: none;
+  }
+
+  &:focus {
+    outline: 0;
   }
 `;
 
@@ -57,11 +62,11 @@ export const CharacterButton = styled.button<CharacterButtonProps>`
   color: ${({ isAlKong }) => (isAlKong ? '#7EC7B1' : '#D057A9')};
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   cursor: pointer;
-  transition: color 0.3s, transform 0.3s; /* 글자색 및 이동 트랜지션 추가 */
+  transition: color 0.3s, transform 0.2s; /* 글자색 및 이동 트랜지션 추가 */
 
   &:hover {
     color: ${({ isAlKong }) => (isAlKong ? '#6DA697' : '#B84890')};
-    transform: translateY(-1px); /* 호버 시 살짝 위로 이동 */
+    transform: translateY(-5px); /* 호버 시 살짝 위로 이동 */
   }
 `;
 
@@ -69,7 +74,11 @@ export const DalKongButton = styled(CharacterButton)<CharacterButtonProps>`
   color: #7EC7B1;
   &:hover {
     color: #6DA697;
-    transform: translateY(-2px); /* 호버 시 살짝 위로 이동 */
+    transform: translateY(-5px); /* 호버 시 살짝 위로 이동 */
+  }
+
+  &:focus {
+    outline: 0;
   }
 `;
 
@@ -77,7 +86,10 @@ export const AlKongButton = styled(CharacterButton)<CharacterButtonProps>`
   color: #D057A9;
   &:hover {
     color: #B84890;
-    transform: translateY(-2px); /* 호버 시 살짝 위로 이동 */
+    transform: translateY(-5px); /* 호버 시 살짝 위로 이동 */
+  }
+  &:focus {
+    outline: 0;
   }
 `;
 
@@ -87,5 +99,11 @@ export const CharacterImage = styled.img`
   margin: 0 auto;
   vertical-align: top;
   width: 400px; /* 이미지 크기 조정 */
-  
+
+  &:focus {
+    outline: 0;
+  }
+  &:hover {
+    transform: translateY(-5px);
+  }
 `;

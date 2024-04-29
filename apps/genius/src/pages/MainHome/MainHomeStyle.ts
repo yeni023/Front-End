@@ -67,7 +67,7 @@ export const MenuItem = styled.div`
   color: #9d9d9d;
   display: block;
   font-size: 23px;
-  padding: 20px 25px;
+  padding: 23px 25px;
   cursor: pointer;
 
   &:hover {
@@ -77,7 +77,7 @@ export const MenuItem = styled.div`
 
 export const SubMenu = styled.div`
   position: absolute;
-  top: 75px;
+  top: 79px;
   left: -6px;
   width: 150px;
   background-color: #fff;
@@ -89,14 +89,14 @@ export const SubMenu = styled.div`
   display: none; /* 초기에는 서브메뉴를 보이지 않도록 설정 */
 
   ${MenuItem}:hover & {
-    display: inline-block; /* 메인 메뉴를 호버했을 때만 서브메뉴를 보이도록 설정 */
+    display: block; /* 메인 메뉴를 호버했을 때만 서브메뉴를 보이도록 설정 */
     opacity: 1;
   }
 `;
 
 export const SubMenuItem = styled(Link)`
   display: block;
-  padding: 15px;
+  padding: 20px 15px;
   color: #000;
   text-align: center;
   text-decoration: none;
@@ -109,6 +109,10 @@ export const SubMenuItem = styled(Link)`
   &:hover {
     background-color: #f0f0f0;
     font-weight: bold;
+  }
+
+  &:focus {
+    outline: 0;
   }
 `;
 
@@ -124,7 +128,11 @@ export const LoginSignupButton = styled.button`
   &:hover {
     background-color: #fff;
     color: #000;
-    border-color: #9D9D9D;
+    border-color: #000;
+  }
+
+  &:focus {
+    outline: 0;
   }
 `;
 
@@ -204,5 +212,9 @@ export const CreateStoryButton = styled.button`
   &:hover {
     background-color: #45a049;
     color: #fff;
+  }
+
+  &:focus {
+    outline: 0;
   }
 `;

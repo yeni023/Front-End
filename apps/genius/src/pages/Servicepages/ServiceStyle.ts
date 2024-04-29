@@ -18,6 +18,7 @@ export const SearchForm = styled.form`
   align-items: center;
   margin-top: 120px;
   margin-bottom: 40px;
+  
 
   input {
     padding: 16px 250px;
@@ -26,20 +27,26 @@ export const SearchForm = styled.form`
     border-radius: 5px;
     border: 1px solid #d9d9d9;
     padding-left: 20px;
+
+    &:focus {
+    outline: 0;
+  }
+
   }
 
   button {
     padding: 15px 30px;
     background-color: #007bff;
     color: #fff;
-    border: none;
     cursor: pointer;
     font-size: 20px;
 
-    &:hover {
-      opacity: 0.8;
-    }
+    &:focus {
+    border: 1px solid #fff;
+    outline: 0;
   }
+  }
+
 `;
 
 export const ButtonGroup = styled.div`
@@ -59,6 +66,10 @@ export const ButtonGroup = styled.div`
     &:hover {
       font-weight: bold;
     }
+
+    &:focus {
+    outline: 0;
+  }
   }
 `;
 

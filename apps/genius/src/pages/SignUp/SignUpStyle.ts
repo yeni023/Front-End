@@ -13,12 +13,14 @@ export const Container = styled.div`
   background-color: #f0f0f0;
   height: 100vh;
   position: relative;
+  
 `;
 
 export const Form = styled.form`
   width: 100%;
   max-width: 600px;
   margin-top: 10px;
+  
 `;
 
 export const Input = styled.input`
@@ -26,6 +28,10 @@ export const Input = styled.input`
   padding: 10px;
   font-size: 16px;
   margin-bottom: 15px;
+
+  &:focus {
+    outline: 0;
+  }
 `;
 
 export const TextArea = styled.textarea`
@@ -37,16 +43,23 @@ export const TextArea = styled.textarea`
 
 export const Button = styled.button`
   width: 30%;
-  padding: 10px;
+  padding: 15px 10px;
   font-size: 18px;
   color: #fff;
   margin-top: 10px;
   margin-bottom: 50px;
   position: absolute;
+  border: none;
   background-color: #8DD1BD;
   cursor: pointer;
   left: 50%;
   transform: translate(-50%, -50%);
+  &:hover {
+    border: 2px solid #d9d9d9;
+  }
+  &:focus {
+    outline: 0;
+  }
 `;
 
 export const Divider = styled.div`

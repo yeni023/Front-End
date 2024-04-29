@@ -10,7 +10,6 @@ const fadeIn = keyframes`
   }
 `;
 
-
 export const TutorialContainer = styled.div`
   position: relative;
   width: 100vw;
@@ -63,7 +62,7 @@ export const StepContent = styled.div`
   width: 100%;
   border: 1.5px solid lightseagreen;
   text-align: center;
-  animation: ${fadeIn} 0.8s ease-in-out; /* fadeIn 애니메이션 적용 */
+  animation: ${fadeIn} 0.8s ease-in-out; 
 `;
 
 export const ButtonContainer = styled.div` /* 새로운 컨테이너 스타일 추가 */
@@ -87,6 +86,10 @@ export const NextButton = styled.button`
     background-color: #4da351;
     color: #fff;
   }
+
+  &:focus {
+    outline: 0;
+  }
 `;
 
 export const EndButton = styled.button`
@@ -100,9 +103,12 @@ export const EndButton = styled.button`
   margin-top: 10px;
   border: 3px solid lightblue;
 
-
   &:hover {
     background-color: #4da351;
     color: #fff;
+  }
+
+  &:focus {
+    outline: 0;
   }
 `;

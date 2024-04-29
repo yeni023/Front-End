@@ -1,7 +1,8 @@
+// SearchStyle.ts
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  max-width: 100%;
+  width: 100%;
   height: 100%;
   background-color: #e7e7e7;
   display: flex;
@@ -10,80 +11,74 @@ export const Container = styled.div`
 `;
 
 export const Header = styled.div`
-  padding: 20px 0; 
+  padding: 20px 0;
+  margin-left: 10px;
   text-align: left;
   font-size: 40px;
   font-weight: 600;
+  transform: translateX(-800px);
   color: #000;
-  position: absolute;
-  top: 15%;
-  left: 15%;
-  transform: translateX(-50%);
+  margin-top: 150px; /* 상단 여백 추가 */
 `;
 
-export const MenuContainer = styled.div`
-  position: relative;
+export const SearchForm = styled.form`
+  margin: 20px;
+  margin-bottom: 50px;
   display: flex;
-  justify-content: center;
-  width: 100%;
-  margin-top: 260px;
-  margin-bottom: 20px;
+  align-items: center;
 `;
-
-export const MenuButton = styled.button<{ selected: boolean }>`
-  background-color: ${props => (props.selected ? '#D1BA8D' : '#8DD1BD')};
-  color: ${props => (props.selected ? '#fff' : '#fff')};
-  padding: 20px 80px;
-  font-size: 1.3em;
-  font-weight: 500;
-  text-align: center;
-  white-space: nowrap;
-  border-radius: 10px;
-  cursor: pointer;
-  margin-right: 10px;
-  
-
-  &:hover {
-    background-color: #D1BA8D;
-    color: #fff;
-    border-color: #fff;
-  }
-
-  &:focus {
-    outline: 0;
-  }
-`;
-
-export const FilterContainer = styled.div`
-  margin: 10px 20px;
-  margin-left: -30px;
-  display: flex;
-  justify-content: right;
-  width: 80%;
-`
-;
 
 export const FilterSelect = styled.select`
-  padding: 10px 30px;
-  font-size: 1.2em; 
+  padding: 25px 10px;
+  font-size: 1.3em;
+  padding-left: 10px;
   font-weight: medium;
-  border-color: #D9D9D9;
+  border: none;
   cursor: pointer;
-  background-color: #D9D9D9;
-  
+  background-color: #fff;
+  margin-right: 10px;
+
   &:focus {
     outline: 0;
   }
+`;
+
+export const SearchInput = styled.input`
+  padding: 25px 230px;
+  padding-left: 23px;
+  font-size: 1.3em;
+  border: none;
+  cursor: text;
+  background-color: #fff;
+  margin-right: 0px;
+
+  &:focus {
+    outline: 0;
+  }
+`;
+
+export const SearchButton = styled.button`
+  padding: 23px 25px;
+  font-size: 1.3em;
+  border-radius: 0;
+  cursor: pointer;
+  border: none;
+  background-color: #8DD1BD;
+  color: #fff;
+
+  &:focus {
+    outline: 0;
+  }
+
 `;
 
 export const BookList = styled.div`
-  display: grid;
+   display: grid;
   grid-template-columns: repeat(4, 1fr); /* 4열로 설정 */
   grid-gap: 40px; /* 각 아이템 사이의 간격 */
   justify-content: center;
-  overflow-x: hidden;
-  padding: 0 20px;
-  margin-bottom: 50px;
+  margin-top: 40px; /* 책 목록과의 간격 조정 */
+  margin-bottom: 100px;
 
   a:link {
     color: #000;
@@ -113,7 +108,6 @@ export const BookTitle = styled.div`
   color: #000;
   margin-left: 60px;
   text-align: center;
- ;
 
   a:hover {
     color: #000;
@@ -129,4 +123,13 @@ export const BookAuthor = styled.div`
   margin-top: 5px;
   cursor: pointer;
 
+`;
+
+export const NoResultsText = styled.div`
+  width: 100%;
+  height: 100vh;
+  margin-top: 150px;
+  text-align: center;
+  font-size: 1.3em;
+  
 `;
