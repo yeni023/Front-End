@@ -3,7 +3,8 @@ import DalkongBG from "../../assets/images/DalkongBG.svg";
 import DalkongBook from "../../assets/images/DalkongBook.svg";
 import photo from "../../assets/images/MakeBookPhoto.svg";
 import TextPhoto from "../../assets/images/TextImage.svg";
-
+import SaveIcon from "../../assets/images/Save.svg";
+import ContinueIcon from "../../assets/images/Continue.svg";
 export const Container = styled.div`
   position: relative;
   background-image: url(${DalkongBG});
@@ -126,4 +127,58 @@ export const TextImage = styled.div`
   position: absolute;
   top: -355px;
   left: 380px;
+`;
+
+export const CustomButton = styled.button`
+  position: fixed;
+  top: 40px;
+  right: 30px;
+  z-index: 100;
+  padding: 70px;
+  background-color: transparent;
+  background-image: url(${SaveIcon});
+  background-size: contain;
+  background-repeat: no-repeat;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+  }
+  &:focus {
+    outline: none;
+    border: none;
+  }
+`;
+
+export const CustomButton2 = styled.button`
+  position: fixed;
+  top: 40px;
+  right: 190px;
+  z-index: 100;
+  padding: 70px;
+  background-color: transparent;
+  background-image: url(${ContinueIcon});
+  background-size: contain;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+  }
+  &:focus {
+    outline: none;
+    border: none;
+  }
+`;
+
+export const ButtonWrapper = styled.div`
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 100;
+  display: flex;
+  flex-direction: row;
 `;

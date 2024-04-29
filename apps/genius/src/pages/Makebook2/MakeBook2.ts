@@ -130,8 +130,8 @@ export const TextImage = styled.div`
 `;
 
 export const CustomButton = styled.button`
-  position: absolute;
-  top: 20px;
+  position: fixed;
+  top: 40px;
   right: 30px;
   z-index: 100;
   padding: 70px;
@@ -153,8 +153,8 @@ export const CustomButton = styled.button`
 `;
 
 export const CustomButton2 = styled.button`
-  position: absolute;
-  top: 20px;
+  position: fixed;
+  top: 40px;
   right: 190px;
   z-index: 100;
   padding: 70px;

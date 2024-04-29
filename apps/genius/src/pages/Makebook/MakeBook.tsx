@@ -8,13 +8,23 @@ import {
   ImageButton,
   ImageTextBox,
   TextImageContainer,
-  TextImage
+  TextImage,
+  CustomButton,
+  CustomButton2,
+  ButtonWrapper
 } from "./MakeBook";
 
 const MakeBook = () => {
   const currentPage = "MakeBook";
   const handleImageClick = (type: string) => {
     console.log(` ${type}`);
+  };
+  const handleCustomButtonClick = () => {
+    console.log("Custom button clicked");
+  };
+
+  const handleCustomButton2Click = () => {
+    console.log("Custom button 2 clicked");
   };
   return (
     <Container>
@@ -33,6 +43,10 @@ const MakeBook = () => {
       <TextImageContainer>
         <TextImage onClick={() => handleImageClick("TextImage")} />
       </TextImageContainer>
+      <ButtonWrapper>
+        <CustomButton onClick={handleCustomButtonClick}></CustomButton>
+        <CustomButton2 onClick={handleCustomButton2Click}></CustomButton2>
+      </ButtonWrapper>
     </Container>
   );
 };
