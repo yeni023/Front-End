@@ -12,13 +12,13 @@ import {
 } from "./MakeBook";
 
 const MakeBook = () => {
+  const currentPage = "MakeBook";
   const handleImageClick = (type: string) => {
     console.log(` ${type}`);
   };
-
   return (
     <Container>
-      <C.Header />
+      <C.Header currentPage={currentPage} />
       <BookImageContainer>
         <BookImage onClick={() => handleImageClick("BookImage")} />
       </BookImageContainer>

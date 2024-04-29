@@ -19,6 +19,7 @@ import left from "../../assets/images/left.svg";
 import right from "../../assets/images/right.svg";
 
 const Genre = () => {
+  const currentPage = "GenrePage";
   const navigate = useNavigate();
 
   const nextPage = () => {
@@ -35,7 +36,7 @@ const Genre = () => {
   };
   return (
     <Container>
-      <C.Header />
+      <C.Header currentPage={currentPage} />
       <Wrapper>
         <GenreTitle>어떤 동화를 만들고 싶어?</GenreTitle>
         <ImageWrapper>
