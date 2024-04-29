@@ -24,8 +24,9 @@ const fadeIn = keyframes`
   }
 `;
 
+
 export const AppContainer = styled.div`
-  width: 100vw;
+  width: 100%;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -34,6 +35,8 @@ export const AppContainer = styled.div`
   background: url('./src/assets/images/forest.jpg') no-repeat center center fixed;
   background-size: cover;
   box-sizing: border-box;
+  overflow-x: hidden;
+  
 `;
 
 export const Navbar = styled.div`
@@ -73,6 +76,13 @@ export const MenuItem = styled.div`
   &:hover {
     color: #42655B;
   }
+`;
+
+export const LogoImage = styled.img`
+  width: 160px;
+  height: 145px;
+  margin-left: -30px;
+  margin-right: -100px;
 `;
 
 export const SubMenu = styled.div`
@@ -143,12 +153,10 @@ export const MainSection = styled.div`
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 20px;
   box-sizing: border-box;
   width: 100%;
-  max-width: 1920px;
-  margin: 0 auto;
-  position: relative;
+  margin-top: 120px;
+  padding: 200px 0;
   animation: ${fadeIn} 1s ease forwards;
 
   & > * {
@@ -186,6 +194,7 @@ export const MainDescription = styled.p`
   animation: ${fadeIn} 1s ease forwards;
 `;
 
+
 export const AnimationContainer = styled.div`
   opacity: 1;
   transform: translateY(20px);
@@ -216,5 +225,102 @@ export const CreateStoryButton = styled.button`
 
   &:focus {
     outline: 0;
+  }
+`;
+
+export const SecondSection = styled.div`
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+  margin-top: 30vh;
+  display: flex;
+  align-items: center; /* 세로 중앙 정렬 */
+  justify-content: center; /* 가로 중앙 정렬 */
+  width: 100%;
+  &.visible {
+    opacity: 1;
+  }
+  img {
+    max-width: 50%;
+    margin-left: -150px;
+    margin-right: 80px;
+  }
+  p {
+    font-size: 1.6em;
+    font-weight: 500;
+    color: #fff;
+    text-align: center;
+    line-height: 1.9;
+    padding: 25px 80px;
+    border-radius: 50px;
+    border: 2px solid #fff;
+    margin: 0;
+    background-color: hsla(207, 44%, 49%, 0.5);
+    max-width: 50%;
+  }
+`;
+
+export const ThirdSection = styled.div`
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+  margin-top: 40vh;
+  display: flex;
+  align-items: center; /* 세로 중앙 정렬 */
+  justify-content: center; /* 가로 중앙 정렬 */
+  width: 100%;
+
+  &.visible {
+    opacity: 1;
+  }
+  img {
+    max-width: 50%;
+    margin-right: -150px;
+    margin-left: 70px;
+  }
+  p {
+    font-size: 1.6em;
+    font-weight: 500;
+    color: #fff;
+    text-align: center;
+    line-height: 1.9;
+    padding: 25px 80px;
+    margin: 0;
+    border-radius: 50px;
+    border: 2px solid #fff;
+    background-color: hsla(207, 44%, 49%, 0.5);
+    max-width: 50%;
+  }
+`;
+
+export const FourthSection = styled.div`
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+  margin-top: 40vh;
+  margin-bottom: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  width: 100%;
+
+  &.visible {
+    opacity: 1;
+  }
+
+  img {
+    max-width: 50%;
+    margin-left: -80px;
+    margin-right: 60px;
+  }
+  p {
+    font-size: 1.6em;
+    font-weight: 500;
+    color: #fff;
+    text-align: center;
+    line-height: 1.9;
+    padding: 25px 80px;
+    border-radius: 50px;
+    border: 2px solid #fff;
+    margin: 0;
+    background-color: hsla(207, 44%, 49%, 0.5);
+    max-width: 50%;
   }
 `;

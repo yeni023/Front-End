@@ -26,6 +26,12 @@ export const Navbar = styled.div`
   align-items: center;
   font-size: large;
 `;
+export const LogoImage = styled.img`
+  width: 160px;
+  height: 145px;
+  margin-left: -30px;
+  margin-right: -100px;
+`;
 
 export const MainMenu = styled.div`
   display: flex;
