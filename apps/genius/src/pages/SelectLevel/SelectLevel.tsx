@@ -12,12 +12,13 @@ import medium from "../../assets/images/Level3.svg";
 import hard from "../../assets/images/Level4.svg";
 
 const SelectLevel = () => {
+  const currentPage = "SelectLevel";
   const handleImageClick = (type: string) => {
     console.log(` ${type}`);
   };
   return (
     <Container>
-      <C.Header />
+      <C.Header currentPage={currentPage} />
       <Wrapper>
         <SelectLevelTitle>선택지 개수는 몇 개로 할까?</SelectLevelTitle>
         <ImageWrapper>
