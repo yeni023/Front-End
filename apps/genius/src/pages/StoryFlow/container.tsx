@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import * as S from "./styles";
-import RightAngleBracket from "../../assets/StoryFlow/RightAngleBracket.svg";
 
 type HeaderElementsType = {
   text1: string;
@@ -67,17 +66,27 @@ const HeaderElementText = ({
   highlight: boolean;
 }) => {
   return (
-    <S.HeaderElement style={{backgroundColor: highlight ? '#f5deb3' : 'transparent', width: '170px', padding: '20px',borderRadius: '50px'}}>
+    <S.HeaderElement style={{backgroundColor: highlight ? 'rgba(248, 163, 19, 0.25)' : 'transparent', width: '150px', padding: '10px',borderRadius: '5px'}}>
       <p style={{ fontSize: size, color: color }}>{text1}</p>
       <p style={{ fontSize: size, color: color }}>{text2}</p>
     </S.HeaderElement>
   );
 };
 
-export const Header = () => {
+export const Header = ({ currentPage }) => {
+  const [selectedStepIndex, setSelectedStepIndex] = useState(0);
 
-  const [selectedStepIndex, setSelectedStepIndex] = useState(3);
-
+  useEffect(() => {
+    if (currentPage === "GenrePage") {
+      setSelectedStepIndex(0);
+    } else if (currentPage === "MakeBook") {
+      setSelectedStepIndex(3);
+    } else if (currentPage === "MakeBook2") {
+      setSelectedStepIndex(3);
+    } else if (currentPage === "SelectLevel") {
+      setSelectedStepIndex(2);
+    }
+  }, [currentPage]);
   return (
     <S.Header>
       <h1>Logo</h1>
