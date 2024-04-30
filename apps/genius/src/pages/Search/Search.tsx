@@ -14,7 +14,7 @@ const Search: React.FC = () => {
   const books = [
     { id: 1, title: '동화 제목 1', author: '작가 1', image: 'book1.png' },
     { id: 2, title: '동화 제목 2', author: '작가 1', image: 'book2.png' },
-    { id: 3, title: '동화 제목 3', author: '작가 1', image: 'book1.png' },
+    { id: 3, title: '동화 제목 3', author: '작가 1', image: 'book4.png' },
     { id: 4, title: '동화 제목 4', author: '작가 4', image: 'book1.png' },
     { id: 5, title: '동화 제목 5', author: '작가 5', image: 'book1.png' },
     { id: 6, title: '동화 제목 6', author: '작가 6', image: 'book1.png' },

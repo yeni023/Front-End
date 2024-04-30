@@ -26,6 +26,12 @@ export const Navbar = styled.div`
   align-items: center;
   font-size: large;
 `;
+export const LogoImage = styled.img`
+  width: 160px;
+  height: 145px;
+  margin-left: -30px;
+  margin-right: -100px;
+`;
 
 export const MainMenu = styled.div`
   display: flex;
@@ -44,7 +50,7 @@ export const MenuItem = styled.div`
   color: #9d9d9d;
   display: block;
   font-size: 23px;
-  padding: 23px 25px;
+  padding: 25px;
   cursor: pointer;
 
   &:hover {
@@ -54,7 +60,7 @@ export const MenuItem = styled.div`
 
 export const SubMenu = styled.div`
   position: absolute;
-  top: 79px;
+  top: 81px;
   left: -6px;
   width: 150px;
   background-color: #fff;

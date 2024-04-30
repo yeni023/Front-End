@@ -8,7 +8,8 @@ const Navbar: React.FC = () => {
     <Styles.Navbar>
       <Styles.MainMenu>
         <Styles.MenuItem>
-          <Link to="/MainHome" style={{textDecoration: 'none', color: '#8DD1BD'}}>LOGO</Link>
+          <Link to="/MainHome">
+          <Styles.LogoImage src={`src/assets/images/logo.png`} alt="Logo" /></Link>
         </Styles.MenuItem>
 
         <Styles.MenuItem>

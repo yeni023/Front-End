@@ -55,4 +55,8 @@ export const SubmitBtn = styled.button`
   &:hover {
     background-color: #2980b9;
   }
+
+  &:focus {
+    outline: 0;
+  }
 `;
