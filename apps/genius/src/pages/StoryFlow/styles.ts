@@ -19,16 +19,15 @@ export const Header = styled.div`
   z-index: 100;
   align-items: center;
   padding-left: 20px;
+  /* justify-content: space-between; */
 `;
 
 export const HeaderElement = styled.div`
-  display: inline-block;
-  width: 150px;
-  margin-left: 20px;
-
-  /* padding-left: 20px; */
+  display: flex;
+  margin-right: 20px;
   justify-content: center;
   text-align: center;
+  align-items: center;
   flex-direction: column;
 `;
 
@@ -38,12 +37,7 @@ export const Contents = styled.div`
   width: 100%;
   margin-top: 130px;
   align-items: center;
-  /* background-image: url('../../assets/images/dalkong_background.svg');
-  background-position : center;
-  background-size : cover;
-  background-repeat : no-repeat; */
   overflow: hidden;
-  // height: 100vh;
 `;
 
 export const Content1 = styled.div`
@@ -147,4 +141,11 @@ export const Content2ElementInner = styled.div`
   gap: 30px;
   background-color: white;
   border-radius: 50px;
+`;
+
+export const LogoImage = styled.img`
+  width: 160px;
+  height: 145px;
+  margin-left: -30px;
+  margin-right: -100px;
 `;

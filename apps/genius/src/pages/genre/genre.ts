@@ -35,6 +35,7 @@ export const ImageWrapper = styled.div`
   flex-direction: row;
   justify-content: center;
   margin-top: 50px;
+  gap: 60px;
 `;
 
 export const ImageTextWrapper = styled.div`
@@ -76,4 +77,17 @@ export const OvalText = styled.div`
   text-align: center;
   line-height: 87px;
   border-radius: 50px;
+`;
+
+export const ButtonText = styled.div`
+  font-size: 25px;
+  width: 250px;
+  height: 80px;
+  background-color: #333;
+  color: white;
+  text-align: center;
+  line-height: 87px;
+  border-radius: 50px;
+  cursor: pointer;
+  margin-top: 10px;
 `;
