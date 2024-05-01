@@ -84,28 +84,38 @@ const NextButton = styled.button`
   border-radius: 10px;
   cursor: pointer;
   margin-top: 10px;
-  border: 3px solid lightblue;
+  border: 2px solid skyblue;
 
   &:hover {
     background-color: #4da351;
     color: #fff;
+    border: 2px solid skyblue;
+  }
+
+  &:focus {
+    outline: 0;
   }
 `;
 
 const EndButton = styled.button`
   background-color: #fff;
-  color: #000;
+  color: #5d5d5d;
   padding: 15px 30px;
   font-size: 1.2em;
   font-weight: bold;
   border-radius: 10px;
   cursor: pointer;
   margin-top: 10px;
-  border: 3px solid lightblue;
+  border: 2px solid skyblue;
 
   &:hover {
+    border: 2px solid skyblue;
     background-color: #4da351;
     color: #fff;
+  }
+
+  &:focus {
+    outline: 0;
   }
 `;
 

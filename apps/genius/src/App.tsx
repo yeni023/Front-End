@@ -22,7 +22,11 @@ import DalkongTutorial from "./pages/CharacterTutorial/DalkongTutorial.tsx";
 import AlkongTutorial from "./pages/CharacterTutorial/AlkongTutorial.tsx";
 import Navbar from "./pages/Navbar/Navbar.tsx";
 import MyBasic from "./pages/MyPage/MyBasic.tsx";
+import OtherBasic from "./pages/MyPage/OtherBasic.tsx";
+import OtherPage from "./pages/MyPage/OtherPage.tsx";
+import OtherPageBook from "./pages/MyPage/OtherPageBook.tsx";
 import MyPage from "./pages/MyPage/MyPage.tsx";
+import MyReadBook from "./pages/MyPage/MyReadBook.tsx";
 import MyPageBook from "./pages/MyPage/MyPageBook.tsx";
 import MyPageForest from "./pages/MyPage/MyPageForest.tsx";
 import MyPagePlant from "./pages/MyPage/MyPagePlant.tsx";
@@ -32,6 +36,11 @@ import Store from "./pages/Store/Store.tsx";
 import Service from "./pages/Servicepages/Service.tsx";
 import ACRoading from "./pages/Roading/ACRoading";
 import DCRoading from "./pages/Roading/DCRoading";
+import PopularBook from "./pages/Search/PopularBook.tsx";
+import Store from "./pages/Store/Store.tsx";
+import Service from "./pages/Servicepages/Service.tsx";
+import Search from "./pages/Search/Search.tsx";
+
 
 const App = () => {
   return (
@@ -59,8 +68,12 @@ const App = () => {
         <Route path="/Navbar" element={<Navbar />} />
         <Route path="/SignUp" element={<SignUp />} />
         <Route path="/MyBasic" element={<MyBasic />} />
+        <Route path="/OTherBasic" element={<OtherBasic />} />
+        <Route path="/OtherPage" element={<OtherPage />} />
+        <Route path="/OtherPageBook" element={<OtherPageBook />} />
         <Route path="/MyPage" element={<MyPage />} />
         <Route path="/MyPageBook" element={<MyPageBook />} />
+        <Route path="/MyReadBook" element={<MyReadBook />} />
         <Route path="/MyPageForest" element={<MyPageForest />} />
         <Route path="/MyPagePlant" element={<MyPagePlant />} />
         <Route path="/MyBook" element={<MyBook />} />
@@ -69,6 +82,10 @@ const App = () => {
         <Route path="/Service" element={<Service />} />
         <Route path="/ACRoading" element={<ACRoading />} />
         <Route path="/DCRoading" element={<DCRoading />} />
+        <Route path="/PopularBook" element={<PopularBook />} />
+        <Route path="/Store" element={<Store />} />
+        <Route path="/Service" element={<Service />} />
+        <Route path="/Search" element={<Search />} />
       </Routes>
     </Router>
   );

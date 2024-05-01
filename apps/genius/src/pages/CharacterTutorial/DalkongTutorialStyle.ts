@@ -86,6 +86,10 @@ export const NextButton = styled.button`
     background-color: #4da351;
     color: #fff;
   }
+
+  &:focus {
+    outline: 0;
+  }
 `;
 
 export const EndButton = styled.button`
@@ -102,5 +106,9 @@ export const EndButton = styled.button`
   &:hover {
     color: #fff;
     background-color: #7EC7B1;
+  }
+
+  &:focus {
+    outline: 0;
   }
 `;

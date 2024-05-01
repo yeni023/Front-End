@@ -50,4 +50,8 @@ export const ForestButton = styled.button`
   height: 100%;
   cursor: pointer;
   outline: none;
+  &:focus {
+    outline: none;
+    border: none;
+  }
 `;
