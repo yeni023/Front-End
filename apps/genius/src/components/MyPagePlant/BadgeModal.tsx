@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import styled from "styled-components";
+import * as S from "./Badge";
 
 interface BadgeModalProps {
   badgeName: string;
@@ -39,42 +40,65 @@ const ModalContent = styled.div`
   text-align: center;
 `;
 
-const BadgeImage = styled.div<{ bgImage: string }>`
-  background-image: url(${(props) => props.bgImage});
-  width: 200px;
-  height: 200px;
-  border-radius: 100px;
-`;
-
-const BadgeTitle = styled.div<{ bgImage: string }>`
-  margin-top: 5px;
+const BadgeTitle = styled.div`
+  margin-top: 15px;
   font-family: "Inter";
   font-style: normal;
   font-weight: 700;
-  font-size: 30px;
+  font-size: 26px;
   line-height: 39px;
   text-align: center;
   color: #3f5650;
+`;
+
+const BadgeImage = styled.img<{ src: string }>`
+  width: 150px;
+  height: auto;
 `;
 const BadgeContent = styled.div`
   margin-top: 5px;
   font-family: "Inter";
   font-style: normal;
-  font-weight: 100;
+  font-weight: 500;
   font-size: 22px;
   line-height: 39px;
   text-align: center;
   color: #3f5650;
 `;
 const DisabledButton = styled.button`
+  margin-top: 35px;
   background-color: #ccc; /* 비활성화된 상태의 배경색 */
   color: #888; /* 비활성화된 상태의 텍스트색 */
-  cursor: not-allowed; /* 비활성화된 상태의 커서 모양 */
-  border: none; /* 테두리 제거 */
-  padding: 10px 20px; /* 패딩 설정 */
-  border-radius: 5px; /* 버튼 모서리 둥글게 */
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 25px;
 `;
-
+const Button = styled.button`
+  margin-top: 35px;
+  background-color: #3f5650;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 25px;
+`;
+const LockIcon = styled.span`
+  font-size: 100px;
+`;
+const LockedOverlay = styled.div`
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  border-radius: 125px;
+  background-color: rgba(0, 0, 0, 0.5); // 검정색 반투명 원
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 100px;
+  color: white;
+  margin-top: -198px;
+`;
 const BadgeModal: React.FC<BadgeModalProps> = ({
   badgeName,
   badgeImage,
@@ -105,18 +129,25 @@ const BadgeModal: React.FC<BadgeModalProps> = ({
       {isOpen && (
         <ModalOverlay onClick={handleOverlayClick}>
           <ModalContent onClick={handleModalClick}>
-            <BadgeImage bgImage={badgeImage} />
+            <S.BadgeImageOverlay>
+              <BadgeImage src={badgeImage} />
+            </S.BadgeImageOverlay>
+
+            {locked && (
+              <LockedOverlay>
+                <LockIcon>🔒</LockIcon>
+              </LockedOverlay>
+            )}
             <BadgeTitle>{badgeName}</BadgeTitle>
             <BadgeContent>{badgeContent}</BadgeContent>
-            {/* 뱃지가 잠겨있는지 확인하여 버튼을 비활성화합니다. */}
             {locked ? (
               <DisabledButton disabled>
                 나의 대표 식물로 설정하기
               </DisabledButton>
             ) : (
-              <button onClick={handleSetRepresentativePlant}>
+              <Button onClick={handleSetRepresentativePlant}>
                 나의 대표 식물로 설정하기
-              </button>
+              </Button>
             )}
           </ModalContent>
         </ModalOverlay>
