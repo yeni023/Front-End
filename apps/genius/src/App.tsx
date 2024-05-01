@@ -30,6 +30,8 @@ import MyBook from "./pages/Search/MyBook.tsx";
 import PopularBook from "./pages/Search/PopularBook.tsx";
 import Store from "./pages/Store/Store.tsx";
 import Service from "./pages/Servicepages/Service.tsx";
+import ACRoading from "./pages/Roading/ACRoading";
+import DCRoading from "./pages/Roading/DCRoading";
 
 const App = () => {
   return (
@@ -65,6 +67,8 @@ const App = () => {
         <Route path="/PopularBook" element={<PopularBook />} />
         <Route path="/Store" element={<Store />} />
         <Route path="/Service" element={<Service />} />
+        <Route path="/ACRoading" element={<ACRoading />} />
+        <Route path="/DCRoading" element={<DCRoading />} />
       </Routes>
     </Router>
   );
