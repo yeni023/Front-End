@@ -1,9 +1,9 @@
 // 나의 책장 버튼 누른 후 첫 화면
 import styled from "styled-components";
 import * as S from "./OtherBasic";
-import MyPageBook from "../../assets/images/MyPageBook.svg";
-import MyPageFlower from "../../assets/images/MyPageFlower.svg";
-import MyPageForest from "../../assets/images/MyPageForest.svg";
+import OtherPageBook from "../../assets/images/OtherPageBook.svg";
+import OtherPageFlower from "../../assets/images/OtherPageFlower.svg";
+import OtherPageForest from "../../assets/images/OtherPageForest.svg";
 import MyPageBookText from "../../assets/images/BookText.svg";
 import MyPageFlowerText from "../../assets/images/FlowerText.svg";
 import MyPageForestText from "../../assets/images/ForestText.svg";
@@ -26,7 +26,7 @@ export const SocialButtonsContainer = S.SocialButtonsContainer;
 export const OvalButton = S.OvalButton;
 
 export const BookButton = styled.button`
-  background-image: url(${MyPageBook});
+  background-image: url(${OtherPageBook});
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -57,7 +57,7 @@ export const BookButton = styled.button`
 `;
 
 export const FlowerButton = styled.button`
-  background-image: url(${MyPageFlower});
+  background-image: url(${OtherPageFlower});
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -88,7 +88,7 @@ export const FlowerButton = styled.button`
 `;
 
 export const ForestButton = styled.button`
-  background-image: url(${MyPageForest});
+  background-image: url(${OtherPageForest});
   background-size: 113% 113%;
   background-position: center;
   background-repeat: no-repeat;

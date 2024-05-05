@@ -29,11 +29,14 @@ import MyPage from "./pages/MyPage/MyPage.tsx";
 import MyReadBook from "./pages/MyPage/MyReadBook.tsx";
 import MyPageBook from "./pages/MyPage/MyPageBook.tsx";
 import MyPageForest from "./pages/MyPage/MyPageForest.tsx";
+import MyPagePlant from "./pages/MyPage/MyPagePlant.tsx";
+
 import PopularBook from "./pages/Search/PopularBook.tsx";
 import Store from "./pages/Store/Store.tsx";
 import Service from "./pages/Servicepages/Service.tsx";
 import Search from "./pages/Search/Search.tsx";
-
+import ACRoading from "./pages/Roading/ACRoading";
+import DCRoading from "./pages/Roading/DCRoading";
 const App = () => {
   return (
     <Router>
@@ -67,10 +70,13 @@ const App = () => {
         <Route path="/MyPageBook" element={<MyPageBook />} />
         <Route path="/MyReadBook" element={<MyReadBook />} />
         <Route path="/MyPageForest" element={<MyPageForest />} />
+        <Route path="/MyPagePlant" element={<MyPagePlant />} />
         <Route path="/PopularBook" element={<PopularBook />} />
         <Route path="/Store" element={<Store />} />
         <Route path="/Service" element={<Service />} />
         <Route path="/Search" element={<Search />} />
+        <Route path="/ACRoading" element={<ACRoading />} />
+        <Route path="/DCRoading" element={<DCRoading />} />
       </Routes>
     </Router>
   );

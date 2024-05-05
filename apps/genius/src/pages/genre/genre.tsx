@@ -5,11 +5,10 @@ import {
   GenreTitle,
   ImageWrapper,
   Image,
-  OvalText,
-  ImageTextWrapper,
   Wrapper,
   Arrow_Image,
-  ArrowButton
+  ArrowButton,
+  ButtonText
 } from "./genre";
 import book from "../../assets/images/book.svg";
 import castle from "../../assets/images/castle.svg";
@@ -24,16 +23,18 @@ const Genre = () => {
 
   const nextPage = () => {
     console.log("다음 장");
-    navigate("/StoryWay");
+    navigate("/StoryFlow");
   };
 
   const previousPage = () => {
     console.log("이전 장");
   };
 
-  const handleImageClick = (type: string) => {
+  const handleButtonClick = (type: string) => {
     console.log(` ${type}`);
+    navigate("/BasicInfo");
   };
+
   return (
     <Container>
       <C.Header currentPage={currentPage} />
@@ -43,22 +44,46 @@ const Genre = () => {
           <ArrowButton onClick={previousPage}>
             <Arrow_Image src={left} alt="left" />
           </ArrowButton>
-          <ImageTextWrapper onClick={() => handleImageClick("castle")}>
-            <Image src={castle} alt="castle" />
-            <OvalText>판타지 동화 만들기</OvalText>
-          </ImageTextWrapper>
-          <ImageTextWrapper onClick={() => handleImageClick("book")}>
-            <Image src={book} alt="book" />
-            <OvalText>학습 동화 만들기</OvalText>
-          </ImageTextWrapper>
-          <ImageTextWrapper onClick={() => handleImageClick("ghost")}>
-            <Image src={ghost} alt="ghost" />
-            <OvalText>공포 동화 만들기</OvalText>
-          </ImageTextWrapper>
-          <ImageTextWrapper onClick={() => handleImageClick("full-story")}>
-            <Image src={full_story} alt="full-story" />
-            <OvalText>전래 동화 만들기</OvalText>
-          </ImageTextWrapper>
+          <div>
+            <Image
+              src={castle}
+              alt="castle"
+              onClick={() => handleButtonClick("fantasy")}
+            />
+            <ButtonText onClick={() => handleButtonClick("fantasy")}>
+              판타지 동화 만들기
+            </ButtonText>
+          </div>
+          <div>
+            <Image
+              src={book}
+              alt="book"
+              onClick={() => handleButtonClick("learning")}
+            />
+            <ButtonText onClick={() => handleButtonClick("learning")}>
+              학습 동화 만들기
+            </ButtonText>
+          </div>
+          <div>
+            <Image
+              src={ghost}
+              alt="ghost"
+              onClick={() => handleButtonClick("horror")}
+            />
+            <ButtonText onClick={() => handleButtonClick("horror")}>
+              공포 동화 만들기
+            </ButtonText>
+          </div>
+          <div>
+            <Image
+              src={full_story}
+              alt="full-story"
+              onClick={() => handleButtonClick("folktale")}
+            />
+            <ButtonText onClick={() => handleButtonClick("folktale")}>
+              전래 동화 만들기
+            </ButtonText>
+          </div>
           <ArrowButton onClick={nextPage}>
             <Arrow_Image src={right} alt="right" />
           </ArrowButton>

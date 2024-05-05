@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import * as S from "./styles";
 
+import { LogoImage } from "./styles";
+import logoImage from "../../assets/images/logo.png";
+
 type HeaderElementsType = {
   text1: string;
   text2: string;
@@ -67,13 +70,15 @@ const HeaderElementText = ({
 }) => {
   return (
     <S.HeaderElement style={{backgroundColor: highlight ? 'rgba(248, 163, 19, 0.25)' : 'transparent', width: '150px', padding: '10px',borderRadius: '5px'}}>
-      <p style={{ fontSize: size, color: color }}>{text1}</p>
-      <p style={{ fontSize: size, color: color }}>{text2}</p>
+      <div>
+        <p style={{ fontSize: size, color: color }}>{text1}</p>
+        <p style={{ fontSize: size, color: color }}>{text2}</p>
+      </div>
     </S.HeaderElement>
   );
 };
 
-export const Header = ({ currentPage }) => {
+export const Header = ({currentPage}) => {
   const [selectedStepIndex, setSelectedStepIndex] = useState(0);
 
   useEffect(() => {
@@ -89,23 +94,24 @@ export const Header = ({ currentPage }) => {
   }, [currentPage]);
   return (
     <S.Header>
-      <h1>Logo</h1>
-      {HeaderElementsData.map((data, index) => (
-        <div key={index}>
-          <HeaderElementText 
-            text1={data.text1}
-            text2={data.text2}
-            size={data.size}
-            color={data.color}
-            highlight={selectedStepIndex === index}
-          />
-        </div>
-      ))}
+      <LogoImage src={logoImage} alt="Logo" style={{ marginRight: "10px" }} />
+      <div style={{ display: "flex", alignItems: "center" }}>
+        {HeaderElementsData.map((data, index) => (
+          <div key={index}>
+            <HeaderElementText
+              text1={data.text1}
+              text2={data.text2}
+              size={data.size}
+              color={data.color}
+              highlight={selectedStepIndex === index}
+            />
+          </div>
+        ))}
+      </div>
     </S.Header>
   );
 };
 
-//이게 헤더
 export const Content1 = () => {
   return (
     <S.Content1>

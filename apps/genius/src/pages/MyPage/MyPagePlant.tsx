@@ -13,20 +13,16 @@ import {
   SeedNumButtonContainer,
   SeedNumButton,
   QuestionButton,
-  AnswerImg,
-  ForestButtonContainer,
-  ForestButton
-} from "./MyPageForest";
+  AnswerImg
+} from "./MyPagePlant";
 
 import bgImage from "../../assets/images/MyPageBG.svg";
 import profileImage from "../../assets/images/MyProfile.svg";
 import followingImage from "../../assets/images/Following.svg";
 import followerImage from "../../assets/images/Follower.svg";
 import AnswerImage from "../../assets/images/Answer.svg";
-import ForestTextImage from "../../assets/images/ForestTitle.svg";
-import ForestMain from "../../components/MyPageForest/ForestMain";
-
-const MyPageForest: React.FC = () => {
+import PlantMain from "../../components/MyPagePlant/PlantMain";
+const MyPagePlant: React.FC = () => {
   const [showAnswer, setShowAnswer] = useState(false);
   const handleQuestionClick = () => {
     setShowAnswer(true);
@@ -67,10 +63,10 @@ const MyPageForest: React.FC = () => {
         </SeedNumButtonContainer>
       </ImageSection>
       <ColorSection>
-        <ForestMain />
+        <PlantMain />
       </ColorSection>
     </PageContainer>
   );
 };
 
-export default MyPageForest;
+export default MyPagePlant;

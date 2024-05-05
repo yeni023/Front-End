@@ -86,9 +86,9 @@ const MyReadBook: React.FC = () => {
       <ColorSection>
         <ReadBookTitleImage src={ReadBookTitleImageSrc} alt="Read Book Title" />
         <BookImageContainer>
-        <BookImage onClick={() => handleImageClick("BookImage")} />
-        <LeftButton onClick={() => console.log("LeftButton clicked!")} />
-        <NextPageButton onClick={() => console.log("NextPageButton clicked!")} />
+          <BookImage onClick={() => handleImageClick("BookImage")} />
+          <LeftButton onClick={() => console.log("LeftButton clicked!")} />
+          <NextPageButton onClick={() => console.log("NextPageButton clicked!")} />
         </BookImageContainer>
         <TextBoxContainer>
           <TextBox>
