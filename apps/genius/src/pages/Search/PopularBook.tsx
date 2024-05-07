@@ -2,10 +2,12 @@
 import React, { useState } from 'react';
 import * as PopularBookStyle from './PopularBookStyle';
 import Navbar from '../Navbar/Navbar';
+import Modal from './BookModal';
 
 const PopluarBook: React.FC = () => {
   const [selectedMenu, setSelectedMenu] = useState<string>('전체');
   const [selectedFilter, setSelectedFilter] = useState<string>('별점 높은순');
+  const [selectedBook, setSelectedBook] = useState<any>(null);
 
   // 동화 목록 데이터 받아오기 등의 로직 생략
   const books = [
@@ -18,6 +20,14 @@ const PopluarBook: React.FC = () => {
     { id: 7, title: '동화 제목 7', author: '작가 7', image: 'book1.png' },
     { id: 8, title: '동화 제목 8', author: '작가 8', image: 'book1.png' },
   ];
+
+  const openModal = (book: any) => {
+    setSelectedBook(book);
+  };
+
+  const closeModal = () => {
+    setSelectedBook(null);
+  };
 
   return (
     <PopularBookStyle.Container>
@@ -45,15 +55,17 @@ const PopluarBook: React.FC = () => {
       <PopularBookStyle.BookList>
         {books.map(book => (
           <PopularBookStyle.BookItem key={book.id}>
-            <a href={`/book/${book.id}`}>
-            <img src={`src/assets/images/${book.image}`} alt={book.title} /></a>
-            <PopularBookStyle.BookTitle>
-              <a href={`/book/${book.id}`}>{book.title}</a>
-            </PopularBookStyle.BookTitle>
-            <PopularBookStyle.BookAuthor>{book.author}</PopularBookStyle.BookAuthor>
+            <div onClick={() => openModal(book)}> {/* 클릭 시 모달 열기 */}
+              <img src={`src/assets/images/${book.image}`} alt={book.title} />
+              <PopularBookStyle.BookTitle>{book.title}</PopularBookStyle.BookTitle>
+              <PopularBookStyle.BookAuthor>{book.author}</PopularBookStyle.BookAuthor>
+            </div>
           </PopularBookStyle.BookItem>
         ))}
       </PopularBookStyle.BookList>
+
+      {/* 모달 */}
+      <Modal isOpen={selectedBook !== null} onClose={closeModal} book={selectedBook} />
     </PopularBookStyle.Container>
   );
 };

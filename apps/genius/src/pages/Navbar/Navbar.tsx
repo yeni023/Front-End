@@ -28,11 +28,11 @@ const Navbar: React.FC = () => {
           </Styles.SubMenu>
         </Styles.MenuItem>
         <Styles.MenuItem>
-          <Link to="/Service" style={{ textDecoration: 'none', color: '#9d9d9d'}}>고객센터</Link>
-        </Styles.MenuItem>
+          <Styles.StyledLink to="/Service">고객센터</Styles.StyledLink>
+          </Styles.MenuItem>
         <Styles.MenuItem>
-          <Link to="/Mypage" style={{ textDecoration: 'none', color: '#8DD1BD' }}>마이페이지</Link>
-        </Styles.MenuItem>
+          <Styles.StyledMypageLink to="/Mypage">마이페이지</Styles.StyledMypageLink>
+          </Styles.MenuItem>
       </Styles.MainMenu>
 
       <div className="login-signup">
