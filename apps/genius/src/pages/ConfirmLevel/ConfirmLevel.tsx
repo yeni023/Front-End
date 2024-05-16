@@ -20,9 +20,10 @@ const ConfirmLevel = () => {
   const handleImageClick = (type: string) => {
     console.log(` ${type}`);
   };
+  const currentPage = "ConfirmLevel";
   return (
     <Container>
-      <C.Header />
+      <C.Header2 currentPage={currentPage} />
       <Wrapper>
         <ConfirmLevelTitle>좋았어, 다음 단계로 넘어갈까?</ConfirmLevelTitle>
         <ImageWrapper1>

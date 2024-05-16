@@ -1,5 +1,6 @@
 // ChatDC.tsx
 import React, { useState, useRef, useEffect } from "react";
+import * as C from "../../pages/StoryFlow/container";
 import Choices from "../../components/ChatAC/Choices";
 import * as Styles from "./ChatDCStyle";
 import { useNavigate } from "react-router-dom";
@@ -19,6 +20,7 @@ const ChatDC: React.FC = () => {
   const [userMessage, setUserMessage] = useState("");
   const [showChat, setShowChat] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const currentPage = "ChatDC";
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -89,6 +91,7 @@ const ChatDC: React.FC = () => {
 
   return (
     <Styles.DCBackgroundContainer>
+      <C.Header currentPage={currentPage} />
       <Styles.MessagesList>
         {messages.map((message, index) => (
           <React.Fragment key={index}>

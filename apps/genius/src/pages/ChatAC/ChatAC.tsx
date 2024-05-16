@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import * as C from "../../pages/StoryFlow/container";
 import Choices from "../../components/ChatAC/Choices";
 import * as Styles from "./ChatACStyle";
 import { useNavigate } from "react-router-dom";
@@ -17,6 +18,7 @@ const ChatAC: React.FC = () => {
   const [questionIndex, setQuestionIndex] = useState<number>(-1);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
+  const currentPage = "ChatAC";
 
   useEffect(() => {
     if (questionIndex !== -1) {
@@ -61,6 +63,7 @@ const ChatAC: React.FC = () => {
 
   return (
     <Styles.ACBackgroundContainer>
+      <C.Header2 currentPage={currentPage} />
       <Styles.MessagesList>
         {messages.map((message, index) => (
           <React.Fragment key={index}>

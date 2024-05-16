@@ -2,6 +2,7 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import ShapeNext from "../../components/ThemePage/ShapeNext";
+import * as C from "../../pages/StoryFlow/container";
 import * as Styles from "./ThemePageStyle";
 import { themes } from "./themes";
 
@@ -9,6 +10,7 @@ const ThemePageNext: React.FC = () => {
   const location = useLocation();
   const id = parseInt(new URLSearchParams(location.search).get("id") || "1");
   const navigate = useNavigate();
+  const currentPage = "ThemePageNext";
 
   const handleNoBtnClick = () => {
     navigate(`/ThemePage?id=${id}`);
@@ -27,6 +29,7 @@ const ThemePageNext: React.FC = () => {
 
   return (
     <Styles.BackgroundContainer>
+      <C.Header2 currentPage={currentPage} />
       <Styles.Title>좋았어, 이제 이야기 꽃을 피워볼까?</Styles.Title>
       <Styles.BtnContainer>
         <Styles.OkBtn>응 그럴래</Styles.OkBtn>

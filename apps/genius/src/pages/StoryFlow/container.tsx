@@ -12,6 +12,7 @@ type HeaderElementsType = {
   action: () => void;
 };
 
+// DalKong Header 시작
 const HeaderElementsData: HeaderElementsType[] = [
   {
     text1: "STEP 1",
@@ -69,7 +70,7 @@ const HeaderElementText = ({
   highlight: boolean;
 }) => {
   return (
-    <S.HeaderElement style={{backgroundColor: highlight ? 'rgba(248, 163, 19, 0.25)' : 'transparent', width: '150px', padding: '10px',borderRadius: '5px'}}>
+    <S.HeaderElement style={{backgroundColor: highlight ? 'rgba(208, 87, 169, 0.25)' : 'transparent', width: '130px', padding: '10px',borderRadius: '10px'}}>
       <div>
         <p style={{ fontSize: size, color: color }}>{text1}</p>
         <p style={{ fontSize: size, color: color }}>{text2}</p>
@@ -78,6 +79,7 @@ const HeaderElementText = ({
   );
 };
 
+// DalKong Header 여기 함수까지
 export const Header = ({currentPage}) => {
   const [selectedStepIndex, setSelectedStepIndex] = useState(0);
 
@@ -86,9 +88,11 @@ export const Header = ({currentPage}) => {
       setSelectedStepIndex(0);
     } else if (currentPage === "MakeBook") {
       setSelectedStepIndex(3);
-    } else if (currentPage === "MakeBook2") {
-      setSelectedStepIndex(3);
-    } else if (currentPage === "SelectLevel") {
+    } else if (currentPage === "ChatDC") {
+      setSelectedStepIndex(2);
+    } else if (currentPage === "BasicInfo") {
+      setSelectedStepIndex(1);
+    } else if (currentPage === "DCRoading") {
       setSelectedStepIndex(2);
     }
   }, [currentPage]);
@@ -109,6 +113,124 @@ export const Header = ({currentPage}) => {
         ))}
       </div>
     </S.Header>
+  );
+};
+
+// 여기에서부터 AC Header
+type HeaderElementsType2 = {
+  text1: string;
+  text2: string;
+  size: number;
+  color: string;
+  action: () => void;
+};
+
+const HeaderElementsData2: HeaderElementsType2[] = [
+  {
+    text1: "STEP 1",
+    text2: "장르 선택",
+    size: 24,
+    color: "#9D9D9D",
+    action: () => {
+      setSelectedStepIndex(0);
+      console.log("장르 선택");
+    }
+  },
+  {
+    text1: "STEP 2",
+    text2: "주제 선택",
+    size: 24,
+    color: "#9D9D9D",
+    action: () => {
+      setSelectedStepIndex(1);
+      console.log("주제 선택");
+    }
+  },
+  {
+    text1: "STEP 3",
+    text2: "이야기 생성",
+    size: 24,
+    color: "#9D9D9D",
+    action: () => {
+      setSelectedStepIndex(2);
+      console.log("이야기 생성");
+    }
+  },
+  {
+    text1: "STEP 4",
+    text2: "이야기 확인",
+    size: 24,
+    color: "#9D9D9D",
+    action: () => {
+      setSelectedStepIndex(3);
+      console.log("이야기 확인");
+    }
+  }
+];
+
+
+const HeaderElementText2 = ({
+  text1,
+  text2,
+  size,
+  color,
+  highlight
+}: {
+  text1: string;
+  text2: string;
+  size: number;
+  color: string;
+  highlight: boolean;
+}) => {
+  return (
+    <S.HeaderElement style={{backgroundColor: highlight ? 'rgba(171, 225, 209, 0.5)' : 'transparent', width: '130px', padding: '10px',borderRadius: '10px'}}>
+      <div>
+        <p style={{ fontSize: size, color: color }}>{text1}</p>
+        <p style={{ fontSize: size, color: color }}>{text2}</p>
+      </div>
+    </S.HeaderElement>
+  );
+};
+
+export const Header2 = ({currentPage}) => {
+  const [selectedStepIndex, setSelectedStepIndex] = useState(0);
+
+  useEffect(() => {
+    if (currentPage === "Genre2") {
+      setSelectedStepIndex(0);
+    } else if (currentPage === "MakeBook2") {
+      setSelectedStepIndex(3);
+    } else if (currentPage === "ThemePage") {
+      setSelectedStepIndex(1);
+    } else if (currentPage === "ThemePageNext") {
+      setSelectedStepIndex(1);
+    } else if (currentPage === "SelectLevel") {
+      setSelectedStepIndex(2);
+    } else if (currentPage === "ConfirmLevel") {
+      setSelectedStepIndex(2);
+    } else if (currentPage === "ChatAC") {
+      setSelectedStepIndex(2);
+    } else if (currentPage === "ACRoading") {
+      setSelectedStepIndex(2);
+    }
+  }, [currentPage]);
+  return (
+    <S.Header2>
+      <LogoImage src={logoImage} alt="Logo" style={{ marginRight: "10px" }} />
+      <div style={{ display: "flex", alignItems: "center" }}>
+        {HeaderElementsData2.map((data, index) => (
+          <div key={index}>
+            <HeaderElementText2
+              text1={data.text1}
+              text2={data.text2}
+              size={data.size}
+              color={data.color}
+              highlight={selectedStepIndex === index}
+            />
+          </div>
+        ))}
+      </div>
+    </S.Header2>
   );
 };
 

@@ -28,7 +28,7 @@ const MakeBook2 = () => {
   };
   return (
     <Container>
-      <C.Header currentPage={currentPage} />
+      <C.Header2 currentPage={currentPage} />
       <BookImageContainer>
         <BookImage onClick={() => handleImageClick("BookImage")} />
       </BookImageContainer>
