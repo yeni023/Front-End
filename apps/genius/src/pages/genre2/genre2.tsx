@@ -18,7 +18,7 @@ import left from "../../assets/images/left.svg";
 import right from "../../assets/images/right.svg";
 
 const Genre2 = () => {
-  const currentPage = "GenrePage";
+  const currentPage = "Genre2";
   const navigate = useNavigate();
 
   const nextPage = () => {
@@ -37,7 +37,7 @@ const Genre2 = () => {
 
   return (
     <Container>
-      <C.Header currentPage={currentPage} />
+      <C.Header2 currentPage={currentPage} />
       <Wrapper>
         <GenreTitle>어떤 동화를 만들고 싶어?</GenreTitle>
         <ImageWrapper>

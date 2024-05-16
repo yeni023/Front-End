@@ -1,5 +1,6 @@
 // BasicInfo.tsx
 import React, { useState } from "react";
+import * as C from "../../pages/StoryFlow/container";
 import * as Styles from "./BasicInfoStyle";
 import { useNavigate } from "react-router-dom";
 import Label from "./Label";
@@ -18,7 +19,7 @@ interface UserFormProps {
 
 const BasicInfo: React.FC<UserFormProps> = () => {
   const navigate = useNavigate();
-
+  const currentPage = "BasicInfo";
   const [formData, setFormData] = useState<FormData>({
     name: "",
     gender: "",
@@ -67,6 +68,7 @@ const BasicInfo: React.FC<UserFormProps> = () => {
 
   return (
     <Styles.Container>
+      <C.Header currentPage={currentPage} />
       <Styles.Title>주인공에 대해 알려줘!</Styles.Title>
       <Styles.BtnContainer>
         <Styles.OkBtn onClick={() => navigate(`/`)}>이전 단계로</Styles.OkBtn>

@@ -18,7 +18,7 @@ const SelectLevel = () => {
   };
   return (
     <Container>
-      <C.Header currentPage={currentPage} />
+      <C.Header2 currentPage={currentPage} />
       <Wrapper>
         <SelectLevelTitle>선택지 개수는 몇 개로 할까?</SelectLevelTitle>
         <ImageWrapper>

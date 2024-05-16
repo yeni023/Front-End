@@ -1,6 +1,7 @@
 // ThemePage.tsx
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import * as C from "../../pages/StoryFlow/container";
 import Shape from "../../components/ThemePage/Shape";
 import * as Styles from "./ThemePageStyle";
 import Regenerate from "../../assets/images/regenerate.png";
@@ -14,6 +15,7 @@ const ThemePage: React.FC<ThemePageProps> = () => {
   const [selectedTheme, setSelectedTheme] = useState<Theme[]>([]);
   const location = useLocation();
   const navigate = useNavigate();
+  const currentPage = "ThemePage";
 
   useEffect(() => {
     const themeId = location.search.split("=")[1];
@@ -54,6 +56,7 @@ const ThemePage: React.FC<ThemePageProps> = () => {
 
   return (
     <Styles.BackgroundContainer>
+      <C.Header2 currentPage={currentPage} />
       <Styles.Title>주제가 될 새싹을 골라볼까?</Styles.Title>
       <Styles.JustPadding />
       <Styles.ShapeContainer>
