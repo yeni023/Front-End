@@ -41,8 +41,13 @@ export const MainMenu = styled.div`
   padding: 19px 18px;
   white-space: nowrap;
   gap: 145px;
-  position: relative; /* 메인 메뉴에 상대적으로 위치 지정 */
-`;
+  position: relative; 
+
+  &:hover {
+    color: #42655B;
+  }
+` 
+;
 
 export const MenuItem = styled.div`
   position: relative;
@@ -55,6 +60,24 @@ export const MenuItem = styled.div`
 
   &:hover {
     color: #42655B;
+  }
+`;
+
+export const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: #9d9d9d;
+
+  &:hover {
+    color: #42655B; /* 호버 시 색상 변경 */
+  }
+`;
+
+export const StyledMypageLink = styled(Link)`
+  text-decoration: none;
+  color: #8DD1BD; /* 마이페이지 링크 색상 변경 */
+
+  &:hover {
+    color: #42655B; /* 호버 시 색상 변경 */
   }
 `;
 

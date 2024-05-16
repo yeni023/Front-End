@@ -43,7 +43,7 @@ const Search: React.FC = () => {
         );
       }
     } else {
-      // 검색어가 없는 경우에는 모든 동화를 보여줍니다.
+      // 검색어가 없는 경우에는 모든 동화를 보여줌
       setShowDefaultList(true);
       return books;
     }

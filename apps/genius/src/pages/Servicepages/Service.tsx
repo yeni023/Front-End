@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom"; // Link 추가
 import * as ServiceStyle from './ServiceStyle';
 import Navbar from "../Navbar/Navbar";
 
@@ -28,7 +29,11 @@ const Service = () => {
           <button type="submit">검색</button>
         </ServiceStyle.SearchForm>
         <ServiceStyle.ButtonGroup>
-          <button>1:1 문의 접수</button>
+          {/* 1:1 문의 접수 페이지로 이동하는 링크 추가 */}
+          <Link to="/InquiryForm">
+            <button>1:1 문의 접수</button>
+          </Link>
+          {/* 나의 문의 내역 페이지로 이동하는 링크 (추가적인 버튼) */}
           <button>나의 문의 내역</button>
         </ServiceStyle.ButtonGroup>
         <ServiceStyle.Section>
