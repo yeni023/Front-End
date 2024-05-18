@@ -15,7 +15,7 @@ export const Header = styled.div`
   position: fixed;
   top: 0;
   width: 100%;
-  height: 130px;
+  height: 90px;
   z-index: 100;
   align-items: center;
   padding-left: 20px;
@@ -28,7 +28,7 @@ export const Header2 = styled.div`
   position: fixed;
   top: 0;
   width: 100%;
-  height: 130px;
+  height: 90px;
   z-index: 100;
   align-items: center;
   padding-left: 20px;
@@ -37,7 +37,6 @@ export const Header2 = styled.div`
 
 export const HeaderElement = styled.div`
   display: flex;
-  margin-right: 20px;
   justify-content: center;
   text-align: center;
   align-items: center;
