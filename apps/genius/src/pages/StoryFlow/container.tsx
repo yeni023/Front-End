@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import * as S from "./styles";
 
 import { LogoImage } from "./styles";
@@ -17,7 +17,7 @@ const HeaderElementsData: HeaderElementsType[] = [
   {
     text1: "STEP 1",
     text2: "장르 선택",
-    size: 24,
+    size: 17,
     color: "#9D9D9D",
     action: () => {
       setSelectedStepIndex(0);
@@ -26,32 +26,32 @@ const HeaderElementsData: HeaderElementsType[] = [
   },
   {
     text1: "STEP 2",
-    text2: "주제 선택",
-    size: 24,
+    text2: "정보 입력",
+    size: 17,
     color: "#9D9D9D",
     action: () => {
       setSelectedStepIndex(1);
-      console.log("주제 선택");
+      console.log("정보 입력");
     }
   },
   {
     text1: "STEP 3",
-    text2: "기본 정보",
-    size: 24,
+    text2: "이야기 생성",
+    size: 17,
     color: "#9D9D9D",
     action: () => {
       setSelectedStepIndex(2);
-      console.log("기본 정보");
+      console.log("이야기 생성");
     }
   },
   {
     text1: "STEP 4",
-    text2: "도입부 컨펌",
-    size: 24,
+    text2: "이야기 확인",
+    size: 17,
     color: "#9D9D9D",
     action: () => {
       setSelectedStepIndex(3);
-      console.log("도입부 컨펌");
+      console.log("이야기 확인");
     }
   }
 ];
@@ -70,7 +70,16 @@ const HeaderElementText = ({
   highlight: boolean;
 }) => {
   return (
-    <S.HeaderElement style={{backgroundColor: highlight ? 'rgba(208, 87, 169, 0.25)' : 'transparent', width: '130px', padding: '10px',borderRadius: '10px'}}>
+    <S.HeaderElement
+      style={{
+        backgroundColor: highlight ? "rgba(208, 87, 169, 0.25)" : "transparent",
+        width: "100px",
+        height: "70px",
+        padding: "0 10px",
+        borderRadius: "10px",
+        margin: "0 5px"
+      }}
+    >
       <div>
         <p style={{ fontSize: size, color: color }}>{text1}</p>
         <p style={{ fontSize: size, color: color }}>{text2}</p>
@@ -80,7 +89,7 @@ const HeaderElementText = ({
 };
 
 // DalKong Header 여기 함수까지
-export const Header = ({currentPage}) => {
+export const Header = ({ currentPage }) => {
   const [selectedStepIndex, setSelectedStepIndex] = useState(0);
 
   useEffect(() => {
@@ -101,15 +110,31 @@ export const Header = ({currentPage}) => {
       <LogoImage src={logoImage} alt="Logo" style={{ marginRight: "10px" }} />
       <div style={{ display: "flex", alignItems: "center" }}>
         {HeaderElementsData.map((data, index) => (
-          <div key={index}>
-            <HeaderElementText
-              text1={data.text1}
-              text2={data.text2}
-              size={data.size}
-              color={data.color}
-              highlight={selectedStepIndex === index}
-            />
-          </div>
+          <>
+            <div key={index}>
+              <HeaderElementText
+                text1={data.text1}
+                text2={data.text2}
+                size={data.size}
+                color={data.color}
+                highlight={selectedStepIndex === index}
+              />
+            </div>
+            {index < HeaderElementsData.length - 1 && (
+              // 마지막 단계 이후가 아니라면 검정색 화살표 추가
+              <div
+                style={{
+                  fontSize: "24px",
+                  fontWeight: "bold",
+                  color: "#9D9D9D",
+                  width: "40px",
+                  textAlign: "center"
+                }}
+              >
+                {">"}
+              </div>
+            )}
+          </>
         ))}
       </div>
     </S.Header>
@@ -129,7 +154,7 @@ const HeaderElementsData2: HeaderElementsType2[] = [
   {
     text1: "STEP 1",
     text2: "장르 선택",
-    size: 24,
+    size: 17,
     color: "#9D9D9D",
     action: () => {
       setSelectedStepIndex(0);
@@ -139,7 +164,7 @@ const HeaderElementsData2: HeaderElementsType2[] = [
   {
     text1: "STEP 2",
     text2: "주제 선택",
-    size: 24,
+    size: 17,
     color: "#9D9D9D",
     action: () => {
       setSelectedStepIndex(1);
@@ -149,7 +174,7 @@ const HeaderElementsData2: HeaderElementsType2[] = [
   {
     text1: "STEP 3",
     text2: "이야기 생성",
-    size: 24,
+    size: 17,
     color: "#9D9D9D",
     action: () => {
       setSelectedStepIndex(2);
@@ -159,7 +184,7 @@ const HeaderElementsData2: HeaderElementsType2[] = [
   {
     text1: "STEP 4",
     text2: "이야기 확인",
-    size: 24,
+    size: 17,
     color: "#9D9D9D",
     action: () => {
       setSelectedStepIndex(3);
@@ -167,7 +192,6 @@ const HeaderElementsData2: HeaderElementsType2[] = [
     }
   }
 ];
-
 
 const HeaderElementText2 = ({
   text1,
@@ -183,7 +207,16 @@ const HeaderElementText2 = ({
   highlight: boolean;
 }) => {
   return (
-    <S.HeaderElement style={{backgroundColor: highlight ? 'rgba(171, 225, 209, 0.5)' : 'transparent', width: '130px', padding: '10px',borderRadius: '10px'}}>
+    <S.HeaderElement
+      style={{
+        backgroundColor: highlight ? "rgba(171, 225, 209, 0.5)" : "transparent",
+        width: "100px",
+        height: "70px",
+        padding: "0 10px",
+        borderRadius: "10px",
+        margin: "0 5px"
+      }}
+    >
       <div>
         <p style={{ fontSize: size, color: color }}>{text1}</p>
         <p style={{ fontSize: size, color: color }}>{text2}</p>
@@ -192,7 +225,7 @@ const HeaderElementText2 = ({
   );
 };
 
-export const Header2 = ({currentPage}) => {
+export const Header2 = ({ currentPage }) => {
   const [selectedStepIndex, setSelectedStepIndex] = useState(0);
 
   useEffect(() => {
@@ -219,15 +252,31 @@ export const Header2 = ({currentPage}) => {
       <LogoImage src={logoImage} alt="Logo" style={{ marginRight: "10px" }} />
       <div style={{ display: "flex", alignItems: "center" }}>
         {HeaderElementsData2.map((data, index) => (
-          <div key={index}>
-            <HeaderElementText2
-              text1={data.text1}
-              text2={data.text2}
-              size={data.size}
-              color={data.color}
-              highlight={selectedStepIndex === index}
-            />
-          </div>
+          <>
+            <div key={index}>
+              <HeaderElementText2
+                text1={data.text1}
+                text2={data.text2}
+                size={data.size}
+                color={data.color}
+                highlight={selectedStepIndex === index}
+              />
+            </div>
+            {index < HeaderElementsData2.length - 1 && (
+              // 마지막 단계 이후가 아니라면 검정색 화살표 추가
+              <div
+                style={{
+                  fontSize: "24px",
+                  fontWeight: "bold",
+                  color: "#9D9D9D",
+                  width: "40px",
+                  textAlign: "center"
+                }}
+              >
+                {">"}
+              </div>
+            )}
+          </>
         ))}
       </div>
     </S.Header2>
