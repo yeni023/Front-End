@@ -16,18 +16,18 @@ export const BackgroundContainer = styled.div`
 export const ShapeContainer = styled.div`
   display: flex;
   justify-content: center;
-  gap: 50px;
+  gap: 60px;
 `;
 
 export const Title = styled.div`
   font-family: "Inter";
   font-style: normal;
   font-weight: 600;
-  font-size: 64px;
+  font-size: 60px;
   text-align: center;
   color: #ffffff;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  margin-bottom: 50px;
+  margin-bottom: 0px;
 `;
 export const Regenarate = styled.button`
   position: absolute;

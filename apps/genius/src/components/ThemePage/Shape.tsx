@@ -1,6 +1,7 @@
 // Shape.tsx
 import React, { useState, useEffect } from "react";
-import * as Styles from "./ShapeStyle";
+import * as S from "./ShapeStyle";
+import * as N from "./ShapeNextStyle";
 
 interface ShapeProps {
   title: string;
@@ -26,18 +27,18 @@ const Shape: React.FC<ShapeProps> = ({
   }, [delay]);
 
   return (
-    <Styles.Container>
-      <Styles.Glass>
-        <Styles.Title>{title}</Styles.Title>
-        <Styles.SproutContainer show={!showButton} />
-        <Styles.ImageContainer
+    <N.Container>
+      <N.Glass>
+        <N.Title>{title}</N.Title>
+        <S.SproutContainer show={!showButton} />
+        <S.ImageContainer
           style={{ backgroundImage: `url(${subjectImage})` }}
           onClick={onImageContainerClick}
           show={showButton}
         />
-      </Styles.Glass>
-      <Styles.Shadow />
-    </Styles.Container>
+      </N.Glass>
+      <N.Shadow />
+    </N.Container>
   );
 };
 
