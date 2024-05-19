@@ -4,11 +4,7 @@ import DalkongBG from "../../assets/images/DalkongBG.svg";
 import Stone from "../../assets/images/stone.png";
 
 export const Container = styled.div`
-  background-image: linear-gradient(
-      rgba(255, 255, 255, 0.2),
-      rgba(255, 255, 255, 0.2)
-    ),
-    url(${DalkongBG});
+  background-image: url(${DalkongBG});
   background-size: cover;
   background-position: center;
   width: 100vw;
@@ -22,19 +18,20 @@ export const Title = styled.div`
   font-family: "Inter";
   font-style: normal;
   font-weight: 600;
-  font-size: 64px;
+  font-size: 60px;
   text-align: center;
   color: #ffffff;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   margin-bottom: 50px;
+  margin-top: 180px;
 `;
 export const OkBtn = styled.button`
   justify-content: center;
 
   width: 328px;
   height: 54px;
+  background: rgba(255, 255, 255, 0.5);
 
-  background: rgba(217, 217, 217, 0.3);
   border-radius: 20px;
 
   font-family: "Inter";
@@ -44,14 +41,16 @@ export const OkBtn = styled.button`
   line-height: 0px;
   text-align: center;
 
-  color: rgba(255, 255, 255, 0.76);
+  color: #fff;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 `;
 export const NoBtn = styled.button`
   justify-content: center;
 
   width: 328px;
   height: 54px;
-  background: rgba(217, 217, 217, 0.3);
+  background: rgba(255, 255, 255, 0.5);
+
   border-radius: 20px;
   font-family: "Inter";
   font-style: normal;
@@ -60,26 +59,27 @@ export const NoBtn = styled.button`
   line-height: 0px;
   text-align: center;
 
-  color: rgba(255, 255, 255, 0.76);
+  color: #fff;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
   margin-left: 130px;
 `;
 export const BtnContainer = styled.div`
   display: flex;
   flex-flow: row nowrap;
-  margin-bottom: 40px;
+  margin-bottom: 70px;
 `;
 
 export const FormContainer = styled.form`
   display: flex;
   justify-content: center;
-  gap: 50px;
+  gap: 60px;
 `;
 
 export const Label = styled.label`
   margin-bottom: 55px;
-  box-sizing: border-box;
-  width: 323px;
-  height: 469px;
+  width: 290px;
+  height: 420px;
   background: linear-gradient(
     89.6deg,
     rgba(255, 255, 255, 0.5) 0.64%,
@@ -247,7 +247,7 @@ export const Number = styled.div`
   font-family: "Inter";
   font-style: normal;
   font-weight: 700;
-  font-size: 36px;
+  font-size: 33px;
   line-height: 44px;
   color: #fff;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -259,6 +259,6 @@ export const Img = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   margin-right: 40px;
-  width: 170px;
-  height: 200px;
+  width: 130px;
+  height: 160px;
 `;
