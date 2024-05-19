@@ -6,33 +6,33 @@ import {
   ImageWrapper,
   Image,
   Wrapper,
-  Arrow_Image,
-  ArrowButton,
+  // Arrow_Image,
+  // ArrowButton,
   ButtonText
 } from "./genre2";
 import book from "../../assets/images/book.svg";
 import castle from "../../assets/images/castle.svg";
 import full_story from "../../assets/images/full_story.svg";
 import ghost from "../../assets/images/ghost.svg";
-import left from "../../assets/images/left.svg";
-import right from "../../assets/images/right.svg";
+// import left from "../../assets/images/left.svg";
+// import right from "../../assets/images/right.svg";
 
 const Genre2 = () => {
   const currentPage = "Genre2";
   const navigate = useNavigate();
 
-  const nextPage = () => {
-    console.log("다음 장");
-    navigate("/StoryFlow");
-  };
+  // const nextPage = () => {
+  //   console.log("다음 장");
+  //   navigate("/StoryFlow");
+  // };
 
-  const previousPage = () => {
-    console.log("이전 장");
-  };
+  // const previousPage = () => {
+  //   console.log("이전 장");
+  // };
 
   const handleButtonClick = (type: string) => {
     console.log(` ${type}`);
-    navigate("/BasicInfo");
+    navigate("/ThemePage");
   };
 
   return (
@@ -41,9 +41,9 @@ const Genre2 = () => {
       <Wrapper>
         <GenreTitle>어떤 동화를 만들고 싶어?</GenreTitle>
         <ImageWrapper>
-          <ArrowButton onClick={previousPage}>
+          {/* <ArrowButton onClick={previousPage}>
             <Arrow_Image src={left} alt="left" />
-          </ArrowButton>
+          </ArrowButton> */}
           <div>
             <Image
               src={castle}
@@ -84,9 +84,9 @@ const Genre2 = () => {
               전래 동화 만들기
             </ButtonText>
           </div>
-          <ArrowButton onClick={nextPage}>
+          {/* <ArrowButton onClick={nextPage}>
             <Arrow_Image src={right} alt="right" />
-          </ArrowButton>
+          </ArrowButton> */}
         </ImageWrapper>
       </Wrapper>
     </Container>

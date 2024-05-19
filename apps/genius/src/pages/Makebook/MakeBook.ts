@@ -5,6 +5,11 @@ import photo from "../../assets/images/MakeBookPhoto.svg";
 import TextPhoto from "../../assets/images/TextImage.svg";
 import SaveIcon from "../../assets/images/Save.svg";
 import ContinueIcon from "../../assets/images/Continue.svg";
+import MakeBookBG from "../../assets/images/MakeBookBG.svg";
+import MakeBookImg from "../../assets/images/MakeBookImg.svg";
+import MakeBookBtn1 from "../../assets/images/MakeBookBtn1.svg";
+import MakeBookBtn2 from "../../assets/images/MakeBookBtn2.svg";
+
 export const Container = styled.div`
   position: relative;
   background-image: url(${DalkongBG});
@@ -131,7 +136,7 @@ export const TextImage = styled.div`
 
 export const CustomButton = styled.button`
   position: fixed;
-  top: 40px;
+  top: 20px;
   right: 30px;
   z-index: 100;
   padding: 70px;
@@ -154,7 +159,7 @@ export const CustomButton = styled.button`
 
 export const CustomButton2 = styled.button`
   position: fixed;
-  top: 40px;
+  top: 20px;
   right: 190px;
   z-index: 100;
   padding: 70px;
@@ -181,4 +186,84 @@ export const ButtonWrapper = styled.div`
   z-index: 100;
   display: flex;
   flex-direction: row;
+`;
+
+export const FullscreenImage = styled.div`
+  position: fixed;
+  top: 90px;
+  left: 0;
+  width: 100vw;
+  height: calc(100vh - 90px);
+  background-image: url(${MakeBookBG});
+  background-size: cover;
+  background-position: center;
+  z-index: 200;
+`;
+
+export const MakeBookImage = styled.div`
+  position: fixed;
+  top: 200px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50vw;
+  height: 50vh;
+  background-image: url(${MakeBookImg});
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 300;
+`;
+
+export const OverlayButtonWrapper = styled.div`
+  position: absolute;
+  top: 300px;
+  left: 45%;
+  transform: translateX(-50%);
+  z-index: 400;
+  display: flex;
+  flex-direction: row;
+`;
+
+export const OverlayButton1 = styled.button`
+  position: fixed;
+  top: 250px;
+  left: calc(50% - 10px);
+  transform: translateX(-50%);
+  width: 180px;
+  height: 60px;
+  background-image: url(${MakeBookBtn1});
+  background-size: contain;
+  background-color: #D9D9D9;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  cursor: pointer;
+  z-index: 400;
+
+  &:focus {
+    outline: none;
+    border: none;
+  }
+`;
+
+export const OverlayButton2 = styled.button`
+  position: fixed;
+  top: 250px;
+  left: calc(50% + 200px);
+  transform: translateX(-50%);
+  width: 180px;
+  height: 60px;
+  background-image: url(${MakeBookBtn2});
+  background-size: contain;
+  background-color: #D9D9D9;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  cursor: pointer;
+  z-index: 400;
+
+  &:focus {
+    outline: none;
+    border: none;
+  }
 `;

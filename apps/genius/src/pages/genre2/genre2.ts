@@ -56,17 +56,17 @@ export const Image = styled.img`
   flex-direction: column;
 `;
 
-export const Arrow_Image = styled.img`
-  height: 150px;
-  padding-top: 40px;
-  object-fit: cover;
-`;
+// export const Arrow_Image = styled.img`
+//   height: 150px;
+//   padding-top: 40px;
+//   object-fit: cover;
+// `;
 
-export const ArrowButton = styled.button`
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-`;
+// export const ArrowButton = styled.button`
+//   background-color: transparent;
+//   border: none;
+//   cursor: pointer;
+// `;
 
 export const OvalText = styled.div`
   font-size: 25px;

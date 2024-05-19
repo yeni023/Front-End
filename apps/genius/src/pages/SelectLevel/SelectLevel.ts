@@ -63,19 +63,24 @@ export const Image = styled.img`
   object-fit: cover; /* 이미지 비율 유지 */
 `;
 
-export const LevelButton = styled.button<{ bgImage: string }>`
-  background-color: rgba(255, 255, 255, 0.34);
-  border: 8px solid white;
+export const LevelButton = styled.button<{
+  bgImage: string;
+  hoverImage: string;
+  isSelected?: boolean;
+}>`
+  background-color: ${(props) =>
+    props.isSelected ? "rgba(242, 202, 94, 0.8)" : "rgba(255, 255, 255, 0.34)"};
+  border: 8px solid ${(props) => (props.isSelected ? "#1ee74a" : "white")};
   color: black;
   font-size: 130px;
   margin: 25px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, background-image 0.3s;
   width: 450px;
   height: 480px;
   text-align: center;
-  background-image: url(${(props) => props.bgImage});
-  background-size: 80%;
+  background-image: url(${(props) => (props.isSelected ? props.hoverImage : props.bgImage)});
+  background-size: ${(props) => (props.isSelected ? "90%" : "80%")};
   background-repeat: no-repeat;
   background-position: center;
   border-radius: 35px;
@@ -87,5 +92,52 @@ export const LevelButton = styled.button<{ bgImage: string }>`
   &:hover {
     background-color: rgba(242, 202, 94, 0.8);
     border-color: #1ee74a;
+    background-image: url(${(props) => props.hoverImage});
+    background-size: 90%;
   }
+
+  &:focus {
+    outline: none;
+    border: none;
+  }
+`;
+
+export const CheckButton = styled.button<{ CheckImg: string }>`
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 6px solid white;
+  color: black;
+  font-size: 50px;
+  margin: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 350px;
+  height: 50px;
+  text-align: center;
+  background-image: url(${(props) => props.CheckImg});
+  background-size: 80%;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 70px;
+  margin-top: -5px;
+  margin-right: 25px;
+  margin-bottom: 25px;
+  margin-left: 25px;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.34);
+    border: 8px solid #1ee74a;
+  }
+
+  &:focus {
+    outline: none;
+    border: none;
+  }
+`;
+
+export const ImageWrapper1 = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: -10px;
 `;
