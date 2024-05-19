@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Genre from "./pages/genre/genre.tsx";
 import Genre2 from "./pages/genre2/genre2.tsx";
 import StoryFlow from "./pages/StoryFlow/index";
+import StoryFlow2 from "./pages/StoryFlow2/StoryFlow2.tsx";
 import ThemePage from "./pages/ThemePage/ThemePage.tsx";
 import MainHome from "./pages/MainHome/MainHome.tsx";
 import CreateStory from "./pages/CreateStory/CreateStory.tsx";
@@ -39,6 +40,9 @@ import Search from "./pages/Search/Search.tsx";
 import ACRoading from "./pages/Roading/ACRoading";
 import DCRoading from "./pages/Roading/DCRoading";
 import BookModal from "./pages/Search/BookModal.tsx";
+import LastPage from "./pages/LastPage/LastPage.tsx";
+import LastPage2 from "./pages/LastPage/LastPage2.tsx";
+
 
 const App = () => {
   return (
@@ -47,6 +51,7 @@ const App = () => {
         <Route path="/" element={<Genre />} />
         <Route path="/Genre2" element={<Genre2 />} />
         <Route path="/StoryFlow" element={<StoryFlow />} />
+        <Route path="/StoryFlow2" element={<StoryFlow2 />} />
         <Route path="/ThemePage" element={<ThemePage />} />
         <Route path="/MainHome" element={<MainHome />} />
         <Route path="/CreateStory" element={<CreateStory />} />
@@ -83,6 +88,8 @@ const App = () => {
         <Route path="/ACRoading" element={<ACRoading />} />
         <Route path="/DCRoading" element={<DCRoading />} />
         <Route path="/BookModal" element={<BookModal />} />
+        <Route path="/LastPage" element={<LastPage />} />
+        <Route path="/LastPage2" element={<LastPage2 />} />
       </Routes>
     </Router>
   );
