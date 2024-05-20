@@ -26,7 +26,7 @@ const ChatDC: React.FC = () => {
 
   useEffect(() => {
     scrollToBottom();
-  }, [messages]);
+  }, [messages, selectedChoice]);
 
   const scrollToBottom = () => {
     if (messagesEndRef.current) {
