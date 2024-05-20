@@ -63,7 +63,7 @@ export const StepContent = styled.div`
   border: 2px solid lightseagreen;
   text-align: center;
   animation: ${fadeIn} 0.5s ease-in-out;
-  line-height: 1.8;
+  line-height: 1.9;
 `;
 
 export const ButtonContainer = styled.div` /* 새로운 컨테이너 스타일 추가 */
