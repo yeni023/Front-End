@@ -13,7 +13,7 @@ const ThemePageNext: React.FC = () => {
   const currentPage = "ThemePageNext";
 
   const handleOkBtnClick = () => {
-    navigate(`/ChatAC`);
+    navigate(`/SelectLevel`);
   };
 
   const handleNoBtnClick = () => {
