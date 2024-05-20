@@ -42,8 +42,8 @@ export const AC = styled.div`
   background-image: url(${dalkongcharacter});
   background-size: cover;
   background-position: center;
-  width: 500px;
-  height: 500px;
+  width: 480px;
+  height: 480px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -58,8 +58,8 @@ export const DC = styled.div`
   background-image: url(${alkongcharacter});
   background-size: cover;
   background-position: center;
-  width: 500px;
-  height: 500px;
+  width: 480px;
+  height: 480px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -89,7 +89,7 @@ export const Label = styled.label`
   font-family: "Inter";
   font-style: normal;
   font-weight: 700;
-  font-size: 30px;
+  font-size: 25px;
   line-height: 60px;
   text-align: center;
 
