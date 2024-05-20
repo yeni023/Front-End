@@ -6,11 +6,7 @@ import dalkongcharacter from "../../assets/images/dalkongcharacter.png";
 import alkongcharacter from "../../assets/images/alkongcharacter.png";
 
 export const AContainer = styled.div`
-  background-image: linear-gradient(
-      rgba(255, 255, 255, 0.2),
-      rgba(255, 255, 255, 0.2)
-    ),
-    url(${AlkongBG});
+  background-image: url(${AlkongBG});
   background-size: cover;
   background-position: center;
   width: 100vw;
@@ -23,11 +19,7 @@ export const AContainer = styled.div`
   overflow: hidden;
 `;
 export const DContainer = styled.div`
-  background-image: linear-gradient(
-      rgba(255, 255, 255, 0.2),
-      rgba(255, 255, 255, 0.2)
-    ),
-    url(${DalkongBG});
+  background-image: url(${DalkongBG});
   background-size: cover;
   background-position: center;
   width: 100vw;
