@@ -15,10 +15,10 @@ export const InputContainer = styled.div`
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  bottom: 50px; /* Adjust as needed */
+  bottom: 30px; /* Adjust as needed */
 `;
 
-export const Input = styled.input`
+export const Input = styled.textarea`
   padding: 30px;
   color: #8e8e8e;
   width: 860px;
@@ -33,6 +33,18 @@ export const Input = styled.input`
 
   border-radius: 50px 0px 0px 50px;
   box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+  scrollbar-width: thin; /* For Firefox */
+  scrollbar-color: rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.1); /* For Firefox */
+  &::-webkit-scrollbar {
+    width: 8px; /* Width of vertical scrollbar */
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2); /* Color of thumb */
+    border-radius: 4px; /* Roundness of thumb */
+  }
+  &::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1); /* Color of track */
+  }
 `;
 
 export const Button = styled.button`
