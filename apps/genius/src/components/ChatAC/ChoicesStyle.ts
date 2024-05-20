@@ -8,8 +8,8 @@ export const ChoiceButton = styled.button`
   color: #333;
   font-size: 30px;
 
-  width: 500px;
-  height: 60px;
+  width: 570px;
+  height: fit-content; /* 변경된 부분 */
 
   &:hover {
     border: 4px solid #05ff00;
