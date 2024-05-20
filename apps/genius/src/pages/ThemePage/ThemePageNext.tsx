@@ -12,6 +12,10 @@ const ThemePageNext: React.FC = () => {
   const navigate = useNavigate();
   const currentPage = "ThemePageNext";
 
+  const handleOkBtnClick = () => {
+    navigate(`/ChatAC`);
+  };
+
   const handleNoBtnClick = () => {
     navigate(`/ThemePage?id=${id}`);
   };
@@ -32,7 +36,7 @@ const ThemePageNext: React.FC = () => {
       <C.Header2 currentPage={currentPage} />
       <Styles.Title>좋았어, 이제 이야기 꽃을 피워볼까?</Styles.Title>
       <Styles.BtnContainer>
-        <Styles.OkBtn>응 그럴래</Styles.OkBtn>
+        <Styles.OkBtn onClick={handleOkBtnClick}>응 그럴래</Styles.OkBtn>
         <Styles.NoBtn onClick={handleNoBtnClick}>다시 고를래</Styles.NoBtn>
       </Styles.BtnContainer>
       <Styles.ShapeContainer>
