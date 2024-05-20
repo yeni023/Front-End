@@ -1,5 +1,5 @@
 import React from "react";
-import * as Styles from "./ShapeStyle";
+import * as Styles from "./ShapeNextStyle";
 
 interface ShapeNextProps {
   isFlower: boolean;

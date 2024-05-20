@@ -8,7 +8,9 @@ import MainHome from "./pages/MainHome/MainHome.tsx";
 import CreateStory from "./pages/CreateStory/CreateStory.tsx";
 import SelectChar from "./pages/SelectChar/SelectChar.tsx";
 import ThemePageNext from "./pages/Theme/ThemePageNext.tsx";
-import BasicInfoPage from "./pages/BasicInfo/BasicInfoPage.tsx";
+import BasicInfo from "./pages/BasicInfo/BasicInfo.tsx";
+import ChatDC from "./pages/ChatDC/ChatDC.tsx";
+import ChatAC from "./pages/ChatAC/ChatAC.tsx";
 import SelectLevel from "./pages/SelectLevel/SelectLevel.tsx";
 import ConfirmLevel from "./pages/ConfirmLevel/ConfirmLevel.tsx";
 import MakeBook from "./pages/Makebook/MakeBook.tsx";
@@ -28,7 +30,9 @@ const App = () => {
         <Route path="/CreateStory" element={<CreateStory />} />
         <Route path="/SelectChar" element={<SelectChar />} />
         <Route path="/ThemePageNext" element={<ThemePageNext />} />
-        <Route path="/BasicInfoPage" element={<BasicInfoPage />} />
+        <Route path="/BasicInfo" element={<BasicInfo />} />
+        <Route path="/ChatDC" element={<ChatDC />} />
+        <Route path="/ChatAC" element={<ChatAC />} />
         <Route path="/SelectLevel" element={<SelectLevel />} />
         <Route path="/ConfirmLevel" element={<ConfirmLevel />} />
         <Route path="/Makebook" element={<MakeBook />} />

@@ -1,6 +1,7 @@
-// ShapeStyle.ts
+//// ShapeStyle.ts
 import styled from "styled-components";
 import sprout from "../../assets/images/sprout.png";
+import flower from "../../assets/images/Flower.png";
 
 export const Container = styled.div`
   position: relative;
@@ -22,8 +23,7 @@ export const Shadow = styled.div`
   height: 65.81px;
   background: linear-gradient(180deg, #abe1d1 0%, rgba(171, 225, 209, 0) 100%);
 `;
-
-export const SproutContainer = styled.div<{ show: boolean }>`
+export const SproutContainer = styled.div`
   background: url(${sprout});
   background-repeat: no-repeat;
   background-size: cover;
@@ -32,11 +32,20 @@ export const SproutContainer = styled.div<{ show: boolean }>`
   position: relative;
   top: 65px;
   left: 80px;
-  transition: opacity 0.5s ease-in-out;
-  opacity: ${({ show }) => (show ? 1 : 0)};
 `;
 
-export const ImageContainer = styled.button<{ show: boolean }>`
+export const FlowerContainer = styled.div`
+  background: url(${flower});
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 290px;
+  height: 305px;
+  position: relative;
+  top: 3px;
+  left: 40px;
+`;
+
+export const ImageContainer = styled.button`
   width: 371px;
   height: 268px;
   background-size: cover;
@@ -44,13 +53,11 @@ export const ImageContainer = styled.button<{ show: boolean }>`
   background-position: center;
   box-sizing: border-box;
   position: relative;
-  top: -210px;
+  top: 27px;
   left: 4.4px;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   border-radius: 10px;
   border: none;
-  transition: opacity 0.5s ease-in-out;
-  opacity: ${({ show }) => (show ? 1 : 0)};
 `;
 
 export const Title = styled.p`
