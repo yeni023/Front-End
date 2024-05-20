@@ -57,8 +57,9 @@ const ThemePage: React.FC<ThemePageProps> = () => {
   return (
     <Styles.BackgroundContainer>
       <C.Header2 currentPage={currentPage} />
+      <Styles.JustPadding1 />
       <Styles.Title>주제가 될 새싹을 골라볼까?</Styles.Title>
-      <Styles.JustPadding />
+      <Styles.JustPadding2 />
       <Styles.ShapeContainer>
         {selectedTheme.map((theme, index) => (
           <Shape

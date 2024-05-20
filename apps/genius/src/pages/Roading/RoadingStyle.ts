@@ -6,11 +6,7 @@ import dalkongcharacter from "../../assets/images/dalkongcharacter.png";
 import alkongcharacter from "../../assets/images/alkongcharacter.png";
 
 export const AContainer = styled.div`
-  background-image: linear-gradient(
-      rgba(255, 255, 255, 0.2),
-      rgba(255, 255, 255, 0.2)
-    ),
-    url(${AlkongBG});
+  background-image: url(${AlkongBG});
   background-size: cover;
   background-position: center;
   width: 100vw;
@@ -20,13 +16,10 @@ export const AContainer = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 2;
+  overflow: hidden;
 `;
 export const DContainer = styled.div`
-  background-image: linear-gradient(
-      rgba(255, 255, 255, 0.2),
-      rgba(255, 255, 255, 0.2)
-    ),
-    url(${DalkongBG});
+  background-image: url(${DalkongBG});
   background-size: cover;
   background-position: center;
   width: 100vw;
@@ -35,13 +28,14 @@ export const DContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 `;
 export const AC = styled.div`
   background-image: url(${dalkongcharacter});
   background-size: cover;
   background-position: center;
-  width: 500px;
-  height: 500px;
+  width: 480px;
+  height: 480px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -49,30 +43,29 @@ export const AC = styled.div`
   z-index: 1;
   position: absolute;
 
-  top: 520px;
+  top: 450px;
 `;
 
 export const DC = styled.div`
   background-image: url(${alkongcharacter});
   background-size: cover;
   background-position: center;
-  width: 500px;
-  height: 500px;
+  width: 480px;
+  height: 480px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   z-index: 1;
   position: absolute;
-
-  top: 520px;
+  top: 450px;
 `;
 
 export const Label = styled.label`
   box-sizing: border-box;
 
-  width: 600px;
-  height: 400px;
+  width: 500px;
+  height: 300px;
 
   background: rgba(255, 255, 255, 0.81);
   border: 4px solid #000000;
@@ -88,7 +81,7 @@ export const Label = styled.label`
   font-family: "Inter";
   font-style: normal;
   font-weight: 700;
-  font-size: 36px;
+  font-size: 25px;
   line-height: 60px;
   text-align: center;
 
@@ -97,6 +90,6 @@ export const Label = styled.label`
   background: rgba(255, 255, 255, 0.81);
   border: 4px solid #000000;
   border-radius: 50%;
-  padding: 65px; // 내부 여백을 추가하여 텍스트가 적절히 줄바꿈되도록 함
+  padding: 30px;
   white-space: pre-wrap; /* 이 부분을 추가하세요 */
 `;

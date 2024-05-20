@@ -117,7 +117,7 @@ const BasicInfo: React.FC<UserFormProps> = () => {
           name="story"
           value={formData.story}
           onChange={handleChange}
-          placeholder="예시) 김미미가 용을 물리치는 이야기"
+          placeholder="예시) 김미미가 &#13;&#10; 용을 물리치는 이야기"
         />
       </Styles.FormContainer>
     </Styles.Container>
