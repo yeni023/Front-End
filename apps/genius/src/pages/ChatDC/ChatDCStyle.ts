@@ -106,7 +106,7 @@ export const Message = styled.div<{ isUser: boolean }>`
   border-radius: 10px;
   margin-left: ${({ isUser }) => (isUser ? "auto" : "10px")};
   margin-right: ${({ isUser }) => (isUser ? "10px" : "auto")};
-  max-width: 60%;
+  max-width: 90%;
   word-break: break-all;
   width: fit-content;
   height: fit-content;
