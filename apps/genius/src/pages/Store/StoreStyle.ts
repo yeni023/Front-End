@@ -95,7 +95,6 @@ export const Seeds = styled.span`
 
 export const Price = styled.span`
   font-size: 24px;
-  margin-top: 10px;
   margin-left: 30px;
   background-color: #e7e7e7;
   border-radius: 15px;
