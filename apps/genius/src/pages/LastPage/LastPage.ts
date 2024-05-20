@@ -51,7 +51,7 @@ export const UpperTextBox = styled.div`
   align-items: center;
   transform: rotate(270deg);
   position: absolute;
-  top: 22%; 
+  top: 22%;
   left: 44.5%;
   transform: translate(-50%, -50%) rotate(270deg);
   z-index: 3;
@@ -71,7 +71,7 @@ export const TextBox = styled.div`
   align-items: center;
   transform: rotate(270deg);
   position: absolute;
-  top: 57%; 
+  top: 57%;
   left: 43%;
   transform: translate(-50%, -50%) rotate(270deg);
   z-index: 3;
