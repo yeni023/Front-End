@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import DalkongBG from "../../assets/images/DalkongBG.svg";
+import AlkongBG from "../../assets/images/AlkongBG.svg";
 import MakeBookNext from "../../assets/images/MakeBookNext.svg";
 import MakeBookBefore from "../../assets/images/MakeBookBefore.svg";
 
 export const Container = styled.div`
-  background: url(${DalkongBG}) no-repeat center center fixed;
+  background: url(${AlkongBG}) no-repeat center center fixed;
   background-size: cover;
   display: flex;
   min-height: 100vh;

@@ -1,4 +1,6 @@
 import * as C from "../StoryFlow/container";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Container,
   BookImage,
@@ -11,14 +13,27 @@ import {
   TextImage,
   CustomButton,
   CustomButton2,
-  ButtonWrapper
+  ButtonWrapper,
+  FullscreenImage,
+  MakeBookImage,
+  OverlayButtonWrapper,
+  OverlayButton1,
+  OverlayButton2
 } from "./MakeBook2";
 
 const MakeBook2 = () => {
   const currentPage = "MakeBook2";
+  const [showFullscreenImage, setShowFullscreenImage] = useState(false);
+  const navigate = useNavigate();
+
   const handleImageClick = (type: string) => {
     console.log(` ${type}`);
   };
+
+  const handleImageButtonClick = () => {
+    setShowFullscreenImage(true);
+  };
+
   const handleCustomButtonClick = () => {
     console.log("Custom button clicked");
   };
@@ -26,9 +41,39 @@ const MakeBook2 = () => {
   const handleCustomButton2Click = () => {
     console.log("Custom button 2 clicked");
   };
+
+  const handleOverlayButton1Click = () => {
+    setShowFullscreenImage(false);
+  };
+
+  const handleOverlayButton2Click = () => {
+    navigate('/LastPage2');
+  };
+
+  useEffect(() => {
+    if (showFullscreenImage) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [showFullscreenImage]);
+
   return (
     <Container>
       <C.Header2 currentPage={currentPage} />
+      {showFullscreenImage && (
+        <>
+          <FullscreenImage />
+          <MakeBookImage />
+          <OverlayButtonWrapper>
+            <OverlayButton1 onClick={handleOverlayButton1Click} />
+            <OverlayButton2 onClick={handleOverlayButton2Click} />
+          </OverlayButtonWrapper>
+        </>
+      )}
       <BookImageContainer>
         <BookImage onClick={() => handleImageClick("BookImage")} />
       </BookImageContainer>
@@ -38,7 +83,7 @@ const MakeBook2 = () => {
         </TextBox>
       </TextBoxContainer>
       <ImageTextBox>
-        <ImageButton></ImageButton>
+        <ImageButton onClick={handleImageButtonClick}></ImageButton>
       </ImageTextBox>
       <TextImageContainer>
         <TextImage onClick={() => handleImageClick("TextImage")} />

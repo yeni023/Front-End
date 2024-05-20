@@ -103,6 +103,8 @@ export const Header = ({ currentPage }) => {
       setSelectedStepIndex(1);
     } else if (currentPage === "DCRoading") {
       setSelectedStepIndex(2);
+    } else if (currentPage === "LastPage2") {
+      setSelectedStepIndex(3);
     }
   }, [currentPage]);
   return (
@@ -245,6 +247,10 @@ export const Header2 = ({ currentPage }) => {
       setSelectedStepIndex(2);
     } else if (currentPage === "ACRoading") {
       setSelectedStepIndex(2);
+    } else if (currentPage === "StoryFlow2") {
+      setSelectedStepIndex(3);
+    } else if (currentPage === "LastPage") {
+      setSelectedStepIndex(3);
     }
   }, [currentPage]);
   return (
