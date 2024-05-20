@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import Navbar from "../Navbar/Navbar";
+
 import {
   PageContainer,
-  TopBar,
   ImageSection,
   ColorSection,
   ProfileButton,
@@ -13,9 +14,7 @@ import {
   SeedNumButtonContainer,
   SeedNumButton,
   QuestionButton,
-  AnswerImg,
-  ForestButtonContainer,
-  ForestButton
+  AnswerImg
 } from "./MyPageForest";
 
 import bgImage from "../../assets/images/MyPageBG.svg";
@@ -23,7 +22,6 @@ import profileImage from "../../assets/images/MyProfile.svg";
 import followingImage from "../../assets/images/Following.svg";
 import followerImage from "../../assets/images/Follower.svg";
 import AnswerImage from "../../assets/images/Answer.svg";
-import ForestTextImage from "../../assets/images/ForestTitle.svg";
 import ForestMain from "../../components/MyPageForest/ForestMain";
 
 const MyPageForest: React.FC = () => {
@@ -36,7 +34,7 @@ const MyPageForest: React.FC = () => {
   };
   return (
     <PageContainer>
-      <TopBar></TopBar>
+      <Navbar />
       <ImageSection bgImage={bgImage}>
         <ProfileButton
           image={profileImage}

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import Navbar from "../Navbar/Navbar";
+
 import {
   PageContainer,
-  TopBar,
   ImageSection,
   ColorSection,
   ProfileButton,
@@ -32,7 +33,7 @@ const MyPagePlant: React.FC = () => {
   };
   return (
     <PageContainer>
-      <TopBar></TopBar>
+      <Navbar />
       <ImageSection bgImage={bgImage}>
         <ProfileButton
           image={profileImage}
