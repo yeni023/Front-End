@@ -28,14 +28,14 @@ export const CharacterContainer = styled.div`
   overflow: hidden; /* 이미지가 넘치지 않도록 오버플로우를 숨깁니다. */
 
   &:nth-child(1) {
-    background-image: url('./src/assets/images/DalkongBG.svg');
+    background-image: url('./src/assets/images/AlkongBG.svg');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
   }
 
   &:nth-child(2) {
-    background-image: url('./src/assets/images/AlkongBG.svg');
+    background-image: url('./src/assets/images/DalkongBG.svg');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -71,21 +71,21 @@ export const CharacterButton = styled.button<CharacterButtonProps>`
 `;
 
 export const DalKongButton = styled(CharacterButton)<CharacterButtonProps>`
-  color: #7EC7B1;
+  
+  color: #D057A9;
   &:hover {
-    color: #6DA697;
+    color: #B84890;
     transform: translateY(-5px); /* 호버 시 살짝 위로 이동 */
   }
-
   &:focus {
     outline: 0;
   }
 `;
 
 export const AlKongButton = styled(CharacterButton)<CharacterButtonProps>`
-  color: #D057A9;
+  color: #7EC7B1;
   &:hover {
-    color: #B84890;
+    color: #6DA697;
     transform: translateY(-5px); /* 호버 시 살짝 위로 이동 */
   }
   &:focus {

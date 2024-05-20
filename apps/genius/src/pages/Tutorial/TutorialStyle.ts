@@ -27,7 +27,7 @@ export const BackgroundImage = styled.div`
 
 export const CharacterBubble = styled.div`
   position: absolute;
-  top: 55%;
+  top: 65%;
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 20px;
@@ -49,20 +49,20 @@ export const CharacterImage = styled.div`
 `;
 
 export const StepContent = styled.div`
-  font-size: 1.2em;
   white-space: pre-line;
   background-color: #fff;
-  padding: 100px 60px;
+  padding: 100px 65px;
   border-radius: 100%;
   position: absolute;
   left: 50%;
-  top: 30%;
-  font-size: 23px;
+  top: 80px;
+  font-size: 21px;
   transform: translate(-50%, -90%);
   width: 100%;
-  border: 1.5px solid lightseagreen;
+  border: 2px solid lightseagreen;
   text-align: center;
-  animation: ${fadeIn} 0.8s ease-in-out; 
+  animation: ${fadeIn} 0.5s ease-in-out;
+  line-height: 1.8;
 `;
 
 export const ButtonContainer = styled.div` /* 새로운 컨테이너 스타일 추가 */

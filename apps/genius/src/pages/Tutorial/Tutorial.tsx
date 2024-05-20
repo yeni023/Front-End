@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled, { keyframes } from 'styled-components';
-import Navbar from '../Navbar/Navbar';
+import Navbar2 from '../Navbar/Navbar2';
 
 const fadeIn = keyframes`
   from {
@@ -30,7 +30,7 @@ const BackgroundImage = styled.div`
 
 const CharacterBubble = styled.div`
   position: absolute;
-  top: 55%;
+  top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 20px;
@@ -47,13 +47,12 @@ const CharacterImage = styled.div`
   background-size: contain;
   width: 500px;
   height: 370px;
-  margin-top: 160px;
+  margin-top: 180px;
   margin-bottom: 10px;
   align-items: center;
 `;
 
 const StepContent = styled.div`
-  font-size: 1.2em;
   white-space: pre-line;
   background-color: #fff;
   padding: 100px 60px;
@@ -61,12 +60,13 @@ const StepContent = styled.div`
   position: absolute;
   left: 50%;
   top: 30%;
-  font-size: 23px;
+  font-size: 21px;
   transform: translate(-50%, -90%);
   width: 100%;
   border: 1.5px solid lightseagreen;
   text-align: center;
   animation: ${fadeIn} 0.5s ease-in-out; /* fadeIn 애니메이션 적용 */
+  line-height: 1.8;
 `;
 
 const ButtonContainer = styled.div`
@@ -83,7 +83,7 @@ const NextButton = styled.button`
   font-weight: bold;
   border-radius: 10px;
   cursor: pointer;
-  margin-top: 10px;
+  margin-top: 5px;
   border: 2px solid skyblue;
 
   &:hover {
@@ -105,7 +105,7 @@ const EndButton = styled.button`
   font-weight: bold;
   border-radius: 10px;
   cursor: pointer;
-  margin-top: 10px;
+  margin-top: 5px;
   border: 2px solid skyblue;
 
   &:hover {
@@ -129,25 +129,55 @@ const Tutorial: React.FC = () => {
   const getStepContent = () => {
     switch (currentStep) {
       case 2:
-        return '안녕, 우리는 너의 동화책 제작을 도울 알콩이, 달콩이라고 해. 우리의 이야기를 들어볼래?';
+        return (
+          <>
+            우리 함께 동화책을 만들며 숲속을 더욱 아름답게 <br />만들어나가기 위해 여러분에게 안내할 사항이 있어요.
+          </>
+        );
       case 3:
-        return '우리는 숲 속에 살고 있어. 어떤 이야기를 만들어볼래?';
+        return (
+          <>
+            동화책을 만들면 숲속에 많은 나무와 꽃들이 자라나요! 이 숲속을 더욱 아름답게 만들기 위해 <br />
+            알콩이, 달콩이가 기다리고 있답니다.
+          </>
+        );
       case 4:
-        return '너가 동화책을 만들면 우리 숲속에는 꽃과 나무가 자라날 수 있어';
+        return (
+          <>
+          동화책 제작 방법에 대한 자세한 내용은 <br />선택한 캐릭터가 안내할 거예요. 
+          <br />우리가 당신의 이야기를 가득 채워줄게요!       
+          </>
+        );
       case 5:
-        return '알콩이와 달콩이 둘 중 하나를 선택해서 같이 동화를 만들 수 있어!';
+        return (
+          <>
+            동화책을 만들수록 숲속이 더욱 아름다워질거에요. <br />이제 시작해볼까요? 알콩이와 달콩이가 당신의 동화 <br />이야기를 만들어내기 위해 기다리고 있어요.
+          </>
+        );
       case 6:
-        return '튜토리얼 6';
+        return (
+          <>
+            동화책을 완성하고 완성된 이야기를 즐겨보세요. <br />함께한 여정이 기억에 오래 남을 거예요.
+          </>
+        );
       case 7:
-        return '이제 너의 이야기를 만들 준비가 되었어! 함께 시작해볼까?';
+        return (
+          <>
+            숲속의 아름다움을 함께 만들어보실 준비가 되셨나요? <br />함께 동화책을 만들러 가볼까요?
+          </>
+        );
       default:
-        return '안녕하세요! 동화책 만들기 튜토리얼에 오신 것을 환영합니다.';
+        return (
+          <>
+           안녕하세요! <br />우리는 이 숲속을 지키는 가이드<br />알콩이, 달콩이에요.
+          </>
+        );
     }
   };
 
   return (
     <TutorialContainer>
-      <Navbar />
+      <Navbar2 />
       <BackgroundImage />
       <CharacterBubble>
         <CharacterImage />

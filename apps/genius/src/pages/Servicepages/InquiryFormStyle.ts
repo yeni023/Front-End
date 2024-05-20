@@ -39,6 +39,7 @@ export const InputField = styled.input`
 `;
 
 export const TextArea = styled.textarea`
+  margin-top: 10px;
   padding: 12px;
   width: 100%;
   height: 300px; /* 조절 가능한 높이 */
