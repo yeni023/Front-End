@@ -24,10 +24,11 @@ export const Wrapper = styled.div`
 export const GenreTitle = styled.div`
   font-size: 55px;
   padding-top: 10%;
-  padding-bottom: 50px;
+  padding-bottom: 55px;
   font-weight: bold;
   text-align: center;
   color: white;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 `;
 
 export const ImageWrapper = styled.div`
@@ -75,7 +76,7 @@ export const ButtonText = styled.div`
   background-color: white;
   color: #d057a9;
   text-align: center;
-  line-height: 87px;
+  line-height: 80px;
   border-radius: 50px;
   cursor: pointer;
   margin-top: 10px;

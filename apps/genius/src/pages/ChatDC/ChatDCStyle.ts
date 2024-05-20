@@ -15,10 +15,10 @@ export const InputContainer = styled.div`
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  bottom: 50px; /* Adjust as needed */
+  bottom: 30px; /* Adjust as needed */
 `;
 
-export const Input = styled.input`
+export const Input = styled.textarea`
   padding: 30px;
   color: #8e8e8e;
   width: 860px;
@@ -33,6 +33,18 @@ export const Input = styled.input`
 
   border-radius: 50px 0px 0px 50px;
   box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+  scrollbar-width: thin; /* For Firefox */
+  scrollbar-color: rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.1); /* For Firefox */
+  &::-webkit-scrollbar {
+    width: 8px; /* Width of vertical scrollbar */
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2); /* Color of thumb */
+    border-radius: 4px; /* Roundness of thumb */
+  }
+  &::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1); /* Color of track */
+  }
 `;
 
 export const Button = styled.button`
@@ -44,11 +56,7 @@ export const Button = styled.button`
 `;
 
 export const DCBackgroundContainer = styled.div`
-  background-image: linear-gradient(
-      rgba(255, 255, 255, 0.1),
-      rgba(255, 255, 255, 0.5)
-    ),
-    url(${DalkongBG});
+  background-image: url(${DalkongBG});
   background-size: cover;
   background-position: center;
   height: 100vh;
@@ -102,20 +110,17 @@ export const Message = styled.div<{ isUser: boolean }>`
   background-color: ${({ isUser }) => (isUser ? "#F9EB54" : "#B5E4F8")};
   color: #333;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-  padding-left: 20px;
-  padding-right: 20px;
-  /* 세로 중앙 정렬을 위한 스타일 */
+  padding: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
   border-radius: 10px;
   margin-left: ${({ isUser }) => (isUser ? "auto" : "10px")};
   margin-right: ${({ isUser }) => (isUser ? "10px" : "auto")};
-  max-width: 60%;
+  max-width: 90%;
   word-break: break-all;
   width: fit-content;
-
+  height: fit-content;
   font-size: 30px;
 `;
