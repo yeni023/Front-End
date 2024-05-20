@@ -150,6 +150,7 @@ export const Content2Element = styled.div`
   justify-content: center;
   align-items: center;
   margin-top: 20px;
+  position: relative;
 `;
 
 export const Content2ElementInner = styled.div`
@@ -158,9 +159,25 @@ export const Content2ElementInner = styled.div`
   width: 90%;
   height: 80%;
   justify-content: center;
+  align-items: center;
   gap: 30px;
   background-color: white;
   border-radius: 50px;
+  padding: 20px;
+  white-space: pre-line;
+  color: black;
+  text-align: center;
+  font-size: 2em;
+  font-weight: 400;
+`;
+
+export const FixedImage = styled.img`
+  position: absolute;
+  top: 50px;
+  left: 80px;
+  width: 50px;
+  height: auto;
+  z-index: 10;
 `;
 
 export const LogoImage = styled.img`
