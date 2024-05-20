@@ -3,6 +3,13 @@ import * as S from "./styles";
 
 import { LogoImage } from "./styles";
 import logoImage from "../../assets/images/logo.png";
+import Story1 from "../../assets/images/Story1.svg";
+import Story2 from "../../assets/images/Story2.svg";
+import Story3 from "../../assets/images/Story3.svg";
+import Story4 from "../../assets/images/Story4.svg";
+import Story5 from "../../assets/images/Story5.svg";
+import Story6 from "../../assets/images/Story6.svg";
+import Story7 from "../../assets/images/Story7.svg";
 
 type HeaderElementsType = {
   text1: string;
@@ -298,8 +305,8 @@ export const Content1 = () => {
         <S.Content1TitleInner>
           <h1>1. 제목</h1>
           <S.Content1InputTitle>
-            <h1 style={{ color: "black", fontSize: "2.5em" }}>
-              미미의 곰돌이를 찾아서
+            <h1 style={{ color: "black", fontSize: "2em" }}>
+              바다 모험가들 [신비로운 해저 도시 탐험]
             </h1>
           </S.Content1InputTitle>
         </S.Content1TitleInner>
@@ -308,9 +315,9 @@ export const Content1 = () => {
         <S.Content1SubjectInner>
           <h1>2. 주제</h1>
           <S.Content1InputSubject>
-            <h1 style={{ color: "black", fontSize: "2.5em", fontWeight: 400 }}>
-              김미미는 갈색 머리에 까만 눈을 가지고 있어요. 미미는 매우 용감감한
-              성격을 가진 소녀예요.
+            <h1 style={{ color: "black", fontSize: "2em" }}>
+              인어공주가 어선 안에서 호기심 많은 남자아이를 만나 서로의 세계를
+              알아가며 우정을 쌓는다.
             </h1>
           </S.Content1InputSubject>
         </S.Content1SubjectInner>
@@ -320,23 +327,26 @@ export const Content1 = () => {
 };
 
 export const Content2 = () => {
+  const images = [Story1, Story2, Story3, Story4, Story5, Story6, Story7];
+  const texts = [
+    "한때 바닷속에서 이야기가 시작되었습니다.\n밝고 명랑한 성격을 지닌 13살의 인어공주는\n물 밖 세상이 궁금하여 모험을 떠났어요.",
+    "인어공주가 물 밖 세상에서 어선을 발견했어요.\n호기심 가득한 그녀는 어선 안으로 들어가 숨어 버리고 말았는데,\n어떤 모험이 그녀를 기다리고 있을까요?",
+    "어선 안에서 인어공주는 비슷한 나이의 남자아이를 발견했어요.\n그 두 사람은 서로 궁금해하며 서로의 세계에 대해 이야기를 나누었어요.\n곧 인어공주는 물 속으로 돌아가야 한다는 사실을 알게 되고,\n둘 사이에 특별한 우정이 시작되었습니다.",
+    "인어공주와 남자아이는 함께 어선을 떠나\n수영을 즐기며 서로의 세계를 탐험하는데요.\n남자아이는 인어공주를 따라 바닷속으로 내려가\n물 속 동물들과 친구가 되어 즐거운 여행을 떠날 거예요.",
+    "이어 남자아이가 인어공주와 함께 수영을 즐겨서\n물속에서도 숨을 쉴 수 있게 되었어요.\n함께 우그웨이 거북이 할아버지를 만나 바닷속 세계를 탐험하는 도중,\n다양한 모험을 겪게 되었습니다.",
+    "울긴 크거북이 할아버지와 함께 인어공주와 남자아이는\n해류를 타고 전 세계의 바다를 모험하는데요.\n그들은 아름다운 해저 도시들을 발견하고,\n위험한 상어 무리와의 경쟁을 통해 용기와 우정을 강화했습니다.\n그러나 한 곳에서 물속 마법이 속발했고,\n그들을 구하기 위해 더 많은 모험을 해야 했습니다.",
+    "마지막으로 남자아이가 인어공주를 너무 좋아해\n바닷 속에서 살기로 결정했어요.\n인어공주와 남자아이는 결혼하여 전 세계 바다를 자유롭게 모험할 것이며,\n그 용감한 여정은 계속되었습니다."
+  ];
   return (
     <S.Content2>
-      <S.Content2Element>
-        <S.Content2ElementInner />
-      </S.Content2Element>
-      <S.Content2Element>
-        <S.Content2ElementInner />
-      </S.Content2Element>
-      <S.Content2Element>
-        <S.Content2ElementInner />
-      </S.Content2Element>
-      <S.Content2Element>
-        <S.Content2ElementInner />
-      </S.Content2Element>
-      <S.Content2Element>
-        <S.Content2ElementInner />
-      </S.Content2Element>
+      {images.map((image, index) => (
+        <S.Content2Element key={index}>
+          <S.FixedImage src={image} alt={`Story ${index + 1}`} />
+          <S.Content2ElementInner>
+            <p>{texts[index]}</p>
+          </S.Content2ElementInner>
+        </S.Content2Element>
+      ))}
     </S.Content2>
   );
 };
