@@ -41,6 +41,12 @@ const MyPage: React.FC = () => {
   const handleBookButtonClick = () => {
     navigate("/MyPageBook");
   };
+  const handleFlowerButtonClick = () => {
+    navigate("/MyPagePlant");
+  };
+  const handleForestButtonClick = () => {
+    navigate("/MyPageForest");
+  };
 
   return (
     <PageContainer>
@@ -77,10 +83,10 @@ const MyPage: React.FC = () => {
       <ColorSection>
         <TopButtonContainer>
           <BookButton onClick={handleBookButtonClick} />
-          <FlowerButton onClick={() => console.log("Flower button clicked!")} />
+          <FlowerButton onClick={handleFlowerButtonClick} />
         </TopButtonContainer>
         <BottomButtonContainer>
-          <ForestButton onClick={() => console.log("Forest button clicked!")} />
+          <ForestButton onClick={handleForestButtonClick} />
         </BottomButtonContainer>
       </ColorSection>
     </PageContainer>
