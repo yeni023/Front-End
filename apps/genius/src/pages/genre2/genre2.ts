@@ -22,12 +22,13 @@ export const Wrapper = styled.div`
 `;
 
 export const GenreTitle = styled.div`
-  font-size: 50px;
+  font-size: 55px;
   padding-top: 10%;
   padding-bottom: 50px;
   font-weight: bold;
   text-align: center;
-  color: black;
+  color: white;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 `;
 
 export const ImageWrapper = styled.div`
@@ -81,13 +82,15 @@ export const OvalText = styled.div`
 
 export const ButtonText = styled.div`
   font-size: 25px;
+  font-weight: bold;
   width: 250px;
   height: 80px;
-  background-color: #333;
-  color: white;
+  background-color: white;
+  color: #8dd1bd;
   text-align: center;
-  line-height: 87px;
+  line-height: 80px;
   border-radius: 50px;
   cursor: pointer;
   margin-top: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 `;
