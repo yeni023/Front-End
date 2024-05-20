@@ -8,7 +8,7 @@ import ThemePage from "./pages/ThemePage/ThemePage.tsx";
 import MainHome from "./pages/MainHome/MainHome.tsx";
 import CreateStory from "./pages/CreateStory/CreateStory.tsx";
 import SelectChar from "./pages/SelectChar/SelectChar.tsx";
-import ThemePageNext from "./pages/ThemePage/ThemePageNext.tsx";
+import ThemePageNext from "./pages/Theme/ThemePageNext.tsx";
 import BasicInfo from "./pages/BasicInfo/BasicInfo.tsx";
 import ChatDC from "./pages/ChatDC/ChatDC.tsx";
 import ChatAC from "./pages/ChatAC/ChatAC.tsx";
