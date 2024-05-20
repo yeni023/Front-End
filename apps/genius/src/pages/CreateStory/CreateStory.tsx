@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as Styles from './CreateStoryStyle';
-import Navbar from '../Navbar/Navbar';
+import Navbar2 from '../Navbar/Navbar2';
 
 const CreateStory: React.FC = () => {
   const [loaded, setLoaded] = useState(false);
@@ -33,7 +33,7 @@ const CreateStory: React.FC = () => {
 
   return (
     <div>
-      <Navbar /> 
+      <Navbar2 /> 
       <Styles.Container className={`content-container ${loaded ? 'loaded' : ''}`}>
         <Styles.InputContainer
           className={`input-container ${loaded ? 'loaded' : ''}`}

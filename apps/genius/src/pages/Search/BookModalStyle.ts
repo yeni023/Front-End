@@ -17,7 +17,7 @@ export const ModalContainer = styled.div`
   background-color: #fff;
   width: 60%;
   max-width: 800px;
-  height: 75%;
+  height: 70%;
   padding: 20px;
   margin-top: 80px;
   position: relative;
@@ -38,13 +38,20 @@ export const CloseButton = styled.button`
 
 export const Content = styled.div`
   margin-top: 20px;
-  margin-left: 15px;
+  margin-left: 20px;
   display: flex;
   flex-direction: column;
   align-items: left;
   justify-content: left;
   height: 100%;
   overflow: auto;
+
+  hr {
+    border: 0;
+    border-top: 1px solid #000; /* 선의 두께와 색상 설정 */
+    margin: 20px 0; /* 수평선 위아래 여백 */
+    margin-right: 10px;
+  }
 
   h2 {
     font-size: 24px;
@@ -74,3 +81,5 @@ export const Content = styled.div`
     margin-top: 40px;
   }
 `;
+
+

@@ -1,22 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import * as C from "../../pages/StoryFlow/container";
 import * as S from "./RoadingStyle";
 
 const ACRoading: React.FC = () => {
-  const [name] = useState("혜진"); // 이름을 상태로 관리
-  const [message, setMessage] = useState(
-    `${name}이가 작성한 이야기를\n바탕으로 동화를 만들어볼게`
-  );
+  const [name] = useState("혜진");
+  const messages = [
+    `${name}이가 작성한 이야기를\n바탕으로 동화를 만들어볼게`,
+    "잠깐만 기다려\n동화책이 만들어지고 있어\n......"
+  ];
+  const [messageIndex, setMessageIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setMessageIndex((prevIndex) => (prevIndex + 1) % messages.length);
+    }, 2000);
+
+    return () => clearInterval(interval);
+  }, [messages.length]);
+
   const currentPage = "ACRoading";
-  const handleClick = () => {
-    setMessage("잠깐만 기다려\n동화책이 만들어지고 있어\n.....");
-  };
 
   return (
-    <S.AContainer onClick={handleClick}>
+    <S.AContainer>
       <C.Header2 currentPage={currentPage} />
-      <S.Label>{message}</S.Label>
-      <S.AC />
+      <S.Label>{messages[messageIndex]}</S.Label> <S.AC />
     </S.AContainer>
   );
 };

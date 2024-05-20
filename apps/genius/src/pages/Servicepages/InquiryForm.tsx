@@ -1,7 +1,7 @@
 // InquiryForm.tsx
 import React, { useState } from "react";
 import * as ServiceStyle from './InquiryFormStyle'; // 변경된 경로
-import Navbar from "../Navbar/Navbar";
+import Navbar2 from "../Navbar/Navbar2";
 
 const InquiryForm = () => {
   const [title, setTitle] = useState('');
@@ -16,7 +16,7 @@ const InquiryForm = () => {
 
   return (
     <>
-      <Navbar />
+      <Navbar2 />
       <ServiceStyle.Container>
         <h2>1:1 문의 접수</h2>
         <form onSubmit={handleSubmit}>
