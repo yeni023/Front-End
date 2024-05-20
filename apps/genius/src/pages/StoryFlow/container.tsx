@@ -105,6 +105,8 @@ export const Header = ({ currentPage }) => {
       setSelectedStepIndex(2);
     } else if (currentPage === "LastPage2") {
       setSelectedStepIndex(3);
+    } else if (currentPage === "MakeBook") {
+      setSelectedStepIndex(3);
     }
   }, [currentPage]);
   return (

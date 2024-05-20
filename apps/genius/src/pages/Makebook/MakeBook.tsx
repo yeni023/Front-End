@@ -63,7 +63,7 @@ const MakeBook = () => {
 
   return (
     <Container>
-      <C.Header2 currentPage={currentPage} />
+      <C.Header currentPage={currentPage} />
       {showFullscreenImage && (
         <>
           <FullscreenImage />
