@@ -1,7 +1,6 @@
 // 나의 책장 버튼 누른 후 첫 화면
 import styled from "styled-components";
 import * as S from "./MyBasic";
-import ButtonImage from "../../assets/images/BookSample.svg";
 
 export const PageContainer = S.PageContainer;
 export const TopBar = S.TopBar;
@@ -23,7 +22,11 @@ export const SeedNumButton = S.SeedNumButton;
 export const QuestionButton = S.QuestionButton;
 export const AnswerImg = S.AnswerImg;
 
-export const SampleButton = styled.button`
+interface SampleButtonProps {
+  bgImage: string;
+}
+
+export const SampleButton = styled.button<SampleButtonProps>`
   position: relative;
   width: 300px;
   height: 400px;
@@ -41,7 +44,7 @@ export const SampleButton = styled.button`
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url(${ButtonImage});
+    background-image: url(${(props) => props.bgImage});
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; // React Router의 useNavigate 훅을 import
 import Navbar from "../Navbar/Navbar";
 import {
   PageContainer,
@@ -26,16 +27,23 @@ import AnswerImage from "../../assets/images/Answer.svg";
 import BookTextImage from "../../assets/images/BookTitle.svg";
 import AddButtonImg1 from "../../assets/images/BookChoose1.svg";
 import AddButtonImg2 from "../../assets/images/BookChoose2.svg";
+import ButtonImage1 from "../../assets/images/BookSample.svg";
+import ButtonImage2 from "../../assets/images/BookSample2.svg";
+import ButtonImage3 from "../../assets/images/BookSample3.svg";
 
 const MyPageBook: React.FC = () => {
+  const navigate = useNavigate(); // useNavigate 훅 사용
   const [showAnswer, setShowAnswer] = useState(false);
   const [hoverIndex, setHoverIndex] = useState<number | null>(null);
+
   const handleQuestionClick = () => {
     setShowAnswer(true);
     setTimeout(() => {
       setShowAnswer(false);
     }, 3000);
   };
+
+  const buttonImages = [ButtonImage1, ButtonImage2, ButtonImage3];
 
   return (
     <PageContainer>
@@ -70,27 +78,24 @@ const MyPageBook: React.FC = () => {
         </SeedNumButtonContainer>
       </ImageSection>
       <ButtonRow>
-        {[1, 2, 3].map((index) => (
+        {buttonImages.map((image, index) => (
           <SampleButton
             key={index}
-            onMouseEnter={() => setHoverIndex(index)}
+            bgImage={image}
+            onMouseEnter={() => setHoverIndex(index + 1)}
             onMouseLeave={() => setHoverIndex(null)}
           >
-            {hoverIndex === index && (
+            {hoverIndex === index + 1 && (
               <>
                 <HoverButton
                   bgImage={AddButtonImg1}
                   style={{ opacity: 1, transform: "translate(-70%, -120%)" }}
-                  onClick={() =>
-                    console.log(`Hover Button 1 clicked from group ${index}`)
-                  }
+                  onClick={() => navigate("/MyReadBook")} // 클릭 시 페이지 이동
                 />
                 <HoverButton
                   bgImage={AddButtonImg2}
                   style={{ opacity: 1, transform: "translate(70%, -120%)" }}
-                  onClick={() =>
-                    console.log(`Hover Button 2 clicked from group ${index}`)
-                  }
+                  onClick={() => navigate("/MyReadBook")} // 클릭 시 페이지 이동
                 />
               </>
             )}
