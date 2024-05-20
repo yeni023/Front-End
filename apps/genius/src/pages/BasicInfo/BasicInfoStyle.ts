@@ -18,7 +18,7 @@ export const Title = styled.div`
   font-family: "Inter";
   font-style: normal;
   font-weight: 600;
-  font-size: 60px;
+  font-size: 55px;
   text-align: center;
   color: #ffffff;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
