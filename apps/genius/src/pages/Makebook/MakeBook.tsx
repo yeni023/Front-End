@@ -18,13 +18,26 @@ import {
   MakeBookImage,
   OverlayButtonWrapper,
   OverlayButton1,
-  OverlayButton2
+  OverlayButton2,
+  NewImage,
+  BottomRightButton,
+  ArrowButton,
+  Arrow_Image
 } from "./MakeBook";
+
+import right from "../../assets/images/right.svg";
 
 const MakeBook = () => {
   const currentPage = "MakeBook";
   const [showFullscreenImage, setShowFullscreenImage] = useState(false);
+  const [showImageButton, setShowImageButton] = useState(true);
+  const [showNewImage, setShowNewImage] = useState(false);
   const navigate = useNavigate();
+
+  const nextpage = () => {
+    console.log("다음 장");
+    navigate("/LastPage2");
+  };
 
   const handleImageClick = (type: string) => {
     console.log(` ${type}`);
@@ -47,24 +60,31 @@ const MakeBook = () => {
   };
 
   const handleOverlayButton2Click = () => {
-    navigate('/LastPage');
+    setShowImageButton(false);
+    setShowNewImage(true);
+    setShowFullscreenImage(false);
+  };
+
+  const handleBottomRightButtonClick = () => {
+    setShowImageButton(true);
+    setShowNewImage(false);
   };
 
   useEffect(() => {
     if (showFullscreenImage) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = "auto";
     }
     return () => {
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = "auto";
     };
   }, [showFullscreenImage]);
 
   return (
     <Container>
       <C.Header currentPage={currentPage} />
-      {showFullscreenImage && (
+      {showFullscreenImage && !showNewImage && (
         <>
           <FullscreenImage />
           <MakeBookImage />
@@ -76,6 +96,9 @@ const MakeBook = () => {
       )}
       <BookImageContainer>
         <BookImage onClick={() => handleImageClick("BookImage")} />
+        <ArrowButton onClick={nextpage}>
+          <Arrow_Image src={right} alt="right" />
+        </ArrowButton>
       </BookImageContainer>
       <TextBoxContainer>
         <TextBox>
@@ -83,7 +106,11 @@ const MakeBook = () => {
         </TextBox>
       </TextBoxContainer>
       <ImageTextBox>
-        <ImageButton onClick={handleImageButtonClick}></ImageButton>
+        {showImageButton ? (
+          <ImageButton onClick={handleImageButtonClick}></ImageButton>
+        ) : (
+          showNewImage && <NewImage />
+        )}
       </ImageTextBox>
       <TextImageContainer>
         <TextImage onClick={() => handleImageClick("TextImage")} />
@@ -92,6 +119,7 @@ const MakeBook = () => {
         <CustomButton onClick={handleCustomButtonClick}></CustomButton>
         <CustomButton2 onClick={handleCustomButton2Click}></CustomButton2>
       </ButtonWrapper>
+      <BottomRightButton onClick={handleBottomRightButtonClick} />
     </Container>
   );
 };

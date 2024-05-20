@@ -9,6 +9,8 @@ import MakeBookBG from "../../assets/images/MakeBookBG.svg";
 import MakeBookImg from "../../assets/images/MakeBookImg.svg";
 import MakeBookBtn1 from "../../assets/images/MakeBookBtn1.svg";
 import MakeBookBtn2 from "../../assets/images/MakeBookBtn2.svg";
+import BookCover from "../../assets/images/BookCover.jpg";
+import BookReIcon from "../../assets/images/BookRe.svg";
 
 export const Container = styled.div`
   position: relative;
@@ -23,6 +25,7 @@ export const BookImageContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
   width: 100%;
   height: 100%;
   padding-top: 10%;
@@ -92,6 +95,34 @@ export const ImageButton = styled.div`
   color: white;
   background-image: url(${photo});
   background-size: 200px, 150px;
+  background-position: center;
+  background-color: rgba(255, 255, 255, 0.34);
+  background-position: center;
+  background-repeat: no-repeat;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 450px;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  &:hover {
+    background-color: #a2b2dc;
+  }
+`;
+
+export const NewImage = styled.div`
+  position: absolute;
+  bottom: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 20px;
+  color: white;
+  background-image: url(${BookCover});
+  background-size: cover;
   background-position: center;
   background-color: rgba(255, 255, 255, 0.34);
   background-position: center;
@@ -214,7 +245,7 @@ export const MakeBookImage = styled.div`
 `;
 
 export const OverlayButtonWrapper = styled.div`
-  position: absolute;
+  position: fixed;
   top: 300px;
   left: 45%;
   transform: translateX(-50%);
@@ -232,7 +263,7 @@ export const OverlayButton1 = styled.button`
   height: 60px;
   background-image: url(${MakeBookBtn1});
   background-size: contain;
-  background-color: #D9D9D9;
+  background-color: #d9d9d9;
   background-repeat: no-repeat;
   background-position: center;
   border: none;
@@ -254,7 +285,7 @@ export const OverlayButton2 = styled.button`
   height: 60px;
   background-image: url(${MakeBookBtn2});
   background-size: contain;
-  background-color: #D9D9D9;
+  background-color: #d9d9d9;
   background-repeat: no-repeat;
   background-position: center;
   border: none;
@@ -265,4 +296,44 @@ export const OverlayButton2 = styled.button`
     outline: none;
     border: none;
   }
+`;
+
+export const BottomRightButton = styled.button`
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 500;
+  width: 100px;
+  height: 100px;
+  padding: 20px;
+  background-color: transparent;
+  background-image: url(${BookReIcon});
+  background-size: contain;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+  }
+  &:focus {
+    outline: none;
+    border: none;
+  }
+`;
+
+export const Arrow_Image = styled.img`
+  height: 150px;
+  padding-top: 40px;
+  object-fit: cover;
+`;
+
+export const ArrowButton = styled.button`
+  position: absolute;
+  right: 150px;
+  top: 58%;
+  transform: translateY(-50%);
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 `;
