@@ -42,19 +42,24 @@ const ChatAC: React.FC = () => {
 
   const handleChoiceSelect = (choice: string) => {
     if (choice === initialChoices[1]) {
+      // '아니'
       setMessages([
         ...messages,
         { text: choice, isUser: true },
-        { ...notReadyMessage }
+        notReadyMessage
       ]);
+      setSelectedChoice("finalOptions");
     } else if (choice === initialChoices[0] || choice === finalChoices[1]) {
+      // '응, 준비됐어' or '동화 이어서 만들기'
       setMessages([
         ...messages,
         { text: choice, isUser: true },
-        { ...startStoryMessage }
+        startStoryMessage
       ]);
       setQuestionIndex(0);
+      setSelectedChoice("");
     } else if (choice === finalChoices[0]) {
+      // '메인 홈으로 돌아가기'
       navigate("/MainHome");
     } else if (questionIndex !== -1) {
       setMessages([...messages, { text: choice, isUser: true }]);
@@ -91,6 +96,8 @@ const ChatAC: React.FC = () => {
                   choices={["다음으로"]}
                   onSelect={() => navigate("/ACRoading")}
                 />
+              ) : selectedChoice === "finalOptions" ? (
+                <Choices choices={finalChoices} onSelect={handleChoiceSelect} />
               ) : (
                 <Choices
                   choices={
