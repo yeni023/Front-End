@@ -22,12 +22,13 @@ export const Wrapper = styled.div`
 `;
 
 export const SelectLevelTitle = styled.div`
-  font-size: 50px;
+  font-size: 55px;
   padding-top: 10%;
   padding-bottom: 40px;
   font-weight: bold;
   text-align: center;
-  color: black;
+  color: white;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 `;
 
 export const ImageWrapper = styled.div`
@@ -75,11 +76,14 @@ export const LevelButton = styled.button<{
   font-size: 130px;
   margin: 25px;
   cursor: pointer;
-  transition: background-color 0.3s, background-image 0.3s;
+  transition:
+    background-color 0.3s,
+    background-image 0.3s;
   width: 450px;
   height: 480px;
   text-align: center;
-  background-image: url(${(props) => (props.isSelected ? props.hoverImage : props.bgImage)});
+  background-image: url(${(props) =>
+    props.isSelected ? props.hoverImage : props.bgImage});
   background-size: ${(props) => (props.isSelected ? "90%" : "80%")};
   background-repeat: no-repeat;
   background-position: center;
