@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import DalkongBG from "../../assets/images/DalkongBG.svg";
-import user1 from "../../assets/images/user1.png";
+import user3 from "../../assets/images/user3.png";
 import user2 from "../../assets/images/user2.png";
 
 interface MessageProps {
@@ -94,7 +94,7 @@ export const UserImage = styled.div<MessageProps>`
   height: 60px;
   border-radius: 50%;
   background-image: ${({ isUser }) =>
-    isUser ? `url(${user2})` : `url(${user1})`};
+    isUser ? `url(${user2})` : `url(${user3})`};
   background-size: cover;
 `;
 
