@@ -1,4 +1,3 @@
-// ChatDC.tsx
 import React, { useState, useRef, useEffect } from "react";
 import * as C from "../../pages/StoryFlow/container";
 import Choices from "../../components/ChatAC/Choices";
@@ -19,19 +18,13 @@ const ChatDC: React.FC = () => {
   const [messages, setMessages] = useState(initialMessages("예은"));
   const [userMessage, setUserMessage] = useState("");
   const [showChat, setShowChat] = useState(false);
+  const [story1Index, setStory1Index] = useState(0);
+  const [story2Index, setStory2Index] = useState(0);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const currentPage = "ChatDC";
   const navigate = useNavigate();
 
   useEffect(() => {
-    const lastMessage = messages[messages.length - 1];
-    if (lastMessage && !lastMessage.isUser) {
-      if (lastMessage.text === story1Message.text) {
-        setMessages([...messages, { ...story2Message }]);
-      } else if (lastMessage.text === story2Message.text) {
-        setShowChat(true);
-      }
-    }
     scrollToBottom();
   }, [messages]);
 
@@ -47,18 +40,45 @@ const ChatDC: React.FC = () => {
       setMessages([
         ...messages,
         { text: initialChoices[1], isUser: true },
-        { ...notReadyMessage }
+        notReadyMessage
       ]);
       setShowChat(false);
     } else if (choice === initialChoices[0] || choice === finalChoices[1]) {
       setMessages([
         ...messages,
         { text: choice, isUser: true },
-        { ...startStoryMessage },
-        { ...story1Message }
+        startStoryMessage
       ]);
+      addStoryMessages();
+      setShowChat(true);
     } else if (choice === finalChoices[0]) {
       navigate("/MainHome");
+    } else if (choice === "다음으로") {
+      navigate("/DCRoading");
+    }
+  };
+
+  const addStoryMessages = () => {
+    if (
+      story1Index < story1Message.length &&
+      story2Index < story2Message.length
+    ) {
+      setMessages((messages) => [
+        ...messages,
+        { ...story1Message[story1Index], isUser: false },
+        { ...story2Message[story2Index], isUser: false }
+      ]);
+      setStory1Index(story1Index + 1);
+      setStory2Index(story2Index + 1);
+    } else {
+      // 스토리의 끝에 도달했을 때 메시지를 설정하고 "다음으로"를 활성화합니다.
+      setMessages((messages) => [
+        ...messages,
+        { text: "이야기를 만들 준비가 다 되었어!", isUser: false }
+      ]);
+      setTimeout(() => {
+        setSelectedChoice("다음으로"); // '다음으로' 선택을 활성화합니다.
+      }, 500);
     }
   };
 
@@ -79,13 +99,10 @@ const ChatDC: React.FC = () => {
 
   const sendMessage = () => {
     if (userMessage.trim() !== "") {
-      setMessages([
-        ...messages,
-        { text: userMessage.trim(), isUser: true },
-        { ...story1Message },
-        { ...story2Message }
-      ]);
+      const newUserMessage = { text: userMessage.trim(), isUser: true };
+      setMessages((messages) => [...messages, newUserMessage]);
       setUserMessage("");
+      setTimeout(() => addStoryMessages(), 100);
     }
   };
 
@@ -104,16 +121,19 @@ const ChatDC: React.FC = () => {
 
             {!message.isUser &&
               index === messages.length - 1 &&
-              selectedChoice === "" && (
+              (selectedChoice === "" ||
+                selectedChoice === "아니" ||
+                selectedChoice === "다음으로") && (
                 <Choices
-                  choices={initialChoices}
+                  choices={
+                    selectedChoice === "다음으로"
+                      ? ["다음으로"]
+                      : selectedChoice === "아니"
+                      ? finalChoices
+                      : initialChoices
+                  }
                   onSelect={handleChoiceSelect}
                 />
-              )}
-            {!message.isUser &&
-              index === messages.length - 1 &&
-              selectedChoice === initialChoices[1] && (
-                <Choices choices={finalChoices} onSelect={handleChoiceSelect} />
               )}
           </React.Fragment>
         ))}
