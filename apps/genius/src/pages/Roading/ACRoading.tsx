@@ -23,7 +23,7 @@ const ACRoading: React.FC = () => {
   return (
     <S.AContainer>
       <C.Header2 currentPage={currentPage} />
-      <S.Label>{messages[messageIndex]}</S.Label> <S.AC />
+      <S.Label>{messages[messageIndex]}</S.Label> <S.DC />
     </S.AContainer>
   );
 };
