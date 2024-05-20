@@ -44,11 +44,7 @@ export const Button = styled.button`
 `;
 
 export const DCBackgroundContainer = styled.div`
-  background-image: linear-gradient(
-      rgba(255, 255, 255, 0.1),
-      rgba(255, 255, 255, 0.5)
-    ),
-    url(${DalkongBG});
+  background-image: url(${DalkongBG});
   background-size: cover;
   background-position: center;
   height: 100vh;
