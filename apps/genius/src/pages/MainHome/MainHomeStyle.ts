@@ -22,13 +22,20 @@ export const AppContainer = styled.div`
   justify-content: center;
   background: url('./src/assets/images/forest.jpg') no-repeat center center fixed;
   background-size: cover;
+  position: relative; /* Add relative positioning */
   box-sizing: border-box;
   overflow-x: hidden;
   overflow-y: auto;
 
-  /* 크롬, 사파리, 오페라, 엣지 브라우저용 스크롤바 숨기기 */
-  &::-webkit-scrollbar {
-    display: none;
+  &::before {
+    content: "";
+    position: absolute; /* Make the overlay cover the entire container */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(200, 230, 230, 0.2); /* White background with 50% opacity */
+    z-index: 0; /* Ensure the overlay is behind the content */
   }
 `;
 
@@ -67,14 +74,21 @@ export const MainSection = styled.div`
 
 export const MainTitle = styled.h1`
   font-size: 2.5em;
-  margin-bottom: 20px;
-  color: #688179;
+  margin-bottom: 25px;
+  color: #fff;
   animation: ${fadeIn} 1s ease forwards;
+  text-shadow: 0px 3px 4px rgba(0, 0, 0, 0.2);
+
+
+  .highlight {
+    color: #688078;
+  }
 `;
 
 export const MainDescription = styled.p`
   font-size: 1.3em;
-  line-height: 1.8;
+  font-weight: 500;
+  line-height: 2.0;
   margin-bottom: 30px;
   color: #fff;
   white-space: pre-line;
@@ -130,22 +144,29 @@ export const SecondSection = styled.div`
 
   img {
     max-width: 50%;
-    margin-left: -150px;
-    margin-right: 80px;
+    margin-left: 80px;
+    margin-right: 40px;
   }
 
   p {
     width: 100%;
-    font-size: 1.6em;
-    font-weight: 500;
-    color: #000;
+    font-size: 2.1em;
+    font-weight: 600;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+    color: #fff;
     text-align: center;
     line-height: 1.9;
     padding: 25px 200px;
-    border-radius: 50px;
-    border: 2px solid #fff;
     margin: 0;
-    background-color: rgba(255, 255, 255, 0.5);
+
+    .highlight {
+    color: gold;
+  }
+
+  .highlight2 {
+    color: pink;
+  }
+    
   }
 `;
 
@@ -164,22 +185,30 @@ export const ThirdSection = styled.div`
 
   img {
     max-width: 50%;
-    margin-right: -150px;
-    margin-left: 70px;
+    margin-right: 100px;
+    margin-left: 10px;
   }
 
   p {
-    font-size: 1.6em;
-    font-weight: 500;
-    color: #000;
+    width: 100%;
+    font-size: 2.1em;
+    font-weight: 600;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+    color: #fff;
     text-align: center;
     line-height: 1.9;
     padding: 25px 200px;
-    border-radius: 50px;
-    border: 2px solid #fff;
     margin: 0;
-    background-color: rgba(255, 255, 255, 0.5);
-    width: 100%;
+    margin-right: -100px;
+    
+    .highlight {
+    color: #FBBEA9;
+  }
+
+  .highlight2 {
+    color: #80D172;
+  }
+
   }
 `;
 
@@ -199,21 +228,28 @@ export const FourthSection = styled.div`
 
   img {
     max-width: 50%;
-    margin-left: -80px;
-    margin-right: 60px;
+    margin-left: 50px;
+    margin-right: 10px;
   }
 
   p {
-    font-size: 1.6em;
-    font-weight: 500;
-    color: #000;
+    width: 100%;
+    font-size: 2.1em;
+    font-weight: 600;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+    color: #fff;
     text-align: center;
     line-height: 1.9;
     padding: 25px 200px;
-    border-radius: 50px;
-    border: 2px solid #fff;
     margin: 0;
-    background-color: rgba(255, 255, 255, 0.5);
-    width: 100%;
+    
+
+    .highlight {
+    color: #4B88D5;
+  }
+
+  .highlight2 {
+    color: #54A6B8;
+  }
   }
 `;

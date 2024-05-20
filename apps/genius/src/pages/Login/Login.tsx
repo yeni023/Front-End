@@ -1,5 +1,3 @@
-// Login.tsx
-
 import React, { useState } from 'react';
 import * as LoginStyle from './LoginStyle';
 import Navbar from '../Navbar/Navbar';
@@ -12,6 +10,7 @@ const Login: React.FC<LoginProps> = () => {
 
   const handleLogin = () => {
     console.log('로그인 성공:', { username, password });
+    alert('로그인이 완료되었습니다!'); // alert 창을 통해 로그인 완료 메시지 표시
   };
 
   return (

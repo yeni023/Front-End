@@ -7,6 +7,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
 `;
 
 export const Header = styled.div`
@@ -83,7 +84,7 @@ export const BookList = styled.div`
   justify-content: center;
   overflow-x: hidden;
   padding: 0 20px;
-  margin-bottom: 50px;
+  margin-bottom: 100px;
 
   a:link {
     color: #000;
@@ -100,20 +101,21 @@ export const BookItem = styled.div`
   text-align: center;
   margin: 40px;
   white-space: nowrap;
-
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 수직 방향으로 가운데 정렬합니다. */
   &:hover {
     opacity: 0.9;
   }
 `;
 
 export const BookTitle = styled.div`
-  width: calc((100% - 100px) / 4);
+  width: 100%;
   margin-top: 10px;
   font-size: 1.2em;
   color: #000;
-  margin-left: 60px;
   text-align: center;
- ;
+  cursor: pointer;
 
   a:hover {
     color: #000;

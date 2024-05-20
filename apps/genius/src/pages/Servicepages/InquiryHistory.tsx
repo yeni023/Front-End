@@ -1,7 +1,6 @@
-// InquiryHistory.tsx
-import React from "react";
-import * as ServiceStyle from './InquiryHistoryStyle'; // 변경된 경로
-import Navbar from "../Navbar/Navbar";
+import React, { useState, useEffect } from 'react';
+import * as ServiceStyle from './InquiryHistoryStyle';
+import Navbar2 from "../Navbar/Navbar2";
 
 const InquiryHistory = () => {
   // 나의 문의 내역 데이터
@@ -14,7 +13,7 @@ const InquiryHistory = () => {
 
   return (
     <>
-      <Navbar />
+      <Navbar2 />
       <ServiceStyle.Container>
         <h2>나의 문의 내역</h2>
         <ServiceStyle.InquiryList>

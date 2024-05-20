@@ -34,7 +34,9 @@ const Service = () => {
             <button>1:1 문의 접수</button>
           </Link>
           {/* 나의 문의 내역 페이지로 이동하는 링크 (추가적인 버튼) */}
+          <Link to="/InquiryHistory">
           <button>나의 문의 내역</button>
+          </Link>
         </ServiceStyle.ButtonGroup>
         <ServiceStyle.Section>
           <h2>공지사항<span><a href="#">더보기 &gt;</a></span></h2>
