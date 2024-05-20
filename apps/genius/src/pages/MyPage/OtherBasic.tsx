@@ -1,9 +1,6 @@
+import Navbar from "../Navbar/Navbar";
 import {
   PageContainer,
-  TopBar,
-  Logo,
-  NavButton,
-  ButtonGroup,
   ImageSection,
   ColorSection,
   ProfileButton,
@@ -22,14 +19,7 @@ import followerImage from "../../assets/images/Follower.svg";
 const OtherBasic: React.FC = () => {
   return (
     <PageContainer>
-      <TopBar>
-        <Logo src="path_to_logo.png" alt="Logo" />
-        <ButtonGroup>
-          <NavButton>Find a Fairy Tale</NavButton>
-          <NavButton>Customer Support</NavButton>
-          <NavButton>My Page</NavButton>
-        </ButtonGroup>
-      </TopBar>
+      <Navbar />
       <ImageSection bgImage={bgImage}>
         <ProfileButton
           image={profileImage}
