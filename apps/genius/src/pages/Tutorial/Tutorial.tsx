@@ -61,6 +61,7 @@ const StepContent = styled.div`
   left: 50%;
   top: 30%;
   font-size: 21px;
+  color: #000;
   transform: translate(-50%, -90%);
   width: 100%;
   border: 1.5px solid lightseagreen;
