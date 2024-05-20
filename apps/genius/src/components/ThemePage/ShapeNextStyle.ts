@@ -29,7 +29,7 @@ export const SproutContainer = styled.div`
   height: 220px;
   position: relative;
   top: 40px;
-  left: 70px;
+  left: 80px;
 `;
 
 export const FlowerContainer = styled.div`
@@ -40,7 +40,7 @@ export const FlowerContainer = styled.div`
   height: 305px;
   position: relative;
   bottom: 25px;
-  left: 30px;
+  left: 32px;
 `;
 
 export const Title = styled.p`
