@@ -114,6 +114,8 @@ export const Header = ({ currentPage }) => {
       setSelectedStepIndex(3);
     } else if (currentPage === "MakeBook") {
       setSelectedStepIndex(3);
+    } else if (currentPage === "StoryFlow") {
+      setSelectedStepIndex(3);
     }
   }, [currentPage]);
   return (
