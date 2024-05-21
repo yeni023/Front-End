@@ -1,11 +1,10 @@
-import React from "react";
 import { useNavigate } from "react-router-dom";
 import * as S from "./styles";
 import * as C from "./container";
 
 const StoryFlowView = () => {
   const navigate = useNavigate();
-
+  const currentPage = "StoryFlow";
   const handleButtonClick = (type: string) => {
     console.log(` ${type}`);
     if (type === "nextpage") {
@@ -16,7 +15,7 @@ const StoryFlowView = () => {
   };
   return (
     <S.Container>
-      <C.Header />
+      <C.Header currentPage={currentPage} />
       <S.Contents>
         <S.ButtonWrapper>
           <S.NextButton onClick={() => handleButtonClick("nextpage")} />
