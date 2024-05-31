@@ -67,6 +67,7 @@ export const FilterContainer = styled.div`
 export const FilterSelect = styled.select`
   padding: 10px 30px;
   font-size: 1.2em; 
+  color: #000;
   font-weight: medium;
   border-color: #D9D9D9;
   cursor: pointer;
