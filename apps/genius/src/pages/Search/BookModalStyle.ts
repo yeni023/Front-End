@@ -55,11 +55,13 @@ export const Content = styled.div`
 
   h2 {
     font-size: 24px;
+    color: #000;
     margin-bottom: 20px;
   }
 
   h3 {
     margin-bottom: 20px;
+    color: #000;
   }
 
   img {
