@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled, { keyframes } from 'styled-components';
-import Navbar2 from '../Navbar/Navbar2';
+import Navbar from '../Navbar/Navbar';
 
 const fadeIn = keyframes`
   from {
@@ -178,7 +178,7 @@ const Tutorial: React.FC = () => {
 
   return (
     <TutorialContainer>
-      <Navbar2 />
+      <Navbar />
       <BackgroundImage />
       <CharacterBubble>
         <CharacterImage />

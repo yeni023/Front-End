@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import * as TutorialStyle from './DalkongTutorialStyle';
-import Navbar2 from '../Navbar/Navbar2';
+import Navbar from '../Navbar/Navbar';
 
 const DalkongTutorial: React.FC = () => {
   const [currentStep, setCurrentStep] = useState<number>(1);
@@ -65,7 +65,7 @@ const DalkongTutorial: React.FC = () => {
 
   return (
     <TutorialStyle.TutorialContainer>
-      <Navbar2 />
+      <Navbar />
       <TutorialStyle.BackgroundImage />
       <TutorialStyle.CharacterBubble>
         <TutorialStyle.CharacterImage />

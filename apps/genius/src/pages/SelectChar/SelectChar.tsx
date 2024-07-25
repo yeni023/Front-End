@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import * as Styles from './SelectCharStyle';
 import { Link } from 'react-router-dom';
-import Navbar2 from '../Navbar/Navbar2';
+import Navbar from '../Navbar/Navbar';
 
 const SelectChar: React.FC = () => {
   const [selectedCharacter, setSelectedCharacter] = useState<string | null>(null);
@@ -42,7 +42,7 @@ const SelectChar: React.FC = () => {
             달콩이와 동화만들기
           </Styles.DalKongButton>
         </Link>
-        <Navbar2 />
+        <Navbar />
       </Styles.CharacterContainer>
     </Styles.AppContainer>
   );

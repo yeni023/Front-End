@@ -1,5 +1,6 @@
+// src/pages/MainHome/MainHome.tsx
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import * as Styles from "./MainHomeStyle";
 import Navbar from '../Navbar/Navbar';
 
@@ -8,9 +9,9 @@ const MainHome: React.FC = () => {
   const [secondSectionVisible, setSecondSectionVisible] = useState(false);
   const [thirdSectionVisible, setThirdSectionVisible] = useState(false);
   const [fourthSectionVisible, setFourthSectionVisible] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    
     setAnimationVisible(true);
 
     const handleScroll = () => {
@@ -34,11 +35,20 @@ const MainHome: React.FC = () => {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-    
   }, []);
 
-  const startAnimation = () => {
-    // 원하는 동작 추가
+  const isUserLoggedIn = (): boolean => {
+    const user = localStorage.getItem('user');
+    return user !== null;
+  };
+
+  const handleCreateStoryClick = () => {
+    if (isUserLoggedIn()) {
+      navigate('/CreateStory');
+    } else {
+      alert('로그인 후 이용해주세요!');
+      navigate('/Login');
+    }
   };
 
   return (
@@ -54,17 +64,18 @@ const MainHome: React.FC = () => {
             뭐? 어렵지 않다고?
           </Styles.MainDescription>
           <Styles.AnimationContainer className="animation-container">
-            <Link to="/CreateStory">
-              <Styles.CreateStoryButton onClick={startAnimation} className="create-story-button">
-                나만의 동화 만들기
-              </Styles.CreateStoryButton>
-            </Link>
+            <Styles.CreateStoryButton
+              onClick={handleCreateStoryClick}
+              className="create-story-button"
+            >
+              나만의 동화 만들기
+            </Styles.CreateStoryButton>
           </Styles.AnimationContainer>
         </Styles.MainSection>
 
         <Styles.SecondSection id="secondSection" className={`second-section ${secondSectionVisible ? "visible" : ""}`}>
           <img src={`src/assets/images/main2.png`} alt="Main 2" />
-          <p><span className="highlight">아이</span>와 <span className="highlight2">부모</span>가 함께!<br></br>아이는 동화책을 만들며 성취하고,<br></br>부모는 아이의 동화를 자랑하세요!</p>
+          <p><span className="highlight">아이</span>와 <span className="highlight2">부모</span>가 함께!<br />아이는 동화책을 만들며 성취하고,<br />부모는 아이의 동화를 자랑하세요!</p>
         </Styles.SecondSection>
 
         <Styles.ThirdSection id="thirdSection" className={`third-section ${thirdSectionVisible ? "visible" : ""}`}>
@@ -74,7 +85,7 @@ const MainHome: React.FC = () => {
 
         <Styles.FourthSection id="fourthSection" className={`fourth-section ${fourthSectionVisible ? "visible" : ""}`}>
           <img src={`src/assets/images/main4.png`} alt="Main 4" />
-          {<p>아이들에게 친숙한 화면,<br></br>다양한 <span className="highlight">모바일 기기</span>와 <span className="highlight2">웹</span>에서도 즐겨봐요!</p>}
+          {<p>아이들에게 친숙한 화면,<br />다양한 <span className="highlight">모바일 기기</span>와 <span className="highlight2">웹</span>에서도 즐겨봐요!</p>}
         </Styles.FourthSection>
       </main>
     </Styles.AppContainer>

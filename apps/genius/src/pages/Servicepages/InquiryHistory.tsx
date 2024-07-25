@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import * as ServiceStyle from './InquiryHistoryStyle';
-import Navbar2 from "../Navbar/Navbar2";
+import Navbar from "../Navbar/Navbar";
 
 const InquiryHistory = () => {
   // 나의 문의 내역 데이터
@@ -13,7 +13,7 @@ const InquiryHistory = () => {
 
   return (
     <>
-      <Navbar2 />
+      <Navbar />
       <ServiceStyle.Container>
         <h2>나의 문의 내역</h2>
         <ServiceStyle.InquiryList>
