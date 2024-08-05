@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import * as C from "../../pages/StoryFlow/container";
 import * as Styles from "./BasicInfoStyle";
 import { useNavigate } from "react-router-dom";
+import axios from "axios"; // axios 추가
 import Label from "./Label";
 
 interface FormData {
@@ -50,8 +51,29 @@ const BasicInfo: React.FC<UserFormProps> = () => {
 
   const handleNextBtnClick = () => {
     if (validateFormData()) {
-      navigate(`/ChatDC`);
-      console.log(formData);
+      // Prepare data to send to the server
+      const requestData = {
+        nickname: "userNickname", // Replace with actual user nickname if applicable
+        name: formData.name,
+        gender: formData.gender,
+        age: formData.age,
+        personality: formData.personality,
+        story: formData.story
+      };
+
+      // Make POST request using axios
+      axios
+        .post("http://localhost:8000/genius/intro/basicInfo/", requestData)
+        .then((response) => {
+          console.log("POST 성공:", response.data);
+          // Navigate to the next page after successful submission if needed
+          navigate(`/ChatDC`);
+        })
+        .catch((error) => {
+          console.error("POST 실패:", error);
+          // Handle error as needed, e.g., show an error message
+          alert("데이터 제출에 실패했습니다. 다시 시도해주세요.");
+        });
     } else {
       alert("주인공에 대한 정보를 모두 입력해주세요!");
     }
@@ -117,7 +139,7 @@ const BasicInfo: React.FC<UserFormProps> = () => {
           name="story"
           value={formData.story}
           onChange={handleChange}
-          placeholder="예시) 김미미가 &#13;&#10; 용을 물리치는 이야기"
+          placeholder="예시) 김미미가 용을 물리치는 이야기"
         />
       </Styles.FormContainer>
     </Styles.Container>
