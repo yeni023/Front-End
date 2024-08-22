@@ -1,32 +1,41 @@
 import React, { useState, useRef, useEffect } from "react";
-import * as C from "../../pages/StoryFlow/container";
+import axios from "axios";
 import Choices from "../../components/ChatAC/Choices";
 import * as Styles from "./ChatDCStyle";
 import { useNavigate } from "react-router-dom";
+import * as C from "../../pages/StoryFlow/container";
+
 import {
   initialMessages,
   notReadyMessage,
   startStoryMessage,
-  story1Message,
-  story2Message,
   initialChoices,
-  finalChoices
+  finalChoices,
+  nextChoices
 } from "./DCchatMessages";
 
 const ChatDC: React.FC = () => {
   const [selectedChoice, setSelectedChoice] = useState("");
-  const [messages, setMessages] = useState(initialMessages("예은"));
+  const [messages, setMessages] = useState(initialMessages("김혜진"));
   const [userMessage, setUserMessage] = useState("");
   const [showChat, setShowChat] = useState(false);
-  const [story1Index, setStory1Index] = useState(0);
-  const [story2Index, setStory2Index] = useState(0);
+  const [middleQuestionCount, setMiddleQuestionCount] = useState(0); // 중반 질문 카운터 추가
+  const [isEnding, setIsEnding] = useState(false); // 엔딩 질문 상태 추가
+  const [showNextButton, setShowNextButton] = useState(false); // 다음 버튼 상태 추가
   const messagesEndRef = useRef<HTMLDivElement>(null);
-  const currentPage = "ChatDC";
   const navigate = useNavigate();
+  const nickname = "김혜진"; // 하드코딩된 닉네임
+  const currentPage = "ChatDC";
 
   useEffect(() => {
+    const lastMessage = messages[messages.length - 1];
+    if (lastMessage && !lastMessage.isUser) {
+      if (lastMessage.text === startStoryMessage.text) {
+        setShowChat(true);
+      }
+    }
     scrollToBottom();
-  }, [messages, selectedChoice]);
+  }, [messages]);
 
   const scrollToBottom = () => {
     if (messagesEndRef.current) {
@@ -40,45 +49,20 @@ const ChatDC: React.FC = () => {
       setMessages([
         ...messages,
         { text: initialChoices[1], isUser: true },
-        notReadyMessage
+        { ...notReadyMessage }
       ]);
       setShowChat(false);
     } else if (choice === initialChoices[0] || choice === finalChoices[1]) {
       setMessages([
         ...messages,
         { text: choice, isUser: true },
-        startStoryMessage
+        { ...startStoryMessage }
       ]);
-      addStoryMessages();
-      setShowChat(true);
+      sendFirstApiRequest(nickname);
     } else if (choice === finalChoices[0]) {
       navigate("/MainHome");
-    } else if (choice === "다음으로") {
+    } else if (choice == nextChoices[0]) {
       navigate("/DCRoading");
-    }
-  };
-
-  const addStoryMessages = () => {
-    if (
-      story1Index < story1Message.length &&
-      story2Index < story2Message.length
-    ) {
-      setMessages((messages) => [
-        ...messages,
-        { ...story1Message[story1Index], isUser: false },
-        { ...story2Message[story2Index], isUser: false }
-      ]);
-      setStory1Index(story1Index + 1);
-      setStory2Index(story2Index + 1);
-    } else {
-      // 스토리의 끝에 도달했을 때 메시지를 설정하고 "다음으로"를 활성화합니다.
-      setMessages((messages) => [
-        ...messages,
-        { text: "이야기를 만들 준비가 다 되었어!", isUser: false }
-      ]);
-      setTimeout(() => {
-        setSelectedChoice("다음으로"); // '다음으로' 선택을 활성화합니다.
-      }, 500);
     }
   };
 
@@ -99,16 +83,121 @@ const ChatDC: React.FC = () => {
 
   const sendMessage = () => {
     if (userMessage.trim() !== "") {
-      const newUserMessage = { text: userMessage.trim(), isUser: true };
-      setMessages((messages) => [...messages, newUserMessage]);
+      setMessages([...messages, { text: userMessage.trim(), isUser: true }]);
       setUserMessage("");
-      setTimeout(() => addStoryMessages(), 100);
+      if (isEnding) {
+        sendBookStoryApiRequest(nickname);
+      } else {
+        sendUserChatApiRequest(nickname, userMessage.trim());
+      }
+    }
+  };
+
+  const sendFirstApiRequest = async (nickname: string) => {
+    try {
+      const response = await axios.post(
+        "http://localhost:8000/genius/intro/firstquestion/",
+        {
+          nickname
+        }
+      );
+      const data = response.data;
+      setMessages((prevMessages) => [
+        ...prevMessages,
+        { text: data.IntroContent, isUser: false }
+      ]);
+    } catch (error) {
+      console.error("API 요청 실패:", error);
+    }
+  };
+
+  const sendUserChatApiRequest = async (nickname: string, chat: string) => {
+    try {
+      const response = await axios.post(
+        "http://localhost:8000/genius/intro/userchat/",
+        {
+          nickname,
+          chat
+        }
+      );
+
+      // 중반 질문 카운터 체크
+      if (middleQuestionCount < 2) {
+        sendMiddleQuestionApiRequest(nickname);
+        setMiddleQuestionCount(middleQuestionCount + 1);
+      } else {
+        sendEndingQuestionApiRequest(nickname);
+      }
+    } catch (error) {
+      console.error("API 요청 실패:", error);
+    }
+  };
+
+  const sendMiddleQuestionApiRequest = async (nickname: string) => {
+    try {
+      const response = await axios.post(
+        "http://localhost:8000/genius/intro/middlequestion/",
+        {
+          nickname
+        }
+      );
+      const data = response.data;
+      setMessages((prevMessages) => [
+        ...prevMessages,
+        { text: data["만들어진 이야기"], isUser: false }
+      ]);
+    } catch (error) {
+      console.error("중반 질문 API 요청 실패:", error);
+    }
+  };
+
+  const sendEndingQuestionApiRequest = async (nickname: string) => {
+    try {
+      const response = await axios.post(
+        "http://localhost:8000/genius/intro/endingquestion/",
+        {
+          nickname
+        }
+      );
+      const data = response.data;
+      setMessages((prevMessages) => [
+        ...prevMessages,
+        { text: data["만들어진 이야기"], isUser: false }
+      ]);
+      setIsEnding(true); // 엔딩 질문 상태 활성화
+    } catch (error) {
+      console.error("엔딩 질문 API 요청 실패:", error);
+    }
+  };
+
+  const sendBookStoryApiRequest = async (nickname: string) => {
+    try {
+      const response = await axios.post(
+        "http://localhost:8000/genius/intro/bookstory/",
+        {
+          nickname
+        }
+      );
+      const data = response.data;
+
+      // 동화책 내용을 하나의 문자열로 결합
+      const fullStory = Object.values(data["동화이야기"]).join("\n\n");
+
+      setMessages((prevMessages) => [
+        ...prevMessages,
+        { text: data.message, isUser: false },
+        { text: fullStory, isUser: false }
+      ]);
+      setShowNextButton(true); // 다음 버튼 표시
+    } catch (error) {
+      console.error("동화책 생성 API 요청 실패:", error);
     }
   };
 
   return (
     <Styles.DCBackgroundContainer>
       <C.Header currentPage={currentPage} />
+
       <Styles.MessagesList>
         {messages.map((message, index) => (
           <React.Fragment key={index}>
@@ -121,19 +210,21 @@ const ChatDC: React.FC = () => {
 
             {!message.isUser &&
               index === messages.length - 1 &&
-              (selectedChoice === "" ||
-                selectedChoice === "아니" ||
-                selectedChoice === "다음으로") && (
+              selectedChoice === "" && (
                 <Choices
-                  choices={
-                    selectedChoice === "다음으로"
-                      ? ["다음으로"]
-                      : selectedChoice === "아니"
-                      ? finalChoices
-                      : initialChoices
-                  }
+                  choices={initialChoices}
                   onSelect={handleChoiceSelect}
                 />
+              )}
+            {!message.isUser &&
+              index === messages.length - 1 &&
+              selectedChoice === initialChoices[1] && (
+                <Choices choices={finalChoices} onSelect={handleChoiceSelect} />
+              )}
+            {!message.isUser &&
+              index === messages.length - 1 &&
+              showNextButton && (
+                <Choices choices={nextChoices} onSelect={handleChoiceSelect} />
               )}
           </React.Fragment>
         ))}
