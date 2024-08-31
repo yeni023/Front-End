@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import * as Styles from './NavbarStyle';
 
-// 사용자 정보를 저장할 타입 정의
 interface User {
   email: string;
   profImg: string;
+  nickname: string;
 }
 
 const Navbar: React.FC = () => {
   const [user, setUser] = useState<User | null>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    // localStorage에서 사용자 정보 가져오기
     const storedUser = localStorage.getItem('user');
     if (storedUser) {
       setUser(JSON.parse(storedUser));
@@ -20,10 +20,20 @@ const Navbar: React.FC = () => {
   }, []);
 
   const handleLogout = () => {
-    // 로그아웃 처리
     localStorage.removeItem('user');
     setUser(null);
     window.location.href = '/MainHome';
+  };
+
+  const handleCreateStoryClick = () => {
+    if (user) {
+      navigate('/CreateStory');
+    } else {
+      alert('로그인 후 이용해주세요!');
+      setTimeout(() => {
+        navigate('/Login');
+      }, 400);
+    }
   };
 
   return (
@@ -35,17 +45,25 @@ const Navbar: React.FC = () => {
           </Link>
         </Styles.MenuItem>
         <Styles.MenuItem>
-          주요기능
+          나의 동화
           <Styles.SubMenu>
-            <Styles.SubMenuItem to="/CreateStory">동화제작</Styles.SubMenuItem>
-            <Styles.SubMenuItem to="/Store">씨앗상점</Styles.SubMenuItem>
+            <Styles.SubMenuItem to="/CreateStory" onClick={handleCreateStoryClick}>
+              동화 제작
+            </Styles.SubMenuItem>
+            <Styles.SubMenuItem to="/Store">
+              씨앗 상점
+            </Styles.SubMenuItem>
           </Styles.SubMenu>
         </Styles.MenuItem>
         <Styles.MenuItem>
-          동화찾기
+          동화 책장
           <Styles.SubMenu>
-            <Styles.SubMenuItem to="/PopularBook">인기동화</Styles.SubMenuItem>
-            <Styles.SubMenuItem to="/Search">검색</Styles.SubMenuItem>
+            <Styles.SubMenuItem to="/PopularBook">
+              인기 동화
+            </Styles.SubMenuItem>
+            <Styles.SubMenuItem to="/Search">
+              동화 검색
+            </Styles.SubMenuItem>
           </Styles.SubMenu>
         </Styles.MenuItem>
         <Styles.MenuItem>
@@ -60,12 +78,14 @@ const Navbar: React.FC = () => {
         {user ? (
           <div>
             <Styles.ProfileContainer>
-              <Styles.Idname>{user.email}</Styles.Idname>
+            <Link to="/Mypage">
+              <Styles.Idname>{user.nickname} 님</Styles.Idname>
+              </Link>
               <Styles.ProfileImage
                 src={user.profImg || 'src/assets/images/default-profile.png'}
                 alt="profile"
               />
-              <button onClick={handleLogout}>로그아웃</button>
+              <button onClick={handleLogout}>Logout</button>
             </Styles.ProfileContainer>
           </div>
         ) : (

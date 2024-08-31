@@ -143,17 +143,30 @@ export const ProfileContainer = styled.div`
   display: flex;
   align-items: center;
   margin-left: 5px;
+
+  button {
+    margin-right: 10px;
+    font-size: 16px;
+    color: #9D9D9D;
+    border-color: #9D9D9D;
+  }
 `;
 
 export const Idname = styled.span`
   margin-right: 0.5rem;
   font-weight: bold;
+  text-decoration: none;
+  color: #000;
+
+  &:hover {
+    color: darkcyan;
+  }
 `;
 
 export const ProfileImage = styled.img`
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  margin-left: 10px;
+  margin-left: 8px;
   margin-right: 20px;
 `;

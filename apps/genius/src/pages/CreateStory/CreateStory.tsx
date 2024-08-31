@@ -3,24 +3,34 @@ import axios from 'axios';
 import * as Styles from './CreateStoryStyle';
 import Navbar from '../Navbar/Navbar';
 import { useNavigate } from 'react-router-dom';
-import { toast, ToastContainer } from 'react-toastify'; // ToastContainer와 toast를 추가
-import 'react-toastify/dist/ReactToastify.css'; // 스타일 추가
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const CreateStory: React.FC = () => {
   const [loaded, setLoaded] = useState(false);
   const [writerName, setWriterName] = useState('');
-  const [userId, setUserId] = useState<number | null>(null); // 사용자 ID를 관리하는 상태 추가
-  const navigate = useNavigate(); // 페이지 이동을 위한 useNavigate 훅 사용
+  const [userId, setUserId] = useState<number | null>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    // 로그인된 사용자 정보를 localStorage에서 가져옴
     const userData = localStorage.getItem('user');
     if (userData) {
-      const user = JSON.parse(userData);
-      setUserId(user.id);
+      try {
+        const user = JSON.parse(userData);
+        console.log('로컬 스토리지에서 가져온 사용자 정보:', user); // 디버깅 로그 추가
+        if (user && user.userId) { // 수정: userId로 가져와야 함
+          setUserId(user.userId);
+        } else {
+          throw new Error('유효하지 않은 사용자 정보');
+        }
+      } catch (error) {
+        console.error('로그인 정보 로드 오류:', error);
+        toast.error('로그인 정보가 유효하지 않습니다. 다시 로그인 해주세요.');
+        navigate('/login');
+      }
     } else {
-      toast.error('로그인 정보가 필요합니다.'); // toast 사용하여 오류 메시지 표시
-      navigate('/login'); // 로그인 페이지로 이동
+      toast.error('로그인 정보가 필요합니다.');
+      navigate('/login');
     }
   }, [navigate]);
 
@@ -30,41 +40,75 @@ const CreateStory: React.FC = () => {
 
   const showGreeting = async () => {
     const trimmedWriterName = writerName.trim();
+  
     if (trimmedWriterName === '') {
-      toast.error('작가명을 입력하세요!'); // toast 사용하여 오류 메시지 표시
+      toast.error('작가명을 입력하세요!', {
+        autoClose: 1500, 
+        position: 'top-center',
+        hideProgressBar: true, // 진행 표시 바 숨기기
+        closeOnClick: true, // 클릭 시 닫기
+        pauseOnHover: false, // 호버 시 일시 정지하지 않음
+      });
       return;
     }
-
+  
     if (userId === null) {
-      toast.error('로그인 정보가 필요합니다.'); // toast 사용하여 오류 메시지 표시
+      toast.error('로그인 정보가 필요합니다.', {
+        autoClose: 1500,
+        position: 'top-center',
+        hideProgressBar: true, // 진행 표시 바 숨기기
+        closeOnClick: true, // 클릭 시 닫기
+        pauseOnHover: false, // 호버 시 일시 정지하지 않음
+      });
       return;
     }
-
+  
+    // 요청 데이터 생성
     const formData = {
       writer: trimmedWriterName,
-      user: userId
+      user: userId,
+      genre: null,
+      diff: 0
     };
-
+  
     try {
+      console.log('전송할 데이터:', JSON.stringify(formData));
       const apiUrl = 'http://localhost:8000/genius/draft/';
       const response = await axios.post(apiUrl, formData, {
         headers: {
           'Content-Type': 'application/json'
         }
       });
-
+  
       console.log('서버 응답:', response.data);
-      // 환영 메시지 표시
+      localStorage.setItem('draftId', response.data.id.toString());
       toast.success(`환영합니다 ${trimmedWriterName}님!`, {
-        onClose: () => navigate('/Tutorial') // 알림이 닫히면 페이지 이동
+        autoClose: 1500,
+        position: 'top-center',
+        hideProgressBar: true, // 진행 표시 바 숨기기
+        closeOnClick: true, // 클릭 시 닫기
+        pauseOnHover: false, // 호버 시 일시 정지하지 않음
+        onClose: () => navigate('/Tutorial')
       });
     } catch (error) {
       if (axios.isAxiosError(error)) {
         console.error('서버 오류:', error.response?.data);
-        toast.error(`서버 오류가 발생했습니다: ${error.response?.data}`);
+        toast.error(`서버 오류가 발생했습니다: ${error.response?.data}`, {
+          autoClose: 1000,
+          hideProgressBar: true, // 진행 표시 바 숨기기
+          closeOnClick: true, // 클릭 시 닫기
+          pauseOnHover: false, // 호버 시 일시 정지하지 않음
+          position: 'top-center'
+        });
       } else {
         console.error('예상치 못한 오류:', error);
-        toast.error('서버 오류가 발생했습니다. 다시 시도해주세요.');
+        toast.error('서버 오류가 발생했습니다. 다시 시도해주세요.', {
+          autoClose: 1000,
+          hideProgressBar: true, // 진행 표시 바 숨기기
+          closeOnClick: true, // 클릭 시 닫기
+          pauseOnHover: false, // 호버 시 일시 정지하지 않음
+          position: 'top-center'
+        });
       }
     }
   };
@@ -106,7 +150,7 @@ const CreateStory: React.FC = () => {
           </div>
         </Styles.InputContainer>
       </Styles.Container>
-      <ToastContainer /> {/* ToastContainer 추가 */}
+      <ToastContainer />
     </div>
   );
 };

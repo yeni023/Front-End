@@ -48,7 +48,8 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Genre />} />
+        <Route path="/" element={<MainHome />} />
+        <Route path="/Genre" element={<Genre />} />
         <Route path="/Genre2" element={<Genre2 />} />
         <Route path="/StoryFlow" element={<StoryFlow />} />
         <Route path="/StoryFlow2" element={<StoryFlow2 />} />

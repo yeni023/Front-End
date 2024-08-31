@@ -16,14 +16,14 @@ const DalkongTutorial: React.FC = () => {
       case 2:
         return (
           <>
-            먼저, 어떤 종류의 동화를 만들지 고민해보고 <br />여러 가지 중에서 마음에 드는 <br />동화 장르를 골라봐!
+            먼저, 어떤 동화를 만들지 고민해보고, <br />여러 가지 중에서 마음에 드는 <br />동화 장르를 골라봐!
           </>
         );
       case 3:
         return (
           <>
             그런 다음, 동화책 제작에 필요한 <br />간단한 정보를 입력해줘.
-            이렇게 하면 동화 <br />이야기 더 재미있어질 거야!
+            <br />이렇게 하면 동화가 더욱 재미있어질 거야!
           </>
         );
       case 4:
@@ -37,7 +37,7 @@ const DalkongTutorial: React.FC = () => {
         return (
           <>
             이제 AI가 생성한 이야기를 확인하고 <br />원하는 대로 내용을 수정할 수 있어.
-            부족한 <br />부분이 있다면 언제든지 추가하고 수정해봐.
+            <br />부족한 부분이 있다면 언제든지 수정해봐!
           </>
         );
       case 6:
@@ -68,7 +68,11 @@ const DalkongTutorial: React.FC = () => {
       <Navbar />
       <TutorialStyle.BackgroundImage />
       <TutorialStyle.CharacterBubble>
-        <TutorialStyle.CharacterImage />
+      <TutorialStyle.CharacterImage 
+          image={currentStep === 1 ? 'src/assets/images/dalkong2.png' : 
+                 currentStep === 7 ? 'src/assets/images/dalkong2.png' : 
+                 'src/assets/images/dalkongcharacter.png'} 
+        />
         <TutorialStyle.StepContent key={currentStep}>{getStepContent()}</TutorialStyle.StepContent> {/* 키 추가 */}
         {currentStep < 7 && (
           <TutorialStyle.ButtonContainer>
@@ -77,7 +81,7 @@ const DalkongTutorial: React.FC = () => {
         )}
       
       {currentStep === 7 && (
-        <Link to="/">
+        <Link to="/genre">
           <TutorialStyle.ButtonContainer>
           <TutorialStyle.EndButton>튜토리얼 마침</TutorialStyle.EndButton>
           </TutorialStyle.ButtonContainer>

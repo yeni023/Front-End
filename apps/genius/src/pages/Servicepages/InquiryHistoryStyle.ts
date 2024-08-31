@@ -3,14 +3,18 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   max-width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   background-color: aliceblue;
   margin: 0 auto;
   padding: 50px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+
   align-items: left;
+
+  h2 {
+    margin-top: 5%;
+  }
 `;
 
 export const InquiryList = styled.div`
@@ -25,5 +29,8 @@ export const InquiryItem = styled.div`
   padding: 20px;
   margin-bottom: 30px;
 
+p {
+  line-height: 2.0;
+}
 `;
 

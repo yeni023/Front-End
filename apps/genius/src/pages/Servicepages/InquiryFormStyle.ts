@@ -11,10 +11,14 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: left;
+
+  h2 {
+    margin-bottom: 45px;
+  }
 `;
 
 export const InputGroup = styled.div`
-  margin-bottom: 30px;
+  margin-bottom: 40px;
   width: 80%;
 `;
 
@@ -26,7 +30,7 @@ export const InputLabel = styled.label`
 
 export const InputField = styled.input`
   padding: 12px;
-  margin-top: 10px;
+  margin-top: 15px;
   width: 100%;
   font-size: 16px;
   border-radius: 5px;

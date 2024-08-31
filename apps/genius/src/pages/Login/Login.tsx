@@ -32,7 +32,8 @@ const Login: React.FC = () => {
           hideProgressBar: true, // 진행 표시 바 숨기기
           closeOnClick: true, // 클릭 시 닫기
           pauseOnHover: false, // 호버 시 일시 정지하지 않음
-          draggable: false // 드래그하여 이동 불가
+          draggable: false, // 드래그하여 이동 불가
+          position:'top-center'
         });
 
         // 로그인 성공 시 사용자 정보를 localStorage에 저장
@@ -47,7 +48,8 @@ const Login: React.FC = () => {
           hideProgressBar: true,
           closeOnClick: true,
           pauseOnHover: false,
-          draggable: false
+          draggable: false,
+          position:'top-center'
         });
       }
     } catch (error) {
@@ -56,7 +58,8 @@ const Login: React.FC = () => {
         hideProgressBar: true,
         closeOnClick: true,
         pauseOnHover: false,
-        draggable: false
+        draggable: false,
+        position:'top-center'
       });
     }
   };

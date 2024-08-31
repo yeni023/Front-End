@@ -1,6 +1,4 @@
 import styled, { keyframes } from 'styled-components';
-import { Link } from 'react-router-dom';
-
 
 const fadeIn = keyframes`
   from {
@@ -22,26 +20,26 @@ export const AppContainer = styled.div`
   justify-content: center;
   background: url('./src/assets/images/forest.jpg') no-repeat center center fixed;
   background-size: cover;
-  position: relative; /* Add relative positioning */
+  position: relative;
   box-sizing: border-box;
   overflow-x: hidden;
   overflow-y: auto;
+  color: #000;
 
   &::before {
     content: "";
-    position: absolute; /* Make the overlay cover the entire container */
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(200, 230, 230, 0.2); /* White background with 50% opacity */
-    z-index: 0; /* Ensure the overlay is behind the content */
+    background: rgba(255, 255, 255, 0.1);
+    z-index: 0;
   }
 `;
 
-
 export const MainSection = styled.div`
-  flex: 1;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -49,36 +47,19 @@ export const MainSection = styled.div`
   text-align: center;
   box-sizing: border-box;
   width: 100%;
-  margin-top: 120px;
-  padding: 200px 0;
+  padding: 20px;
   animation: ${fadeIn} 1s ease forwards;
-
-  & > * {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
-  }
-
-  & > *:nth-child(1) {
-    animation-delay: 0.5s; /* 타이틀이 먼저 나타나도록 설정 */
-  }
-
-  & > *:nth-child(2) {
-    animation-delay: 1s; /* 디스크립션이 타이틀 다음에 나타나도록 설정 */
-  }
-
-  & > *:nth-child(3) {
-    animation-delay: 2s; /* 버튼이 가장 마지막에 나타나도록 설정 */
-  }
+  position: relative;
+  z-index: 1;
 `;
 
 export const MainTitle = styled.h1`
   font-size: 2.5em;
   margin-bottom: 25px;
+  margin-top: 90px;
   color: #fff;
   animation: ${fadeIn} 1s ease forwards;
-  text-shadow: 0px 3px 4px rgba(0, 0, 0, 0.2);
-
+  text-shadow: 0px 3px 4px rgba(0, 0, 0, 0.3);
 
   .highlight {
     color: #688078;
@@ -89,16 +70,15 @@ export const MainDescription = styled.p`
   font-size: 1.3em;
   font-weight: 500;
   line-height: 2.0;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
+  margin-top: 40px;
   color: #fff;
   white-space: pre-line;
   animation: ${fadeIn} 1s ease forwards;
 `;
 
-
 export const AnimationContainer = styled.div`
   opacity: 1;
-  transform: translateY(20px);
   transition: opacity 3s ease-in-out, transform 3s ease-in-out;
 
   &.visible {
@@ -111,13 +91,14 @@ export const CreateStoryButton = styled.button`
   background-color: #fff;
   color: #8DD1BD;
   padding: 18px 28px;
+  margin-top: 30px;
   font-size: 1.5em;
   font-weight: bold;
   border: none;
   border-radius: 10px;
   cursor: pointer;
   z-index: 1;
-  animation: ${fadeIn} 3.5s ease forwards; /* 버튼이 가장 마지막에 나타나도록 설정 */
+  animation: ${fadeIn} 3.5s ease forwards;
 
   &:hover {
     background-color: #45a049;
@@ -129,14 +110,17 @@ export const CreateStoryButton = styled.button`
   }
 `;
 
-export const SecondSection = styled.div`
-  opacity: 0;
-  transition: opacity 1.5s ease-in-out;
-  margin-top: 30vh;
+export const Section = styled.div`
+  height: 100vh;
   display: flex;
-  align-items: center; 
-  justify-content: center; 
+  align-items: center;
+  justify-content: center;
   width: 100%;
+  padding: 20px;
+  transition: opacity 1.5s ease-in-out;
+  opacity: 0;
+  position: relative;
+  z-index: 1;
 
   &.visible {
     opacity: 1;
@@ -144,112 +128,33 @@ export const SecondSection = styled.div`
 
   img {
     max-width: 50%;
-    margin-left: 80px;
-    margin-right: 40px;
+    margin: 10px;
   }
 
   p {
-    width: 100%;
-    font-size: 2.1em;
-    font-weight: 600;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
-    color: #fff;
+    font-size: 1.7em; /* 아이들에게 읽기 좋게 조정 */
+    color: #000; /* 텍스트가 잘 보이도록 다크 그레이 색상 */
     text-align: center;
-    line-height: 1.9;
-    padding: 25px 200px;
+    line-height: 2.0;
+    padding: 30px 35px; /* 여백을 적당히 줄여서 더 세련되게 */
     margin: 0;
+    background: rgba(255, 255, 255, 0.77); /* 밝은 배경으로 텍스트 강조 */
+    border-radius: 100px; /* 둥근 모서리로 부드러운 느낌 */
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2); /* 부드러운 그림자 효과 */
+    max-width: 90%; /* 텍스트 영역의 너비 제한 */
+    margin: 0 auto; /* 중앙 정렬 */
+    display: inline-block; /* 인라인 블록으로 중앙 정렬 유지 */
+    font-weight: 400;
+    font-style: normal;
+  }
 
-    .highlight {
-    color: gold;
+  .highlight {
+    color: #f1c40f; /* 밝고 활기찬 노란색 */
+    font-weight: bold;
   }
 
   .highlight2 {
-    color: pink;
-  }
-    
-  }
-`;
-
-export const ThirdSection = styled.div`
-  opacity: 0;
-  transition: opacity 1.5s ease-in-out;
-  margin-top: 40vh;
-  display: flex;
-  align-items: center; 
-  justify-content: center; 
-  width: 100%;
-
-  &.visible {
-    opacity: 1;
-  }
-
-  img {
-    max-width: 50%;
-    margin-right: 100px;
-    margin-left: 10px;
-  }
-
-  p {
-    width: 100%;
-    font-size: 2.1em;
-    font-weight: 600;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
-    color: #fff;
-    text-align: center;
-    line-height: 1.9;
-    padding: 25px 200px;
-    margin: 0;
-    margin-right: -100px;
-    
-    .highlight {
-    color: #FBBEA9;
-  }
-
-  .highlight2 {
-    color: #80D172;
-  }
-
-  }
-`;
-
-export const FourthSection = styled.div`
-  opacity: 0;
-  transition: opacity 1.5s ease-in-out;
-  margin-top: 40vh;
-  margin-bottom: 200px;
-  display: flex;
-  align-items: center; 
-  justify-content: center; 
-  width: 100%;
-
-  &.visible {
-    opacity: 1;
-  }
-
-  img {
-    max-width: 50%;
-    margin-left: 50px;
-    margin-right: 10px;
-  }
-
-  p {
-    width: 100%;
-    font-size: 2.1em;
-    font-weight: 600;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
-    color: #fff;
-    text-align: center;
-    line-height: 1.9;
-    padding: 25px 200px;
-    margin: 0;
-    
-
-    .highlight {
-    color: #4B88D5;
-  }
-
-  .highlight2 {
-    color: #54A6B8;
-  }
+    color: #e74c3c; /* 따뜻한 빨간색으로 강조 */
+    font-weight: bold;
   }
 `;
