@@ -1,118 +1,153 @@
-// SignUp.tsx
-
 import React, { useState } from 'react';
+import axios from 'axios';
 import * as SignUpStyle from './SignUpStyle';
 import Navbar from '../Navbar/Navbar';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-interface PhoneNumber {
-  areaCode: string;
-  exchangeCode: string;
-  subscriberNumber: string;
-}
-
-interface SignUpProps {}
-
-const SignUp: React.FC<SignUpProps> = () => {
-  const [id, setID] = useState('');
-  const [username, setUsername] = useState('');
+const SignUp: React.FC = () => {
+  const [nickname, setNickname] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState<PhoneNumber>({
-    areaCode: '',
-    exchangeCode: '',
-    subscriberNumber: '',
-  });
-  const [agreeAll, setAgreeAll] = useState(false);
   const [agreeTermsRequired, setAgreeTermsRequired] = useState(false);
   const [agreePrivacy, setAgreePrivacy] = useState(false);
-  const [agreeEvent, setAgreeEvent] = useState(false);
   const [isSignUpComplete, setIsSignUpComplete] = useState(false);
+  const [signUpFailed, setSignUpFailed] = useState(false);
 
-  const handleSignUp = () => {
-    // 필수 항목 검사
-    if (!id || !password || !confirmPassword || !username || !email) {
-      alert('기본 가입 정보를 모두 입력해주세요.');
+  // 비밀번호 유효성 검사 함수
+  const validatePassword = (password: string) => {
+    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
+    return passwordRegex.test(password);
+  };
+
+  // 이메일 중복 검사 함수
+  const checkEmailExists = async (email: string) => {
+    try {
+      const response = await axios.get(`http://localhost:8000/genius/members/check-email/?email=${email}`);
+      return response.data.exists; // 서버가 존재 여부를 반환한다고 가정
+    } catch (error) {
+      console.error('이메일 중복 검사 중 오류 발생:', error);
+      return false; // 오류가 발생한 경우 기본값으로 false를 반환
+    }
+  };
+
+  const handleSignUp = async () => {
+    if (!nickname || !email || !password || !confirmPassword) {
+      toast.error('기본 가입 정보를 모두 입력해주세요.');
       return;
     }
-  
-    // 비밀번호 일치 검사
+
     if (password !== confirmPassword) {
-      alert('비밀번호가 일치하지 않습니다.');
+      toast.error('비밀번호가 일치하지 않습니다.');
       return;
     }
-  
-    // 전화번호 검사
-    if (!phoneNumber.areaCode || !phoneNumber.exchangeCode || !phoneNumber.subscriberNumber) {
-      alert('전화번호를 입력해주세요.');
+
+    if (!validatePassword(password)) {
+      toast.error('비밀번호는 최소 6자 이상이어야 하며, 숫자와 영문자를 포함해야 합니다.');
       return;
     }
-  
-    // 모든 약관 동의 검사
+
     if (!agreeTermsRequired || !agreePrivacy) {
-      alert('모든 약관에 동의해야 합니다.');
+      toast.error('모든 약관에 동의해야 합니다.');
       return;
     }
-  
-    console.log('회원가입 성공:', {
-      id,
-      username,
+
+    const emailExists = await checkEmailExists(email);
+    if (emailExists) {
+      toast.error('이메일이 이미 사용 중입니다.');
+      return;
+    }
+
+    const formData = {
+      nickname,
       email,
       password,
-      confirmPassword,
-      phoneNumber,
-      agreeTermsRequired,
-      agreePrivacy,
-      agreeEvent,
-    });
-    setIsSignUpComplete(true); // 회원가입 완료 상태 업데이트
-  };
+      confirm_password: confirmPassword,
+      agree_terms_required: agreeTermsRequired,
+      agree_privacy: agreePrivacy,
+    };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>, key: keyof PhoneNumber) => {
-    let value = e.target.value;
+    try {
+      const response = await axios.post('http://localhost:8000/genius/members/', formData, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
 
-    // 숫자만 허용하도록 수정
-    value = value.replace(/\D/g, '');
+      // 회원가입 성공 후 사용자 정보를 로컬 스토리지에 저장하고 로그인 상태로 설정
+      const user = {
+        email,
+        nickname,
+        userId: response.data.id, // 서버에서 반환된 사용자 ID
+        profImg: response.data.profImg || 'src/assets/images/default-profile.png', // 기본 프로필 이미지
+      };
 
-    // 길이 제한 설정
-    const maxLength = key === 'areaCode' ? 3 : 4;
-    value = value.slice(0, maxLength);
+      localStorage.setItem('user', JSON.stringify(user));
+      localStorage.setItem('isLoggedIn', 'true'); // 로그인 상태 저장
 
-    setPhoneNumber((prev) => ({ ...prev, [key]: value }));
-  };
+      setIsSignUpComplete(true);
 
-  const handleAgreeAllChange = () => {
-    const allChecked = !agreeAll;
-    setAgreeAll(allChecked);
-    setAgreeTermsRequired(allChecked);
-    setAgreePrivacy(allChecked);
-    setAgreeEvent(allChecked);
+      toast.success('회원가입이 완료되었습니다.', {
+        autoClose: 1500,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: false,
+      });
+
+      // 회원가입 완료 후 페이지 이동 지연
+      setTimeout(() => {
+        window.location.href = '/MainHome'; // 메인 홈으로 이동
+      }, 2500);
+    } catch (error) {
+      setSignUpFailed(true);
+      if (axios.isAxiosError(error)) {
+        console.error('회원가입에 실패했습니다:', error.response?.data || error.message);
+        toast.error(`회원가입에 실패했습니다: ${error.response?.data.message || error.message}`, {
+          autoClose: 3000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: false,
+        });
+      } else {
+        console.error('회원가입에 실패했습니다:', error);
+        toast.error('회원가입에 실패했습니다. 다시 시도해주세요.', {
+          autoClose: 3000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: false,
+        });
+      }
+    }
   };
 
   return (
     <SignUpStyle.Container>
       <Navbar />
-      <h1>{isSignUpComplete ? '회원가입 완료' : '회원가입'}</h1>
+      <ToastContainer />
+      <h1>{isSignUpComplete ? '회원가입 완료' : signUpFailed ? '회원가입 실패' : '회원가입'}</h1>
       {isSignUpComplete ? (
         <p>회원가입이 완료되었습니다. 환영합니다!</p>
+      ) : signUpFailed ? (
+        <p>회원가입에 실패했습니다. 다시 시도해주세요.</p>
       ) : (
         <>
           <SignUpStyle.Divider />
           <SignUpStyle.Form>
             <SignUpStyle.Row>
-              <SignUpStyle.Label>아이디　　　　</SignUpStyle.Label>
+              <SignUpStyle.Label>이메일　　　　</SignUpStyle.Label>
               <SignUpStyle.Input
-                type="text"
-                placeholder="아이디"
-                value={id}
-                onChange={(e) => setID(e.target.value)}
+                type="email"
+                placeholder="이메일 (예 : abc1234@naver.com)"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </SignUpStyle.Row>
             <SignUpStyle.Row>
               <SignUpStyle.Label>비밀번호　　　</SignUpStyle.Label>
               <SignUpStyle.Input
                 type="password"
-                placeholder="4~12자의 영문 대소문자, 숫자 조합"
+                placeholder="최소 6자, 숫자 및 영문 포함"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
@@ -131,62 +166,9 @@ const SignUp: React.FC<SignUpProps> = () => {
               <SignUpStyle.Input
                 type="text"
                 placeholder="이름"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                value={nickname}
+                onChange={(e) => setNickname(e.target.value)}
               />
-            </SignUpStyle.Row>
-            <SignUpStyle.Row>
-              <SignUpStyle.Label>이메일　　　　</SignUpStyle.Label>
-              <SignUpStyle.Input
-                type="email"
-                placeholder="이메일 (예 : abc1234@naver.com)"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </SignUpStyle.Row>
-            <SignUpStyle.Row>
-              <SignUpStyle.Label>전화번호　　　</SignUpStyle.Label>
-              <SignUpStyle.PhoneInputContainer>
-                <SignUpStyle.PhoneInputBox>
-                  <SignUpStyle.Input
-                    type="tel"
-                    placeholder="010"
-                    maxLength={3}
-                    value={phoneNumber.areaCode}
-                    onChange={(e) => handleInputChange(e, 'areaCode')}
-                  />
-                </SignUpStyle.PhoneInputBox>
-                <SignUpStyle.PhoneInputBox>
-                  <SignUpStyle.Hyphen>-</SignUpStyle.Hyphen>
-                  <SignUpStyle.Input
-                    type="tel"
-                    placeholder=""
-                    maxLength={4}
-                    value={phoneNumber.exchangeCode}
-                    onChange={(e) => handleInputChange(e, 'exchangeCode')}
-                  />
-                </SignUpStyle.PhoneInputBox>
-                <SignUpStyle.PhoneInputBox>
-                  <SignUpStyle.Hyphen>-</SignUpStyle.Hyphen>
-                  <SignUpStyle.Input
-                    type="tel"
-                    placeholder=""
-                    maxLength={4}
-                    value={phoneNumber.subscriberNumber}
-                    onChange={(e) => handleInputChange(e, 'subscriberNumber')}
-                  />
-                </SignUpStyle.PhoneInputBox>
-              </SignUpStyle.PhoneInputContainer>
-            </SignUpStyle.Row>
-            <SignUpStyle.Row>
-              <SignUpStyle.CheckboxLabel>
-                <SignUpStyle.Checkbox
-                  type="checkbox"
-                  checked={agreeAll}
-                  onChange={handleAgreeAllChange}
-                />
-                전체동의
-              </SignUpStyle.CheckboxLabel>
             </SignUpStyle.Row>
             <SignUpStyle.Row>
               <SignUpStyle.CheckboxLabel>
@@ -206,16 +188,6 @@ const SignUp: React.FC<SignUpProps> = () => {
                   onChange={() => setAgreePrivacy(!agreePrivacy)}
                 />
                 (필수) 개인정보 수집 및 이용 동의
-              </SignUpStyle.CheckboxLabel>
-            </SignUpStyle.Row>
-            <SignUpStyle.Row>
-              <SignUpStyle.CheckboxLabel>
-                <SignUpStyle.Checkbox
-                  type="checkbox"
-                  checked={agreeEvent}
-                  onChange={() => setAgreeEvent(!agreeEvent)}
-                />
-                (선택) 이벤트 수신 동의
               </SignUpStyle.CheckboxLabel>
             </SignUpStyle.Row>
             <SignUpStyle.Row>

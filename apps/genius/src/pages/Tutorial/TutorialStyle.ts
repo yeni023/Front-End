@@ -1,4 +1,4 @@
-// TutorialStyle.ts
+// tutorialstyle.ts
 import styled, { keyframes } from 'styled-components';
 
 const fadeIn = keyframes`
@@ -15,7 +15,6 @@ export const TutorialContainer = styled.div`
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  position: relative;
 `;
 
 export const BackgroundImage = styled.div`
@@ -27,7 +26,7 @@ export const BackgroundImage = styled.div`
 
 export const CharacterBubble = styled.div`
   position: absolute;
-  top: 65%;
+  top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 20px;
@@ -36,37 +35,42 @@ export const CharacterBubble = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  animation: ${fadeIn} 0.9s ease-in-out;
 `;
 
-export const CharacterImage = styled.div`
-  background: url('src/assets/images/character.png') no-repeat center center;
-  background-size: contain;
+export const CharacterImage = styled.div<{ image: string }>`
+  background: url(${props => props.image}) no-repeat center center;  background-size: contain;
   width: 500px;
   height: 370px;
-  margin-top: 160px;
-  margin-bottom: 10px;
+  margin-top: 140px;
+  margin-bottom: 5px;
   align-items: center;
+  animation: ${fadeIn} 0.8s ease-in-out;
 `;
 
 export const StepContent = styled.div`
   white-space: pre-line;
   background-color: #fff;
   color: #000;
-  padding: 100px 65px;
+  padding: 70px 65px;
   border-radius: 100%;
   position: absolute;
   left: 50%;
-  top: 80px;
-  font-size: 21px;
+  top: 150px;
+  font-size: 22px;
   transform: translate(-50%, -90%);
-  width: 100%;
+  width: 80%;
   border: 2px solid lightseagreen;
   text-align: center;
   animation: ${fadeIn} 0.5s ease-in-out;
   line-height: 1.9;
+  font-family: "Gowun Dodum", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 `;
 
-export const ButtonContainer = styled.div` /* 새로운 컨테이너 스타일 추가 */
+
+export const ButtonContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -80,12 +84,13 @@ export const NextButton = styled.button`
   font-weight: bold;
   border-radius: 10px;
   cursor: pointer;
-  margin-top: 10px;
-  border: 3px solid lightblue;
+  margin-top: 3px;
+  border: 2px solid skyblue;
 
   &:hover {
     background-color: #4da351;
     color: #fff;
+    border: 2px solid skyblue;
   }
 
   &:focus {
@@ -95,16 +100,17 @@ export const NextButton = styled.button`
 
 export const EndButton = styled.button`
   background-color: #fff;
-  color: #000;
+  color: #5d5d5d;
   padding: 15px 30px;
   font-size: 1.2em;
   font-weight: bold;
   border-radius: 10px;
   cursor: pointer;
-  margin-top: 10px;
-  border: 3px solid lightblue;
+  margin-top: 5px;
+  border: 2px solid skyblue;
 
   &:hover {
+    border: 2px solid skyblue;
     background-color: #4da351;
     color: #fff;
   }

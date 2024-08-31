@@ -61,7 +61,7 @@ export const Label = styled.div`
   font-size: 18px;
   margin-right: 60px;
   white-space: nowrap;
-  max-width: 80px;
+  max-width: 50px;
 `;
 
 export const FlexContainer = styled.div`

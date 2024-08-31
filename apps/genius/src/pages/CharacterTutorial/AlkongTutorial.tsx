@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import * as TutorialStyle from './AlkongTutorialStyle';
-import Navbar2 from '../Navbar/Navbar2';
+import Navbar from '../Navbar/Navbar';
 
 const AlkongTutorial: React.FC = () => {
   const [currentStep, setCurrentStep] = useState<number>(1);
@@ -23,7 +23,7 @@ const AlkongTutorial: React.FC = () => {
         return (
           <>
             그런 다음, 원하는 동화 장르를 선택하고, <br />
-            너가 마음에 드는 동화 주제를 골라주면 돼!
+            마음에 드는 동화 주제를 골라주면 돼!
           </>
         );
       case 4:
@@ -66,10 +66,15 @@ const AlkongTutorial: React.FC = () => {
 
   return (
     <TutorialStyle.TutorialContainer>
-      <Navbar2 />
+      <Navbar />
       <TutorialStyle.BackgroundImage />
       <TutorialStyle.CharacterBubble>
-        <TutorialStyle.CharacterImage />
+        {/* Step에 따라 CharacterImage의 이미지를 바꿉니다 */}
+        <TutorialStyle.CharacterImage 
+          image={currentStep === 2 ? 'src/assets/images/alkong3.png' : 
+                 currentStep === 7 ? 'src/assets/images/alkong2.png' : 
+                 'src/assets/images/alkongcharacter.png'} 
+        />
         <TutorialStyle.StepContent key={currentStep}>{getStepContent()}</TutorialStyle.StepContent> {/* 키 추가 */}
         {currentStep < 7 && (
           <TutorialStyle.ButtonContainer>
@@ -78,7 +83,7 @@ const AlkongTutorial: React.FC = () => {
         )}
       
       {currentStep === 7 && (
-        <Link to="/genre2">
+        <Link to="/genre">
           <TutorialStyle.ButtonContainer>
           <TutorialStyle.EndButton>튜토리얼 마침</TutorialStyle.EndButton>
           </TutorialStyle.ButtonContainer>
@@ -86,7 +91,7 @@ const AlkongTutorial: React.FC = () => {
       )}
       </TutorialStyle.CharacterBubble>
     </TutorialStyle.TutorialContainer>
-  );
+);
 };
 
 export default AlkongTutorial;
