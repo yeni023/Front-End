@@ -4,6 +4,7 @@ import * as SignUpStyle from './SignUpStyle';
 import Navbar from '../Navbar/Navbar';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from 'react-router-dom';
 
 const SignUp: React.FC = () => {
   const [nickname, setNickname] = useState('');
@@ -15,21 +16,12 @@ const SignUp: React.FC = () => {
   const [isSignUpComplete, setIsSignUpComplete] = useState(false);
   const [signUpFailed, setSignUpFailed] = useState(false);
 
+  const navigate = useNavigate(); // useNavigate 훅을 사용하여 페이지 이동
+
   // 비밀번호 유효성 검사 함수
   const validatePassword = (password: string) => {
     const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
     return passwordRegex.test(password);
-  };
-
-  // 이메일 중복 검사 함수
-  const checkEmailExists = async (email: string) => {
-    try {
-      const response = await axios.get(`http://localhost:8000/genius/members/check-email/?email=${email}`);
-      return response.data.exists; // 서버가 존재 여부를 반환한다고 가정
-    } catch (error) {
-      console.error('이메일 중복 검사 중 오류 발생:', error);
-      return false; // 오류가 발생한 경우 기본값으로 false를 반환
-    }
   };
 
   const handleSignUp = async () => {
@@ -53,12 +45,6 @@ const SignUp: React.FC = () => {
       return;
     }
 
-    const emailExists = await checkEmailExists(email);
-    if (emailExists) {
-      toast.error('이메일이 이미 사용 중입니다.');
-      return;
-    }
-
     const formData = {
       nickname,
       email,
@@ -69,36 +55,25 @@ const SignUp: React.FC = () => {
     };
 
     try {
-      const response = await axios.post('http://localhost:8000/genius/members/', formData, {
+      await axios.post('http://localhost:8000/genius/members/', formData, {
         headers: {
           'Content-Type': 'application/json',
         },
       });
 
-      // 회원가입 성공 후 사용자 정보를 로컬 스토리지에 저장하고 로그인 상태로 설정
-      const user = {
-        email,
-        nickname,
-        userId: response.data.id, // 서버에서 반환된 사용자 ID
-        profImg: response.data.profImg || 'src/assets/images/default-profile.png', // 기본 프로필 이미지
-      };
-
-      localStorage.setItem('user', JSON.stringify(user));
-      localStorage.setItem('isLoggedIn', 'true'); // 로그인 상태 저장
-
       setIsSignUpComplete(true);
 
       toast.success('회원가입이 완료되었습니다.', {
         autoClose: 1500,
-        hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: false,
+        hideProgressBar: true, // 진행 표시 바 숨기기
+        closeOnClick: true, // 클릭 시 닫기
+        pauseOnHover: false, // 호버 시 일시 정지하지 않음
       });
 
-      // 회원가입 완료 후 페이지 이동 지연
+      // 회원가입 완료 후 로그인 페이지로 이동
       setTimeout(() => {
-        window.location.href = '/MainHome'; // 메인 홈으로 이동
-      }, 2500);
+        navigate('/login'); // 로그인 페이지로 이동
+      }, 1500); // 1.5초 지연 후 이동
     } catch (error) {
       setSignUpFailed(true);
       if (axios.isAxiosError(error)) {
@@ -127,7 +102,7 @@ const SignUp: React.FC = () => {
       <ToastContainer />
       <h1>{isSignUpComplete ? '회원가입 완료' : signUpFailed ? '회원가입 실패' : '회원가입'}</h1>
       {isSignUpComplete ? (
-        <p>회원가입이 완료되었습니다. 환영합니다!</p>
+        <p>회원가입이 완료되었습니다. 로그인 페이지로 이동합니다.</p>
       ) : signUpFailed ? (
         <p>회원가입에 실패했습니다. 다시 시도해주세요.</p>
       ) : (

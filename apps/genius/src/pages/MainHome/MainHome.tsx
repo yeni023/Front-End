@@ -47,16 +47,26 @@ const MainHome: React.FC = () => {
 
   const isUserLoggedIn = (): boolean => {
     return localStorage.getItem('isLoggedIn') === 'true';
-  };
+};
 
-  const handleCreateStoryClick = () => {
-    if (isUserLoggedIn()) {
-      navigate('/CreateStory');
-    } else {
+
+
+const handleCreateStoryClick = () => {
+
+  const loggedIn = isUserLoggedIn();
+
+  if (!loggedIn) {
+      // 로그인이 되어 있지 않을 때
       alert('로그인 후 이용해주세요!');
-      navigate('/Login');
-    }
-  };
+      // alert이 완료된 후에 페이지 이동
+      setTimeout(() => {
+          navigate('/Login');
+      }, 100); // 100ms 지연
+  } else {
+      // 로그인이 되어 있을 때
+      navigate('/CreateStory');
+  }
+};
 
   return (
     <Styles.AppContainer>
