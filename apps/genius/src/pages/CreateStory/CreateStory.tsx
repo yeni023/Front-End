@@ -14,26 +14,33 @@ const CreateStory: React.FC = () => {
 
   useEffect(() => {
     const userData = localStorage.getItem('user');
-    if (userData) {
+    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+  
+    if (!userData || !isLoggedIn) {
+      toast.error('로그인이 필요합니다.');
+      navigate('/login');  // 로그인 페이지로 리디렉션
+    } else {
       try {
         const user = JSON.parse(userData);
-        console.log('로컬 스토리지에서 가져온 사용자 정보:', user); // 디버깅 로그 추가
-        if (user && user.userId) { // 수정: userId로 가져와야 함
-          setUserId(user.userId);
+        console.log('로컬 스토리지에서 가져온 사용자 정보:', user);
+  
+        if (user && user.id) {  // 'user.id'가 아닌 'user.userId'일 수 있습니다.
+          setUserId(user.id); // 여기도 'user.userId'로 수정 필요할 수 있습니다.
         } else {
           throw new Error('유효하지 않은 사용자 정보');
         }
       } catch (error) {
         console.error('로그인 정보 로드 오류:', error);
         toast.error('로그인 정보가 유효하지 않습니다. 다시 로그인 해주세요.');
-        navigate('/login');
+        navigate('/login');  // 로그인 페이지로 리디렉션
       }
-    } else {
-      toast.error('로그인 정보가 필요합니다.');
-      navigate('/login');
     }
   }, [navigate]);
-
+  
+  
+  
+  
+  
   const updateWriterName = (event: React.ChangeEvent<HTMLInputElement>) => {
     setWriterName(event.target.value);
   };
