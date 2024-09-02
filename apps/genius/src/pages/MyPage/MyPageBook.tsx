@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // React Router의 useNavigate 훅을 import
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
 import {
   PageContainer,
@@ -20,7 +21,6 @@ import {
   HoverButton
 } from "./MyPageBook";
 import bgImage from "../../assets/images/MyPageBG.svg";
-import profileImage from "../../assets/images/MyProfile.svg";
 import followingImage from "../../assets/images/Following.svg";
 import followerImage from "../../assets/images/Follower.svg";
 import AnswerImage from "../../assets/images/Answer.svg";
@@ -32,9 +32,38 @@ import ButtonImage2 from "../../assets/images/BookSample2.svg";
 import ButtonImage3 from "../../assets/images/BookSample3.svg";
 
 const MyPageBook: React.FC = () => {
-  const navigate = useNavigate(); // useNavigate 훅 사용
+  const navigate = useNavigate();
+  const [profileImage, setProfileImage] = useState<string>('');
+  const [nickname, setNickname] = useState<string>('');
+  const [email, setEmail] = useState<string>('');
   const [showAnswer, setShowAnswer] = useState(false);
   const [hoverIndex, setHoverIndex] = useState<number | null>(null);
+
+  const buttonImages = [ButtonImage1, ButtonImage2, ButtonImage3];
+
+  useEffect(() => {
+    const fetchMemberData = async () => {
+      const user = localStorage.getItem("user");
+      if (user) {
+        const userData = JSON.parse(user);
+        const userId = userData.id; // 로그인한 사용자의 ID를 가져옵니다.
+
+        try {
+          const response = await axios.get(`http://localhost:8000/genius/members/${userId}/`);
+          const member = response.data;
+          setProfileImage(member.profImg);
+          setNickname(member.nickname);
+          setEmail(member.email);
+        } catch (error) {
+          console.error("Error fetching member data:", error);
+        }
+      } else {
+        console.error("No user found in localStorage");
+      }
+    };
+
+    fetchMemberData();
+  }, []);
 
   const handleQuestionClick = () => {
     setShowAnswer(true);
@@ -43,21 +72,19 @@ const MyPageBook: React.FC = () => {
     }, 3000);
   };
 
-  const buttonImages = [ButtonImage1, ButtonImage2, ButtonImage3];
-
   return (
     <PageContainer>
       <Navbar />
       <ImageSection bgImage={bgImage}>
         <ProfileButton
-          image={profileImage}
+          image={profileImage || 'default_profile_image_url'} // Fallback image URL if profileImage is not available
           onClick={() => console.log("Profile button clicked!")}
         />
         <NameButton onClick={() => console.log("Name button clicked!")}>
-          박예은
+          {nickname || "이름"}
         </NameButton>
         <IDButton onClick={() => console.log("ID button clicked!")}>
-          _.zer023
+          {email || "Email"}
         </IDButton>
         <SocialButtonsContainer>
           <SocialButton

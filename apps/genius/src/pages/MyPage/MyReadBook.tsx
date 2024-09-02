@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import Navbar from "../Navbar/Navbar";
 import {
   PageContainer,
@@ -23,7 +24,6 @@ import {
   NextPageButton
 } from "./MyReadBook";
 import bgImage from "../../assets/images/MyPageBG.svg";
-import profileImage from "../../assets/images/MyProfile.svg";
 import followingImage from "../../assets/images/Following.svg";
 import followerImage from "../../assets/images/Follower.svg";
 import AnswerImage from "../../assets/images/Answer.svg";
@@ -31,12 +31,42 @@ import ReadBookTitleImageSrc from "../../assets/images/ReadBookTitleImage.svg";
 
 const MyReadBook: React.FC = () => {
   const [showAnswer, setShowAnswer] = useState(false);
+  const [profileImage, setProfileImage] = useState<string>('');
+  const [nickname, setNickname] = useState<string>('');
+  const [email, setEmail] = useState<string>('');
+
+  useEffect(() => {
+    const fetchProfileData = async () => {
+      try {
+        const user = localStorage.getItem("user");
+        if (user) {
+          const userData = JSON.parse(user);
+          const userId = userData.id;
+
+          // API 호출하여 프로필 정보 가져오기
+          const response = await axios.get(`http://localhost:8000/genius/members/${userId}/`);
+          const member = response.data;
+          setProfileImage(member.profImg);
+          setNickname(member.nickname);
+          setEmail(member.email);
+        } else {
+          console.error("No user found in localStorage");
+        }
+      } catch (error) {
+        console.error("Error fetching profile data:", error);
+      }
+    };
+
+    fetchProfileData();
+  }, []);
+
   const handleQuestionClick = () => {
     setShowAnswer(true);
     setTimeout(() => {
       setShowAnswer(false);
     }, 3000);
   };
+
   const handleImageClick = (type: string) => {
     console.log(` ${type}`);
   };
@@ -46,14 +76,14 @@ const MyReadBook: React.FC = () => {
       <Navbar />
       <ImageSection bgImage={bgImage}>
         <ProfileButton
-          image={profileImage}
+          image={profileImage || 'default_profile_image_url'} // 기본 이미지 설정
           onClick={() => console.log("Profile button clicked!")}
         />
         <NameButton onClick={() => console.log("Name button clicked!")}>
-          박예은
+          {nickname || "이름"}
         </NameButton>
         <IDButton onClick={() => console.log("ID button clicked!")}>
-          _.zer023
+          {email || "Email"}
         </IDButton>
         <SocialButtonsContainer>
           <SocialButton

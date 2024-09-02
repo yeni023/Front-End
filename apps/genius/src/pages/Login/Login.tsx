@@ -30,6 +30,7 @@ const Login: React.FC = () => {
         // 로그인 성공 시 사용자 정보를 localStorage에 저장
         localStorage.setItem('user', JSON.stringify(foundMember));
         localStorage.setItem('isLoggedIn', 'true'); // 로그인 상태 저장
+        
   
         setTimeout(() => {
           navigate('/MainHome');
