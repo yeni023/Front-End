@@ -18,7 +18,6 @@ export const SearchForm = styled.form`
   align-items: center;
   margin-top: 120px;
   margin-bottom: 40px;
-  
 
   input {
     padding: 16px 250px;
@@ -29,9 +28,8 @@ export const SearchForm = styled.form`
     padding-left: 20px;
 
     &:focus {
-    outline: 0;
-  }
-
+      outline: 0;
+    }
   }
 
   button {
@@ -42,11 +40,10 @@ export const SearchForm = styled.form`
     font-size: 20px;
 
     &:focus {
-    border: 1px solid #fff;
-    outline: 0;
+      border: 1px solid #fff;
+      outline: 0;
+    }
   }
-  }
-
 `;
 
 export const ButtonGroup = styled.div`
@@ -65,11 +62,31 @@ export const ButtonGroup = styled.div`
 
     &:hover {
       font-weight: bold;
+      transition: font-weight 0.5s ease;
     }
 
     &:focus {
-    outline: 0;
+      outline: 0;
+    }
   }
+`;
+
+export const DetailContainer = styled.div`
+  background-color: #f9f9f9; /* 상세 내용 배경색 */
+  padding: 10px 15px; /* 패딩 추가 */
+  margin-top: 10px; /* 상단 여백 */
+  border: 1px solid #ddd; /* 테두리 추가 */
+  border-radius: 5px; /* 모서리 둥글게 */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* 그림자 효과 */
+  overflow: hidden; /* 넘치는 내용 숨기기 */
+  transition: max-height 0.5s ease, opacity 0.5s ease; /* 슬라이드 효과 및 투명도 변화 */
+  max-height: 0; /* 기본적으로 숨김 상태 */
+  opacity: 0; /* 기본적으로 숨김 상태 */
+  line-height: 2.0;
+  
+  &.expanded {
+    max-height: 500px; /* 열림 상태의 최대 높이 */
+    opacity: 1; /* 열림 상태의 투명도 */
   }
 `;
 
@@ -83,7 +100,7 @@ export const Section = styled.section`
     font-size: 23px;
     margin-bottom: 16px;
     margin-top: 25px;
-    border-bottom: 1px solid #000; 
+    border-bottom: 1px solid #000;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -91,18 +108,61 @@ export const Section = styled.section`
   }
 
   ul {
-    list-style:none;
+    list-style: none;
     padding: 0;
     font-size: 16px;
   }
 
   ul > li {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
+    text-align: left;
     cursor: pointer;
     font-size: 15px;
-    background-color: #fff;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    transition: background-color 0.3s ease;
+    position: relative;
+
     &:hover {
-      text-decoration: underline;
+      background-color: #e0e0e0;
+    }
+
+    &::after {
+      content: '+';
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 20px;
+      transition: transform 0.3s ease;
+    }
+
+    &.expanded::after {
+      content: '-';
+      transform: translateY(-50%) rotate(180deg);
+    }
+
+    & > p {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease, opacity 0.5s ease;
+      opacity: 0;
+      padding: 5px 15px;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-top: none;
+      border-radius: 0 0 5px 5px;
+    }
+
+    &.expanded > p {
+      max-height: 200px; // Adjust this as needed
+      opacity: 1;
+      padding: 20px;
+      font-size: 15px;
+      line-height: 1.8;
+      
     }
   }
 

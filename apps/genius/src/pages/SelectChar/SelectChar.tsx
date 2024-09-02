@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import * as Styles from './SelectCharStyle';
 import { Link, useNavigate } from 'react-router-dom';
 import Navbar from '../Navbar/Navbar';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import * as Styles from './SelectCharStyle';
 
 const SelectChar: React.FC = () => {
   const [selectedCharacter, setSelectedCharacter] = useState<string | null>(null);
@@ -23,41 +22,20 @@ const SelectChar: React.FC = () => {
     }
   }, [navigate]);
 
-  const handleCharacterSelection = async (character: string) => {
+  const handleCharacterSelection = (character: string) => {
     if (userId === null || draftId === null) {
       toast.error('로그인 정보와 초안 ID가 필요합니다.');
       return;
     }
 
-    const introMode = character === 'alKong' ? 0 : 1;
-    const subject = character === 'alKong' ? 'alKong' : 'dalKong';
-    const introContent = character === 'alKong' ? '알콩이 동화 내용' : '달콩이 동화 내용';
-
-    const formData = {
-      draft: draftId,
-      user: userId,
-      introMode,
-      subject,
-      IntroContent: introContent
-    };
-
-    try {
-      const apiUrl = 'http://localhost:8000/genius/intro/';
-      const response = await axios.post(apiUrl, formData, {
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      });
-
-      toast.success(`동화 만들기 시작!`, {
-        onClose: () => navigate('/Tutorial')
-      });
-    } catch (error) {
-      if (axios.isAxiosError(error)) {
-        toast.error(`서버 오류가 발생했습니다: ${error.response?.data.message || error.message}`);
-      } else {
-        toast.error('서버 오류가 발생했습니다. 다시 시도해주세요.');
-      }
+    // 캐릭터 선택 시 필요한 동작을 여기에 추가할 수 있습니다.
+    // 예를 들어, 선택된 캐릭터에 따라 다른 페이지로 이동하거나 다른 처리를 할 수 있습니다.
+    if (character === 'alKong') {
+      navigate('/AlkongTutorial');
+    } else if (character === 'dalKong') {
+      navigate('/DalkongTutorial');
+    } else {
+      toast.error('잘못된 캐릭터 선택입니다.');
     }
   };
 
@@ -74,7 +52,7 @@ const SelectChar: React.FC = () => {
         <Link to="/AlkongTutorial">
           <Styles.CharacterImage src='./src/assets/images/alkongcharacter.png' alt="알콩이 이미지" />
           <Styles.Description className="description">
-          <Styles.Highlight2>질문</Styles.Highlight2>에 대한 <Styles.Highlight2>선택지</Styles.Highlight2>를 고르며 동화를 제작해요.
+            <Styles.Highlight2>질문</Styles.Highlight2>에 대한 <Styles.Highlight2>선택지</Styles.Highlight2>를 고르며 동화를 제작해요.
           </Styles.Description>          
           <Styles.AlKongButton isAlKong={selectedCharacter === 'alKong'}>
             알콩이와 동화만들기
@@ -92,8 +70,8 @@ const SelectChar: React.FC = () => {
         <Link to="/DalkongTutorial">
           <Styles.CharacterImage src='./src/assets/images/dalkongcharacter.png' alt="달콩이 이미지" />
           <Styles.Description className="description">
-  <Styles.Highlight1>AI</Styles.Highlight1>와 함께 <Styles.Highlight1>채팅</Styles.Highlight1>을 진행하며 동화를 제작해요.
-</Styles.Description>
+            <Styles.Highlight1>AI</Styles.Highlight1>와 함께 <Styles.Highlight1>채팅</Styles.Highlight1>을 진행하며 동화를 제작해요.
+          </Styles.Description>
           <Styles.DalKongButton isAlKong={selectedCharacter === 'dalKong'}>
             달콩이와 동화만들기
           </Styles.DalKongButton>
