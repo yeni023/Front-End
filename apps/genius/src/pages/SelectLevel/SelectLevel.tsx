@@ -1,6 +1,7 @@
 import * as C from "../../pages/StoryFlow/container";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom"; // useNavigate import 추가
+import { useNavigate, useLocation } from "react-router-dom";
+import axios from "axios";
 import {
   Container,
   SelectLevelTitle,
@@ -19,22 +20,50 @@ import checkHard from "../../assets/images/Check4.svg";
 import yes from "../../assets/images/LevelYes.svg";
 import no from "../../assets/images/LevelNo.svg";
 
+type Difficulty = "easy" | "medium" | "hard";
+
 const SelectLevel = () => {
   const currentPage = "SelectLevel";
-  const navigate = useNavigate(); // useNavigate 훅 사용
+  const navigate = useNavigate();
+  const location = useLocation();
+  
+  // Retrieve the genre from the passed state
+  const genre = location.state?.genre || "default_genre"; // Fallback if genre isn't passed
+  
   const [showConfirm, setShowConfirm] = useState(false);
   const [title, setTitle] = useState("선택지 개수는 몇 개로 할까?");
-  const [selectedButton, setSelectedButton] = useState<string | null>(null);
+  const [selectedButton, setSelectedButton] = useState<Difficulty | null>(null);
 
-  const handleImageClick = (type: string) => {
-    console.log(` ${type}`);
+  const handleImageClick = (type: Difficulty) => {
+    console.log(`Selected difficulty: ${type}`);
     setSelectedButton(type);
     setShowConfirm(true);
     setTitle("좋아, 다음 단계로 넘어갈까?");
   };
 
-  const handleYesClick = () => {
-    navigate("/ChatAC");
+  const handleYesClick = async () => {
+    if (selectedButton) {
+      try {
+        const diffMap: { [key in Difficulty]: number } = {
+          easy: 1,
+          medium: 2,
+          hard: 3
+        };
+
+        const response = await axios.post(`/draft/1/choose_diff/`, {
+          diff: diffMap[selectedButton],
+          writer: "yeeun",
+          genre: genre, // Use the selected genre
+          user: 1
+        });
+
+        console.log("API Response:", response.data);
+      } catch (error) {
+        console.error("Error submitting difficulty:", error);
+      } finally {
+        navigate("/ChatAC");
+      }
+    }
   };
 
   const handleNoClick = () => {
@@ -58,19 +87,19 @@ const SelectLevel = () => {
           <LevelButton
             bgImage={easy}
             hoverImage={checkEasy}
-            isSelected={selectedButton === "easy"} // 선택된 상태를 반영
+            isSelected={selectedButton === "easy"}
             onClick={() => handleImageClick("easy")}
           />
           <LevelButton
             bgImage={medium}
             hoverImage={checkMedium}
-            isSelected={selectedButton === "medium"} // 선택된 상태를 반영
+            isSelected={selectedButton === "medium"}
             onClick={() => handleImageClick("medium")}
           />
           <LevelButton
             bgImage={hard}
             hoverImage={checkHard}
-            isSelected={selectedButton === "hard"} // 선택된 상태를 반영
+            isSelected={selectedButton === "hard"}
             onClick={() => handleImageClick("hard")}
           />
         </ImageWrapper>
