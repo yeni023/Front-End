@@ -24,6 +24,7 @@ const Genre = () => {
 
   const handleButtonClick = async (type: string) => {
     try {
+      console.log(`Sending genre: ${type}`);
       const response = await axios.post("/draft/genre/", {
         nickname: "yeeun",
         genre: type
@@ -31,7 +32,6 @@ const Genre = () => {
       console.log(response.data);
     } catch (error) {
       console.error("Error submitting genre:", error);
-      // 에러 처리 추가 (예: 사용자에게 에러 메시지 표시)
     } finally {
       navigate("/BasicInfo");
     }

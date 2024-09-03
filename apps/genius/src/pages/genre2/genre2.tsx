@@ -1,5 +1,6 @@
 import * as C from "../../pages/StoryFlow/container";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import {
   Container,
   GenreTitle,
@@ -21,18 +22,19 @@ const Genre2 = () => {
   const currentPage = "Genre2";
   const navigate = useNavigate();
 
-  // const nextPage = () => {
-  //   console.log("다음 장");
-  //   navigate("/StoryFlow");
-  // };
-
-  // const previousPage = () => {
-  //   console.log("이전 장");
-  // };
-
-  const handleButtonClick = (type: string) => {
-    console.log(` ${type}`);
-    navigate("/ThemePage");
+  const handleButtonClick = async (type: string) => {
+    try {
+      console.log(`Sending genre: ${type}`);
+      const response = await axios.post("/draft/genre2/", {
+        nickname: "yeeun",
+        genre: type
+      });
+      console.log(response.data);
+    } catch (error) {
+      console.error("Error submitting genre:", error);
+    } finally {
+      navigate("/ThemePage");
+    }
   };
 
   return (
