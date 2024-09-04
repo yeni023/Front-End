@@ -24,8 +24,9 @@ const CreateStory: React.FC = () => {
         const user = JSON.parse(userData);
         console.log('로컬 스토리지에서 가져온 사용자 정보:', user);
   
-        if (user && user.id) {  // 'user.id'가 아닌 'user.userId'일 수 있습니다.
-          setUserId(user.id); // 여기도 'user.userId'로 수정 필요할 수 있습니다.
+        if (user && user.id) {
+          setUserId(user.id); // 올바른 키로 사용자 ID를 설정
+          localStorage.setItem('userId', user.id.toString()); // userId를 로컬 스토리지에 저장
         } else {
           throw new Error('유효하지 않은 사용자 정보');
         }
@@ -36,10 +37,6 @@ const CreateStory: React.FC = () => {
       }
     }
   }, [navigate]);
-  
-  
-  
-  
   
   const updateWriterName = (event: React.ChangeEvent<HTMLInputElement>) => {
     setWriterName(event.target.value);
@@ -52,9 +49,9 @@ const CreateStory: React.FC = () => {
       toast.error('작가명을 입력하세요!', {
         autoClose: 1500, 
         position: 'top-center',
-        hideProgressBar: true, // 진행 표시 바 숨기기
-        closeOnClick: true, // 클릭 시 닫기
-        pauseOnHover: false, // 호버 시 일시 정지하지 않음
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: false,
       });
       return;
     }
@@ -63,9 +60,9 @@ const CreateStory: React.FC = () => {
       toast.error('로그인 정보가 필요합니다.', {
         autoClose: 1500,
         position: 'top-center',
-        hideProgressBar: true, // 진행 표시 바 숨기기
-        closeOnClick: true, // 클릭 시 닫기
-        pauseOnHover: false, // 호버 시 일시 정지하지 않음
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: false,
       });
       return;
     }
@@ -89,12 +86,14 @@ const CreateStory: React.FC = () => {
   
       console.log('서버 응답:', response.data);
       localStorage.setItem('draftId', response.data.id.toString());
+      localStorage.setItem('writerName', trimmedWriterName);
+      
       toast.success(`환영합니다 ${trimmedWriterName}님!`, {
         autoClose: 1500,
         position: 'top-center',
-        hideProgressBar: true, // 진행 표시 바 숨기기
-        closeOnClick: true, // 클릭 시 닫기
-        pauseOnHover: false, // 호버 시 일시 정지하지 않음
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: false,
         onClose: () => navigate('/Tutorial')
       });
     } catch (error) {
@@ -102,18 +101,18 @@ const CreateStory: React.FC = () => {
         console.error('서버 오류:', error.response?.data);
         toast.error(`서버 오류가 발생했습니다: ${error.response?.data}`, {
           autoClose: 1000,
-          hideProgressBar: true, // 진행 표시 바 숨기기
-          closeOnClick: true, // 클릭 시 닫기
-          pauseOnHover: false, // 호버 시 일시 정지하지 않음
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: false,
           position: 'top-center'
         });
       } else {
         console.error('예상치 못한 오류:', error);
         toast.error('서버 오류가 발생했습니다. 다시 시도해주세요.', {
           autoClose: 1000,
-          hideProgressBar: true, // 진행 표시 바 숨기기
-          closeOnClick: true, // 클릭 시 닫기
-          pauseOnHover: false, // 호버 시 일시 정지하지 않음
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: false,
           position: 'top-center'
         });
       }
