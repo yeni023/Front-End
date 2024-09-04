@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react';
 import * as C from "../../pages/StoryFlow/container";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -7,35 +8,64 @@ import {
   ImageWrapper,
   Image,
   Wrapper,
-  // Arrow_Image,
-  // ArrowButton,
   ButtonText
 } from "./genre";
 import book from "../../assets/images/book.svg";
 import castle from "../../assets/images/castle.svg";
 import full_story from "../../assets/images/full_story.svg";
 import ghost from "../../assets/images/ghost.svg";
-// import left from "../../assets/images/left.svg";
-// import right from "../../assets/images/right.svg";
 
 const Genre = () => {
   const currentPage = "GenrePage";
   const navigate = useNavigate();
+  
+  const [writerName, setWriterName] = useState<string>('');
+  const [userId, setUserId] = useState<number | null>(null);
+
+  useEffect(() => {
+    // 로컬 스토리지에서 데이터 읽어오기
+    const storedWriterName = localStorage.getItem('writerName');
+    const storedUserId = localStorage.getItem('userId');
+    
+    if (storedWriterName) {
+      setWriterName(storedWriterName);
+    }
+    if (storedUserId) {
+      setUserId(parseInt(storedUserId, 10));
+    }
+  }, []);
 
   const handleButtonClick = async (type: string) => {
+    if (writerName === '' || userId === null) {
+      console.error('작가명 또는 사용자 ID가 유효하지 않습니다.');
+      return;
+    }
+
     try {
       console.log(`Sending genre: ${type}`);
-      const response = await axios.post("/draft/genre/", {
-        nickname: "yeeun",
-        genre: type
+
+      // 요청 데이터 구성
+      const requestData = {
+        diff: 0, 
+        writer: writerName,
+        genre: type,
+        user: userId
+      };
+
+      // API 요청 보내기
+      const response = await axios.post("http://localhost:8000/genius/draft/", requestData, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
       });
+
       console.log(response.data);
     } catch (error) {
       console.error("Error submitting genre:", error);
     } finally {
       navigate("/BasicInfo");
     }
-  };
+  };  
 
   return (
     <Container>
@@ -43,9 +73,6 @@ const Genre = () => {
       <Wrapper>
         <GenreTitle>어떤 동화를 만들고 싶어?</GenreTitle>
         <ImageWrapper>
-          {/* <ArrowButton onClick={previousPage}>
-            <Arrow_Image src={left} alt="left" />
-          </ArrowButton> */}
           <div>
             <Image
               src={castle}
@@ -86,9 +113,6 @@ const Genre = () => {
               전래 동화 만들기
             </ButtonText>
           </div>
-          {/* <ArrowButton onClick={nextPage}>
-            <Arrow_Image src={right} alt="right" />
-          </ArrowButton> */}
         </ImageWrapper>
       </Wrapper>
     </Container>
