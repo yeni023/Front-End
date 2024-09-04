@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import {
   TutorialContainer,
@@ -14,10 +14,69 @@ import Navbar from '../Navbar/Navbar';
 
 const Tutorial: React.FC = () => {
   const [currentStep, setCurrentStep] = useState<number>(1);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const nextStep = () => {
     setCurrentStep(currentStep + 1);
   };
+
+  // 버튼 클릭 시 오디오 재생
+  const playAudio = (audioSrc: string) => {
+    // 이전 오디오 인스턴스가 존재하면 중지 및 초기화
+    if (audioRef.current) {
+      const previousAudio = audioRef.current;
+      previousAudio.pause();
+      previousAudio.currentTime = 0;
+    }
+
+    // 새로운 오디오 설정 및 재생
+    const audio = new Audio(audioSrc);
+    audioRef.current = audio;
+    audio.play().catch(error => {
+      console.error('Audio playback failed:', error);
+    });
+  };
+
+  const handlePlayAudio = () => {
+    switch (currentStep) {
+      case 1:
+        playAudio('src/assets/audio/Tutorial1.mp3');
+        break;
+      case 2:
+        playAudio('src/assets/audio/Tutorial2.mp3');
+        break;
+      case 3:
+        playAudio('src/assets/audio/Tutorial3.mp3');
+        break;
+      case 4:
+        playAudio('src/assets/audio/Tutorial4.mp3');
+        break;
+      case 5:
+        playAudio('src/assets/audio/Tutorial5.mp3');
+        break;
+      case 6:
+        playAudio('src/assets/audio/Tutorial6.mp3');
+        break;
+      case 7:
+        playAudio('src/assets/audio/Tutorial7.mp3');
+        break;
+      default:
+        break;
+    }
+  };
+
+  useEffect(() => {
+    // 다음 단계로 넘어갈 때 오디오 재생
+    handlePlayAudio();
+
+    // 컴포넌트 언마운트 시 오디오 중지
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current.currentTime = 0;
+      }
+    };
+  }, [currentStep]);
 
   const getStepContent = () => {
     switch (currentStep) {
@@ -31,7 +90,7 @@ const Tutorial: React.FC = () => {
         return (
           <>
             동화책을 만들면 숲속에 많은 나무와 꽃들이 <br />자라나요! 이 숲속을 더욱 아름답게 만들기 위해 <br />
-            알콩이, 달콩이가 도와줄거예요.
+            알콩이, 달콩이가 도와줄게요.
           </>
         );
       case 4:
@@ -50,7 +109,7 @@ const Tutorial: React.FC = () => {
       case 6:
         return (
           <>
-            동화책을 완성하고 완성된 이야기를 즐겨봐요. <br />함께한 여정이 기억에 오래 남을 거예요.
+            동화책을 완성하고 완성된 이야기를 즐겨봐요. <br />저희와 함께한 여정이 기억에 오래 남을 거예요.
           </>
         );
       case 7:
@@ -68,7 +127,6 @@ const Tutorial: React.FC = () => {
     }
   };
 
-  // Step에 따른 이미지를 설정하는 함수
   const getCharacterImage = () => {
     switch (currentStep) {
       case 2:
@@ -93,7 +151,7 @@ const Tutorial: React.FC = () => {
         <StepContent key={currentStep}>{getStepContent()}</StepContent>
         {currentStep < 7 && (
           <ButtonContainer>
-            <NextButton onClick={nextStep}>다음으로</NextButton>
+            <NextButton onClick={() => { nextStep(); handlePlayAudio(); }}>다음으로</NextButton>
           </ButtonContainer>
         )}
         {currentStep === 7 && (
